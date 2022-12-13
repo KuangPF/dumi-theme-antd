@@ -12,7 +12,10 @@
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "prepublishOnly": "father doctor && npm run build"
   },
-  "keywords": ["dumi", "dumi-theme"],
+  "keywords": [
+    "dumi",
+    "dumi-theme"
+  ],
   "authors": [
     "KuangPF"
   ],
@@ -67,5 +70,8 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "stylelint": "^14.9.1"
+  },
+  "dependencies": {
+    "antd": "^5.0.6"
   }
 }
