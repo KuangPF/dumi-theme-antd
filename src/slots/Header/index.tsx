@@ -4,6 +4,9 @@ import { useLocale as useDumiLocale, useLocation } from 'dumi';
 import React, { type FC } from 'react';
 import Logo from './Logo';
 
+// for debug...
+import GlobalStyles from '../../common/GlobalStyles';
+
 const Header: FC = () => {
   const location = useLocation();
   const { pathname } = location;
@@ -20,11 +23,14 @@ const Header: FC = () => {
         { xxl: 20, xl: 19, lg: 18, md: 18, sm: 0, xs: 0 },
       ];
   return (
-    <Row style={{ flexFlow: 'nowrap', height: 64 }}>
-      <Col {...colProps[0]}>
-        <Logo {...sharedProps} location={location} />
-      </Col>
-    </Row>
+    <div>
+      <GlobalStyles />
+      <Row style={{ flexFlow: 'nowrap', height: 64 }}>
+        <Col {...colProps[0]}>
+          <Logo {...sharedProps} location={location} />
+        </Col>
+      </Row>
+    </div>
   );
 };
 
