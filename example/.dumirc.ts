@@ -10,6 +10,7 @@ export default defineConfig({
   extraBabelPresets: ['@emotion/babel-preset-css-prop'],
   // pass theme config
   themeConfig: {
+    name: 'dumi-theme-antd',
     hello: 'world',
   },
 });
