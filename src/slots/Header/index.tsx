@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { Col, Row } from 'antd';
+import classNames from 'classnames';
 import { useLocale as useDumiLocale, useLocation } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
 import { type FC } from 'react';
@@ -113,6 +114,11 @@ const Header: FC = () => {
 
   const style = useStyle();
 
+  const headerClassName = classNames({
+    clearfix: true,
+    'home-header': isHome,
+  });
+
   const colProps = isHome
     ? [{ flex: 'none' }, { flex: 'auto' }]
     : [
@@ -120,7 +126,7 @@ const Header: FC = () => {
         { xxl: 20, xl: 19, lg: 18, md: 18, sm: 0, xs: 0 },
       ];
   return (
-    <div>
+    <header css={style.header} className={headerClassName}>
       <GlobalStyles />
       <Row style={{ flexFlow: 'nowrap', height: 64 }}>
         <Col {...colProps[0]}>
@@ -132,7 +138,7 @@ const Header: FC = () => {
           </div>
         </Col>
       </Row>
-    </div>
+    </header>
   );
 };
 
