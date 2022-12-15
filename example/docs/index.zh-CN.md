@@ -3,4 +3,4 @@ hero:
   title: Example
 ---
 
-Homepage test
+zh-CN
