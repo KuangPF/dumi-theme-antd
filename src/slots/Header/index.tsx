@@ -6,6 +6,7 @@ import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
 import { type FC } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
 import Logo from './Logo';
+import Navigation from './Navigation';
 
 // for debug...
 import GlobalStyles from '../../common/GlobalStyles';
@@ -136,6 +137,7 @@ const Header: FC = () => {
           <div className="nav-search-wrapper">
             <DumiSearchBar />
           </div>
+          <Navigation />
         </Col>
       </Row>
     </header>
