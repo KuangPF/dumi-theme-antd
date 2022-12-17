@@ -3,7 +3,7 @@ nav:
   title: guide
   order: 1
 group:
-  title: ntroduce
+  title: introduce
   order: 1
 ---
 

@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { Link, useNavData } from 'dumi';
 import { type FC } from 'react';
@@ -75,7 +76,8 @@ const useStyle = () => {
 const Navigation: FC = () => {
   const navList = useNavData();
 
-  const menuItems = navList.map((navItem) => {
+  // @ts-ignore
+  const menuItems: MenuProps['items'] = navList.map((navItem) => {
     return {
       label: <Link to={navItem.link}>{navItem.title}</Link>,
       key: navItem.link,

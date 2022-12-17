@@ -12,5 +12,9 @@ export default defineConfig({
   themeConfig: {
     name: 'dumi-theme-antd',
     hello: 'world',
+    antdTheme: {
+      github: 'https://github.com/KuangPF/dumi-theme-antd',
+      ower: 'KuangPF',
+    },
   },
 });
