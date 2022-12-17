@@ -29,6 +29,8 @@ const useSiteToken = () => {
       marginFar: token.marginXXL * 2,
       codeFamily: `'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace`,
     },
+    /** dumi-theme-antd 站点 class 前缀 */
+    siteCls: 'dumi-antd',
   };
 };
 
