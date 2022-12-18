@@ -15,6 +15,10 @@ export default defineConfig({
     antdTheme: {
       github: 'https://github.com/KuangPF/dumi-theme-antd',
       ower: 'KuangPF',
+      localesEnhance: [
+        { id: 'zh-CN', switchPrefix: '中' },
+        { id: 'en-US', switchPrefix: 'en' },
+      ],
     },
   },
 });
