@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { Col, Row } from 'antd';
 import classNames from 'classnames';
-import { useLocale as useDumiLocale, useLocation } from 'dumi';
+import { useLocation } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
 import { type FC } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
@@ -111,10 +111,6 @@ const Header: FC = () => {
   const { pathname } = location;
   const isHome = ['', 'index', 'index-cn'].includes(pathname);
 
-  const { id } = useDumiLocale();
-  const isZhCN = id === 'zh-CN';
-  const sharedProps = { isZhCN };
-
   const style = useStyle();
 
   const headerClassName = classNames({
@@ -133,7 +129,7 @@ const Header: FC = () => {
       <GlobalStyles />
       <Row style={{ flexFlow: 'nowrap', height: 64 }}>
         <Col {...colProps[0]}>
-          <Logo {...sharedProps} location={location} />
+          <Logo />
         </Col>
         <Col {...colProps[1]} css={style.menuRow}>
           <div className="nav-search-wrapper">

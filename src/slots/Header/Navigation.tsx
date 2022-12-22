@@ -74,7 +74,9 @@ const useStyle = () => {
 };
 
 const Navigation: FC = () => {
-  const navList = useNavData();
+  // 统一使用 themeConfig.nav，使用 useNavData，当存在自定义 pages 时，会导致 nav 混乱
+
+  let navList = useNavData();
 
   // @ts-ignore
   const menuItems: MenuProps['items'] = navList.map((navItem) => {

@@ -12,6 +12,16 @@ export default defineConfig({
   themeConfig: {
     name: 'dumi-theme-antd',
     hello: 'world',
+    nav: {
+      'zh-CN': [
+        { title: '指南', link: '/guide' },
+        { title: '配置', link: '/config' },
+      ],
+      'en-US': [
+        { title: 'guide', link: '/guide-en' },
+        { title: 'config', link: '/config-en' },
+      ],
+    },
     antdTheme: {
       github: 'https://github.com/KuangPF/dumi-theme-antd',
       ower: 'KuangPF',

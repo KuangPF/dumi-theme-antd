@@ -1,8 +1,6 @@
 import { css } from '@emotion/react';
-import { Link, useLocation, useSiteData } from 'dumi';
-import * as React from 'react';
+import { Link, useLocale, useSiteData } from 'dumi';
 import useSiteToken from '../../hooks/useSiteToken';
-import * as utils from '../../utils';
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -59,16 +57,15 @@ export interface LogoProps {
   location: any;
 }
 
-const Logo = ({ isZhCN }: LogoProps) => {
-  const { search } = useLocation();
+const Logo = () => {
   const { logo } = useStyle();
   const { themeConfig } = useSiteData();
-
+  const locale = useLocale();
   const logImgUrl =
     themeConfig.logo || 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg';
   return (
     <h1>
-      <Link to={utils.getLocalizedPathname('/', isZhCN, search)} css={logo}>
+      <Link to={'base' in locale ? locale.base : '/'} css={logo}>
         <img alt="logo" src={logImgUrl} />
         <span style={{ lineHeight: '32px' }}>{themeConfig.name}</span>
       </Link>
