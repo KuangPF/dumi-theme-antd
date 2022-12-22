@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "father build",
+    "build:docs": "cd example && npm run build",
     "dev": "father dev",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
