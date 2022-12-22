@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd)
 [![NPM downloads](http://img.shields.io/npm/dm/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd)
-[![Github Actions](https://github.com/KuangPF/dumi-theme-antd/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)](https://github.com/KuangPF/dumi-theme-antd/actions)
+[![Github Actions](https://github.com/KuangPF/dumi-theme-antd/workflows/Deploy/badge.svg)](https://github.com/KuangPF/dumi-theme-antd/actions)
 
 A antd site theme package for the [dumi](https://d.umijs.org) framework.
 
