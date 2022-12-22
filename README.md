@@ -9,6 +9,17 @@ A antd site theme package for the [dumi](https://d.umijs.org) framework.
 
 WIP
 
+- [x] Header
+  - [x] Logo
+  - [x] SearchBar
+  - [x] Navigation
+  - [x] LangSwitch
+  - [x] HeaderExtra：Github
+- [ ] SideBar
+- [ ] DocLayout
+- [ ] Footer
+- [ ] ...
+
 ## Usage
 
 Install this theme into `devDependencies`:
