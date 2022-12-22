@@ -3,7 +3,7 @@
     "strict": true,
     "declaration": true,
     "esModuleInterop": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "jsxImportSource": "@emotion/react",
     "skipLibCheck": true,
     "baseUrl": "./",
