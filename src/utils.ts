@@ -1,3 +1,4 @@
+import { history, useSiteData } from 'dumi';
 import flatten from 'lodash/flatten';
 import flattenDeep from 'lodash/flattenDeep';
 
@@ -21,6 +22,8 @@ interface ModuleDataItem {
 interface Orders {
   [key: string]: number;
 }
+
+type ILocaleItem = ReturnType<typeof useSiteData>['locales'][0];
 
 export function getMenuItems(
   moduleData: ModuleDataItem[],
@@ -218,4 +221,23 @@ export function getMetaDescription(jml?: any[] | null) {
       }),
   ).find((p) => p && typeof p === 'string' && !COMMON_TAGS.includes(p)) as string;
   return paragraph;
+}
+
+export function getTargetLocalePath({
+  pathname = history.location.pathname,
+  current,
+  target,
+}: {
+  pathname?: string;
+  current: ILocaleItem;
+  target: ILocaleItem;
+}) {
+  const clearPath =
+    'base' in current
+      ? pathname.replace(current.base.replace(/\/$/, ''), '')
+      : pathname.replace(new RegExp(`${current.suffix}$`), '');
+
+  return 'base' in target
+    ? `${target.base}${clearPath}`.replace(/^\/\//, '/')
+    : `${clearPath}${target.suffix}`;
 }
