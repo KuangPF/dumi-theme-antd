@@ -22,9 +22,13 @@ const LangSwitch: FC = () => {
     history.push(path);
   }, []);
 
+  const onLangChange = useCallback(() => {
+    handleLangChange(locales.filter((item) => item.id !== locale)[0].id);
+  }, []);
+
   let LangSwitchJSX = null;
   // do not render in single language
-  if (locales.length > 1) {
+  if (locales.length > 2) {
     const langOptions = locales.map((lang) => (
       <Option value={lang.id} key={lang.id}>
         {lang.name}
@@ -50,7 +54,7 @@ const LangSwitch: FC = () => {
     LangSwitchJSX = (
       <SwitchBtn
         key="lang"
-        // onClick={handleLangChange}
+        onClick={onLangChange}
         value={switchValue}
         label1={localesEnhance[0].switchPrefix}
         label2={localesEnhance[1].switchPrefix}

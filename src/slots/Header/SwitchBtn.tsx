@@ -104,7 +104,7 @@ export default function SwitchBtn({
   }
 
   let node = (
-    <button onClick={onClick} css={[style.btn]} key="lang-button">
+    <button onClick={onClick} css={[style.btn]} key="lang-button" data-value={value}>
       <div className="btn-inner">
         {pure && (value === 1 ? label1 : label2)}
         {!pure && (
