@@ -4,7 +4,7 @@ export default defineConfig({
   // disable mfsu for HMR
   mfsu: false,
   publicPath: '/dumi-theme-antd/',
-  base: '/dumi-theme-antd/',
+  base: '/dumi-theme-antd',
   locales: [
     { id: 'zh-CN', name: '中文', suffix: '' },
     { id: 'en-US', name: 'English', suffix: '-en' },
@@ -27,6 +27,7 @@ export default defineConfig({
     antdTheme: {
       github: 'https://github.com/KuangPF/dumi-theme-antd',
       ower: 'KuangPF',
+      base: '/dumi-theme-antd',
       localesEnhance: [
         { id: 'zh-CN', switchPrefix: '中' },
         { id: 'en-US', switchPrefix: 'en' },

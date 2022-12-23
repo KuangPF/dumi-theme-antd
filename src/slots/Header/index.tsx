@@ -10,9 +10,6 @@ import LangSwitch from './LangSwitch';
 import Logo from './Logo';
 import Navigation from './Navigation';
 
-// for debug...
-import GlobalStyles from '../../common/GlobalStyles';
-
 const useStyle = () => {
   const { token } = useSiteToken();
   const searchIconColor = '#ced4d9';
@@ -126,7 +123,6 @@ const Header: FC = () => {
       ];
   return (
     <header css={style.header} className={headerClassName}>
-      <GlobalStyles />
       <Row style={{ flexFlow: 'nowrap', height: 64 }}>
         <Col {...colProps[0]}>
           <Logo />
