@@ -1,6 +1,6 @@
 // 多语言切换
 import { Select } from 'antd';
-import { history, useIntl, useLocale, useSiteData } from 'dumi';
+import { useIntl, useLocale, useSiteData } from 'dumi';
 import { useCallback, type FC } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import { getTargetLocalePath } from '../../utils';
@@ -19,7 +19,10 @@ const LangSwitch: FC = () => {
       current,
       target: locales.find(({ id }) => id === lang)!,
     });
-    history.push(path);
+    const currentProtocol = `${window.location.protocol}//`;
+    const currentHref = window.location.href.slice(currentProtocol.length);
+
+    window.location.href = currentProtocol + currentHref.replace(window.location.pathname, path);
   }, []);
 
   const onLangChange = useCallback(() => {
