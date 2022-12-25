@@ -3,6 +3,7 @@ import React, { useMemo, type FC } from 'react';
 import GlobalStyles from '../../common/GlobalStyles';
 import Footer from '../../slots/Footer';
 import Header from '../../slots/Header';
+import Homepage from '../HomePageLayout';
 import SidebarLayout from '../SidebarLayout';
 
 const DocLayout: FC = () => {
@@ -18,7 +19,7 @@ const DocLayout: FC = () => {
     ) {
       return (
         <>
-          {outlet}
+          <Homepage />
           <Footer />
         </>
       );
