@@ -1,7 +1,9 @@
 import { css } from '@emotion/react';
 import { Typography } from 'antd';
 import React, { type FC } from 'react';
+import useAdditionalThemeConfig from '../../../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../../../hooks/useSiteToken';
+import { type IFeature } from '../../../../types';
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -38,14 +40,14 @@ const useStyle = () => {
   };
 };
 
-const RecommendItem = () => {
+const RecommendItem = ({ title, details }: IFeature) => {
   const style = useStyle();
 
   return (
     <a key="" href="" target="_blank" css={[style.itemBase, style.cardItem]} rel="noreferrer">
-      <Typography.Title level={5}>Ant Design 5.0 发布！</Typography.Title>
+      <Typography.Title level={5}>{title}</Typography.Title>
       <Typography.Paragraph type="secondary" style={{ flex: 'auto' }}>
-        Design Token 全面升级，更灵活的动态主题能力！
+        {details}
       </Typography.Paragraph>
     </a>
   );
@@ -53,11 +55,12 @@ const RecommendItem = () => {
 
 const Features: FC = () => {
   const style = useStyle();
+  const { features } = useAdditionalThemeConfig();
   return (
     <div css={style.container}>
-      <RecommendItem />
-      <RecommendItem />
-      <RecommendItem />
+      {features?.map((item, index) => (
+        <RecommendItem key={index} {...item} />
+      ))}
     </div>
   );
 };

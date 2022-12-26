@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { Button, Space, Typography } from 'antd';
 import { Link } from 'dumi';
 import React, { type FC } from 'react';
+import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import Features from './components/Features';
 
@@ -33,6 +34,7 @@ const useStyle = () => {
 const Homepage: FC = () => {
   const style = useStyle();
   const { token } = useSiteToken();
+  const { title, description, actions } = useAdditionalThemeConfig();
   return (
     <div css={style.mainContent}>
       {/* Image Left Top */}
@@ -48,7 +50,7 @@ const Homepage: FC = () => {
         alt="bg"
       />
       <Typography.Title level={1} css={[style.titleBase, style.title]}>
-        Ant Design 5.0
+        {title}
       </Typography.Title>
       <Typography.Paragraph
         style={{
@@ -57,17 +59,16 @@ const Homepage: FC = () => {
           marginBottom: token.marginMD * 2,
         }}
       >
-        <div>助力设计开发者「更灵活」地搭建出「更美」的产品，让用户「快乐工作」～</div>
+        <div>{description}</div>
       </Typography.Paragraph>
       <Space size="middle" style={{ marginBottom: token.marginFar }}>
-        <Link to="home">
-          <Button size="large" type="primary">
-            开始使用
-          </Button>
-        </Link>
-        <Link to="">
-          <Button size="large">设计语言</Button>
-        </Link>
+        {actions?.map((item) => (
+          <Link to={item.link} key={item.link}>
+            <Button size="large" type={item.type}>
+              {item.text}
+            </Button>
+          </Link>
+        ))}
       </Space>
       <Features />
     </div>
