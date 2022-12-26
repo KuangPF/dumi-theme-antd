@@ -6,6 +6,11 @@
 
 A antd site theme package for the [dumi](https://d.umijs.org) framework.
 
+<p align="center">
+  <a href="https://kuangpf.com/dumi-theme-antd">
+    <img width="200" src="https://user-images.githubusercontent.com/20694238/209551256-b5925b75-26e7-4dc4-a4a0-7fd6d59efbda.png">
+  </a>
+</p>
 ## Status
 
 WIP
