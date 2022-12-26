@@ -29,6 +29,12 @@ const useStyle = () => {
       padding-block: ${token.paddingMD}px;
       padding-inline: ${token.paddingLG}px;
     `,
+    cardItem: css`
+      width: 33%;
+      &:hover {
+        box-shadow: ${token.boxShadowCard};
+      }
+    `,
   };
 };
 
@@ -36,7 +42,7 @@ const RecommendItem = () => {
   const style = useStyle();
 
   return (
-    <a key="" href="" target="_blank" css={style.itemBase} rel="noreferrer">
+    <a key="" href="" target="_blank" css={[style.itemBase, style.cardItem]} rel="noreferrer">
       <Typography.Title level={5}>Ant Design 5.0 发布！</Typography.Title>
       <Typography.Paragraph type="secondary" style={{ flex: 'auto' }}>
         Design Token 全面升级，更灵活的动态主题能力！

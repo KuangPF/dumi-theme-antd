@@ -1,8 +1,15 @@
+import { TinyColor } from '@ctrl/tinycolor';
 import { theme } from 'antd';
 import { ConfigContext } from 'antd/es/config-provider';
 import { useContext } from 'react';
 
 const { useToken } = theme;
+
+const boxShadowCard = `
+0 1px 2px -2px ${new TinyColor('rgba(0, 0, 0, 0.16)').toRgbString()},
+0 3px 6px 0 ${new TinyColor('rgba(0, 0, 0, 0.12)').toRgbString()},
+0 5px 12px 4px ${new TinyColor('rgba(0, 0, 0, 0.09)').toRgbString()}
+`;
 
 const useSiteToken = () => {
   const result = useToken();
@@ -28,6 +35,7 @@ const useSiteToken = () => {
       /** 96 */
       marginFar: token.marginXXL * 2,
       codeFamily: `'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace`,
+      boxShadowCard,
     },
     /** dumi-theme-antd 站点 class 前缀 */
     siteCls: 'dumi-antd',

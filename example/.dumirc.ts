@@ -26,7 +26,7 @@ export default defineConfig({
     },
     antdTheme: {
       github: 'https://github.com/KuangPF/dumi-theme-antd',
-      owner: 'KuangPF',
+      owner: 'KuangPF | Copyright © 2022-present',
       base: '/dumi-theme-antd',
       localesEnhance: [
         { id: 'zh-CN', switchPrefix: '中' },

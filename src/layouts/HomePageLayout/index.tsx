@@ -13,6 +13,7 @@ const useStyle = () => {
       position: relative;
       text-align: center;
       padding: 80px 0;
+      min-height: calc(100vh - 320px);
     `,
     titleBase: css`
       h1& {
