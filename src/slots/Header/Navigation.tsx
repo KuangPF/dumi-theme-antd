@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-import { Link, useNavData } from 'dumi';
+import { Link, useLocation, useNavData } from 'dumi';
 import { type FC } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
 
@@ -75,8 +75,10 @@ const useStyle = () => {
 
 const Navigation: FC = () => {
   // 统一使用 themeConfig.nav，使用 useNavData，当存在自定义 pages 时，会导致 nav 混乱
-
   let navList = useNavData();
+
+  const { pathname } = useLocation();
+  let activeMenuItem = pathname || 'home';
 
   // @ts-ignore
   const menuItems: MenuProps['items'] = navList.map((navItem) => {
@@ -87,7 +89,15 @@ const Navigation: FC = () => {
   });
 
   const style = useStyle();
-  return <Menu items={menuItems} mode="horizontal" css={style.nav} disabledOverflow />;
+  return (
+    <Menu
+      items={menuItems}
+      mode="horizontal"
+      css={style.nav}
+      selectedKeys={[activeMenuItem]}
+      disabledOverflow
+    />
+  );
 };
 
 export default Navigation;
