@@ -72,6 +72,7 @@ const useStyle = () => {
     `,
     articleWrapper: css`
       padding: 0 170px 32px 64px;
+      calc(100vh - 96px - 40px - 64px - 32px);
 
       &.rtl {
         padding: 0 64px 144px 170px;

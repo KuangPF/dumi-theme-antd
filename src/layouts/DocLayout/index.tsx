@@ -24,7 +24,7 @@ const DocLayout: FC = () => {
         </>
       );
     }
-    return <SidebarLayout />;
+    return <SidebarLayout>{outlet}</SidebarLayout>;
   }, [pathname, outlet]);
   return (
     <div>
