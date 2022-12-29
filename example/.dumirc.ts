@@ -36,11 +36,11 @@ export default defineConfig({
         {
           type: 'primary',
           text: '开始使用',
-          link: '/guide',
+          link: '/guide/introduce',
         },
         {
           text: '配置',
-          link: '/config',
+          link: '/config/base',
         },
       ],
       features: [
