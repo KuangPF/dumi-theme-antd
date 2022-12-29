@@ -2,6 +2,6 @@
 /dist
 /example/node_modules
 /example/dist
-/**/.dumi/tmp
+/**/.dumi/*
 .dumi/tmp-production
 .DS_Store
