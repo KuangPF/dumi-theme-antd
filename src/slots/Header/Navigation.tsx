@@ -78,13 +78,14 @@ const Navigation: FC = () => {
   let navList = useNavData();
 
   const { pathname } = useLocation();
-  let activeMenuItem = pathname || 'home';
+  let activeMenuItem = pathname.split('/').slice(0, 2).join('/');
 
   // @ts-ignore
   const menuItems: MenuProps['items'] = navList.map((navItem) => {
+    const linkKeyValue = navItem.link.split('/').slice(0, 2).join('/');
     return {
       label: <Link to={navItem.link}>{navItem.title}</Link>,
-      key: navItem.link,
+      key: linkKeyValue,
     };
   });
 

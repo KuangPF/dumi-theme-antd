@@ -15,18 +15,17 @@ export default defineConfig({
     name: 'dumi-theme-antd',
     nav: {
       'zh-CN': [
-        { title: '指南', link: '/guide' },
-        { title: '配置', link: '/config' },
+        { title: '指南', link: '/guide/introduce' },
+        { title: '配置', link: '/config/base' },
       ],
       'en-US': [
-        { title: 'guide', link: '/guide-en' },
-        { title: 'config', link: '/config-en' },
+        { title: 'guide', link: '/guide/introduce-en' },
+        { title: 'config', link: '/config/base-en' },
       ],
     },
     antdTheme: {
       github: 'https://github.com/KuangPF/dumi-theme-antd',
       owner: 'KuangPF | Copyright © 2022-present',
-      base: '/dumi-theme-antd',
       localesEnhance: [
         { id: 'zh-CN', switchPrefix: '中' },
         { id: 'en-US', switchPrefix: 'en' },
