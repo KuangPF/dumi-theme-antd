@@ -5,7 +5,7 @@ nav:
 title: 基础
 ---
 
-`dumi-theme-antd` 为了更好地管理主题特有的一些字段，将特有配置字段项存于 `themeConfig.antdTheme` 字段中具体配置字段如下：
+`dumi-theme-antd` 为了更好地管理主题特有字段，将所有主题相关配置项存于 `themeConfig.antdTheme` 字段中，具体配置字段如下：
 
 ## 基础配置
 
@@ -14,7 +14,7 @@ title: 基础
 - 类型：`string`
 - 默认值：`null`
 
-导航栏 Github 图标链接，如不配置改字段，则不展示。
+导航栏 Github 图标链接，如不配置该字段，则不展示。
 
 ### owner
 
