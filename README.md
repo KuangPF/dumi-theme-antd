@@ -18,7 +18,7 @@ AntD site theme package for the [dumi](https://d.umijs.org) framework.
 
 ## Status
 
-WIP
+**WIP**
 
 - [x] Header
   - [x] Logo
@@ -26,8 +26,8 @@ WIP
   - [x] Navigation
   - [x] LangSwitch
   - [x] HeaderExtra：Github
-- [ ] SideBar
-- [ ] DocLayout
+- [x] SideBar
+- [x] DocLayout
 - [x] Footer
 - [ ] ...
 
