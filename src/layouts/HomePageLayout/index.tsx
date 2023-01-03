@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { Button, Space, Typography } from 'antd';
-import { Link } from 'dumi';
-import React, { type FC } from 'react';
+import { Link, useSiteData } from 'dumi';
+import { type FC } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import Features from './components/Features';
@@ -34,6 +34,9 @@ const useStyle = () => {
 const Homepage: FC = () => {
   const style = useStyle();
   const { token } = useSiteToken();
+  const {
+    themeConfig: { name },
+  } = useSiteData();
   const { title, description, actions } = useAdditionalThemeConfig();
   return (
     <div css={style.mainContent}>
@@ -50,7 +53,7 @@ const Homepage: FC = () => {
         alt="bg"
       />
       <Typography.Title level={1} css={[style.titleBase, style.title]}>
-        {title}
+        {title || name}
       </Typography.Title>
       <Typography.Paragraph
         style={{

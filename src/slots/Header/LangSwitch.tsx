@@ -31,7 +31,7 @@ const LangSwitch: FC = () => {
 
   let LangSwitchJSX = null;
   // do not render in single language
-  if (locales.length > 2) {
+  if (locales.length > 2 || !localesEnhance) {
     const langOptions = locales.map((lang) => (
       <Option value={lang.id} key={lang.id}>
         {lang.name}
@@ -51,7 +51,7 @@ const LangSwitch: FC = () => {
         {langOptions}
       </Select>
     );
-  } else if (locales.length === 2) {
+  } else if (locales.length === 2 && localesEnhance.length > 1) {
     // 按 locales 顺序展示
     const switchValue = locales[0].id === locale ? 1 : 2;
     LangSwitchJSX = (
