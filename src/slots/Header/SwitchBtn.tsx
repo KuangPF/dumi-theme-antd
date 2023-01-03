@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { Tooltip } from 'antd';
-import * as React from 'react';
+import React from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
 
 export interface LangBtnProps {
