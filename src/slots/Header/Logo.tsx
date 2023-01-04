@@ -52,11 +52,6 @@ const useStyle = () => {
   };
 };
 
-export interface LogoProps {
-  isZhCN: boolean;
-  location: any;
-}
-
 const Logo = () => {
   const { logo } = useStyle();
   const { themeConfig } = useSiteData();

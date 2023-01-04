@@ -46,17 +46,16 @@
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@ctrl/tinycolor": "^3.5.0",
-    "@emotion/babel-preset-css-prop": "^11.10.0",
     "@emotion/react": "^11.10.5",
-    "@types/lodash": "^4.14.191",
     "antd": "^5.1.1",
     "classnames": "^2.3.2",
-    "dayjs": "^1.11.7",
-    "lodash": "^4.17.21"
+    "dayjs": "^1.11.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@emotion/babel-preset-css-prop": "^11.10.0",
+    "@types/lodash": "^4.14.191",
     "@umijs/lint": "^4.0.0",
     "dumi": "2.0.13",
     "eslint": "^8.23.0",
