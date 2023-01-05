@@ -11,6 +11,8 @@ interface IAdditionalThemeConfig {
   actions?: IAction[];
   /** 配置首页特性描述 */
   features?: IFeature[];
+  /** sidebar group 模式路由 */
+  sidebarGroupModePath?: ISidebarGroupModePathItem[];
 }
 
 interface ILocaleEnhance {
@@ -39,5 +41,7 @@ interface IFeature {
 export interface IThemeConfig {
   antdTheme: IAdditionalThemeConfig;
 }
+
+export type ISidebarGroupModePathItem = string | RegExp;
 
 export { IAdditionalThemeConfig, ILocaleEnhance, IFeature };

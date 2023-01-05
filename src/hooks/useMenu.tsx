@@ -1,7 +1,10 @@
 import type { MenuProps } from 'antd';
 import { Link, useFullSidebarData, useLocation, useSidebarData } from 'dumi';
+import { isRegExp } from 'lodash';
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
+import type { ISidebarGroupModePathItem } from '../types';
+import useAdditionalThemeConfig from './useAdditionalThemeConfig';
 
 export type UseMenuOptions = {
   before?: ReactNode;
@@ -12,6 +15,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
   const fullData = useFullSidebarData();
   const { pathname, search } = useLocation();
   const sidebarData = useSidebarData();
+  const { sidebarGroupModePath } = useAdditionalThemeConfig();
   const { before, after } = options;
 
   const menuItems = useMemo<MenuProps['items']>(() => {
@@ -19,10 +23,35 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
 
     return (
       sidebarItems?.reduce<Exclude<MenuProps['items'], undefined>>((result, group) => {
+        console.log(group);
         if (group?.title) {
-          // 设计文档特殊处理二级分组
-          // TODO，配置，支持两种侧边栏展示
-          if (pathname.startsWith('/config')) {
+          console.log(pathname);
+          // sideBar menu group 模式, 默认以非 group 模式渲染
+          const isSideBarGroupMode =
+            (sidebarGroupModePath ?? []).filter((rule: ISidebarGroupModePathItem) => {
+              return isRegExp(rule) ? rule.test(pathname) : pathname.startsWith(rule);
+            }).length > 0;
+
+          if (isSideBarGroupMode) {
+            result.push({
+              type: 'group',
+              label: group?.title,
+              key: group?.title,
+              children: group.children?.map((item) => ({
+                label: (
+                  <Link to={`${item.link}${search}`}>
+                    {before}
+                    <span key="english">{item?.title}</span>
+                    <span className="chinese" key="chinese">
+                      {(item.frontmatter as any).subtitle}
+                    </span>
+                    {after}
+                  </Link>
+                ),
+                key: item.link.replace(/(-cn$)/g, ''),
+              })),
+            });
+          } else {
             const childrenGroup = group.children.reduce<
               Record<string, ReturnType<typeof useSidebarData>[number]['children']>
             >((childrenResult, child) => {
@@ -69,25 +98,6 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               label: group?.title,
               key: group?.title,
               children: childItems,
-            });
-          } else {
-            result.push({
-              type: 'group',
-              label: group?.title,
-              key: group?.title,
-              children: group.children?.map((item) => ({
-                label: (
-                  <Link to={`${item.link}${search}`}>
-                    {before}
-                    <span key="english">{item?.title}</span>
-                    <span className="chinese" key="chinese">
-                      {(item.frontmatter as any).subtitle}
-                    </span>
-                    {after}
-                  </Link>
-                ),
-                key: item.link.replace(/(-cn$)/g, ''),
-              })),
             });
           }
         } else {
