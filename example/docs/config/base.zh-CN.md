@@ -85,4 +85,26 @@ interface IFeature {
 }
 ```
 
-配置首页首屏区域特性描述模块，推荐配置 3 条数据。
+### sidebarGroupModePath
+
+- 类型：`Array<string | RegExp>`
+- 默认值：`[]`
+
+```ts
+export default {
+  themeConfig: {
+    antdTheme: {
+      sidebarGroupModePath: [
+        // 匹配以 /config 开头的路由
+        '/config',
+        // 支持正则匹配
+        /\/guide\//,
+      ],
+    },
+  },
+};
+```
+
+左侧导航栏是否需要作为分组处理，参考 antd [menuitemgrouptype][antd-menuitemgrouptype-url]。
+
+[antd-menuitemgrouptype-url]: https://ant.design/components/menu-cn#menuitemgrouptype
