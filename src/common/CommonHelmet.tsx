@@ -1,5 +1,5 @@
 import { Helmet, useRouteMeta } from 'dumi';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 const CommonHelmet = () => {
   const meta = useRouteMeta();

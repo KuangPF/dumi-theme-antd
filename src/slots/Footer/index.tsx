@@ -2,7 +2,7 @@ import { TinyColor } from '@ctrl/tinycolor';
 import { css } from '@emotion/react';
 import getAlphaColor from 'antd/es/theme/util/getAlphaColor';
 import { useSiteData } from 'dumi';
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
 
 const useStyle = () => {

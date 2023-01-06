@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { Affix, Col, ConfigProvider, Menu } from 'antd';
 import { useSidebarData } from 'dumi';
-import React from 'react';
+import type { FC } from 'react';
 import useMenu from '../../hooks/useMenu';
 import useSiteToken from '../../hooks/useSiteToken';
 
@@ -122,7 +122,7 @@ const useStyle = () => {
   };
 };
 
-const Sidebar: React.FC = () => {
+const Sidebar: FC = () => {
   const sidebarData = useSidebarData();
   const styles = useStyle();
   const {

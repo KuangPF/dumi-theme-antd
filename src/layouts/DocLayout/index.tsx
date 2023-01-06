@@ -1,5 +1,5 @@
 import { Helmet, useLocale, useLocation, useOutlet } from 'dumi';
-import React, { useMemo, type FC } from 'react';
+import { useMemo, type FC } from 'react';
 import GlobalStyles from '../../common/GlobalStyles';
 import Footer from '../../slots/Footer';
 import Header from '../../slots/Header';

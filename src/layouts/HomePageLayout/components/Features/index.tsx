@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { Typography } from 'antd';
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import useAdditionalThemeConfig from '../../../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../../../hooks/useSiteToken';
 import { type IFeature } from '../../../../types';

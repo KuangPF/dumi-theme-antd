@@ -4,8 +4,8 @@ import { Affix, Anchor, Col, Space, Typography } from 'antd';
 import classNames from 'classnames';
 import DayJS from 'dayjs';
 import { useRouteMeta } from 'dumi';
-import type { ReactNode } from 'react';
-import React, { useMemo } from 'react';
+import type { FC, ReactNode } from 'react';
+import { useMemo } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
 import Footer from '../Footer';
 
@@ -95,7 +95,7 @@ type AnchorItem = {
   children?: AnchorItem[];
 };
 
-const Content: React.FC<{ children: ReactNode }> = ({ children }) => {
+const Content: FC<{ children: ReactNode }> = ({ children }) => {
   const meta = useRouteMeta();
   const styles = useStyle();
   const { token } = useSiteToken();

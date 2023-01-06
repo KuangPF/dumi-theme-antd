@@ -1,5 +1,4 @@
 import { css, Global } from '@emotion/react';
-import React from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
 
 export default () => {
