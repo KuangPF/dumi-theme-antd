@@ -23,9 +23,9 @@ export default defineConfig({
         { title: 'config', link: '/config/base-en' },
       ],
     },
+    footer: 'KuangPF | Copyright © 2022-present',
     antdTheme: {
       github: 'https://github.com/KuangPF/dumi-theme-antd',
-      owner: 'KuangPF | Copyright © 2022-present',
       localesEnhance: [
         { id: 'zh-CN', switchPrefix: '中' },
         { id: 'en-US', switchPrefix: 'en' },

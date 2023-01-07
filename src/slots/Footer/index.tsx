@@ -38,7 +38,7 @@ const useStyle = () => {
 const Footer: FC = () => {
   const style = useStyle();
   const {
-    themeConfig: { antdTheme: { owner = 'dumi-theme-antd' } = {} },
+    themeConfig: { footer },
   } = useSiteData();
   return (
     <div css={style.footer}>
@@ -46,7 +46,7 @@ const Footer: FC = () => {
         <div style={{ opacity: '0.4' }}>
           Made with <span style={{ color: '#fff' }}>❤</span> by
         </div>
-        <div dangerouslySetInnerHTML={{ __html: owner }} />
+        {footer ? <div dangerouslySetInnerHTML={{ __html: footer }} /> : null}
       </div>
     </div>
   );
