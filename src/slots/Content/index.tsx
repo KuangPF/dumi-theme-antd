@@ -151,12 +151,14 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
         </section>
       </Affix>
       <article css={styles.articleWrapper}>
-        <Typography.Title style={{ fontSize: 30 }}>
-          {meta.frontmatter?.title}
-          {meta.frontmatter.subtitle && (
-            <span style={{ marginLeft: 12 }}>{meta.frontmatter.subtitle}</span>
-          )}
-        </Typography.Title>
+        {meta.frontmatter?.title || meta.frontmatter.subtitle ? (
+          <Typography.Title style={{ fontSize: 30 }}>
+            {meta.frontmatter?.title}
+            {meta.frontmatter.subtitle && (
+              <span style={{ marginLeft: 12 }}>{meta.frontmatter.subtitle}</span>
+            )}
+          </Typography.Title>
+        ) : null}
 
         {/* 添加作者、时间等信息 */}
         {meta.frontmatter.date || meta.frontmatter.author ? (
