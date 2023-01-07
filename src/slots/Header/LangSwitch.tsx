@@ -31,7 +31,7 @@ const LangSwitch: FC = () => {
 
   let LangSwitchJSX = null;
   // do not render in single language
-  if (locales.length > 2 || !localesEnhance) {
+  if (locales.length > 2 || (!localesEnhance && locale.length > 0)) {
     const langOptions = locales.map((lang) => (
       <Option value={lang.id} key={lang.id}>
         {lang.name}
