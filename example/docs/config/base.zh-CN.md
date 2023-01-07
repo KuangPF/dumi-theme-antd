@@ -16,13 +16,6 @@ title: 基础
 
 导航栏 Github 图标链接，如不配置该字段，则不展示。
 
-### owner
-
-- 类型：`string`
-- 默认值：`dumi-theme-antd`
-
-footer 版权所有者信息，可以是 HTML。
-
 ### localesEnhance
 
 - 类型：`ILocaleEnhance[]`
