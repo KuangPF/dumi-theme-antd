@@ -7,11 +7,14 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.1.0
+
+- 🐞 修复非多语言情况下出现下拉选择。
+
 ## 0.0.9
 
 - 🛠 重构 `Footer` 内容，使用 dumi 内置 `footer` 配置信息。
 - 🛠 更新相应文档介绍。
-- 🐞 修复非多语言情况下出现下拉选择。
 
 ## 0.0.8
 
