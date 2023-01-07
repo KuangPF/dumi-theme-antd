@@ -14,4 +14,12 @@ title: 开发
 
 ## 贡献
 
+```bash
+# install deps
+npm install
+
+# start dumi server
+cd example && npm run start
+```
+
 欢迎 PRS.
