@@ -2,8 +2,11 @@ import { css } from '@emotion/react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { Link, useLocation, useNavData } from 'dumi';
-import { type FC } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
+
+export interface NavigationProps {
+  isMobile: boolean;
+}
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -73,7 +76,7 @@ const useStyle = () => {
   };
 };
 
-const Navigation: FC = () => {
+export default function Navigation({ isMobile }: NavigationProps) {
   // 统一使用 themeConfig.nav，使用 useNavData，当存在自定义 pages 时，会导致 nav 混乱
   let navList = useNavData();
 
@@ -88,17 +91,15 @@ const Navigation: FC = () => {
       key: linkKeyValue,
     };
   });
-
+  const menuMode = isMobile ? 'inline' : 'horizontal';
   const style = useStyle();
   return (
     <Menu
       items={menuItems}
-      mode="horizontal"
+      mode={menuMode}
       css={style.nav}
       selectedKeys={[activeMenuItem]}
       disabledOverflow
     />
   );
-};
-
-export default Navigation;
+}

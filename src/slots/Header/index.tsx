@@ -1,10 +1,13 @@
-import { css } from '@emotion/react';
-import { Col, Row } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import { ClassNames, css } from '@emotion/react';
+import { Col, Popover, Row } from 'antd';
 import classNames from 'classnames';
 import { useLocation } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
-import { type FC } from 'react';
+import { useContext, type FC } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
+import type { SiteContextProps } from '../../slots/SiteContext';
+import SiteContext from '../../slots/SiteContext';
 import HeaderExtra from './HeaderExtral';
 import LangSwitch from './LangSwitch';
 import Logo from './Logo';
@@ -104,12 +107,12 @@ const useStyle = () => {
 };
 
 const Header: FC = () => {
+  const { isMobile } = useContext<SiteContextProps>(SiteContext);
   const location = useLocation();
   const { pathname } = location;
   const isHome = ['', 'index', 'index-cn'].includes(pathname);
 
   const style = useStyle();
-
   const headerClassName = classNames({
     clearfix: true,
     'home-header': isHome,
@@ -121,8 +124,32 @@ const Header: FC = () => {
         { xxl: 4, xl: 5, lg: 6, md: 6, sm: 24, xs: 24 },
         { xxl: 20, xl: 19, lg: 18, md: 18, sm: 0, xs: 0 },
       ];
+
+  const navigationNode = <Navigation key="nav" isMobile={isMobile} />;
+  let menu: (React.ReactElement | null)[] = [
+    navigationNode,
+    <LangSwitch key="lang" />,
+    <HeaderExtra key="header-Extra" />,
+  ];
   return (
     <header css={style.header} className={headerClassName}>
+      {isMobile && (
+        <ClassNames>
+          {({ css: cssFn }) => (
+            <Popover
+              overlayClassName={cssFn(style.popoverMenu)}
+              placement="bottomRight"
+              content={menu}
+              trigger="click"
+              // open={menuVisible}
+              arrowPointAtCenter
+              // onOpenChange={onMenuVisibleChange}
+            >
+              <MenuOutlined className="nav-phone-icon" />
+            </Popover>
+          )}
+        </ClassNames>
+      )}
       <Row style={{ flexFlow: 'nowrap', height: 64 }}>
         <Col {...colProps[0]}>
           <Logo />
@@ -131,9 +158,7 @@ const Header: FC = () => {
           <div className="nav-search-wrapper">
             <DumiSearchBar />
           </div>
-          <Navigation />
-          <LangSwitch />
-          <HeaderExtra />
+          {!isMobile && menu}
         </Col>
       </Row>
     </header>

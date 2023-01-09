@@ -1,5 +1,5 @@
 import React from 'react';
-import { Common, Highlight, Markdown, Reset } from './styles';
+import { Common, Highlight, Markdown, Reset, Responsive } from './styles';
 
 const GlobalStyles = () => (
   <React.Fragment>
@@ -7,6 +7,7 @@ const GlobalStyles = () => (
     <Common />
     <Markdown />
     <Highlight />
+    <Responsive />
   </React.Fragment>
 );
 
