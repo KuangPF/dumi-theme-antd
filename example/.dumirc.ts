@@ -5,6 +5,7 @@ export default defineConfig({
   mfsu: false,
   publicPath: '/dumi-theme-antd/',
   base: '/dumi-theme-antd',
+  favicons: ['https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png'],
   locales: [
     { id: 'zh-CN', name: '中文', suffix: '' },
     { id: 'en-US', name: 'English', suffix: '-en' },

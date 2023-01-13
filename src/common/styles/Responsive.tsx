@@ -305,7 +305,7 @@ export default () => {
               border-radius: 4px;
               box-shadow: 0 8px 16px rgba(174, 185, 193, 0.3);
 
-              &:nth-child(2) {
+              &:nth-of-type(2) {
                 .page3-img-wrapper img {
                   display: block;
                   width: 70%;
