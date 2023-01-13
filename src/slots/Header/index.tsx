@@ -4,7 +4,7 @@ import { Col, Popover, Row } from 'antd';
 import classNames from 'classnames';
 import { useLocation } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
-import { useContext, type FC } from 'react';
+import { useCallback, useContext, useEffect, useState, type FC } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
 import type { SiteContextProps } from '../../slots/SiteContext';
 import SiteContext from '../../slots/SiteContext';
@@ -12,6 +12,14 @@ import HeaderExtra from './HeaderExtral';
 import LangSwitch from './LangSwitch';
 import Logo from './Logo';
 import Navigation from './Navigation';
+
+interface HeaderState {
+  windowWidth: number;
+}
+export type IResponsive = null | 'narrow' | 'crowded';
+
+const RESPONSIVE_XS = 1120;
+const RESPONSIVE_SM = 1200;
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -108,15 +116,47 @@ const useStyle = () => {
 
 const Header: FC = () => {
   const { isMobile } = useContext<SiteContextProps>(SiteContext);
+  const [headerState, setHeaderState] = useState<HeaderState>({
+    windowWidth: 1400,
+  });
   const location = useLocation();
+
+  const onWindowResize = useCallback(() => {
+    setHeaderState((prev) => ({ ...prev, windowWidth: window.innerWidth }));
+  }, []);
+
+  useEffect(() => {
+    onWindowResize();
+    window.addEventListener('resize', onWindowResize);
+    return () => {
+      window.removeEventListener('resize', onWindowResize);
+    };
+  }, [onWindowResize]);
+
   const { pathname } = location;
   const isHome = ['', 'index', 'index-cn'].includes(pathname);
-
+  const { windowWidth } = headerState;
   const style = useStyle();
   const headerClassName = classNames({
     clearfix: true,
     'home-header': isHome,
   });
+  let responsive: IResponsive = null;
+
+  if (windowWidth < RESPONSIVE_XS) {
+    responsive = 'crowded';
+  } else if (windowWidth < RESPONSIVE_SM) {
+    responsive = 'narrow';
+  }
+  const navigationNode = <Navigation key="nav" isMobile={isMobile} responsive={responsive} />;
+  let menu: (React.ReactElement | null)[] = [
+    navigationNode,
+    <LangSwitch key="lang" />,
+    <HeaderExtra key="header-Extra" />,
+  ];
+  if (windowWidth < RESPONSIVE_XS) {
+    menu = [navigationNode];
+  }
 
   const colProps = isHome
     ? [{ flex: 'none' }, { flex: 'auto' }]
@@ -125,12 +165,6 @@ const Header: FC = () => {
         { xxl: 20, xl: 19, lg: 18, md: 18, sm: 0, xs: 0 },
       ];
 
-  const navigationNode = <Navigation key="nav" isMobile={isMobile} />;
-  let menu: (React.ReactElement | null)[] = [
-    navigationNode,
-    <LangSwitch key="lang" />,
-    <HeaderExtra key="header-Extra" />,
-  ];
   return (
     <header css={style.header} className={headerClassName}>
       {isMobile && (
