@@ -15,6 +15,7 @@ import Navigation from './Navigation';
 
 interface HeaderState {
   windowWidth: number;
+  menuVisible: boolean;
 }
 export type IResponsive = null | 'narrow' | 'crowded';
 
@@ -118,12 +119,23 @@ const Header: FC = () => {
   const { isMobile } = useContext<SiteContextProps>(SiteContext);
   const [headerState, setHeaderState] = useState<HeaderState>({
     windowWidth: 1400,
+    menuVisible: false,
   });
   const location = useLocation();
 
   const onWindowResize = useCallback(() => {
     setHeaderState((prev) => ({ ...prev, windowWidth: window.innerWidth }));
   }, []);
+  const handleHideMenu = useCallback(() => {
+    setHeaderState((prev) => ({ ...prev, menuVisible: false }));
+  }, []);
+  const onMenuVisibleChange = useCallback((visible: boolean) => {
+    setHeaderState((prev) => ({ ...prev, menuVisible: visible }));
+  }, []);
+
+  useEffect(() => {
+    handleHideMenu();
+  }, [location]);
 
   useEffect(() => {
     onWindowResize();
@@ -135,7 +147,7 @@ const Header: FC = () => {
 
   const { pathname } = location;
   const isHome = ['', 'index', 'index-cn'].includes(pathname);
-  const { windowWidth } = headerState;
+  const { windowWidth, menuVisible } = headerState;
   const style = useStyle();
   const headerClassName = classNames({
     clearfix: true,
@@ -175,9 +187,9 @@ const Header: FC = () => {
               placement="bottomRight"
               content={menu}
               trigger="click"
-              // open={menuVisible}
+              open={menuVisible}
               arrowPointAtCenter
-              // onOpenChange={onMenuVisibleChange}
+              onOpenChange={onMenuVisibleChange}
             >
               <MenuOutlined className="nav-phone-icon" />
             </Popover>
