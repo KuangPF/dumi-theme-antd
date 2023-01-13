@@ -1,3 +1,5 @@
+import type { SerializedStyles } from '@emotion/react';
+
 interface IAdditionalThemeConfig {
   /** github 链接 */
   github?: string;
@@ -36,6 +38,8 @@ interface IFeature {
   title: string;
   /** 特性具体描述 */
   details: string;
+  /** css in js 样式 */
+  itemCss: SerializedStyles;
 }
 
 export interface IThemeConfig {

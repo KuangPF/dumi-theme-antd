@@ -1,13 +1,36 @@
 import { css } from '@emotion/react';
-import { Typography } from 'antd';
-import { type FC } from 'react';
+import { Carousel, Typography } from 'antd';
+import { useContext, type FC } from 'react';
 import useAdditionalThemeConfig from '../../../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../../../hooks/useSiteToken';
+import SiteContext from '../../../../slots/SiteContext';
 import { type IFeature } from '../../../../types';
 
 const useStyle = () => {
   const { token } = useSiteToken();
   return {
+    carousel: css`
+      .slick-dots.slick-dots-bottom {
+        bottom: -22px;
+        li {
+          width: 6px;
+          height: 6px;
+          background: #e1eeff;
+          border-radius: 50%;
+          button {
+            height: 6px;
+            background: #e1eeff;
+            border-radius: 50%;
+          }
+          &.slick-active {
+            background: #4b9cff;
+            button {
+              background: #4b9cff;
+            }
+          }
+        }
+      }
+    `,
     container: css`
       display: flex;
       max-width: 1208px;
@@ -37,14 +60,18 @@ const useStyle = () => {
         box-shadow: ${token.boxShadowCard};
       }
     `,
+    sliderItem: css`
+      margin: 0 ${token.margin}px;
+      text-align: start;
+    `,
   };
 };
 
-const RecommendItem = ({ title, details }: IFeature) => {
+const RecommendItem = ({ title, details, itemCss }: IFeature) => {
   const style = useStyle();
 
   return (
-    <a key="" href="" target="_blank" css={[style.itemBase, style.cardItem]} rel="noreferrer">
+    <a key="" href="" target="_blank" css={[style.itemBase, itemCss]} rel="noreferrer">
       <Typography.Title level={5}>{title}</Typography.Title>
       <Typography.Paragraph type="secondary" style={{ flex: 'auto' }}>
         {details}
@@ -54,13 +81,24 @@ const RecommendItem = ({ title, details }: IFeature) => {
 };
 
 const Features: FC = () => {
-  const style = useStyle();
+  const styles = useStyle();
+  const { isMobile } = useContext(SiteContext);
   const { features } = useAdditionalThemeConfig();
   return (
-    <div css={style.container}>
-      {features?.map((item, index) => (
-        <RecommendItem key={index} {...item} />
-      ))}
+    <div>
+      {isMobile ? (
+        <Carousel css={styles.carousel}>
+          {features?.map((item, index) => (
+            <RecommendItem key={index} {...item} itemCss={styles.sliderItem} />
+          ))}
+        </Carousel>
+      ) : (
+        <div css={styles.container}>
+          {features?.map((item, index) => (
+            <RecommendItem key={index} {...item} itemCss={styles.cardItem} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
