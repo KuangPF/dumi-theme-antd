@@ -23,7 +23,6 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
 
     return (
       sidebarItems?.reduce<Exclude<MenuProps['items'], undefined>>((result, group) => {
-        console.log(group);
         if (group?.title) {
           console.log(pathname);
           // sideBar menu group 模式, 默认以非 group 模式渲染

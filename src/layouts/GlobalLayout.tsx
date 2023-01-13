@@ -1,6 +1,6 @@
 import { useOutlet, useSearchParams } from 'dumi';
 import type { FC } from 'react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
 import type { SiteContextProps } from '../slots/SiteContext';
 import SiteContext from '../slots/SiteContext';
 
@@ -35,6 +35,10 @@ const GlobalLayout: FC = () => {
   };
 
   useEffect(() => {
+    startTransition(() => {
+      // Handle isMobile
+      updateMobileMode();
+    });
     window.addEventListener('resize', updateMobileMode);
     return () => {
       window.removeEventListener('resize', updateMobileMode);
