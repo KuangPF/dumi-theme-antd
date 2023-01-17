@@ -1,17 +1,30 @@
-import { useOutlet, useSearchParams } from 'dumi';
+import { ConfigProvider, theme as antdTheme } from 'antd';
+import { createSearchParams, useOutlet, useSearchParams } from 'dumi';
 import type { FC } from 'react';
 import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
+import type { ThemeName } from '../common/ThemeSwitch';
+import ThemeSwitch from '../common/ThemeSwitch';
 import type { SiteContextProps } from '../slots/SiteContext';
 import SiteContext from '../slots/SiteContext';
 
+type Entries<T> = { [K in keyof T]: [K, T[K]] }[keyof T][];
 type SiteState = Partial<Omit<SiteContextProps, 'updateSiteContext'>>;
 const RESPONSIVE_MOBILE = 768;
+
+const getAlgorithm = (themes: ThemeName[] = []) =>
+  themes.map((theme) => {
+    if (theme === 'dark') {
+      return antdTheme.darkAlgorithm;
+    }
+    return antdTheme.defaultAlgorithm;
+  });
 
 const GlobalLayout: FC = () => {
   const outlet = useOutlet();
 
-  const [{ isMobile }, setSiteState] = useState<SiteState>({
+  const [{ theme, isMobile }, setSiteState] = useState<SiteState>({
     isMobile: false,
+    theme: ['light'],
   });
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -22,6 +35,15 @@ const GlobalLayout: FC = () => {
       const oldSearchStr = searchParams.toString();
 
       let nextSearchParams: URLSearchParams = searchParams;
+      (Object.entries(props) as Entries<SiteContextProps>).forEach(([key, value]) => {
+        if (key === 'theme') {
+          // @ts-ignore
+          nextSearchParams = createSearchParams({
+            ...nextSearchParams,
+            theme: value.filter((t) => t !== 'light'),
+          });
+        }
+      });
 
       if (nextSearchParams.toString() !== oldSearchStr) {
         setSearchParams(nextSearchParams);
@@ -35,7 +57,9 @@ const GlobalLayout: FC = () => {
   };
 
   useEffect(() => {
+    const _theme = searchParams.getAll('theme') as ThemeName[];
     startTransition(() => {
+      setSiteState({ theme: _theme });
       // Handle isMobile
       updateMobileMode();
     });
@@ -48,12 +72,27 @@ const GlobalLayout: FC = () => {
   const siteContextValue = useMemo(
     () => ({
       isMobile: isMobile!,
+      theme: theme!,
       updateSiteConfig,
     }),
-    [isMobile],
+    [isMobile, theme, updateSiteConfig],
   );
 
-  return <SiteContext.Provider value={siteContextValue}>{outlet}</SiteContext.Provider>;
+  return (
+    <SiteContext.Provider value={siteContextValue}>
+      <ConfigProvider
+        theme={{
+          algorithm: getAlgorithm(theme),
+        }}
+      >
+        {outlet}
+        <ThemeSwitch
+          value={theme}
+          onChange={(nextTheme) => updateSiteConfig({ theme: nextTheme })}
+        />
+      </ConfigProvider>
+    </SiteContext.Provider>
+  );
 };
 
 export default GlobalLayout;
