@@ -1,4 +1,5 @@
 {
   "app.not-found.back-home": "返回首页",
-  "app.not-found.subTitle": "你访问的页面貌似不存在？"
+  "app.not-found.subTitle": "你访问的页面貌似不存在？",
+  "app.theme.switch.dark": "暗黑主题"
 }

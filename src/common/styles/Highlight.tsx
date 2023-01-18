@@ -22,7 +22,7 @@ export default () => {
 
         code[class*='language-'],
         pre[class*='language-'] {
-          color: black;
+          color: ${token.siteTheme.includes('dark') ? 'rgba(255,255,255,0.85)' : 'black'};
           font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
           line-height: 1.5;
           direction: ltr;

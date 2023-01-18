@@ -4,7 +4,7 @@ import { FormattedMessage } from 'dumi';
 import React from 'react';
 import ThemeIcon from './ThemeIcon';
 
-export type ThemeName = 'light' | 'dark' | 'compact';
+export type ThemeName = 'light' | 'dark';
 
 export type ThemeSwitchProps = {
   value?: ThemeName[];

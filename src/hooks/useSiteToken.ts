@@ -2,6 +2,7 @@ import { TinyColor } from '@ctrl/tinycolor';
 import { theme } from 'antd';
 import { ConfigContext } from 'antd/es/config-provider';
 import { useContext } from 'react';
+import SiteContext from '../slots/SiteContext';
 
 const { useToken } = theme;
 
@@ -14,6 +15,7 @@ const boxShadowCard = `
 const useSiteToken = () => {
   const result = useToken();
   const { getPrefixCls, iconPrefixCls } = useContext(ConfigContext);
+  const { theme } = useContext(SiteContext);
   const rootPrefixCls = getPrefixCls();
   const { token } = result;
   const siteMarkdownCodeBg = token.colorFillTertiary;
@@ -36,6 +38,7 @@ const useSiteToken = () => {
       marginFar: token.marginXXL * 2,
       codeFamily: `'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace`,
       boxShadowCard,
+      siteTheme: theme,
     },
     /** dumi-theme-antd 站点 class 前缀 */
     siteCls: 'dumi-antd',

@@ -1,4 +1,5 @@
 {
   "app.not-found.back-home": "Back to home page",
-  "app.not-found.subTitle": "Sorry, the page you visited does not exist."
+  "app.not-found.subTitle": "Sorry, the page you visited does not exist.",
+  "app.theme.switch.dark": "Dark theme"
 }
