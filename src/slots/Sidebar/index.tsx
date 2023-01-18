@@ -2,8 +2,10 @@ import { css } from '@emotion/react';
 import { Affix, Col, ConfigProvider, Menu } from 'antd';
 import { useSidebarData } from 'dumi';
 import type { FC } from 'react';
+import { useContext } from 'react';
 import useMenu from '../../hooks/useMenu';
 import useSiteToken from '../../hooks/useSiteToken';
+import SiteContext from '../SiteContext';
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -128,8 +130,10 @@ const Sidebar: FC = () => {
   const {
     token: { colorBgContainer },
   } = useSiteToken();
+  const { theme } = useContext(SiteContext);
 
   const [menuItems, selectedKey] = useMenu();
+  const isDark = theme.includes('dark');
 
   const menuChild = (
     <ConfigProvider theme={{ components: { Menu: { colorItemBg: colorBgContainer } } }}>
@@ -138,7 +142,7 @@ const Sidebar: FC = () => {
         inlineIndent={30}
         css={styles.asideContainer}
         mode="inline"
-        theme="light"
+        theme={isDark ? 'dark' : 'light'}
         selectedKeys={[selectedKey]}
         defaultOpenKeys={sidebarData?.map(({ title }) => title).filter((item) => item) as string[]}
       />
