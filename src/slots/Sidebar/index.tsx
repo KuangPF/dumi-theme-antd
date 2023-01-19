@@ -183,7 +183,7 @@ const Sidebar: FC = () => {
     <React.Fragment>
       <MobileMenu
         key="mobile-menu"
-        style={{ width: '300px' }}
+        contentWrapperStyle={{ width: '300px' }}
         open={mobileMenuVisible}
         onClose={handleCloseMobileMenu}
       >
