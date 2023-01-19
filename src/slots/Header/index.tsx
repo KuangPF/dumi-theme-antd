@@ -196,7 +196,7 @@ const Header: FC = () => {
           )}
         </ClassNames>
       )}
-      <Row style={{ flexFlow: 'nowrap', height: 64 }}>
+      <Row style={{ height: 64 }}>
         <Col {...colProps[0]}>
           <Logo />
         </Col>
