@@ -1,4 +1,5 @@
 export { default as Common } from './Common';
+export { default as HeadingAnchor } from './HeadingAnchor';
 export { default as Highlight } from './Highlight';
 export { default as Markdown } from './Markdown';
 export { default as Reset } from './Reset';
