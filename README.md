@@ -16,21 +16,6 @@ AntD site theme package for the [dumi](https://d.umijs.org) framework.
   </a>
 </p>
 
-## Status
-
-**WIP**
-
-- [x] Header
-  - [x] Logo
-  - [x] SearchBar
-  - [x] Navigation
-  - [x] LangSwitch
-  - [x] HeaderExtra：Github
-- [x] SideBar
-- [x] DocLayout
-- [x] Footer
-- [ ] ...
-
 ## Usage
 
 Install this theme into `devDependencies`:

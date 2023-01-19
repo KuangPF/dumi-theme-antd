@@ -1,22 +1,19 @@
 // 多语言切换
 import { Select } from 'antd';
-import { history, useIntl, useLocale, useSiteData } from 'dumi';
+import { history, useIntl, useLocale, useLocation, useSiteData } from 'dumi';
 import { useCallback, type FC } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import { getTargetLocalePath } from '../../utils';
 import SwitchBtn from './SwitchBtn';
 
-interface LangSwitchProps {
-  pathname: string;
-}
-
 const { Option } = Select;
 
-const LangSwitch: FC<LangSwitchProps> = ({ pathname }) => {
+const LangSwitch: FC = () => {
   const { localesEnhance } = useAdditionalThemeConfig();
   const { locales } = useSiteData();
   const { locale } = useIntl();
   const current = useLocale();
+  const { pathname } = useLocation();
 
   const handleLangChange = useCallback(
     (lang: string) => {
