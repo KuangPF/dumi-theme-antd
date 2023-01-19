@@ -7,6 +7,11 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.1.1
+
+- 🆕 适配移动端。
+- 🆕 支持浅色主题、暗黑主题两种主题切换。
+
 ## 0.1.0
 
 - 🐞 修复非多语言情况下出现下拉选择。
