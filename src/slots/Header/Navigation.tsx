@@ -142,7 +142,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
     github
       ? {
           label: (
-            <a rel="noopener noreferrer" href={github}>
+            <a rel="noopener noreferrer" href={github} target="_blank">
               GitHub
             </a>
           ),
