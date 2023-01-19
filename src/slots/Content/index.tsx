@@ -55,7 +55,7 @@ const useStyle = () => {
       > div {
         box-sizing: border-box;
         width: 100%;
-        max-height: calc(100vh - 40px);
+        max-height: calc(100vh - 40px) !important;
         margin: 0 auto;
         overflow: auto;
         padding-inline: 4px;
@@ -72,7 +72,7 @@ const useStyle = () => {
     `,
     articleWrapper: css`
       padding: 0 170px 32px 64px;
-      min-height: calc(100vh - 96px - 40px - 64px - 32px);
+      flex: 1;
 
       &.rtl {
         padding: 0 64px 144px 170px;
@@ -85,6 +85,10 @@ const useStyle = () => {
           padding-left: 48px;
         }
       }
+    `,
+    colContent: css`
+      display: flex;
+      flex-direction: column;
     `,
   };
 };
@@ -123,7 +127,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
   );
 
   return (
-    <Col xxl={20} xl={19} lg={18} md={18} sm={24} xs={24}>
+    <Col xxl={20} xl={19} lg={18} md={18} sm={24} xs={24} css={styles.colContent}>
       <Affix>
         <section css={styles.tocWrapper}>
           <Anchor

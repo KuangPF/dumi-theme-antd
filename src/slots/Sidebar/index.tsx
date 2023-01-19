@@ -1,11 +1,17 @@
+import { UnorderedListOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import { Affix, Col, ConfigProvider, Menu } from 'antd';
-import { useSidebarData } from 'dumi';
-import type { FC } from 'react';
-import { useContext } from 'react';
+import { useLocation, useSidebarData } from 'dumi';
+import MobileMenu from 'rc-drawer';
+import 'rc-drawer/assets/index.css';
+import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
 import useMenu from '../../hooks/useMenu';
 import useSiteToken from '../../hooks/useSiteToken';
 import SiteContext from '../SiteContext';
+
+interface SidebarState {
+  mobileMenuVisible: boolean;
+}
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -107,6 +113,8 @@ const useStyle = () => {
       z-index: 1;
 
       .main-menu-inner {
+        position: sticky;
+        top: 0;
         height: 100%;
         max-height: 100vh;
         overflow: hidden;
@@ -115,25 +123,47 @@ const useStyle = () => {
       &:hover .main-menu-inner {
         overflow-y: auto;
       }
-
-      > div,
-      > div > div {
-        height: 100%;
-      }
+    `,
+    mobileMenu: css`
+      position: fixed;
+      z-index: 2;
+      bottom: 100px;
+      right: 20px;
+      cursor: pointer;
     `,
   };
 };
 
 const Sidebar: FC = () => {
+  const [sidebarState, setSidebarState] = useState<SidebarState>({
+    mobileMenuVisible: false,
+  });
   const sidebarData = useSidebarData();
+  const location = useLocation();
   const styles = useStyle();
   const {
     token: { colorBgContainer },
   } = useSiteToken();
-  const { theme } = useContext(SiteContext);
-
+  const { theme, isMobile } = useContext(SiteContext);
   const [menuItems, selectedKey] = useMenu();
+
   const isDark = theme.includes('dark');
+
+  const handleShowMobileMenu = useCallback(() => {
+    setSidebarState((prev) => ({ ...prev, mobileMenuVisible: true }));
+  }, []);
+
+  const handleCloseMobileMenu = useCallback(() => {
+    setSidebarState((prev) => ({ ...prev, mobileMenuVisible: false }));
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      handleCloseMobileMenu();
+    }
+  }, [location]);
+
+  const { mobileMenuVisible } = sidebarState;
 
   const menuChild = (
     <ConfigProvider theme={{ components: { Menu: { colorItemBg: colorBgContainer } } }}>
@@ -149,12 +179,26 @@ const Sidebar: FC = () => {
     </ConfigProvider>
   );
 
-  return (
+  return isMobile ? (
+    <React.Fragment>
+      <MobileMenu
+        key="mobile-menu"
+        style={{ width: '300px' }}
+        open={mobileMenuVisible}
+        onClose={handleCloseMobileMenu}
+      >
+        {menuChild}
+      </MobileMenu>
+      {(menuItems ?? []).length > 1 ? (
+        <div css={styles.mobileMenu} onClick={handleShowMobileMenu}>
+          <UnorderedListOutlined />
+        </div>
+      ) : null}
+    </React.Fragment>
+  ) : (
     <Col xxl={4} xl={5} lg={6} md={6} sm={24} xs={24} css={styles.mainMenu}>
       <Affix>
-        <section style={{ width: '100%' }} className="main-menu-inner">
-          {menuChild}
-        </section>
+        <section className="main-menu-inner">{menuChild}</section>
       </Affix>
     </Col>
   );

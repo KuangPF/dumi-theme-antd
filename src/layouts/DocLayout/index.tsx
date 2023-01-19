@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { Helmet, useLocale, useLocation, useOutlet } from 'dumi';
 import React, { useMemo, type FC } from 'react';
 import GlobalStyles from '../../common/GlobalStyles';
@@ -6,10 +7,21 @@ import Header from '../../slots/Header';
 import Homepage from '../HomePageLayout';
 import SidebarLayout from '../SidebarLayout';
 
+const useStyles = () => {
+  return {
+    layoutWrap: css`
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    `,
+  };
+};
+
 const DocLayout: FC = () => {
   const outlet = useOutlet();
   const locale = useLocale();
   const location = useLocation();
+  const styles = useStyles();
   const { pathname } = location;
 
   const content = useMemo(() => {
@@ -27,7 +39,7 @@ const DocLayout: FC = () => {
     return <SidebarLayout>{outlet}</SidebarLayout>;
   }, [pathname, outlet]);
   return (
-    <div>
+    <div css={styles.layoutWrap}>
       <Helmet encodeSpecialCharacters={false}>
         <html lang={locale.id} />
         <link

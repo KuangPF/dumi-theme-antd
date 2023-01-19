@@ -8,8 +8,8 @@ const useStyle = () => {
   return {
     mainWrap: css`
       display: flex;
+      flex: 1;
       margin-top: 40px;
-      min-height: calc(100vh - 40px - 64px);
     `,
   };
 };
