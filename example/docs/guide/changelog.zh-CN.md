@@ -7,6 +7,13 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.1.2
+
+- 🆕 移动端适配：增加二级导航栏。
+- 🆕 首页适配多语言展示。
+- 🐞 修复移动端模式下出现横向滚动条。
+- 🐞 修复 `markdown` 内容标题不显示锚点。
+
 ## 0.1.1
 
 - 🆕 适配移动端。
