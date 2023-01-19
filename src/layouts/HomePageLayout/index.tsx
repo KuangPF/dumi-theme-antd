@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { Button, Space, Typography } from 'antd';
-import { Link, useSiteData } from 'dumi';
+import { Link, useLocale, useSiteData } from 'dumi';
 import { useContext, type FC } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
@@ -49,7 +49,10 @@ const Homepage: FC = () => {
   const {
     themeConfig: { name },
   } = useSiteData();
-  const { title, description, actions } = useAdditionalThemeConfig();
+  const { title, description, actions = [] } = useAdditionalThemeConfig();
+  const locale = useLocale();
+
+  const _actions = Array.isArray(actions) ? actions : actions[locale.id];
   return (
     <div css={style.mainContent}>
       {/* Image Left Top */}
@@ -77,7 +80,7 @@ const Homepage: FC = () => {
         <div>{description}</div>
       </Typography.Paragraph>
       <Space size="middle" style={{ marginBottom: token.marginFar }}>
-        {actions?.map((item) => (
+        {_actions?.map((item) => (
           <Link to={item.link} key={item.link}>
             <Button size="large" type={item.type}>
               {item.text}

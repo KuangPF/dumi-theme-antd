@@ -10,9 +10,9 @@ interface IAdditionalThemeConfig {
   /** 配置首页首屏区域的简介文字 */
   description?: string;
   /** 配置首页首屏区域的操作按钮 */
-  actions?: IAction[];
+  actions?: IAction[] | Record<string, IAction[]>;
   /** 配置首页特性描述 */
-  features?: IFeature[];
+  features?: IFeature[] | Record<string, IFeature[]>;
   /** sidebar group 模式路由 */
   sidebarGroupModePath?: ISidebarGroupModePathItem[];
 }

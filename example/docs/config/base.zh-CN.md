@@ -48,7 +48,7 @@ interface ILocaleEnhance {
 
 ### actions
 
-- 类型：`IAction[]`
+- 类型：`IAction[] | Record<string, IAction[]>`
 - 默认值：`null`
 
 ```ts
@@ -60,13 +60,21 @@ interface IAction {
   /** 按钮类型 */
   type?: 'primary' | 'default';
 }
+
+// 单语言时配置数组即可
+actions: [{ type: 'primary', text: '开始使用', link: '/guide/introduce' }]
+// 多语言时配置对象，key 为语言名
+actions: {
+  'zh-CN': [{ type: 'primary', text: '开始使用', link: '/guide/introduce' }],
+  'en-US': [{ type: 'primary', text: 'Start', link: '/guide/introduce-en' }],
+},
 ```
 
 配置首页首屏区域的操作按钮。
 
 ### features
 
-- 类型：`IFeature[]`
+- 类型：`IFeature[] | Record<string, IFeature[]>`
 - 默认值：`null`
 
 ```ts
@@ -76,7 +84,16 @@ interface IFeature {
   /** 特性具体描述 */
   details: string;
 }
+// 单语言时配置数组即可
+features: [{ title: '开箱即用'}, { details: '接入简单，安装即使用，全面融入 Ant Design 5.0 风格。'}]
+// 多语言时配置对象，key 为语言名
+features: {
+  'zh-CN': [{ title: '开箱即用'}, { details: '接入简单，安装即使用，全面融入 Ant Design 5.0 风格。'}],
+  'en-US': [{ title: 'Simple Use'}, { details: 'Simple access, installation and use, fully integrated into Ant Design 5.0 style.'}],
+},
 ```
+
+配置后该页面将会以首页形式呈现，用于每行 3 个的形式展示组件库的特性。
 
 ### sidebarGroupModePath
 

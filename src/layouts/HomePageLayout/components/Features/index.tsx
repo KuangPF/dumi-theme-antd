@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { Carousel, Typography } from 'antd';
+import { useLocale } from 'dumi';
 import { useContext, type FC } from 'react';
 import useAdditionalThemeConfig from '../../../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../../../hooks/useSiteToken';
@@ -83,18 +84,21 @@ const RecommendItem = ({ title, details, itemCss }: IFeature) => {
 const Features: FC = () => {
   const styles = useStyle();
   const { isMobile } = useContext(SiteContext);
-  const { features } = useAdditionalThemeConfig();
+  const { features = [] } = useAdditionalThemeConfig();
+  const locale = useLocale();
+
+  const _features = Array.isArray(features) ? features : features[locale.id];
   return (
     <div>
       {isMobile ? (
         <Carousel css={styles.carousel}>
-          {features?.map((item, index) => (
+          {_features?.map((item, index) => (
             <RecommendItem key={index} {...item} itemCss={styles.sliderItem} />
           ))}
         </Carousel>
       ) : (
         <div css={styles.container}>
-          {features?.map((item, index) => (
+          {_features?.map((item, index) => (
             <RecommendItem key={index} {...item} itemCss={styles.cardItem} />
           ))}
         </div>
