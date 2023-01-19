@@ -163,7 +163,7 @@ const Header: FC = () => {
   const navigationNode = <Navigation key="nav" isMobile={isMobile} responsive={responsive} />;
   let menu: (React.ReactElement | null)[] = [
     navigationNode,
-    <LangSwitch key="lang" />,
+    <LangSwitch key="lang" pathname={pathname} />,
     <HeaderExtra key="header-Extra" />,
   ];
   if (windowWidth < RESPONSIVE_XS) {

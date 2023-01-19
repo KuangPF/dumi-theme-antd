@@ -1,33 +1,45 @@
 // 多语言切换
 import { Select } from 'antd';
-import { useIntl, useLocale, useSiteData } from 'dumi';
+import { history, useIntl, useLocale, useSiteData } from 'dumi';
 import { useCallback, type FC } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import { getTargetLocalePath } from '../../utils';
 import SwitchBtn from './SwitchBtn';
 
+interface LangSwitchProps {
+  pathname: string;
+}
+
 const { Option } = Select;
 
-const LangSwitch: FC = () => {
+const LangSwitch: FC<LangSwitchProps> = ({ pathname }) => {
   const { localesEnhance } = useAdditionalThemeConfig();
   const { locales } = useSiteData();
   const { locale } = useIntl();
   const current = useLocale();
 
-  const handleLangChange = useCallback((lang: string) => {
-    const path = getTargetLocalePath({
-      current,
-      target: locales.find(({ id }) => id === lang)!,
-    });
-    const currentProtocol = `${window.location.protocol}//`;
-    const currentHref = window.location.href.slice(currentProtocol.length);
+  const handleLangChange = useCallback(
+    (lang: string) => {
+      let path = getTargetLocalePath({
+        pathname,
+        current,
+        target: locales.find(({ id }) => id === lang)!,
+      });
 
-    window.location.href = currentProtocol + currentHref.replace(window.location.pathname, path);
-  }, []);
+      // 多多语言首页做特殊处理 eg. /index-en
+      if (path.startsWith('/-')) {
+        path = `/index${path.substring(1)}`;
+      } else if (path.endsWith('/index')) {
+        path = path.replace('/index', '');
+      }
+      history.push(path);
+    },
+    [pathname, current, locales, history],
+  );
 
   const onLangChange = useCallback(() => {
     handleLangChange(locales.filter((item) => item.id !== locale)[0].id);
-  }, []);
+  }, [locale]);
 
   let LangSwitchJSX = null;
   // do not render in single language
