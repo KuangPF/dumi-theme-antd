@@ -7,6 +7,13 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.1.3
+
+- 🆕 文档适配英文。
+- 🆕 语言切换维持系统主题。
+- 🐞 黑模式下，多语言切换图标字体颜色调整。
+- 🐞 文档拼写错误。
+
 ## 0.1.2
 
 - 🆕 移动端适配：增加二级导航栏。
