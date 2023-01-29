@@ -5,51 +5,51 @@ nav:
 title: Base
 ---
 
-`dumi-theme-antd` 为了更好地管理主题特有字段，将所有主题相关配置项存于 `themeConfig.antdTheme` 字段中，具体配置字段如下：
+`dumi-theme-antd` In order to better manage theme-specific fields, all theme-related configuration items are stored in `themeConfig.antdTheme` field, the specific configuration fields are as follows:
 
-## 基础配置
+## Basic configuration
 
 ### github
 
-- 类型：`string`
-- 默认值：`null`
+- type：`string`
+- default：`null`
 
-导航栏 Github 图标链接，如不配置该字段，则不展示。
+The Github icon link in the navigation bar. If this field is not configured, it will not be displayed.
 
 ### localesEnhance
 
-- 类型：`ILocaleEnhance[]`
-- 默认值：`dumi-theme-antd`
+- type：`ILocaleEnhance[]`
+- default：`dumi-theme-antd`
 
 ```ts
 interface ILocaleEnhance {
-  /** 同 themeConfig 中 locales 项中的 id */
+  /** Same as the id in the locales item in themeConfig */
   id: string;
-  /** 当多语言只有两项时用于展示切换的前缀 */
+  /** The prefix used to display switching when there are only two items in multiple languages */
   switchPrefix: string;
 }
 ```
 
-导航头部多语言切换前缀图标展示，只适用于两种多语言的情况。
+The display of the multi-language switching prefix icon in the navigation header is only applicable to two multi-language situations.
 
 ### title
 
-- 类型：`string`
-- 默认值：`Dumi Theme AntD`
+- type：`string`
+- default：`Dumi Theme AntD`
 
-配置首页首屏区域的大标题。
+Configure the title of the first screen area on the home page.
 
 ### description
 
-- 类型：`string`
-- 默认值：`null`
+- type：`string`
+- default：`null`
 
-配置首页首屏区域的简介文字。
+Configure the introduction text of the first screen area on the home page.
 
 ### actions
 
-- 类型：`IAction[] | Record<string, IAction[]>`
-- 默认值：`null`
+- type：`IAction[] | Record<string, IAction[]>`
+- default：`null`
 
 ```ts
 interface IAction {
@@ -61,53 +61,53 @@ interface IAction {
   type?: 'primary' | 'default';
 }
 
-// 单语言时配置数组即可
+// Just configure the array for single language
 actions: [{ type: 'primary', text: '开始使用', link: '/guide/introduce' }]
-// 多语言时配置对象，key 为语言名
+// Multi-language configuration object, the key is the language name
 actions: {
   'zh-CN': [{ type: 'primary', text: '开始使用', link: '/guide/introduce' }],
   'en-US': [{ type: 'primary', text: 'Start', link: '/guide/introduce-en' }],
 },
 ```
 
-配置首页首屏区域的操作按钮。
+Configure the operation buttons in the first screen area of the home page.
 
 ### features
 
-- 类型：`IFeature[] | Record<string, IFeature[]>`
-- 默认值：`null`
+- type：`IFeature[] | Record<string, IFeature[]>`
+- default：`null`
 
 ```ts
 interface IFeature {
-  /** 特性名称 */
+  /** title */
   title: string;
-  /** 特性具体描述 */
+  /** detail */
   details: string;
 }
-// 单语言时配置数组即可
+// Just configure the array for single language
 features: [{ title: '开箱即用'}, { details: '接入简单，安装即使用，全面融入 Ant Design 5.0 风格。'}]
-// 多语言时配置对象，key 为语言名
+// Multi-language configuration object, the key is the language name
 features: {
   'zh-CN': [{ title: '开箱即用'}, { details: '接入简单，安装即使用，全面融入 Ant Design 5.0 风格。'}],
   'en-US': [{ title: 'Simple Use'}, { details: 'Simple access, installation and use, fully integrated into Ant Design 5.0 style.'}],
 },
 ```
 
-配置后该页面将会以首页形式呈现，用于每行 3 个的形式展示组件库的特性。
+After configuration, the page will be presented as the homepage, used to display the features of the component library in the form of 3 per row.
 
 ### sidebarGroupModePath
 
-- 类型：`Array<string | RegExp>`
-- 默认值：`[]`
+- type：`Array<string | RegExp>`
+- default：`[]`
 
 ```ts
 export default {
   themeConfig: {
     antdTheme: {
       sidebarGroupModePath: [
-        // 匹配以 /config 开头的路由
+        // Matches routes starting with `/config`
         '/config',
-        // 支持正则匹配
+        // Support regular matching
         /\/guide\//,
       ],
     },
@@ -115,6 +115,6 @@ export default {
 };
 ```
 
-左侧导航栏是否需要作为分组处理，参考 antd [menuitemgrouptype][antd-menuitemgrouptype-url]。
+Whether the left navigation bar needs to be treated as a group, please refer to antd [menuitemgrouptype][antd-menuitemgrouptype-url].
 
 [antd-menuitemgrouptype-url]: https://ant.design/components/menu-cn#menuitemgrouptype
