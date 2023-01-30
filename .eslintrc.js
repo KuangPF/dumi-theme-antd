@@ -1,7 +1,3 @@
 module.exports = {
-  extends: require.resolve('@umijs/lint/dist/config/eslint'),
-  rules: {
-    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
-    'react/button-has-type': 'off',
-  },
+  extends: ['@utopia/eslint-config-react', '@utopia/eslint-config-react/hooks'],
 };
