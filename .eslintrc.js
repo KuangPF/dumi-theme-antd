@@ -1,3 +1,16 @@
 module.exports = {
-  extends: ['@utopia/eslint-config-react', '@utopia/eslint-config-react/hooks']
+  extends: ['@utopia/eslint-config-react', '@utopia/eslint-config-react/hooks'],
+  rules: {
+    'react/react-in-jsx-scope': 0,
+    'react/jsx-fragments': 0,
+    'react/no-unknown-property': ['error', { ignore: ['css'] }],
+    'object-curly-newline': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'implicit-arrow-linebreak': 0,
+    'react/no-array-index-key': 0
+  },
+  globals: {
+    window: true
+  }
 };
