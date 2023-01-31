@@ -38,7 +38,7 @@ const useStyle = () => {
             font-weight: 900;
             font-size: 68px;
           }
-        `,
+        `
   };
 };
 
@@ -47,7 +47,7 @@ const Homepage: FC = () => {
   const { token } = useSiteToken();
   const { isMobile } = useContext(SiteContext);
   const {
-    themeConfig: { name },
+    themeConfig: { name }
   } = useSiteData();
   const { title, description, actions = [] } = useAdditionalThemeConfig();
   const locale = useLocale();
@@ -57,13 +57,23 @@ const Homepage: FC = () => {
     <div css={style.mainContent}>
       {/* Image Left Top */}
       <img
-        style={{ position: 'absolute', left: isMobile ? -120 : 0, top: 0, width: 240 }}
+        style={{
+          position: 'absolute',
+          left: isMobile ? -120 : 0,
+          top: 0,
+          width: 240
+        }}
         src="https://gw.alipayobjects.com/zos/bmw-prod/49f963db-b2a8-4f15-857a-270d771a1204.svg"
         alt="bg"
       />
       {/* Image Right Top */}
       <img
-        style={{ position: 'absolute', right: isMobile ? 0 : 120, top: 0, width: 240 }}
+        style={{
+          position: 'absolute',
+          right: isMobile ? 0 : 120,
+          top: 0,
+          width: 240
+        }}
         src="https://gw.alipayobjects.com/zos/bmw-prod/e152223c-bcae-4913-8938-54fda9efe330.svg"
         alt="bg"
       />
@@ -74,12 +84,17 @@ const Homepage: FC = () => {
         style={{
           fontSize: token.fontSizeHeading5,
           lineHeight: token.lineHeightHeading5,
-          marginBottom: token.marginMD * 2,
+          marginBottom: token.marginMD * 2
         }}
       >
         <div>{description}</div>
       </Typography.Paragraph>
-      <Space size="middle" style={{ marginBottom: token.marginFar }}>
+      <Space
+        size="middle"
+        style={{
+          marginBottom: token.marginFar
+        }}
+      >
         {_actions?.map((item) => (
           <Link to={item.link} key={item.link}>
             <Button size="large" type={item.type}>

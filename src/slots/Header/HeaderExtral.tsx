@@ -43,7 +43,7 @@ const useStyle = () => {
       .anticon {
         font-size: ${BASE_SIZE};
       }
-    `,
+    `
   };
 };
 
@@ -55,7 +55,7 @@ const HeaderExtra: FC = () => {
       {github ? (
         <Tooltip title="Github">
           <a key="github" href={github} target="_blank" rel="noreferrer">
-            <button css={[style.btn]}>
+            <button css={[style.btn]} type="button">
               <GithubOutlined />
             </button>
           </a>

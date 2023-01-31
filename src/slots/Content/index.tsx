@@ -89,7 +89,7 @@ const useStyle = () => {
     colContent: css`
       display: flex;
       flex-direction: column;
-    `,
+    `
   };
 };
 
@@ -106,24 +106,28 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
 
   const debugDemos = useMemo(
     () => meta.toc?.filter((item) => item._debug_demo).map((item) => item.id) || [],
-    [meta],
+    [meta]
   );
 
   const anchorItems = useMemo(
     () =>
       meta.toc.reduce<AnchorItem[]>((result, item) => {
         if (item.depth === 2) {
-          result.push({ ...item });
+          result.push({
+            ...item
+          });
         } else if (item.depth === 3) {
           const parent = result[result.length - 1];
           if (parent) {
             parent.children = parent.children || [];
-            parent.children.push({ ...item });
+            parent.children.push({
+              ...item
+            });
           }
         }
         return result;
       }, []),
-    [meta.toc],
+    [meta.toc]
   );
 
   return (
@@ -148,25 +152,39 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
                       {child?.title}
                     </span>
                   ),
-                  key: child.id,
-                })),
+                  key: child.id
+                }))
             }))}
           />
         </section>
       </Affix>
       <article css={styles.articleWrapper}>
         {meta.frontmatter?.title || meta.frontmatter.subtitle ? (
-          <Typography.Title style={{ fontSize: 30 }}>
+          <Typography.Title
+            style={{
+              fontSize: 30
+            }}
+          >
             {meta.frontmatter?.title}
             {meta.frontmatter.subtitle && (
-              <span style={{ marginLeft: 12 }}>{meta.frontmatter.subtitle}</span>
+              <span
+                style={{
+                  marginLeft: 12
+                }}
+              >
+                {meta.frontmatter.subtitle}
+              </span>
             )}
           </Typography.Title>
         ) : null}
 
         {/* 添加作者、时间等信息 */}
         {meta.frontmatter.date || meta.frontmatter.author ? (
-          <Typography.Paragraph style={{ opacity: 0.65 }}>
+          <Typography.Paragraph
+            style={{
+              opacity: 0.65
+            }}
+          >
             <Space>
               {meta.frontmatter.date && (
                 <span>

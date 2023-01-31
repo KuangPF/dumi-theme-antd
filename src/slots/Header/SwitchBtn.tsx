@@ -51,7 +51,7 @@ const useStyle = () => {
       .anticon {
         font-size: ${BASE_SIZE};
       }
-    `,
+    `
   };
 };
 
@@ -62,7 +62,7 @@ export default function SwitchBtn({
   tooltip2,
   value,
   pure,
-  onClick,
+  onClick
 }: LangBtnProps) {
   const { token } = useSiteToken();
   const style = useStyle();
@@ -75,7 +75,7 @@ export default function SwitchBtn({
     fontSize: BASE_SIZE,
     lineHeight: 1,
     border: `1px solid ${token.colorText}`,
-    color: token.colorText,
+    color: token.colorText
   };
 
   const fontStyle: React.CSSProperties = {
@@ -85,14 +85,14 @@ export default function SwitchBtn({
     background: token.colorText,
     color: token.colorBgContainer,
     transformOrigin: '0 0',
-    transform: `scale(0.7)`,
+    transform: 'scale(0.7)'
   };
   const backStyle: React.CSSProperties = {
     right: '-5%',
     bottom: 0,
     zIndex: 0,
     transformOrigin: '100% 100%',
-    transform: `scale(0.5)`,
+    transform: 'scale(0.5)'
   };
 
   if (value === 1) {
@@ -104,15 +104,21 @@ export default function SwitchBtn({
   }
 
   let node = (
-    <button onClick={onClick} css={[style.btn]} key="lang-button" data-value={value}>
+    <button onClick={onClick} css={[style.btn]} key="lang-button" data-value={value} type="button">
       <div className="btn-inner">
         {pure && (value === 1 ? label1 : label2)}
         {!pure && (
-          <div style={{ position: 'relative', width: BASE_SIZE, height: BASE_SIZE }}>
+          <div
+            style={{
+              position: 'relative',
+              width: BASE_SIZE,
+              height: BASE_SIZE
+            }}
+          >
             <span
               style={{
                 ...iconStyle,
-                ...label1Style,
+                ...label1Style
               }}
             >
               {label1}
@@ -120,7 +126,7 @@ export default function SwitchBtn({
             <span
               style={{
                 ...iconStyle,
-                ...label2Style,
+                ...label2Style
               }}
             >
               {label2}

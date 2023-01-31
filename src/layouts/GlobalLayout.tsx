@@ -24,13 +24,16 @@ const GlobalLayout: FC = () => {
 
   const [{ theme, isMobile }, setSiteState] = useState<SiteState>({
     isMobile: false,
-    theme: ['light'],
+    theme: ['light']
   });
   const [searchParams, setSearchParams] = useSearchParams();
 
   const updateSiteConfig = useCallback(
     (props: SiteState) => {
-      setSiteState((prev) => ({ ...prev, ...props }));
+      setSiteState((prev) => ({
+        ...prev,
+        ...props
+      }));
       // updating `searchParams` will clear the hash
       const oldSearchStr = searchParams.toString();
 
@@ -40,7 +43,7 @@ const GlobalLayout: FC = () => {
           // @ts-ignore
           nextSearchParams = createSearchParams({
             ...nextSearchParams,
-            theme: value.filter((t) => t !== 'light'),
+            theme: value.filter((t) => t !== 'light')
           });
         }
       });
@@ -49,17 +52,21 @@ const GlobalLayout: FC = () => {
         setSearchParams(nextSearchParams);
       }
     },
-    [searchParams, setSearchParams],
+    [searchParams, setSearchParams]
   );
 
-  const updateMobileMode = () => {
-    updateSiteConfig({ isMobile: window.innerWidth < RESPONSIVE_MOBILE });
-  };
+  const updateMobileMode = useCallback(() => {
+    updateSiteConfig({
+      isMobile: window.innerWidth < RESPONSIVE_MOBILE
+    });
+  }, [updateSiteConfig]);
 
   useEffect(() => {
     const _theme = searchParams.getAll('theme') as ThemeName[];
     startTransition(() => {
-      setSiteState({ theme: _theme });
+      setSiteState({
+        theme: _theme
+      });
       // Handle isMobile
       updateMobileMode();
     });
@@ -67,22 +74,22 @@ const GlobalLayout: FC = () => {
     return () => {
       window.removeEventListener('resize', updateMobileMode);
     };
-  }, []);
+  }, [searchParams, updateMobileMode]);
 
   const siteContextValue = useMemo(
     () => ({
       isMobile: isMobile!,
       theme: theme!,
-      updateSiteConfig,
+      updateSiteConfig
     }),
-    [isMobile, theme, updateSiteConfig],
+    [isMobile, theme, updateSiteConfig]
   );
 
   return (
     <SiteContext.Provider value={siteContextValue}>
       <ConfigProvider
         theme={{
-          algorithm: getAlgorithm(theme),
+          algorithm: getAlgorithm(theme)
         }}
       >
         {outlet}

@@ -10,7 +10,7 @@ export interface SiteContextProps {
 const SiteContext = createContext<SiteContextProps>({
   isMobile: false,
   theme: ['light'],
-  updateSiteConfig: () => {},
+  updateSiteConfig: () => {}
 });
 
 export default SiteContext;

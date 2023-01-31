@@ -64,7 +64,7 @@ const useStyle = () => {
     sliderItem: css`
       margin: 0 ${token.margin}px;
       text-align: start;
-    `,
+    `
   };
 };
 
@@ -72,12 +72,17 @@ const RecommendItem = ({ title, details, itemCss }: IFeature) => {
   const style = useStyle();
 
   return (
-    <a key="" href="" target="_blank" css={[style.itemBase, itemCss]} rel="noreferrer">
+    <div css={[style.itemBase, itemCss]}>
       <Typography.Title level={5}>{title}</Typography.Title>
-      <Typography.Paragraph type="secondary" style={{ flex: 'auto' }}>
+      <Typography.Paragraph
+        type="secondary"
+        style={{
+          flex: 'auto'
+        }}
+      >
         {details}
       </Typography.Paragraph>
-    </a>
+    </div>
   );
 };
 

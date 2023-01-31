@@ -31,22 +31,40 @@ const useStyle = () => {
       margin: 0 auto;
       padding: 16px 0;
       line-height: 32px;
-    `,
+    `
   };
 };
 
 const Footer: FC = () => {
   const style = useStyle();
   const {
-    themeConfig: { footer },
+    themeConfig: { footer }
   } = useSiteData();
   return (
     <div css={style.footer}>
       <div css={style.footerContainer}>
-        <div style={{ opacity: '0.4' }}>
-          Made with <span style={{ color: '#fff' }}>❤</span> by
+        <div
+          style={{
+            opacity: '0.4'
+          }}
+        >
+          Made with{' '}
+          <span
+            style={{
+              color: '#fff'
+            }}
+          >
+            ❤
+          </span>{' '}
+          by
         </div>
-        {footer ? <div dangerouslySetInnerHTML={{ __html: footer }} /> : null}
+        {footer ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: footer
+            }}
+          />
+        ) : null}
       </div>
     </div>
   );

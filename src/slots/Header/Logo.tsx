@@ -48,7 +48,7 @@ const useStyle = () => {
         padding-right: 0;
         padding-left: 0;
       }
-    `,
+    `
   };
 };
 
@@ -62,7 +62,13 @@ const Logo = () => {
     <h1>
       <Link to={'base' in locale ? locale.base : '/'} css={logo}>
         <img alt="logo" src={logImgUrl} />
-        <span style={{ lineHeight: '32px' }}>{themeConfig.name}</span>
+        <span
+          style={{
+            lineHeight: '32px'
+          }}
+        >
+          {themeConfig.name}
+        </span>
       </Link>
     </h1>
   );

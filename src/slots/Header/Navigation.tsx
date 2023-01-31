@@ -78,26 +78,26 @@ const useStyle = () => {
       a {
         color: #333;
       }
-    `,
+    `
   };
 };
 
 export default function Navigation({ isMobile, responsive }: NavigationProps) {
   // 统一使用 themeConfig.nav，使用 useNavData，当存在自定义 pages 时，会导致 nav 混乱
-  let navList = useNavData();
+  const navList = useNavData();
 
   const { pathname } = useLocation();
   const { locales } = useSiteData();
   const locale = useLocale();
   const { github } = useAdditionalThemeConfig();
-  let activeMenuItem = pathname.split('/').slice(0, 2).join('/');
+  const activeMenuItem = pathname.split('/').slice(0, 2).join('/');
 
   // @ts-ignore
   const menuItems: MenuProps['items'] = (navList ?? []).map((navItem) => {
     const linkKeyValue = navItem.link.split('/').slice(0, 2).join('/');
     return {
       label: <Link to={navItem.link}>{navItem.title}</Link>,
-      key: linkKeyValue,
+      key: linkKeyValue
     };
   });
 
@@ -105,36 +105,42 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   const getLangNode = useCallback(() => {
     if (locales.length < 2) {
       return null;
-    } else if (locales.length === 2) {
+    }
+    if (locales.length === 2) {
       const nextLang = locales.filter((item) => item.id !== locale.id)[0];
-      const nextPath = getTargetLocalePath({ current: locale, target: nextLang });
+      const nextPath = getTargetLocalePath({
+        current: locale,
+        target: nextLang
+      });
       return {
         label: (
           <a rel="noopener noreferrer" href={nextPath}>
             {nextLang.name}
           </a>
         ),
-        key: nextLang.id,
-      };
-    } else {
-      return {
-        label: <span>{locale.name}</span>,
-        key: 'multi-lang',
-        children: locales
-          .filter((item) => item.id !== locale.id)
-          .map((item) => {
-            const nextPath = getTargetLocalePath({ current: locale, target: item });
-            return {
-              label: (
-                <a rel="noopener noreferrer" href={nextPath}>
-                  {item.name}
-                </a>
-              ),
-              key: item.id,
-            };
-          }),
+        key: nextLang.id
       };
     }
+    return {
+      label: <span>{locale.name}</span>,
+      key: 'multi-lang',
+      children: locales
+        .filter((item) => item.id !== locale.id)
+        .map((item) => {
+          const nextPath = getTargetLocalePath({
+            current: locale,
+            target: item
+          });
+          return {
+            label: (
+              <a rel="noopener noreferrer" href={nextPath}>
+                {item.name}
+              </a>
+            ),
+            key: item.id
+          };
+        })
+    };
   }, [locale, locales]);
 
   let additional: MenuProps['items'];
@@ -146,16 +152,20 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
               GitHub
             </a>
           ),
-          key: 'github',
+          key: 'github'
         }
       : null,
-    getLangNode(),
+    getLangNode()
   ];
   if (isMobile) {
     additional = additionalItems;
   } else if (responsive === 'crowded') {
     additional = [
-      { label: <MenuFoldOutlined />, key: 'additional', children: [...additionalItems] },
+      {
+        label: <MenuFoldOutlined />,
+        key: 'additional',
+        children: [...additionalItems]
+      }
     ];
   }
   const items: MenuProps['items'] = [...(menuItems ?? []), ...(additional ?? [])];

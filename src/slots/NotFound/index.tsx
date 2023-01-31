@@ -19,7 +19,7 @@ const NotFoundPage: React.FC<NotFoundProps> = () => {
           title="404"
           subTitle={<FormattedMessage id="app.not-found.subTitle" />}
           extra={
-            <Link to={'/'}>
+            <Link to="/">
               <Button type="primary" icon={<HomeOutlined />}>
                 <FormattedMessage id="app.not-found.back-home" />
               </Button>

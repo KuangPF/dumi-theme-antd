@@ -12,7 +12,7 @@ const ThemeIcon: React.FC<{ className?: string }> = (props) => {
         </g>
       </svg>
     ),
-    [props],
+    [props]
   );
   return <Icon component={SVGIcon} {...props} />;
 };

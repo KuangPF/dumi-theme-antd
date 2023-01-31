@@ -1,7 +1,7 @@
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
 import { Affix, Col, ConfigProvider, Menu } from 'antd';
-import { useLocation, useSidebarData } from 'dumi';
+import { useSidebarData } from 'dumi';
 import MobileMenu from 'rc-drawer';
 import 'rc-drawer/assets/index.css';
 import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
@@ -130,19 +130,16 @@ const useStyle = () => {
       bottom: 100px;
       right: 20px;
       cursor: pointer;
-    `,
+    `
   };
 };
 
 const Sidebar: FC = () => {
-  const [sidebarState, setSidebarState] = useState<SidebarState>({
-    mobileMenuVisible: false,
-  });
+  const [sidebarState, setSidebarState] = useState<SidebarState>({ mobileMenuVisible: false });
   const sidebarData = useSidebarData();
-  const location = useLocation();
   const styles = useStyle();
   const {
-    token: { colorBgContainer },
+    token: { colorBgContainer }
   } = useSiteToken();
   const { theme, isMobile } = useContext(SiteContext);
   const [menuItems, selectedKey] = useMenu();
@@ -150,23 +147,37 @@ const Sidebar: FC = () => {
   const isDark = theme.includes('dark');
 
   const handleShowMobileMenu = useCallback(() => {
-    setSidebarState((prev) => ({ ...prev, mobileMenuVisible: true }));
+    setSidebarState((prev) => ({
+      ...prev,
+      mobileMenuVisible: true
+    }));
   }, []);
 
   const handleCloseMobileMenu = useCallback(() => {
-    setSidebarState((prev) => ({ ...prev, mobileMenuVisible: false }));
+    setSidebarState((prev) => ({
+      ...prev,
+      mobileMenuVisible: false
+    }));
   }, []);
 
   useEffect(() => {
     if (isMobile) {
       handleCloseMobileMenu();
     }
-  }, [location]);
+  }, [isMobile, handleCloseMobileMenu]);
 
   const { mobileMenuVisible } = sidebarState;
 
   const menuChild = (
-    <ConfigProvider theme={{ components: { Menu: { colorItemBg: colorBgContainer } } }}>
+    <ConfigProvider
+      theme={{
+        components: {
+          Menu: {
+            colorItemBg: colorBgContainer
+          }
+        }
+      }}
+    >
       <Menu
         items={menuItems}
         inlineIndent={30}
@@ -183,7 +194,9 @@ const Sidebar: FC = () => {
     <React.Fragment>
       <MobileMenu
         key="mobile-menu"
-        contentWrapperStyle={{ width: '300px' }}
+        contentWrapperStyle={{
+          width: '300px'
+        }}
         open={mobileMenuVisible}
         onClose={handleCloseMobileMenu}
       >

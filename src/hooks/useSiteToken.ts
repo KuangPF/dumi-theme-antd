@@ -15,7 +15,7 @@ const boxShadowCard = `
 const useSiteToken = () => {
   const result = useToken();
   const { getPrefixCls, iconPrefixCls } = useContext(ConfigContext);
-  const { theme } = useContext(SiteContext);
+  const { theme: siteTheme } = useContext(SiteContext);
   const rootPrefixCls = getPrefixCls();
   const { token } = result;
   const siteMarkdownCodeBg = token.colorFillTertiary;
@@ -36,12 +36,12 @@ const useSiteToken = () => {
       marginFarSM: (token.marginXXL / 3) * 5,
       /** 96 */
       marginFar: token.marginXXL * 2,
-      codeFamily: `'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace`,
+      codeFamily: "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
       boxShadowCard,
-      siteTheme: theme,
+      siteTheme
     },
     /** dumi-theme-antd 站点 class 前缀 */
-    siteCls: 'dumi-antd',
+    siteCls: 'dumi-antd'
   };
 };
 

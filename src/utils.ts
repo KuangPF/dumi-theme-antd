@@ -5,7 +5,7 @@ type ILocaleItem = ReturnType<typeof useSiteData>['locales'][0];
 export function getTargetLocalePath({
   pathname = history.location.pathname,
   current,
-  target,
+  target
 }: {
   pathname?: string;
   current: ILocaleItem;

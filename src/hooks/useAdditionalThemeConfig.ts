@@ -4,7 +4,7 @@ import type { IAdditionalThemeConfig } from '../types';
 
 const useAdditionalThemeConfig = () => {
   const { themeConfig } = useSiteData();
-  const additionalThemeConfig: IAdditionalThemeConfig = themeConfig['antdTheme'] || {};
+  const additionalThemeConfig: IAdditionalThemeConfig = themeConfig.antdTheme || {};
 
   return additionalThemeConfig;
 };

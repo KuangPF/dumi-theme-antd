@@ -1,5 +1,5 @@
 import type { MenuProps } from 'antd';
-import { Link, useFullSidebarData, useLocation, useSidebarData } from 'dumi';
+import { Link, useLocation, useSidebarData } from 'dumi';
 import { isRegExp } from 'lodash';
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
@@ -12,7 +12,6 @@ export type UseMenuOptions = {
 };
 
 const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => {
-  const fullData = useFullSidebarData();
   const { pathname, search } = useLocation();
   const sidebarData = useSidebarData();
   const { sidebarGroupModePath } = useAdditionalThemeConfig();
@@ -24,7 +23,6 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
     return (
       sidebarItems?.reduce<Exclude<MenuProps['items'], undefined>>((result, group) => {
         if (group?.title) {
-          console.log(pathname);
           // sideBar menu group 模式, 默认以非 group 模式渲染
           const isSideBarGroupMode =
             (sidebarGroupModePath ?? []).filter((rule: ISidebarGroupModePathItem) => {
@@ -47,19 +45,20 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                     {after}
                   </Link>
                 ),
-                key: item.link.replace(/(-cn$)/g, ''),
-              })),
+                key: item.link.replace(/(-cn$)/g, '')
+              }))
             });
           } else {
             const childrenGroup = group.children.reduce<
               Record<string, ReturnType<typeof useSidebarData>[number]['children']>
             >((childrenResult, child) => {
+              const nextChildrenResult = childrenResult;
               const type = (child.frontmatter as any).type ?? 'default';
-              if (!childrenResult[type]) {
-                childrenResult[type] = [];
+              if (!nextChildrenResult[type]) {
+                nextChildrenResult[type] = [];
               }
-              childrenResult[type].push(child);
-              return childrenResult;
+              nextChildrenResult[type].push(child);
+              return nextChildrenResult;
             }, {});
             const childItems = [];
             childItems.push(
@@ -71,8 +70,8 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                     {after}
                   </Link>
                 ),
-                key: item.link.replace(/(-cn$)/g, ''),
-              })),
+                key: item.link.replace(/(-cn$)/g, '')
+              }))
             );
             Object.entries(childrenGroup).forEach(([type, children]) => {
               if (type !== 'default') {
@@ -88,15 +87,15 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                         {after}
                       </Link>
                     ),
-                    key: item.link.replace(/(-cn$)/g, ''),
-                  })),
+                    key: item.link.replace(/(-cn$)/g, '')
+                  }))
                 });
               }
             });
             result.push({
               label: group?.title,
               key: group?.title,
-              children: childItems,
+              children: childItems
             });
           }
         } else {
@@ -115,14 +114,14 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                   {after}
                 </Link>
               ),
-              key: item.link.replace(/(-cn$)/g, ''),
-            })),
+              key: item.link.replace(/(-cn$)/g, '')
+            }))
           );
         }
         return result;
       }, []) ?? []
     );
-  }, [sidebarData, fullData, pathname, search]);
+  }, [sidebarData, pathname, search, after, before, sidebarGroupModePath]);
 
   return [menuItems, pathname];
 };

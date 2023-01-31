@@ -4,10 +4,10 @@ import { Col, Popover, Row } from 'antd';
 import classNames from 'classnames';
 import { useLocation } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
-import { useCallback, useContext, useEffect, useState, type FC } from 'react';
+import React, { useCallback, useContext, useEffect, useState, type FC } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
-import type { SiteContextProps } from '../../slots/SiteContext';
-import SiteContext from '../../slots/SiteContext';
+import type { SiteContextProps } from '../SiteContext';
+import SiteContext from '../SiteContext';
 import HeaderExtra from './HeaderExtral';
 import LangSwitch from './LangSwitch';
 import Logo from './Logo';
@@ -21,6 +21,33 @@ export type IResponsive = null | 'narrow' | 'crowded';
 
 const RESPONSIVE_XS = 1120;
 const RESPONSIVE_SM = 1200;
+
+const colPropsHome = [
+  {
+    flex: 'none'
+  },
+  {
+    flex: 'auto'
+  }
+];
+const _colProps = [
+  {
+    xxl: 4,
+    xl: 5,
+    lg: 6,
+    md: 6,
+    sm: 24,
+    xs: 24
+  },
+  {
+    xxl: 20,
+    xl: 19,
+    lg: 18,
+    md: 18,
+    sm: 0,
+    xs: 0
+  }
+];
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -109,9 +136,9 @@ const useStyle = () => {
       width: 300,
 
       [`${token.antCls}-popover-inner-content`]: {
-        padding: 0,
-      },
-    },
+        padding: 0
+      }
+    }
   };
 };
 
@@ -119,23 +146,32 @@ const Header: FC = () => {
   const { isMobile } = useContext<SiteContextProps>(SiteContext);
   const [headerState, setHeaderState] = useState<HeaderState>({
     windowWidth: 1400,
-    menuVisible: false,
+    menuVisible: false
   });
   const location = useLocation();
 
   const onWindowResize = useCallback(() => {
-    setHeaderState((prev) => ({ ...prev, windowWidth: window.innerWidth }));
+    setHeaderState((prev) => ({
+      ...prev,
+      windowWidth: window.innerWidth
+    }));
   }, []);
   const handleHideMenu = useCallback(() => {
-    setHeaderState((prev) => ({ ...prev, menuVisible: false }));
+    setHeaderState((prev) => ({
+      ...prev,
+      menuVisible: false
+    }));
   }, []);
   const onMenuVisibleChange = useCallback((visible: boolean) => {
-    setHeaderState((prev) => ({ ...prev, menuVisible: visible }));
+    setHeaderState((prev) => ({
+      ...prev,
+      menuVisible: visible
+    }));
   }, []);
 
   useEffect(() => {
     handleHideMenu();
-  }, [location]);
+  }, [location, handleHideMenu]);
 
   useEffect(() => {
     onWindowResize();
@@ -151,7 +187,7 @@ const Header: FC = () => {
   const style = useStyle();
   const headerClassName = classNames({
     clearfix: true,
-    'home-header': isHome,
+    'home-header': isHome
   });
   let responsive: IResponsive = null;
 
@@ -164,18 +200,13 @@ const Header: FC = () => {
   let menu: (React.ReactElement | null)[] = [
     navigationNode,
     <LangSwitch key={new Date().getTime()} />,
-    <HeaderExtra key="header-Extra" />,
+    <HeaderExtra key="header-Extra" />
   ];
   if (windowWidth < RESPONSIVE_XS) {
     menu = [navigationNode];
   }
 
-  const colProps = isHome
-    ? [{ flex: 'none' }, { flex: 'auto' }]
-    : [
-        { xxl: 4, xl: 5, lg: 6, md: 6, sm: 24, xs: 24 },
-        { xxl: 20, xl: 19, lg: 18, md: 18, sm: 0, xs: 0 },
-      ];
+  const colProps = isHome ? colPropsHome : _colProps;
 
   return (
     <header css={style.header} className={headerClassName}>
@@ -196,7 +227,11 @@ const Header: FC = () => {
           )}
         </ClassNames>
       )}
-      <Row style={{ height: 64 }}>
+      <Row
+        style={{
+          height: 64
+        }}
+      >
         <Col {...colProps[0]}>
           <Logo />
         </Col>

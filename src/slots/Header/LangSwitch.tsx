@@ -21,7 +21,7 @@ const LangSwitch: FC = () => {
       let path = getTargetLocalePath({
         pathname,
         current,
-        target: locales.find(({ id }) => id === lang)!,
+        target: locales.find(({ id }) => id === lang)!
       });
 
       // 多多语言首页做特殊处理 eg. /index-en
@@ -32,15 +32,15 @@ const LangSwitch: FC = () => {
       }
       history.push({
         pathname: path,
-        search: searchParams.toString(),
+        search: searchParams.toString()
       });
     },
-    [pathname, current, locales, history, searchParams],
+    [pathname, current, locales, searchParams]
   );
 
   const onLangChange = useCallback(() => {
     handleLangChange(locales.filter((item) => item.id !== locale)[0].id);
-  }, [locale]);
+  }, [locale, handleLangChange, locales]);
 
   let LangSwitchJSX = null;
   // do not render in single language
