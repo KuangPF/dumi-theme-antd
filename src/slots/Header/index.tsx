@@ -60,6 +60,7 @@ const useStyle = () => {
       max-width: 100%;
       background: ${token.colorBgContainer};
       box-shadow: ${token.boxShadow};
+      border-bottom: ${token.lineWidth}px solid ${token.colorBorderSecondary};
 
       @media only screen and (max-width: ${token.mobileMaxWidth}px) {
         text-align: center;
