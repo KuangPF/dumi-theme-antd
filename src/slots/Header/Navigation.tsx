@@ -86,7 +86,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   // 统一使用 themeConfig.nav，使用 useNavData，当存在自定义 pages 时，会导致 nav 混乱
   const navList = useNavData();
 
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const { locales } = useSiteData();
   const locale = useLocale();
   const { github } = useAdditionalThemeConfig();
@@ -96,7 +96,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   const menuItems: MenuProps['items'] = (navList ?? []).map((navItem) => {
     const linkKeyValue = navItem.link.split('/').slice(0, 2).join('/');
     return {
-      label: <Link to={navItem.link}>{navItem.title}</Link>,
+      label: <Link to={`${navItem.link}${search}`}>{navItem.title}</Link>,
       key: linkKeyValue
     };
   });
