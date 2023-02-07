@@ -7,6 +7,12 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.1.4
+
+- 🆕 调整 api 文档表格样式。
+- 🐞 导航栏切换保留暗黑主题参数。
+- ⌨️ 项目使用 `@utopia` 中内置 eslint rules 以及 prettier configs。
+
 ## 0.1.3
 
 - 🆕 文档适配英文。
