@@ -31,7 +31,6 @@
       "prettier --write --no-error-on-unmatched-pattern"
     ],
     "*.{css,less}": [
-      "stylelint --fix",
       "prettier --write"
     ],
     "*.{js,jsx}": [
@@ -59,21 +58,15 @@
     "@commitlint/config-conventional": "^17.1.0",
     "@emotion/babel-preset-css-prop": "^11.10.0",
     "@types/lodash": "^4.14.191",
-    "@umijs/lint": "^4.0.0",
     "@utopia/eslint-config-react": "^0.0.7",
     "@utopia/prettier-config-base": "^0.0.7",
-    "dumi": "2.0.13",
-    "eslint": "^8.23.0",
+    "dumi": "2.1.7",
     "father": "^4.1.0",
     "father-plugin-dumi-theme": "^1.0.0-beta.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "prettier-plugin-organize-imports": "^3.0.0",
-    "prettier-plugin-packagejson": "^2.2.18",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "stylelint": "^14.9.1"
+    "react-dom": "^18.0.0"
   },
   "peerDependencies": {
     "dumi": "^2.0.0-rc.0",
