@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { Link, useLocale, useSiteData } from 'dumi';
+import { Link, useLocale, useLocation, useSiteData } from 'dumi';
 import useSiteToken from '../../hooks/useSiteToken';
 
 const useStyle = () => {
@@ -55,12 +55,13 @@ const useStyle = () => {
 const Logo = () => {
   const { logo } = useStyle();
   const { themeConfig } = useSiteData();
+  const { search } = useLocation();
   const locale = useLocale();
   const logImgUrl =
     themeConfig.logo || 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg';
   return (
     <h1>
-      <Link to={'base' in locale ? locale.base : '/'} css={logo}>
+      <Link to={'base' in locale ? `${locale.base}${search}` : `/${search}`} css={logo}>
         <img alt="logo" src={logImgUrl} />
         <span
           style={{
