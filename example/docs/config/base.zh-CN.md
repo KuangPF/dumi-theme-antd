@@ -5,7 +5,7 @@ nav:
 title: 基础
 ---
 
-`dumi-theme-antd` 为了更好地管理主题特有字段，将所有主题相关配置项存于 `themeConfig.antdTheme` 字段中，具体配置字段如下：
+`dumi-theme-antd` 为了更好地适配 antd v5 官网主题风格，增加了一些特有字段，并将其置于 `dumi` 主题配置项 `themeConfig` 字段中，具体配置字段如下：
 
 ## 基础配置
 
@@ -34,14 +34,22 @@ interface ILocaleEnhance {
 
 ### title
 
-- 类型：`string`
+- 类型：`string | Record<string, string>`
 - 默认值：`Dumi Theme AntD`
+
+```ts
+// 多语言时配置对象，key 为语言名
+title: {
+  'zh-CN': 'Dumi Ant Design 主题',
+  'en-US': 'Dumi Theme Ant Design'
+}
+```
 
 配置首页首屏区域的大标题。
 
 ### description
 
-- 类型：`string`
+- 类型：`string | Record<string, string>`
 - 默认值：`null`
 
 配置首页首屏区域的简介文字。
@@ -108,10 +116,10 @@ export default {
         // 匹配以 /config 开头的路由
         '/config',
         // 支持正则匹配
-        /\/guide\//,
-      ],
-    },
-  },
+        /\/guide\//
+      ]
+    }
+  }
 };
 ```
 

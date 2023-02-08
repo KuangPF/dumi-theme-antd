@@ -5,7 +5,7 @@ nav:
 title: Base
 ---
 
-`dumi-theme-antd` In order to better manage theme-specific fields, all theme-related configuration items are stored in `themeConfig.antdTheme` field, the specific configuration fields are as follows:
+`dumi-theme-antd` In order to better adapt to the theme style of the antd v5 official website, some unique fields have been added and placed in the `themeConfig` field of the `dumi` theme configuration item. The specific configuration fields are as follows:
 
 ## Basic configuration
 
@@ -34,14 +34,22 @@ The display of the multi-language switching prefix icon in the navigation header
 
 ### title
 
-- type：`string`
+- type：`string | Record<string, string>`
 - default：`Dumi Theme AntD`
+
+```ts
+// multi-language configuration object, the key is the language name
+title: {
+  'zh-CN': 'Dumi Ant Design 主题',
+  'en-US': 'Dumi Theme Ant Design'
+}
+```
 
 Configure the title of the first screen area on the home page.
 
 ### description
 
-- type：`string`
+- type：`string | Record<string, string>`
 - default：`null`
 
 Configure the introduction text of the first screen area on the home page.
@@ -108,10 +116,10 @@ export default {
         // Matches routes starting with `/config`
         '/config',
         // Support regular matching
-        /\/guide\//,
-      ],
-    },
-  },
+        /\/guide\//
+      ]
+    }
+  }
 };
 ```
 
