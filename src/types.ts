@@ -1,4 +1,5 @@
 import type { SerializedStyles } from '@emotion/react';
+import { type IThemeConfig } from 'dumi/dist/client/theme-api/types';
 
 export type ISidebarGroupModePathItem = string | RegExp;
 
@@ -31,7 +32,7 @@ interface IAdditionalThemeConfig {
   /** github 链接 */
   github?: string;
   /** 多语言额外配置，主要用于展示语言切换文字（只针对于两项多语言时） */
-  localesEnhance: ILocaleEnhance[];
+  localesEnhance?: ILocaleEnhance[];
   /** 配置首页首屏区域的大标题。 */
   title?: string;
   /** 配置首页首屏区域的简介文字 */
@@ -44,8 +45,6 @@ interface IAdditionalThemeConfig {
   sidebarGroupModePath?: ISidebarGroupModePathItem[];
 }
 
-export interface IThemeConfig {
-  antdTheme: IAdditionalThemeConfig;
-}
+export interface IAllThemeConfig extends IThemeConfig, IAdditionalThemeConfig {}
 
 export { IAdditionalThemeConfig, ILocaleEnhance, IFeature };

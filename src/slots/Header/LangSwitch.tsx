@@ -64,7 +64,7 @@ const LangSwitch: FC = () => {
         {langOptions}
       </Select>
     );
-  } else if (locales.length === 2 && localesEnhance.length > 1) {
+  } else if (locales.length === 2 && Array.isArray(localesEnhance) && localesEnhance.length > 1) {
     // 按 locales 顺序展示
     const switchValue = locales[0].id === locale ? 1 : 2;
     LangSwitchJSX = (
