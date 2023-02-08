@@ -110,7 +110,7 @@ const Homepage: FC = () => {
         </div>
       )}
       {/* Image Left Top */}
-      <div style={{ position: 'relative', background: '#fff' }}>
+      <div style={{ position: 'relative' }}>
         {/* Image Bottom Right */}
         <img
           style={{ position: 'absolute', right: 0, top: 240, width: 240 }}
