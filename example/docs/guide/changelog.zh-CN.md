@@ -7,6 +7,13 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.0
+
+- 🆕 优化首页内容，增加视频动画效果。
+- 🐞 修复多语言切换第二次点击路由无法跳转。
+- 💄 优化配置项，将配置项字段移动到 dumi 内置 `themeConfig` 字段中。
+- 💄 更新相关文档。
+
 ## 0.1.4
 
 - 🆕 调整 api 文档表格样式。
