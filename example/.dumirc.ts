@@ -55,7 +55,7 @@ export default defineConfig({
           link: '/guide/introduce-en'
         },
         {
-          text: '配置',
+          text: 'Config',
           link: '/config/base-en'
         }
       ]
