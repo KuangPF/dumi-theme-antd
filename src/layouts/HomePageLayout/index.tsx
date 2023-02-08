@@ -53,6 +53,9 @@ const Homepage: FC = () => {
   const locale = useLocale();
 
   const _actions = Array.isArray(actions) ? actions : actions[locale.id];
+  const _title = typeof title === 'string' ? title : title?.[locale.id];
+  const _description = typeof description === 'string' ? description : description?.[locale.id];
+
   return (
     <div css={style.mainContent}>
       {/* Image Left Top */}
@@ -78,7 +81,7 @@ const Homepage: FC = () => {
         alt="bg"
       />
       <Typography.Title level={1} css={[style.titleBase, style.title]}>
-        {title || name}
+        {_title || name}
       </Typography.Title>
       <Typography.Paragraph
         style={{
@@ -87,7 +90,7 @@ const Homepage: FC = () => {
           marginBottom: token.marginMD * 2
         }}
       >
-        <div>{description}</div>
+        <div>{_description}</div>
       </Typography.Paragraph>
       <Space
         size="middle"

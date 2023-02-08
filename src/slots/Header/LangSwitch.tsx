@@ -28,7 +28,7 @@ const LangSwitch: FC = () => {
       if (path.startsWith('/-')) {
         path = `/index${path.substring(1)}`;
       } else if (path.endsWith('/index')) {
-        path = path.replace('/index', '');
+        path = path.replace('/index', '/');
       }
       history.push({
         pathname: path,

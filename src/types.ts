@@ -34,9 +34,9 @@ interface IAdditionalThemeConfig {
   /** 多语言额外配置，主要用于展示语言切换文字（只针对于两项多语言时） */
   localesEnhance?: ILocaleEnhance[];
   /** 配置首页首屏区域的大标题。 */
-  title?: string;
+  title?: string | Record<string, string>;
   /** 配置首页首屏区域的简介文字 */
-  description?: string;
+  description?: string | Record<string, string>;
   /** 配置首页首屏区域的操作按钮 */
   actions?: IAction[] | Record<string, IAction[]>;
   /** 配置首页特性描述 */
