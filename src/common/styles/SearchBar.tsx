@@ -2,7 +2,6 @@ import { css, Global } from '@emotion/react';
 import useSiteToken from '../../hooks/useSiteToken';
 
 const THEME_PREFIX = 'dumi-default-';
-const PREFERS_COLOR_ATTR = 'data-prefers-color';
 
 export default () => {
   const { token } = useSiteToken();
@@ -10,9 +9,10 @@ export default () => {
   return (
     <Global
       styles={css`
-        html[${PREFERS_COLOR_ATTR}='dark'] {
+        html {
           .${THEME_PREFIX}search-bar {
             &-input {
+              color: ${token.colorText};
               background: ${token.colorBgContainer};
               &:focus {
                 background: ${token.colorBgContainer};
@@ -24,15 +24,27 @@ export default () => {
           }
           .${THEME_PREFIX}search-popover {
             background-color: ${token.colorBgElevated} !important;
+            &::before {
+              border-bottom-color: ${token.colorBgElevated} !important;
+            }
           }
           .${THEME_PREFIX}search-result {
-            dt {
-              background-color: ${token.controlItemBgActive} !important;
-            }
-            dd {
-              a {
-                &:hover {
-                  background-color: ${token.controlItemBgHover};
+            dl {
+              dt {
+                background-color: ${token.controlItemBgActive} !important;
+              }
+              dd {
+                a {
+                  &:hover {
+                    background-color: ${token.controlItemBgHover};
+                    h4,
+                    p {
+                      color: ${token.colorText} !important;
+                    }
+                    svg {
+                      fill: ${token.colorText} !important;
+                    }
+                  }
                 }
               }
             }
