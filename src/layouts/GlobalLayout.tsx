@@ -16,6 +16,9 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
     if (theme === 'dark') {
       return antdTheme.darkAlgorithm;
     }
+    if (theme === 'compact') {
+      return antdTheme.compactAlgorithm;
+    }
     return antdTheme.defaultAlgorithm;
   });
 
