@@ -148,13 +148,19 @@ const Homepage: FC = () => {
               marginBottom: token.marginFar
             }}
           >
-            {_actions?.map((item) => (
-              <Link to={item.link} key={item.link}>
-                <Button size="large" type={item.type}>
-                  {item.text}
+            {_actions?.map(({ link, text, type }) => {
+              return /^(\w+:)\/\/|^(mailto|tel):/.test(link) ? (
+                <Button size="large" type={type} href={link} target="_blank">
+                  {text}
                 </Button>
-              </Link>
-            ))}
+              ) : (
+                <Link to={link} key={link}>
+                  <Button size="large" type={type}>
+                    {text}
+                  </Button>
+                </Link>
+              );
+            })}
           </Space>
           <Features />
         </GroupMask>
