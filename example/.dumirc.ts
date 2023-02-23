@@ -94,6 +94,9 @@ export default defineConfig({
             'Simple access, installation and use, fully integrated into Ant Design 5.0 style.'
         }
       ]
+    },
+    docVersions: {
+      '0.2.1': ''
     }
   }
 });

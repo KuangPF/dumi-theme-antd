@@ -28,6 +28,10 @@ interface IFeature {
   itemCss: SerializedStyles;
 }
 
+interface IDocVersion {
+  [propName: string]: string;
+}
+
 interface IAdditionalThemeConfig {
   /** github 链接 */
   github?: string;
@@ -43,6 +47,8 @@ interface IAdditionalThemeConfig {
   features?: IFeature[] | Record<string, IFeature[]>;
   /** sidebar group 模式路由 */
   sidebarGroupModePath?: ISidebarGroupModePathItem[];
+  /** 文档版本 */
+  docVersions?: IDocVersion;
 }
 
 export interface IAllThemeConfig extends IThemeConfig, IAdditionalThemeConfig {}

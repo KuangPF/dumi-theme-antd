@@ -1,10 +1,11 @@
 import { MenuOutlined } from '@ant-design/icons';
 import { ClassNames, css } from '@emotion/react';
-import { Col, Popover, Row } from 'antd';
+import { Col, Popover, Row, Select } from 'antd';
 import classNames from 'classnames';
 import { useLocation } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
 import React, { useCallback, useContext, useEffect, useState, type FC } from 'react';
+import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import type { SiteContextProps } from '../SiteContext';
 import SiteContext from '../SiteContext';
@@ -150,6 +151,7 @@ const Header: FC = () => {
     menuVisible: false
   });
   const location = useLocation();
+  const { docVersions } = useAdditionalThemeConfig();
 
   const onWindowResize = useCallback(() => {
     setHeaderState((prev) => ({
@@ -168,6 +170,10 @@ const Header: FC = () => {
       ...prev,
       menuVisible: visible
     }));
+  }, []);
+
+  const handleVersionChange = useCallback((url: string) => {
+    window.location.href = url;
   }, []);
 
   useEffect(() => {
@@ -198,8 +204,21 @@ const Header: FC = () => {
     responsive = 'narrow';
   }
   const navigationNode = <Navigation key="nav" isMobile={isMobile} responsive={responsive} />;
+  const versionOptions = Object.keys(docVersions ?? {}).map((version) => ({
+    value: docVersions?.[version],
+    label: version
+  }));
   let menu: (React.ReactElement | null)[] = [
     navigationNode,
+    <Select
+      key="version"
+      size="small"
+      defaultValue={versionOptions[0]?.value}
+      onChange={handleVersionChange}
+      dropdownMatchSelectWidth={false}
+      getPopupContainer={(trigger) => trigger.parentNode}
+      options={versionOptions}
+    />,
     <LangSwitch key={new Date().getTime()} />,
     <HeaderExtra key="header-Extra" />
   ];
