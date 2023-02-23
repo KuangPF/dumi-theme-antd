@@ -203,6 +203,7 @@ const Header: FC = () => {
   } else if (windowWidth < RESPONSIVE_SM) {
     responsive = 'narrow';
   }
+
   const navigationNode = <Navigation key="nav" isMobile={isMobile} responsive={responsive} />;
   const versionOptions = Object.keys(docVersions ?? {}).map((version) => ({
     value: docVersions?.[version],
@@ -210,15 +211,17 @@ const Header: FC = () => {
   }));
   let menu: (React.ReactElement | null)[] = [
     navigationNode,
-    <Select
-      key="version"
-      size="small"
-      defaultValue={versionOptions[0]?.value}
-      onChange={handleVersionChange}
-      dropdownMatchSelectWidth={false}
-      getPopupContainer={(trigger) => trigger.parentNode}
-      options={versionOptions}
-    />,
+    versionOptions.length > 0 ? (
+      <Select
+        key="version"
+        size="small"
+        defaultValue={versionOptions[0]?.value}
+        onChange={handleVersionChange}
+        dropdownMatchSelectWidth={false}
+        getPopupContainer={(trigger) => trigger.parentNode}
+        options={versionOptions}
+      />
+    ) : null,
     <LangSwitch key={new Date().getTime()} />,
     <HeaderExtra key="header-Extra" />
   ];
