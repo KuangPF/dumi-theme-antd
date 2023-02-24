@@ -1,5 +1,5 @@
 import { ConfigProvider, theme as antdTheme } from 'antd';
-import { createSearchParams, useOutlet, useSearchParams } from 'dumi';
+import { createSearchParams, useOutlet, usePrefersColor, useSearchParams } from 'dumi';
 import type { FC } from 'react';
 import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
 import type { ThemeName } from '../common/ThemeSwitch';
@@ -24,6 +24,7 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
 
 const GlobalLayout: FC = () => {
   const outlet = useOutlet();
+  const [, , setPrefersColor] = usePrefersColor();
 
   const [{ theme, isMobile }, setSiteState] = useState<SiteState>({
     isMobile: false,
@@ -48,6 +49,8 @@ const GlobalLayout: FC = () => {
             ...nextSearchParams,
             theme: value.filter((t) => t !== 'light')
           });
+
+          setPrefersColor(value.indexOf('dark') > -1 ? 'dark' : 'light');
         }
       });
 
@@ -55,7 +58,7 @@ const GlobalLayout: FC = () => {
         setSearchParams(nextSearchParams);
       }
     },
-    [searchParams, setSearchParams]
+    [searchParams, setSearchParams, setPrefersColor]
   );
 
   const updateMobileMode = useCallback(() => {

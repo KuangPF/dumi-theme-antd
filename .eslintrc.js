@@ -8,13 +8,15 @@ module.exports = {
     'object-curly-newline': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-static-element-interactions': 0,
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
     'implicit-arrow-linebreak': 0,
     'react/no-array-index-key': 0,
     'global-require': 0,
     indent: 0
   },
   globals: {
-    window: true
+    window: true,
+    gtag: true
   },
   env: {
     browser: true,
