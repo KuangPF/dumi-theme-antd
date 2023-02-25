@@ -7,6 +7,14 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.1
+
+- 🆕 增加文档版本显示配置。
+- 🆕 增加紧凑主题模式。
+- 🆕 首页 `action` 支持外部链接 [#2](https://github.com/KuangPF/dumi-theme-antd/issues/2)。
+- 🆕 优化暗黑模式下，字体颜色、图片透明度、搜索框以及代码预览模块样式。
+- 💄 更新相关文档。
+
 ## 0.2.0
 
 - 🆕 优化首页内容，增加视频动画效果。
