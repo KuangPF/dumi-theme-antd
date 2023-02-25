@@ -54,6 +54,24 @@ title: {
 
 配置首页首屏区域的简介文字。
 
+### docVersions
+
+- 类型：`IDocVersion`
+- 默认值：`null`
+
+```ts
+interface IDocVersion {
+  [propName: string]: string;
+}
+// .dumi.ts
+docVersions: {
+  '1.0.0': '',
+  '0.x.x': 'http://xxxx.com'
+}
+```
+
+在导航栏中显示当前文档版本或者多文档本下拉选择框，默认第一个属性为当前文档版本。
+
 ### actions
 
 - 类型：`IAction[] | Record<string, IAction[]>`

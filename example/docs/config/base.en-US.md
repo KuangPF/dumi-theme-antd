@@ -54,6 +54,24 @@ Configure the title of the first screen area on the home page.
 
 Configure the introduction text of the first screen area on the home page.
 
+### docVersions
+
+- 类型：`IDocVersion`
+- 默认值：`null`
+
+```ts
+interface IDocVersion {
+  [propName: string]: string;
+}
+// .dumi.ts
+docVersions: {
+  '1.0.0': '',
+  '0.x.x': 'http://xxxx.com'
+}
+```
+
+Display the current document version or multi-document drop-down selection box in the navigation bar, and the default first attribute is the current document version.
+
 ### actions
 
 - type：`IAction[] | Record<string, IAction[]>`
