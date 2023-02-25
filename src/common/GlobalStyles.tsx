@@ -1,5 +1,14 @@
 import React from 'react';
-import { Common, HeadingAnchor, Highlight, Markdown, Reset, Responsive, SearchBar } from './styles';
+import {
+  Common,
+  DumiDefaultStyleOverride,
+  HeadingAnchor,
+  Highlight,
+  Markdown,
+  Reset,
+  Responsive,
+  SearchBar
+} from './styles';
 
 const GlobalStyles = () => (
   <React.Fragment>
@@ -10,6 +19,7 @@ const GlobalStyles = () => (
     <Responsive />
     <HeadingAnchor />
     <SearchBar />
+    <DumiDefaultStyleOverride />
   </React.Fragment>
 );
 
