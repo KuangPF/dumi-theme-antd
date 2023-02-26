@@ -53,4 +53,4 @@ interface IAdditionalThemeConfig {
 
 export interface IAllThemeConfig extends IThemeConfig, IAdditionalThemeConfig {}
 
-export { IAdditionalThemeConfig, ILocaleEnhance, IFeature };
+export { IAdditionalThemeConfig, ILocaleEnhance, IFeature, IAction };

@@ -1,10 +1,11 @@
 import { css } from '@emotion/react';
 import { Button, Space, Typography } from 'antd';
-import { Link, useLocale, useSiteData } from 'dumi';
+import { Link, useSiteData } from 'dumi';
 import { useContext, type FC } from 'react';
-import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
+import useLocaleValue from '../../hooks/useLocaleValue';
 import useSiteToken from '../../hooks/useSiteToken';
 import SiteContext from '../../slots/SiteContext';
+import { IAction } from '../../types';
 import Features from './components/Features';
 import { GroupMask } from './components/Group';
 
@@ -49,12 +50,10 @@ const Homepage: FC = () => {
   const {
     themeConfig: { name }
   } = useSiteData();
-  const { title, description, actions = [] } = useAdditionalThemeConfig();
-  const locale = useLocale();
 
-  const _actions = Array.isArray(actions) ? actions : actions[locale.id];
-  const _title = typeof title === 'string' ? title : title?.[locale.id];
-  const _description = typeof description === 'string' ? description : description?.[locale.id];
+  const actions: IAction[] = useLocaleValue('actions');
+  const title = useLocaleValue('title');
+  const description = useLocaleValue('description');
 
   return (
     <div css={style.mainContent}>
@@ -131,7 +130,7 @@ const Homepage: FC = () => {
             alt="bg"
           />
           <Typography.Title level={1} css={[style.titleBase, style.title]}>
-            {_title || name}
+            {title || name}
           </Typography.Title>
           <Typography.Paragraph
             style={{
@@ -140,7 +139,7 @@ const Homepage: FC = () => {
               marginBottom: token.marginMD * 2
             }}
           >
-            <div>{_description}</div>
+            <div>{description}</div>
           </Typography.Paragraph>
           <Space
             size="middle"
@@ -148,7 +147,7 @@ const Homepage: FC = () => {
               marginBottom: token.marginFar
             }}
           >
-            {_actions?.map(({ link, text, type }) => {
+            {actions?.map(({ link, text, type }) => {
               return /^(\w+:)\/\/|^(mailto|tel):/.test(link) ? (
                 <Button size="large" type={type} href={link} target="_blank">
                   {text}
