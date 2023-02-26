@@ -12,6 +12,7 @@ import SiteContext from '../SiteContext';
 import HeaderExtra from './HeaderExtral';
 import LangSwitch from './LangSwitch';
 import Logo from './Logo';
+import More from './More';
 import Navigation from './Navigation';
 
 interface HeaderState {
@@ -222,6 +223,7 @@ const Header: FC = () => {
         options={versionOptions}
       />
     ) : null,
+    <More key="more" />,
     <LangSwitch key={new Date().getTime()} />,
     <HeaderExtra key="header-Extra" />
   ];

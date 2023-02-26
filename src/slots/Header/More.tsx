@@ -1,3 +1,4 @@
+import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Button, Dropdown } from 'antd';
 import { FormattedMessage } from 'dumi';
@@ -19,14 +20,15 @@ export const getMoreLinksGroup = (
 };
 
 const More: React.FC = () => {
-  const { moreLinks } = useAdditionalThemeConfig();
-  return (
+  const { moreLinks = [] } = useAdditionalThemeConfig();
+  return moreLinks.length > 0 ? (
     <Dropdown menu={{ items: getMoreLinksGroup(moreLinks) }} placement="bottomRight">
       <Button size="small">
         <FormattedMessage id="app.header.menu.more" />
+        <DownOutlined />
       </Button>
     </Dropdown>
-  );
+  ) : null;
 };
 
 export default More;
