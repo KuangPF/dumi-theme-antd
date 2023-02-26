@@ -19,6 +19,13 @@ interface IAction {
   type?: 'primary' | 'default';
 }
 
+interface IMoreLink {
+  /** 链接文字描述 */
+  text: string;
+  /** 链接 */
+  link: string;
+}
+
 interface IFeature {
   /** 特性名称 */
   title: string;
@@ -49,6 +56,8 @@ interface IAdditionalThemeConfig {
   sidebarGroupModePath?: ISidebarGroupModePathItem[];
   /** 文档版本 */
   docVersions?: IDocVersion;
+  /** 更多链接 */
+  moreLinks?: IMoreLink[];
 }
 
 export interface IAllThemeConfig extends IThemeConfig, IAdditionalThemeConfig {}

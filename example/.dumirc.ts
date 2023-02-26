@@ -97,6 +97,16 @@ export default defineConfig({
     },
     docVersions: {
       '0.2.1': ''
-    }
+    },
+    moreLinks: [
+      {
+        text: 'Dumi',
+        link: 'https://d.umijs.org/'
+      },
+      {
+        text: 'Ant Design',
+        link: 'https://ant.design/'
+      }
+    ]
   }
 });
