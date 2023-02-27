@@ -8,6 +8,7 @@ import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import { getTargetLocalePath } from '../../utils';
 import { type IResponsive } from './index';
+import { getMoreLinksGroup } from './More';
 
 export interface NavigationProps {
   isMobile: boolean;
@@ -89,7 +90,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   const { pathname, search } = useLocation();
   const { locales } = useSiteData();
   const locale = useLocale();
-  const { github } = useAdditionalThemeConfig();
+  const { github, moreLinks = [] } = useAdditionalThemeConfig();
   const activeMenuItem = pathname.split('/').slice(0, 2).join('/');
 
   // @ts-ignore
@@ -155,8 +156,10 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
           key: 'github'
         }
       : null,
-    getLangNode()
+    getLangNode(),
+    ...(getMoreLinksGroup(moreLinks) || [])
   ];
+
   if (isMobile) {
     additional = additionalItems;
   } else if (responsive === 'crowded') {
