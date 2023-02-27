@@ -72,6 +72,33 @@ docVersions: {
 
 Display the current document version or multi-document drop-down selection box in the navigation bar, and the default first attribute is the current document version.
 
+### moreLinks
+
+- 类型：`IMoreLink[]`
+- 默认值：`null`
+
+```ts
+interface IMoreLink {
+  /** link text description */
+  text: string;
+  /** link */
+  link: string;
+}
+// .dumi.ts
+moreLinks: [
+  {
+    text: 'Dumi',
+    link: 'https://d.umijs.org/'
+  },
+  {
+    text: 'Ant Design',
+    link: 'https://ant.design/'
+  }
+];
+```
+
+Configure more ecosystem links in the navigation bar.
+
 ### actions
 
 - type：`IAction[] | Record<string, IAction[]>`

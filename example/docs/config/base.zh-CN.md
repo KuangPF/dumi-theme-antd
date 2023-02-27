@@ -72,6 +72,33 @@ docVersions: {
 
 在导航栏中显示当前文档版本或者多文档本下拉选择框，默认第一个属性为当前文档版本。
 
+### moreLinks
+
+- 类型：`IMoreLink[]`
+- 默认值：`null`
+
+```ts
+interface IMoreLink {
+  /** 链接文字描述 */
+  text: string;
+  /** 链接 */
+  link: string;
+}
+// .dumi.ts
+moreLinks: [
+  {
+    text: 'Dumi',
+    link: 'https://d.umijs.org/'
+  },
+  {
+    text: 'Ant Design',
+    link: 'https://ant.design/'
+  }
+];
+```
+
+在导航栏中配置更多生态系统链接。
+
 ### actions
 
 - 类型：`IAction[] | Record<string, IAction[]>`
