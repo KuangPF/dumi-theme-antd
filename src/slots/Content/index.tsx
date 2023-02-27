@@ -6,6 +6,7 @@ import DayJS from 'dayjs';
 import { useRouteMeta } from 'dumi';
 import type { FC, ReactNode } from 'react';
 import { useMemo } from 'react';
+import PrevAndNext from '../../common/PrevAndNext';
 import useSiteToken from '../../hooks/useSiteToken';
 import Footer from '../Footer';
 
@@ -208,6 +209,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
 
         {children}
       </article>
+      <PrevAndNext />
       <Footer />
     </Col>
   );
