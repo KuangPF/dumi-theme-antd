@@ -10,7 +10,7 @@ AntD site theme package for the [dumi](https://d.umijs.org) framework.
 
 <p align="center">
   <a href="https://kuangpf.com/dumi-theme-antd">
-    <img  src="https://user-images.githubusercontent.com/20694238/217142436-84032340-588c-4b68-9f30-9b3a4d24c1c4.png">
+    <img  src="https://user-images.githubusercontent.com/20694238/221604020-d797a64e-30b5-4e4c-897d-112c8ee37512.png">
   </a>
 </p>
 
