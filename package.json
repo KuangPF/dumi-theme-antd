@@ -6,6 +6,11 @@
     "dumi",
     "dumi-theme"
   ],
+  "homepage": "https://kuangpf.com/dumi-theme-antd",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KuangPF/dumi-theme-antd"
+  },
   "license": "MIT",
   "types": "dist/types.d.ts",
   "files": [
