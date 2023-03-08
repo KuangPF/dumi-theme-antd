@@ -7,6 +7,11 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.2
+
+- 🆕 导航栏支持配置更多生态链接。
+- 🆕 文档增加上一页以及下一页操作。
+
 ## 0.2.1
 
 - 🆕 增加文档版本显示配置。
