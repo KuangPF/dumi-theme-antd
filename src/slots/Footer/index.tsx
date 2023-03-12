@@ -48,14 +48,14 @@ const Footer: FC = () => {
             opacity: '0.4'
           }}
         >
-          Made with{' '}
+          Made with
           <span
             style={{
               color: '#fff'
             }}
           >
             ❤
-          </span>{' '}
+          </span>
           by
         </div>
         {footer ? (
