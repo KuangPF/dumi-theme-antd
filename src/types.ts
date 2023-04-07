@@ -39,6 +39,15 @@ interface IDocVersion {
   [propName: string]: string;
 }
 
+interface IBannerConfig {
+  /** 是否展示头部 banner 背景 */
+  showBanner?: boolean;
+  /** banner 图片地址 */
+  bannerImgUrl?: string;
+  /** banner 移动端图片地址 */
+  bannerMobileImgUrl?: string;
+}
+
 interface IAdditionalThemeConfig {
   /** github 链接 */
   github?: string;
@@ -58,6 +67,8 @@ interface IAdditionalThemeConfig {
   docVersions?: IDocVersion;
   /** 更多链接 */
   moreLinks?: IMoreLink[];
+  /** banner 配置 */
+  bannerConfig?: IBannerConfig;
 }
 
 export interface IAllThemeConfig extends IThemeConfig, IAdditionalThemeConfig {}
