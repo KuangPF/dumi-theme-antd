@@ -16,6 +16,30 @@ title: 基础
 
 导航栏 Github 图标链接，如不配置该字段，则不展示。
 
+### bannerConfig
+
+- 类型：`IBannerConfig`
+- 默认值：`bannerConfigDefault`
+
+```ts
+export interface IBannerConfig {
+  /** 是否展示头部 banner 背景 */
+  showBanner?: boolean;
+  /** banner 图片地址 */
+  bannerImgUrl?: string;
+  /** banner 移动端图片地址 */
+  bannerMobileImgUrl?: string;
+}
+
+const bannerConfigDefault: IBannerConfig = {
+  showBanner: true,
+  bannerMobileImgUrl: 'xx', // antd v5 官网自带 banner 图
+  bannerImgUrl: 'xx' // antd v5 官网自带 banner 图
+};
+```
+
+首页头部 banner 图配置选项
+
 ### localesEnhance
 
 - 类型：`ILocaleEnhance[]`

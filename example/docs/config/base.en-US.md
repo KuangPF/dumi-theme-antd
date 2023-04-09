@@ -16,6 +16,30 @@ title: Base
 
 The Github icon link in the navigation bar. If this field is not configured, it will not be displayed.
 
+### bannerConfig
+
+- type：`IBannerConfig`
+- default：`bannerConfigDefault`
+
+```ts
+export interface IBannerConfig {
+  /** Whether to display the header banner background*/
+  showBanner?: boolean;
+  /** banner url */
+  bannerImgUrl?: string;
+  /** banner mobile url */
+  bannerMobileImgUrl?: string;
+}
+
+const bannerConfigDefault: IBannerConfig = {
+  showBanner: true,
+  bannerMobileImgUrl: 'xx', // antd v5 official website comes with banner image
+  bannerImgUrl: 'xx' // antd v5 official website comes with banner image
+};
+```
+
+Home page header banner image configuration options
+
 ### localesEnhance
 
 - type：`ILocaleEnhance[]`
