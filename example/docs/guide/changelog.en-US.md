@@ -7,6 +7,10 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.3
+
+- 🆕 首页 banner 区域支持自定义配置[#4](https://github.com/KuangPF/dumi-theme-antd/issues/4)。
+
 ## 0.2.2
 
 - 🆕 导航栏支持配置更多生态链接。
