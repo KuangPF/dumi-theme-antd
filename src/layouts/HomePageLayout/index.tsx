@@ -1,13 +1,21 @@
 import { css } from '@emotion/react';
 import { Button, Space, Typography } from 'antd';
-import { Link, useSiteData } from 'dumi';
-import { useContext, type FC } from 'react';
+import { Link } from 'dumi';
+import React, { useContext, type FC } from 'react';
+import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useLocaleValue from '../../hooks/useLocaleValue';
 import useSiteToken from '../../hooks/useSiteToken';
 import SiteContext from '../../slots/SiteContext';
-import { IAction } from '../../types';
+import { IAction, IBannerConfig } from '../../types';
 import Features from './components/Features';
 import { GroupMask } from './components/Group';
+
+const bannerConfigDefault: IBannerConfig = {
+  showBanner: true,
+  bannerMobileImgUrl:
+    'https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*JmlaR5oQn3MAAAAAAAAAAAAADrJ8AQ/original',
+  bannerImgUrl: ''
+};
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -18,6 +26,12 @@ const useStyle = () => {
       position: relative;
       text-align: center;
       flex: 1;
+    `,
+    bannerDisplay: css`
+      display: block;
+    `,
+    bannerDisplayNone: css`
+      display: none;
     `,
     titleBase: css`
       h1& {
@@ -47,20 +61,62 @@ const Homepage: FC = () => {
   const style = useStyle();
   const { token } = useSiteToken();
   const { isMobile } = useContext(SiteContext);
-  const {
-    themeConfig: { name }
-  } = useSiteData();
-
+  const { bannerConfig, name } = useAdditionalThemeConfig();
   const actions: IAction[] = useLocaleValue('actions');
   const title = useLocaleValue('title');
   const description = useLocaleValue('description');
 
+  // 如果配置了 bannerImgUrl 字段，展示配置图片，否则展示 ant-design 默认 banner 视频
+  const { showBanner, bannerImgUrl, bannerMobileImgUrl } = Object.assign(
+    bannerConfigDefault,
+    bannerConfig
+  );
+
+  const bannerContent = bannerImgUrl ? (
+    <img src={bannerImgUrl} style={{ width: '100%' }} alt="" />
+  ) : (
+    <React.Fragment>
+      <div
+        style={{
+          backgroundImage:
+            'url(https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*6d50SboraPIAAAAAAAAAAAAAARQnAQ)',
+          flex: 'auto',
+          backgroundRepeat: 'repeat-x',
+          backgroundPosition: '100% 0',
+          backgroundSize: 'auto 100%'
+        }}
+      />
+
+      <video style={{ height: '100%', objectFit: 'contain' }} autoPlay muted loop>
+        <source
+          src="https://mdn.alipayobjects.com/huamei_iwk9zp/afts/file/A*uYT7SZwhJnUAAAAAAAAAAAAADgCCAQ"
+          type="video/webm"
+        />
+        <source
+          src="https://gw.alipayobjects.com/mdn/rms_08e378/afts/file/A*XYYNQJ3NbmMAAAAAAAAAAAAAARQnAQ"
+          type="video/mp4"
+        />
+      </video>
+
+      <div
+        style={{
+          backgroundImage:
+            'url(https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*8ILtRrQlVDMAAAAAAAAAAAAAARQnAQ)',
+          flex: 'auto',
+          backgroundRepeat: 'repeat-x',
+          backgroundPosition: '0 0',
+          backgroundSize: 'auto 100%',
+          marginLeft: -1
+        }}
+      />
+    </React.Fragment>
+  );
   return (
     <div css={style.mainContent}>
       {isMobile ? (
         <img
-          src="https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*JmlaR5oQn3MAAAAAAAAAAAAADrJ8AQ/original"
-          style={{ width: '100%' }}
+          src={bannerMobileImgUrl}
+          style={{ width: '100%', display: `${showBanner ? 'inline-block' : 'none'} ` }}
           alt=""
         />
       ) : (
@@ -68,44 +124,12 @@ const Homepage: FC = () => {
           style={{
             height: 320,
             background: '#77C6FF',
-            display: 'flex',
+            display: `${showBanner ? 'flex' : 'none'} `,
             flexWrap: 'nowrap',
             justifyContent: 'center'
           }}
         >
-          <div
-            style={{
-              backgroundImage:
-                'url(https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*6d50SboraPIAAAAAAAAAAAAAARQnAQ)',
-              flex: 'auto',
-              backgroundRepeat: 'repeat-x',
-              backgroundPosition: '100% 0',
-              backgroundSize: 'auto 100%'
-            }}
-          />
-
-          <video style={{ height: '100%', objectFit: 'contain' }} autoPlay muted loop>
-            <source
-              src="https://mdn.alipayobjects.com/huamei_iwk9zp/afts/file/A*uYT7SZwhJnUAAAAAAAAAAAAADgCCAQ"
-              type="video/webm"
-            />
-            <source
-              src="https://gw.alipayobjects.com/mdn/rms_08e378/afts/file/A*XYYNQJ3NbmMAAAAAAAAAAAAAARQnAQ"
-              type="video/mp4"
-            />
-          </video>
-
-          <div
-            style={{
-              backgroundImage:
-                'url(https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*8ILtRrQlVDMAAAAAAAAAAAAAARQnAQ)',
-              flex: 'auto',
-              backgroundRepeat: 'repeat-x',
-              backgroundPosition: '0 0',
-              backgroundSize: 'auto 100%',
-              marginLeft: -1
-            }}
-          />
+          {bannerContent}
         </div>
       )}
       {/* Image Left Top */}

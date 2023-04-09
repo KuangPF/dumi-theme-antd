@@ -39,7 +39,7 @@ interface IDocVersion {
   [propName: string]: string;
 }
 
-interface IBannerConfig {
+export interface IBannerConfig {
   /** 是否展示头部 banner 背景 */
   showBanner?: boolean;
   /** banner 图片地址 */
