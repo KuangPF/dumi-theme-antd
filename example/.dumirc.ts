@@ -1,4 +1,5 @@
 import { defineConfig } from 'dumi';
+import pkgJSON from '../package.json';
 
 export default defineConfig({
   // disable mfsu for HMR
@@ -96,7 +97,7 @@ export default defineConfig({
       ]
     },
     docVersions: {
-      '0.2.1': ''
+      [pkgJSON.version]: ''
     },
     moreLinks: [
       {
