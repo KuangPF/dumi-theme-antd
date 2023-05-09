@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import { Helmet, useLocale, useLocation, useOutlet } from 'dumi';
-import React, { useMemo, type FC } from 'react';
+import { Helmet, useLocale, useLocation, useOutlet, useSiteData } from 'dumi';
+import React, { useEffect, useMemo, type FC } from 'react';
 import GlobalStyles from '../../common/GlobalStyles';
 import useLocaleValue from '../../hooks/useLocaleValue';
 import Footer from '../../slots/Footer';
@@ -26,7 +26,8 @@ const DocLayout: FC = () => {
   const title = useLocaleValue('title');
   const description = useLocaleValue('description');
 
-  const { pathname } = location;
+  const { pathname, hash } = location;
+  const { loading } = useSiteData();
 
   const content = useMemo(() => {
     if (
@@ -42,6 +43,13 @@ const DocLayout: FC = () => {
     }
     return <SidebarLayout>{outlet}</SidebarLayout>;
   }, [pathname, outlet]);
+
+  // handle hash change or visit page hash from Link component, and jump after async chunk loaded
+  useEffect(() => {
+    const id = hash.replace('#', '');
+    if (id) document.getElementById(decodeURIComponent(id))?.scrollIntoView();
+  }, [loading, hash]);
+
   return (
     <div css={styles.layoutWrap}>
       <Helmet encodeSpecialCharacters={false}>

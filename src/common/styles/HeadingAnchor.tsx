@@ -9,7 +9,7 @@ export default () => (
       h4,
       h5,
       h6 {
-        > a[aria-hidden]:first-type-of {
+        > a[aria-hidden]:first-of-type {
           float: left;
           width: 20px;
           padding-inline-end: 4px;
@@ -33,7 +33,7 @@ export default () => (
           }
         }
 
-        &:not(:hover) > a[aria-hidden]:first-type-of > .icon-link {
+        &:not(:hover) > a[aria-hidden]:first-of-type > .icon-link {
           visibility: hidden;
         }
       }
