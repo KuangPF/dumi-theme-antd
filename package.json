@@ -75,7 +75,7 @@
     "react-dom": "^18.0.0"
   },
   "peerDependencies": {
-    "dumi": "^2.0.0-rc.0",
+    "dumi": "^2.1.19",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
