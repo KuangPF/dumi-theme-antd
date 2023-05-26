@@ -174,13 +174,14 @@ features: {
 
 ### sidebarGroupModePath
 
-- 类型：`Array<string | RegExp>`
+- 类型：`Array<string | RegExp> | true`
 - 默认值：`[]`
 
 ```ts
 export default {
   themeConfig: {
     antdTheme: {
+      // sidebarGroupModePath: true, // 当为 true 时，全部都以分组形式展示
       sidebarGroupModePath: [
         // 匹配以 /config 开头的路由
         '/config',
@@ -192,6 +193,48 @@ export default {
 };
 ```
 
-左侧导航栏是否需要作为分组处理，参考 antd [menuitemgrouptype][antd-menuitemgrouptype-url]。
+### antdModeSidebar
+
+- 类型：`Record<string, AntdModeSidebarMenuItems>`
+- 默认值：`undefined`
+
+```ts
+export default {
+  themeConfig: {
+    antdModeSidebar: {
+      '/welcome': [
+        {
+          title: '快速开始',
+          type: 'group',
+          children: [
+            {
+              // 支持多层级
+              title: '安装',
+              children: [
+                '/welcome/getting-started/installation', // 支持仅填写链接，title 自动根据 `# xxx` 生成
+                '/welcome/getting-started/installation/docker'
+              ]
+            },
+            {
+              title: '升级',
+              children: [
+                '/welcome/getting-started/upgrading',
+                '/welcome/getting-started/upgrading/docker-compose'
+              ]
+            }
+          ]
+        },
+        // 支持对象的方式
+        {
+          title: '更新记录',
+          link: 'https://github.com/xx/xx/changelog.md'
+        }
+      ]
+    }
+  }
+};
+```
+
+支持多级目录不跳转，配置参数参考 ant-design menu 组件的 [items 属性](https://ant.design/components/menu-cn#itemtype)。
 
 [antd-menuitemgrouptype-url]: https://ant.design/components/menu-cn#menuitemgrouptype
