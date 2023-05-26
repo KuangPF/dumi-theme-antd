@@ -7,6 +7,7 @@ import { useRouteMeta } from 'dumi';
 import type { FC, ReactNode } from 'react';
 import { useMemo } from 'react';
 import PrevAndNext from '../../common/PrevAndNext';
+import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import Footer from '../Footer';
 
@@ -104,6 +105,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
   const meta = useRouteMeta();
   const styles = useStyle();
   const { token } = useSiteToken();
+  const { antdModeSidebar } = useAdditionalThemeConfig();
 
   const debugDemos = useMemo(
     () => meta.toc?.filter((item) => item._debug_demo).map((item) => item.id) || [],
@@ -160,7 +162,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
         </section>
       </Affix>
       <article css={styles.articleWrapper}>
-        {meta.frontmatter?.title || meta.frontmatter.subtitle ? (
+        {!antdModeSidebar && (meta.frontmatter?.title || meta.frontmatter.subtitle) ? (
           <Typography.Title
             style={{
               fontSize: 30
