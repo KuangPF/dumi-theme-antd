@@ -56,15 +56,15 @@ const Footer: FC = () => {
           >
             ❤
           </span>
-          by
+          by{' '}
+          {footer ? (
+            <span
+              dangerouslySetInnerHTML={{
+                __html: footer
+              }}
+            />
+          ) : null}
         </div>
-        {footer ? (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: footer
-            }}
-          />
-        ) : null}
       </div>
     </div>
   );

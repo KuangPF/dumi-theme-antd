@@ -105,7 +105,6 @@ export default () => {
         .markdown ul > li {
           margin-left: 20px;
           padding-left: 4px;
-          list-style-type: circle;
 
           .rtl & {
             margin-right: 20px;
@@ -142,10 +141,15 @@ export default () => {
           padding: 0.2em 0.4em;
           font-size: 0.9em;
           background: ${token.siteMarkdownCodeBg};
-          border: 1px solid ${token.colorSplit};
           border-radius: 3px;
+          color: #d56161;
+          font-family: ${token.codeFamily};
         }
 
+        .ant-alert code {
+          color: #d56161;
+          font-family: ${token.codeFamily};
+        }
         .markdown pre {
           font-family: ${token.codeFamily};
           background: ${token.siteMarkdownCodeBg};

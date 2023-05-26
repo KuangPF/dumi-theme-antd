@@ -104,7 +104,7 @@ export default () => {
           .token.char,
           .token.builtin,
           .token.inserted {
-            color: #0b8235;
+            color: #9a6e3a;
           }
 
           .token.operator,
@@ -112,7 +112,7 @@ export default () => {
           .token.url,
           .language-css .token.string,
           .style .token.string {
-            color: #0b8235;
+            color: #9a6e3a;
           }
 
           .token.atrule,
@@ -142,6 +142,10 @@ export default () => {
 
           .token.entity {
             cursor: help;
+          }
+
+          .token.comment {
+            font-style: normal;
           }
         }
       `}
