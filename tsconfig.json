@@ -11,7 +11,7 @@
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "target": "es6",
-    "lib": ["dom", "es2017"],
+    "lib": ["dom", "es2021"],
     "skipLibCheck": true,
     "stripInternal": true,
     "suppressImplicitAnyIndexErrors": true,

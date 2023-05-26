@@ -19,8 +19,9 @@
   ],
   "scripts": {
     "build": "father build",
-    "build:docs": "cd example && npm run build",
+    "build:docs": "cross-env APP_ROOT=example dumi build",
     "dev": "father dev",
+    "docs": "cross-env APP_ROOT=example dumi dev",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
@@ -50,6 +51,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@babel/runtime": "^7.21.5",
     "@ctrl/tinycolor": "^3.5.0",
     "@emotion/react": "^11.10.5",
     "antd": "^5.1.1",
@@ -62,11 +64,12 @@
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@emotion/babel-preset-css-prop": "^11.10.0",
+    "@emotion/babel-preset-css-prop": "11.10.0",
     "@types/lodash": "^4.14.191",
     "@utopia/eslint-config-react": "^0.0.9",
     "@utopia/prettier-config-base": "^0.0.9",
-    "dumi": "2.1.14",
+    "cross-env": "^7.0.3",
+    "dumi": "2.2.0",
     "father": "^4.1.0",
     "father-plugin-dumi-theme": "^1.0.0-beta.0",
     "husky": "^8.0.1",
@@ -75,7 +78,7 @@
     "react-dom": "^18.0.0"
   },
   "peerDependencies": {
-    "dumi": "^2.1.19",
+    "dumi": "^2.2.0",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
