@@ -36,7 +36,7 @@ const DocLayout: FC = () => {
     ) {
       return (
         <React.Fragment>
-          <Homepage />
+          {outlet || <Homepage />}
           <Footer />
         </React.Fragment>
       );
