@@ -1,5 +1,6 @@
 import { defineConfig } from 'dumi';
 import pkgJSON from '../package.json';
+import { defineThemeConfig } from './.dumi/theme';
 
 export default defineConfig({
   // disable mfsu for HMR
@@ -13,7 +14,7 @@ export default defineConfig({
   ],
   extraBabelPresets: ['@emotion/babel-preset-css-prop'],
   // pass theme config
-  themeConfig: {
+  themeConfig: defineThemeConfig({
     name: 'dumi-theme-antd',
     nav: {
       'zh-CN': [
@@ -109,5 +110,5 @@ export default defineConfig({
         link: 'https://ant.design/'
       }
     ]
-  }
+  })
 });
