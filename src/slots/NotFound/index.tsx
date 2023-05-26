@@ -21,6 +21,7 @@ const NotFoundPage: React.FC<NotFoundProps> = () => {
           extra={
             <Link to="/">
               <Button type="primary" icon={<HomeOutlined />}>
+                {' '}
                 <FormattedMessage id="app.not-found.back-home" />
               </Button>
             </Link>

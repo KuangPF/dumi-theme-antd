@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-closing-tag-location */
 import { css } from '@emotion/react';
 import { Link, useLocale, useLocation, useSiteData } from 'dumi';
+import { Fragment, useMemo } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
 
 const useStyle = () => {
@@ -59,18 +61,30 @@ const Logo = () => {
   const locale = useLocale();
   const logImgUrl =
     themeConfig.logo || 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg';
+  const content = useMemo(
+    () => (
+      <Fragment>
+        <img alt="logo" src={logImgUrl} />
+        <span style={{ lineHeight: 32 }}>{themeConfig.name}</span>
+      </Fragment>
+    ),
+    [logImgUrl, themeConfig.name]
+  );
+
   return (
     <h1>
-      <Link to={'base' in locale ? `${locale.base}${search}` : `/${search}`} css={logo}>
-        <img alt="logo" src={logImgUrl} />
-        <span
-          style={{
-            lineHeight: '32px'
-          }}
+      {themeConfig.homeLink && themeConfig.homeLink.startsWith('http') ? (
+        <a href={themeConfig.homeLink} css={logo}>
+          {content}
+        </a>
+      ) : (
+        <Link
+          to={themeConfig.homeLink || ('base' in locale ? `${locale.base}${search}` : `/${search}`)}
+          css={logo}
         >
-          {themeConfig.name}
-        </span>
-      </Link>
+          {content}
+        </Link>
+      )}
     </h1>
   );
 };
