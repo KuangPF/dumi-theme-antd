@@ -174,13 +174,14 @@ After configuration, the page will be presented as the homepage, used to display
 
 ### sidebarGroupModePath
 
-- type：`Array<string | RegExp>`
+- type：`Array<string | RegExp> | true`
 - default：`[]`
 
 ```ts
 export default {
   themeConfig: {
     antdTheme: {
+      // sidebarGroupModePath: true, // when true, all routes will be treated as a group
       sidebarGroupModePath: [
         // Matches routes starting with `/config`
         '/config',
@@ -191,6 +192,50 @@ export default {
   }
 };
 ```
+
+### antdModeSidebar
+
+- type：`Record<string, AntdModeSidebarMenuItems>`
+- default：`undefined`
+
+```ts
+export default {
+  themeConfig: {
+    antdModeSidebar: {
+      '/welcome': [
+        {
+          title: '快速开始',
+          type: 'group',
+          children: [
+            {
+              // support multiple nesting
+              title: '安装',
+              children: [
+                '/welcome/getting-started/installation',
+                '/welcome/getting-started/installation/docker'
+              ]
+            },
+            {
+              title: '升级',
+              children: [
+                '/welcome/getting-started/upgrading',
+                '/welcome/getting-started/upgrading/docker-compose'
+              ]
+            }
+          ]
+        },
+        // 支持对象的方式
+        {
+          title: '更新记录',
+          link: 'https://github.com/xx/xx/changelog.md'
+        }
+      ]
+    }
+  }
+};
+```
+
+Support for multi-level directories，Configuration parameter reference ant-design menu 组件的 [items prop](https://ant.design/components/menu-cn#itemtype)。
 
 Whether the left navigation bar needs to be treated as a group, please refer to antd [menuitemgrouptype][antd-menuitemgrouptype-url].
 
