@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { Helmet, useLocale, useLocation, useOutlet, useSiteData } from 'dumi';
+import { Helmet, useLocale, useLocation, useOutlet, useRouteMeta, useSiteData } from 'dumi';
 import React, { useEffect, useMemo, type FC } from 'react';
 import GlobalStyles from '../../common/GlobalStyles';
 import useLocaleValue from '../../hooks/useLocaleValue';
@@ -23,9 +23,9 @@ const DocLayout: FC = () => {
   const locale = useLocale();
   const location = useLocation();
   const styles = useStyles();
+  const routeMeta = useRouteMeta();
   const title = useLocaleValue('title');
   const description = useLocaleValue('description');
-
   const { pathname, hash } = location;
   const { loading } = useSiteData();
 
@@ -41,8 +41,12 @@ const DocLayout: FC = () => {
         </React.Fragment>
       );
     }
-    return <SidebarLayout>{outlet}</SidebarLayout>;
-  }, [pathname, outlet]);
+    return routeMeta.frontmatter?.sidebar === false ? (
+      <div style={{ padding: 50 }}>{outlet}</div>
+    ) : (
+      <SidebarLayout>{outlet}</SidebarLayout>
+    );
+  }, [pathname, outlet, routeMeta]);
 
   // handle hash change or visit page hash from Link component, and jump after async chunk loaded
   useEffect(() => {
