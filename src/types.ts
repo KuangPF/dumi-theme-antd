@@ -37,33 +37,30 @@ interface IFeature {
 
 // 分组类型，将 children 换位字符串数组
 
-export type AntdModeSidebarMenuItemType = {
+export type SidebarEnhanceItemType = {
   title: string;
   link: string;
   target?: string;
 };
 
-export type AntdModeSidebarMenuChildrenType = string | AntdModeSidebarMenuItemType;
-export type AntdModeSubMenuType = {
-  children: AntdModeSidebarMenuChildrenType[];
+export type SidebarEnhanceChildrenType = string | SidebarEnhanceItemType;
+export type SidebarEnhanceSubType = {
+  children: SidebarEnhanceChildrenType[];
   title: string;
 };
 
-// antd 模式的 sidebar 相关类型
-export type AntdModeSidebarMenuGroupChildren = (
-  | AntdModeSubMenuType
-  | AntdModeSidebarMenuChildrenType
-)[];
-export type AntdModeSidebarMenuGroupType = {
+// 增强模式的 sidebar 相关类型
+export type SidebarEnhanceGroupChildren = (SidebarEnhanceSubType | SidebarEnhanceChildrenType)[];
+export type SidebarEnhanceGroupType = {
   type: 'group';
   title: string;
-  children: AntdModeSidebarMenuGroupChildren;
+  children: SidebarEnhanceGroupChildren;
 };
-export type AntdModeSidebarMenuType =
-  | AntdModeSubMenuType
-  | AntdModeSidebarMenuGroupType
-  | AntdModeSidebarMenuChildrenType;
-export type AntdModeSidebarMenuItems = AntdModeSidebarMenuType[];
+export type SidebarEnhanceType =
+  | SidebarEnhanceSubType
+  | SidebarEnhanceGroupType
+  | SidebarEnhanceChildrenType;
+export type SidebarEnhanceItems = SidebarEnhanceType[];
 
 interface IDocVersion {
   [propName: string]: string;
@@ -101,8 +98,8 @@ interface IAdditionalThemeConfig {
   moreLinks?: IMoreLink[];
   /** banner 配置 */
   bannerConfig?: IBannerConfig;
-  /** antd 模式的 sidebar */
-  antdModeSidebar?: Record<string, AntdModeSidebarMenuItems>;
+  /** 增强模式的 sidebar */
+  sidebarEnhance?: Record<string, SidebarEnhanceItems>;
 }
 
 export interface IAllThemeConfig extends Omit<IThemeConfig, 'socialLinks'>, IAdditionalThemeConfig {

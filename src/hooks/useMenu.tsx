@@ -5,12 +5,12 @@ import { isRegExp } from 'lodash';
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
 import type {
-  AntdModeSidebarMenuGroupType,
-  AntdModeSidebarMenuItems,
-  AntdModeSidebarMenuItemType,
-  AntdModeSidebarMenuType,
-  AntdModeSubMenuType,
-  ISidebarGroupModePathItem
+  ISidebarGroupModePathItem,
+  SidebarEnhanceGroupType,
+  SidebarEnhanceItems,
+  SidebarEnhanceItemType,
+  SidebarEnhanceSubType,
+  SidebarEnhanceType
 } from '../types';
 import useAdditionalThemeConfig from './useAdditionalThemeConfig';
 
@@ -22,7 +22,7 @@ export type UseMenuOptions = {
 const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => {
   const { pathname, search } = useLocation();
   const sidebarData = useSidebarData();
-  const { sidebarGroupModePath, antdModeSidebar = {} } = useAdditionalThemeConfig();
+  const { sidebarGroupModePath, sidebarEnhance = {} } = useAdditionalThemeConfig();
   const { before, after } = options;
 
   const fullSidebarData = useFullSidebarData();
@@ -36,22 +36,22 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
     }, {});
   }, [fullSidebarData]);
 
-  const currentAntdModeSidebarData = useMemo<AntdModeSidebarMenuItems | undefined>(() => {
-    const currentLink = Object.keys(antdModeSidebar).find((link) => pathname.startsWith(link));
+  const currentAntdModeSidebarData = useMemo<SidebarEnhanceItems | undefined>(() => {
+    const currentLink = Object.keys(sidebarEnhance).find((link) => pathname.startsWith(link));
     if (!currentLink) return undefined;
-    return antdModeSidebar[currentLink];
-  }, [pathname, antdModeSidebar]);
+    return sidebarEnhance[currentLink];
+  }, [pathname, sidebarEnhance]);
   const antdModeSidebarMenuItems = useMemo<MenuProps['items']>(() => {
-    const isItemMenu = (v: any): v is AntdModeSidebarMenuItemType => {
+    const isItemMenu = (v: any): v is SidebarEnhanceItemType => {
       return v && typeof v === 'object' && 'link' in v && 'title' in v;
     };
-    const isGroupMenu = (v: any): v is AntdModeSidebarMenuGroupType => {
+    const isGroupMenu = (v: any): v is SidebarEnhanceGroupType => {
       return v && typeof v === 'object' && v.type === 'group';
     };
-    const isSubMenu = (v: any): v is AntdModeSubMenuType => {
+    const isSubMenu = (v: any): v is SidebarEnhanceSubType => {
       return v && typeof v === 'object' && 'children' in v;
     };
-    function processMenu(menu: AntdModeSidebarMenuType): ItemType {
+    function processMenu(menu: SidebarEnhanceType): ItemType {
       if (typeof menu === 'string') {
         // menu: '/introduction'
         return {
