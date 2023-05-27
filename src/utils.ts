@@ -20,3 +20,8 @@ export function getTargetLocalePath({
     ? `${target.base}${clearPath}`.replace(/^\/\//, '/')
     : `${clearPath}${target.suffix}`;
 }
+
+// 删除标题中的 HTML 标签
+export const removeTitleCode = (title = '') => {
+  return title.replace(/<\w+>.*<\/\w+>/g, '');
+};
