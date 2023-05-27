@@ -11,7 +11,7 @@ timeline: true
 
 - 🆕 支持 `sidebarGroupModePath` 为 `true`，详细说明见 [sidebarGroupModePath 配置](/config/base#sidebargroupmodepath)。
 - 🆕 增加 `<Alert></Alert>` 组件。
-- 🆕 支持多级 sidebar，详细见 [antdModeSidebar 配置](/config/base#antdmodesidebar)。
+- 🆕 支持多级 sidebar，详细见 [sidebarEnhance 配置](/config/base#antdmodesidebar)。
 
 ## 0.2.4
 

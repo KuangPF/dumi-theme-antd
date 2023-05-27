@@ -105,7 +105,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
   const meta = useRouteMeta();
   const styles = useStyle();
   const { token } = useSiteToken();
-  const { antdModeSidebar } = useAdditionalThemeConfig();
+  const { sidebarEnhance } = useAdditionalThemeConfig();
 
   const debugDemos = useMemo(
     () => meta.toc?.filter((item) => item._debug_demo).map((item) => item.id) || [],
@@ -162,7 +162,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
         </section>
       </Affix>
       <article css={styles.articleWrapper}>
-        {!antdModeSidebar && (meta.frontmatter?.title || meta.frontmatter.subtitle) ? (
+        {!sidebarEnhance && (meta.frontmatter?.title || meta.frontmatter.subtitle) ? (
           <Typography.Title
             style={{
               fontSize: 30

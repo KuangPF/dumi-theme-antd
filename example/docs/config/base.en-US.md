@@ -193,15 +193,15 @@ export default {
 };
 ```
 
-### antdModeSidebar
+### sidebarEnhance
 
-- type：`Record<string, AntdModeSidebarMenuItems>`
+- type：`Record<string, SidebarEnhanceItems>`
 - default：`undefined`
 
 ```ts
 export default {
   themeConfig: {
-    antdModeSidebar: {
+    sidebarEnhance: {
       '/welcome': [
         {
           title: '快速开始',
