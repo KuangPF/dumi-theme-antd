@@ -1,16 +1,19 @@
 import { Helmet, useRouteMeta } from 'dumi';
 import { useMemo } from 'react';
+import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
+import { removeTitleCode } from '../utils';
 
 const CommonHelmet = () => {
   const meta = useRouteMeta();
+  const { title: configTitle } = useAdditionalThemeConfig();
 
   const [title, description] = useMemo(() => {
-    const helmetTitle = `${meta.frontmatter.subtitle || ''} ${
+    const helmetTitle = `${removeTitleCode(meta.frontmatter.subtitle) || ''} ${removeTitleCode(
       meta.frontmatter?.title
-    } - Dumi Theme AntD`;
+    )} - ${configTitle}`;
     const helmetDescription = meta.frontmatter.description;
     return [helmetTitle, helmetDescription];
-  }, [meta]);
+  }, [meta, configTitle]);
 
   return (
     <Helmet>

@@ -3,7 +3,7 @@ import { ItemType } from 'antd/es/menu/hooks/useItems';
 import { Link, useFullSidebarData, useLocation, useSidebarData } from 'dumi';
 import { isRegExp } from 'lodash';
 import type { ReactNode } from 'react';
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import type {
   ISidebarGroupModePathItem,
   SidebarEnhanceGroupType,
@@ -12,6 +12,7 @@ import type {
   SidebarEnhanceSubType,
   SidebarEnhanceType
 } from '../types';
+import { removeTitleCode } from '../utils';
 import useAdditionalThemeConfig from './useAdditionalThemeConfig';
 
 export type UseMenuOptions = {
@@ -35,10 +36,6 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
       return res;
     }, {});
   }, [fullSidebarData]);
-
-  const replaceMenuTitleCode = useCallback((title = '') => {
-    return title.replace(/<\w+>.*<\/\w+>/g, '');
-  }, []);
 
   const currentSidebarEnhanceData = useMemo<SidebarEnhanceItems | undefined>(() => {
     const currentLink = Object.keys(sidebarEnhance).find((link) => pathname.startsWith(link));
@@ -126,10 +123,10 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                 label: (
                   <Link to={`${item.link}${search}`}>
                     {before}
-                    <span key="english">{replaceMenuTitleCode(item?.title)}</span>
+                    <span key="english">{removeTitleCode(item?.title)}</span>
                     {item.frontmatter && (
                       <span className="chinese" key="chinese">
-                        {replaceMenuTitleCode(item.frontmatter.subtitle)}
+                        {removeTitleCode(item.frontmatter.subtitle)}
                       </span>
                     )}
                     {after}
@@ -156,7 +153,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                 label: (
                   <Link to={`${item.link}${search}`}>
                     {before}
-                    {replaceMenuTitleCode(item?.title)}
+                    {removeTitleCode(item?.title)}
                     {after}
                   </Link>
                 ),
@@ -173,7 +170,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                     label: (
                       <Link to={`${item.link}${search}`}>
                         {before}
-                        {replaceMenuTitleCode(item?.title)}
+                        {removeTitleCode(item?.title)}
                         {after}
                       </Link>
                     ),
@@ -200,7 +197,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               label: (
                 <Link to={`${item.link}${search}`}>
                   {before}
-                  {replaceMenuTitleCode(item?.title)}
+                  {removeTitleCode(item?.title)}
                   {after}
                 </Link>
               ),
@@ -211,7 +208,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
         return result;
       }, []) ?? []
     );
-  }, [sidebarData, sidebarGroupModePath, pathname, search, before, replaceMenuTitleCode, after]);
+  }, [sidebarData, sidebarGroupModePath, pathname, search, before, after]);
 
   return [sidebarEnhanceMenuItems || menuItems, pathname];
 };
