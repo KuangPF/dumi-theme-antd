@@ -110,13 +110,13 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
     [meta]
   );
 
-  const isShowCustomTitle = useMemo(() => {
+  const isShowTitle = useMemo(() => {
     const title = meta.frontmatter?.title || meta.frontmatter.subtitle;
     if (!title) return false;
 
     // 避免 markdown 里有 h1 导致双标题
     const firstToc = meta.toc[0];
-    if (firstToc && firstToc.depth === 1 && firstToc.title === title) return false;
+    if (firstToc && firstToc.depth === 1) return false;
 
     return true;
   }, [meta.frontmatter?.title, meta.frontmatter.subtitle, meta.toc]);
@@ -171,7 +171,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
         </section>
       </Affix>
       <article css={styles.articleWrapper}>
-        {isShowCustomTitle ? (
+        {isShowTitle ? (
           <Typography.Title
             style={{
               fontSize: 30

@@ -3,7 +3,7 @@ import { ItemType } from 'antd/es/menu/hooks/useItems';
 import { Link, useFullSidebarData, useLocation, useSidebarData } from 'dumi';
 import { isRegExp } from 'lodash';
 import type { ReactNode } from 'react';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import type {
   ISidebarGroupModePathItem,
   SidebarEnhanceGroupType,
@@ -36,12 +36,16 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
     }, {});
   }, [fullSidebarData]);
 
-  const currentAntdModeSidebarData = useMemo<SidebarEnhanceItems | undefined>(() => {
+  const replaceMenuTitleCode = useCallback((title: string) => {
+    return title.replace(/<code>.*<\/code>/g, '');
+  }, []);
+
+  const currentSidebarEnhanceData = useMemo<SidebarEnhanceItems | undefined>(() => {
     const currentLink = Object.keys(sidebarEnhance).find((link) => pathname.startsWith(link));
     if (!currentLink) return undefined;
     return sidebarEnhance[currentLink];
   }, [pathname, sidebarEnhance]);
-  const antdModeSidebarMenuItems = useMemo<MenuProps['items']>(() => {
+  const sidebarEnhanceMenuItems = useMemo<MenuProps['items']>(() => {
     const isItemMenu = (v: any): v is SidebarEnhanceItemType => {
       return v && typeof v === 'object' && 'link' in v && 'title' in v;
     };
@@ -95,9 +99,9 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
       return null;
     }
 
-    if (!currentAntdModeSidebarData) return undefined;
-    return currentAntdModeSidebarData.map(processMenu);
-  }, [after, before, currentAntdModeSidebarData, linkTitleMap, search]);
+    if (!currentSidebarEnhanceData) return undefined;
+    return currentSidebarEnhanceData.map(processMenu);
+  }, [after, before, currentSidebarEnhanceData, linkTitleMap, search]);
 
   const menuItems = useMemo<MenuProps['items']>(() => {
     const sidebarItems = [...(sidebarData ?? [])];
@@ -122,10 +126,10 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                 label: (
                   <Link to={`${item.link}${search}`}>
                     {before}
-                    <span key="english">{item?.title}</span>
+                    <span key="english">{replaceMenuTitleCode(item?.title)}</span>
                     {item.frontmatter && (
                       <span className="chinese" key="chinese">
-                        {item.frontmatter.subtitle}
+                        {replaceMenuTitleCode(item.frontmatter.subtitle)}
                       </span>
                     )}
                     {after}
@@ -152,7 +156,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                 label: (
                   <Link to={`${item.link}${search}`}>
                     {before}
-                    {item?.title}
+                    {replaceMenuTitleCode(item?.title)}
                     {after}
                   </Link>
                 ),
@@ -169,7 +173,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                     label: (
                       <Link to={`${item.link}${search}`}>
                         {before}
-                        {item?.title}
+                        {replaceMenuTitleCode(item?.title)}
                         {after}
                       </Link>
                     ),
@@ -196,7 +200,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               label: (
                 <Link to={`${item.link}${search}`}>
                   {before}
-                  {item?.title}
+                  {replaceMenuTitleCode(item?.title)}
                   {after}
                 </Link>
               ),
@@ -207,9 +211,9 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
         return result;
       }, []) ?? []
     );
-  }, [sidebarData, pathname, search, after, before, sidebarGroupModePath]);
+  }, [sidebarData, sidebarGroupModePath, pathname, search, before, replaceMenuTitleCode, after]);
 
-  return [antdModeSidebarMenuItems || menuItems, pathname];
+  return [sidebarEnhanceMenuItems || menuItems, pathname];
 };
 
 export default useMenu;
