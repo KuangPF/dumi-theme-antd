@@ -7,7 +7,6 @@ import { useRouteMeta } from 'dumi';
 import type { FC, ReactNode } from 'react';
 import { useMemo } from 'react';
 import PrevAndNext from '../../common/PrevAndNext';
-import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import Footer from '../Footer';
 
@@ -105,12 +104,22 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
   const meta = useRouteMeta();
   const styles = useStyle();
   const { token } = useSiteToken();
-  const { sidebarEnhance } = useAdditionalThemeConfig();
 
   const debugDemos = useMemo(
     () => meta.toc?.filter((item) => item._debug_demo).map((item) => item.id) || [],
     [meta]
   );
+
+  const isShowCustomTitle = useMemo(() => {
+    const title = meta.frontmatter?.title || meta.frontmatter.subtitle;
+    if (!title) return false;
+
+    // 避免 markdown 里有 h1 导致双标题
+    const firstToc = meta.toc[0];
+    if (firstToc && firstToc.depth === 1 && firstToc.title === title) return false;
+
+    return true;
+  }, [meta.frontmatter?.title, meta.frontmatter.subtitle, meta.toc]);
 
   const anchorItems = useMemo(
     () =>
@@ -162,7 +171,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
         </section>
       </Affix>
       <article css={styles.articleWrapper}>
-        {!sidebarEnhance && (meta.frontmatter?.title || meta.frontmatter.subtitle) ? (
+        {isShowCustomTitle ? (
           <Typography.Title
             style={{
               fontSize: 30
