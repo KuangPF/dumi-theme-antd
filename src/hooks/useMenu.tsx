@@ -36,8 +36,8 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
     }, {});
   }, [fullSidebarData]);
 
-  const replaceMenuTitleCode = useCallback((title: string) => {
-    return title.replace(/<code>.*<\/code>/g, '');
+  const replaceMenuTitleCode = useCallback((title = '') => {
+    return title.replace(/<\w+>.*<\/\w+>/g, '');
   }, []);
 
   const currentSidebarEnhanceData = useMemo<SidebarEnhanceItems | undefined>(() => {
