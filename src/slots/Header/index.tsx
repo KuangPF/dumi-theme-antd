@@ -5,12 +5,13 @@ import classNames from 'classnames';
 import { useLocation } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
 import React, { useCallback, useContext, useEffect, useState, type FC } from 'react';
+// eslint-disable-next-line import/no-unresolved
+import LangSwitch from 'dumi/theme/slots/LangSwitch';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import type { SiteContextProps } from '../SiteContext';
 import SiteContext from '../SiteContext';
 import HeaderExtra from './HeaderExtral';
-import LangSwitch from './LangSwitch';
 import Logo from './Logo';
 import More from './More';
 import Navigation from './Navigation';
