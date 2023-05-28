@@ -14,10 +14,12 @@
     "lib": ["dom", "es2021"],
     "skipLibCheck": true,
     "stripInternal": true,
+    "ignoreDeprecations": "5.0",
     "suppressImplicitAnyIndexErrors": true,
     "baseUrl": "./",
     "paths": {
-      "@@/*": ["example/.dumi/tmp/*"]
+      "@@/*": ["example/.dumi/tmp/*"],
+      "dumi/theme/*": ["src/*"]
     }
   },
   "exclude": ["node_modules"]

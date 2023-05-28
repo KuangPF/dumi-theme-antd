@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { Helmet, useLocale, useLocation, useOutlet, useRouteMeta, useSiteData } from 'dumi';
+import { Helmet, Outlet, useLocale, useLocation, useOutlet, useRouteMeta, useSiteData } from 'dumi';
 import React, { useEffect, useMemo, type FC } from 'react';
 import GlobalStyles from '../../common/GlobalStyles';
 import useLocaleValue from '../../hooks/useLocaleValue';
@@ -28,7 +28,10 @@ const DocLayout: FC = () => {
   const description = useLocaleValue('description');
   const { pathname, hash } = location;
   const { loading } = useSiteData();
-
+  const is404Home = useMemo(
+    () => pathname.startsWith('/index') && routeMeta.texts.length === 0,
+    [pathname, routeMeta]
+  );
   const content = useMemo(() => {
     if (
       ['', '/'].some((path) => path === pathname) ||
@@ -36,17 +39,21 @@ const DocLayout: FC = () => {
     ) {
       return (
         <React.Fragment>
-          {outlet || <Homepage />}
+          {outlet && !is404Home ? outlet : <Homepage />}
           <Footer />
         </React.Fragment>
       );
     }
     return routeMeta.frontmatter?.sidebar === false ? (
-      <div style={{ padding: 50 }}>{outlet}</div>
+      <div style={{ padding: 50 }}>
+        <Outlet />
+      </div>
     ) : (
-      <SidebarLayout>{outlet}</SidebarLayout>
+      <SidebarLayout>
+        <Outlet />
+      </SidebarLayout>
     );
-  }, [pathname, outlet, routeMeta]);
+  }, [routeMeta.frontmatter?.sidebar, outlet, pathname, is404Home]);
 
   // handle hash change or visit page hash from Link component, and jump after async chunk loaded
   useEffect(() => {
