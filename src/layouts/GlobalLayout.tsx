@@ -1,5 +1,5 @@
 import { ConfigProvider, theme as antdTheme } from 'antd';
-import { createSearchParams, useOutlet, usePrefersColor, useSearchParams } from 'dumi';
+import { createSearchParams, Outlet, usePrefersColor, useSearchParams } from 'dumi';
 import type { FC } from 'react';
 import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
 import type { ThemeName } from '../common/ThemeSwitch';
@@ -23,7 +23,6 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
   });
 
 const GlobalLayout: FC = () => {
-  const outlet = useOutlet();
   const [, , setPrefersColor] = usePrefersColor();
 
   const [{ theme, isMobile }, setSiteState] = useState<SiteState>({
@@ -98,7 +97,7 @@ const GlobalLayout: FC = () => {
           algorithm: getAlgorithm(theme)
         }}
       >
-        {outlet}
+        <Outlet />
         <ThemeSwitch
           value={theme}
           onChange={(nextTheme) => updateSiteConfig({ theme: nextTheme })}

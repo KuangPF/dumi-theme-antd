@@ -1,7 +1,6 @@
 import type { MenuProps } from 'antd';
 import { ItemType } from 'antd/es/menu/hooks/useItems';
 import { Link, useFullSidebarData, useLocation, useSidebarData } from 'dumi';
-import { isRegExp } from 'lodash';
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
 import type {
@@ -111,7 +110,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
             sidebarGroupModePath === true
               ? true
               : (sidebarGroupModePath ?? []).filter((rule: ISidebarGroupModePathItem) => {
-                  return isRegExp(rule) ? rule.test(pathname) : pathname.startsWith(rule);
+                  return typeof rule === 'string' ? pathname.startsWith(rule) : rule.test(pathname);
                 }).length > 0;
 
           if (isSideBarGroupMode) {
