@@ -57,8 +57,7 @@ const LangSwitch: FC = () => {
         size="small"
         defaultValue={locale}
         onChange={handleLangChange}
-        // dropdownStyle={getDropdownStyle}
-        dropdownMatchSelectWidth={false}
+        popupMatchSelectWidth={false}
         getPopupContainer={(trigger) => trigger.parentNode}
       >
         {langOptions}
