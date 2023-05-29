@@ -219,7 +219,7 @@ const Header: FC = () => {
         size="small"
         defaultValue={versionOptions[0]?.value}
         onChange={handleVersionChange}
-        dropdownMatchSelectWidth={false}
+        popupMatchSelectWidth={false}
         getPopupContainer={(trigger) => trigger.parentNode}
         options={versionOptions}
       />
@@ -245,10 +245,10 @@ const Header: FC = () => {
               content={menu}
               trigger="click"
               open={menuVisible}
-              arrowPointAtCenter
+              arrow
               onOpenChange={onMenuVisibleChange}
             >
-              <MenuOutlined className="nav-phone-icon" />
+              <MenuOutlined className="nav-phone-icon" rev={undefined} />
             </Popover>
           )}
         </ClassNames>
