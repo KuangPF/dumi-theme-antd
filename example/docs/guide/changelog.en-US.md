@@ -7,10 +7,6 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
-- 🆕 支持 `sidebarGroupModePath` 为 `true`，详细说明见 [sidebarGroupModePath 配置](/config/base#sidebargroupmodepath)。
-- 🆕 增加 `<Alert></Alert>` 组件。
-- 🆕 支持多级 sidebar，详细见 [sidebarEnhance 配置](/config/base#antdmodesidebar)。
-
 ## 0.2.4
 
 - 🐞 修复页面锚点以及搜索框点击不跳转至对于区域[#6](https://github.com/KuangPF/dumi-theme-antd/issues/6)。
