@@ -193,10 +193,14 @@ export default {
 };
 ```
 
+Whether the left navigation bar needs to be treated as a group, please refer to antd [menuitemgrouptype][antd-menuitemgrouptype-url].
+
 ### sidebarEnhance
 
 - type：`Record<string, SidebarEnhanceItems>`
 - default：`undefined`
+
+Since dumi only supports two-level sidebar [issues](https://github.com/umijs/dumi/issues/748), if the customization needs need to support three-level sidebar or want to fully customize the sidebar display , you can use this parameter. For configuration parameters, refer to the [items attribute] of the ant-design menu component (https://ant.design/components/menu-cn#itemtype).
 
 ```ts
 export default {
@@ -208,10 +212,10 @@ export default {
           type: 'group',
           children: [
             {
-              // support multiple nesting
+              // 支持多层级
               title: '安装',
               children: [
-                '/welcome/getting-started/installation',
+                '/welcome/getting-started/installation', // 支持仅填写链接，title 自动根据 `# xxx` 生成
                 '/welcome/getting-started/installation/docker'
               ]
             },
@@ -234,9 +238,5 @@ export default {
   }
 };
 ```
-
-Support for multi-level directories，Configuration parameter reference ant-design menu 组件的 [items prop](https://ant.design/components/menu-cn#itemtype)。
-
-Whether the left navigation bar needs to be treated as a group, please refer to antd [menuitemgrouptype][antd-menuitemgrouptype-url].
 
 [antd-menuitemgrouptype-url]: https://ant.design/components/menu-cn#menuitemgrouptype

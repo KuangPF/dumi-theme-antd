@@ -198,6 +198,8 @@ export default {
 - 类型：`Record<string, SidebarEnhanceItems>`
 - 默认值：`undefined`
 
+由于 dumi 暂只支持两级侧边栏 [issues](https://github.com/umijs/dumi/issues/748)，如果定制需求需要支持三级侧边栏或者想完全定制侧边栏展示的，可以使用该参数，配置参数参考 ant-design menu 组件的 [items 属性](https://ant.design/components/menu-cn#itemtype)。
+
 ```ts
 export default {
   themeConfig: {
@@ -234,7 +236,5 @@ export default {
   }
 };
 ```
-
-支持多级目录不跳转，配置参数参考 ant-design menu 组件的 [items 属性](https://ant.design/components/menu-cn#itemtype)。
 
 [antd-menuitemgrouptype-url]: https://ant.design/components/menu-cn#menuitemgrouptype
