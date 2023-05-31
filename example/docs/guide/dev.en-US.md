@@ -14,7 +14,7 @@ title: Development
 npm install
 
 # start dumi server
-cd example && npm run start
+npm run docs
 ```
 
 Welcome to PRS.
