@@ -62,7 +62,7 @@ const useStyle = () => {
       z-index: 10;
       max-width: 100%;
       background: ${token.colorBgContainer};
-      box-shadow: ${token.boxShadow};
+      box-shadow: ${token.boxShadowTertiary};
       border-bottom: ${token.lineWidth}px solid ${token.colorBorderSecondary};
 
       @media only screen and (max-width: ${token.mobileMaxWidth}px) {
