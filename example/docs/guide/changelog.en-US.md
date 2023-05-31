@@ -11,11 +11,11 @@ timeline: true
 
 `2023-05-31`
 
-- 🆕 支持 `sidebarGroupModePath` 为 `true`，详细说明见 [sidebarGroupModePath 配置](/config/base#sidebargroupmodepath)。
+- 🆕 支持 `sidebarGroupModePath` 为 `true`，详细说明见 [sidebarGroupModePath 配置](/config/base-en#sidebargroupmodepath)。
 - 🆕 增加 `<Alert />` 内置组件。
-- 🆕 支持多级 sidebar，详细见 [sidebarEnhance 配置](/config/base#antdmodesidebar)。
+- 🆕 支持多级 sidebar，详细见 [sidebarEnhance 配置](/config/base-en#sidebarenhance)。
 - 🆕 支持首页完全自定义渲染。
-- 💄 新增多级侧边栏配置文档。
+- 💄 新增多级侧边栏配置文档[多级侧边栏](/config/markdown-en#multi-level-sidebar)。
 
 ## 0.2.4
 
