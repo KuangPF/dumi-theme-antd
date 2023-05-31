@@ -68,18 +68,15 @@
     "@utopia/eslint-config-react": "^0.0.9",
     "@utopia/prettier-config-base": "^0.0.9",
     "cross-env": "^7.0.3",
-    "dumi": "2.2.0",
     "father": "^4.1.0",
     "father-plugin-dumi-theme": "^1.0.0-beta.0",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "lint-staged": "^13.0.3"
   },
   "peerDependencies": {
     "dumi": "^2.2.0",
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "publishConfig": {
     "access": "public",
