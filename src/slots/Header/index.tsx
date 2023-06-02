@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { MenuOutlined } from '@ant-design/icons';
 import { ClassNames, css } from '@emotion/react';
 import { Col, Popover, Row, Select } from 'antd';
@@ -5,8 +6,8 @@ import classNames from 'classnames';
 import { useLocation } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
 import React, { useCallback, useContext, useEffect, useState, type FC } from 'react';
-// eslint-disable-next-line import/no-unresolved
 import LangSwitch from 'dumi/theme/slots/LangSwitch';
+import RtlSwitch from 'dumi/theme/slots/RtlSwitch';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
 import type { SiteContextProps } from '../SiteContext';
@@ -226,6 +227,7 @@ const Header: FC = () => {
     ) : null,
     <More key="more" />,
     <LangSwitch key={new Date().getTime()} />,
+    <RtlSwitch key="direction" />,
     <HeaderExtra key="header-Extra" />
   ];
   if (windowWidth < RESPONSIVE_XS) {

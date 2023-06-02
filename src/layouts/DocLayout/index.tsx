@@ -1,12 +1,14 @@
 import { css } from '@emotion/react';
 import { Helmet, Outlet, useLocale, useLocation, useOutlet, useRouteMeta, useSiteData } from 'dumi';
-import React, { useEffect, useMemo, type FC } from 'react';
+import React, { useEffect, useContext, useMemo, type FC } from 'react';
+import classNames from 'classnames';
 import GlobalStyles from '../../common/GlobalStyles';
 import useLocaleValue from '../../hooks/useLocaleValue';
 import Footer from '../../slots/Footer';
 import Header from '../../slots/Header';
 import Homepage from '../HomePageLayout';
 import SidebarLayout from '../SidebarLayout';
+import SiteContext from '../../slots/SiteContext';
 
 const useStyles = () => {
   return {
@@ -28,6 +30,8 @@ const DocLayout: FC = () => {
   const description = useLocaleValue('description');
   const { pathname, hash } = location;
   const { loading } = useSiteData();
+  const { direction } = useContext(SiteContext);
+
   const is404Home = useMemo(
     () => pathname.startsWith('/index') && routeMeta.texts.length === 0,
     [pathname, routeMeta]
@@ -64,7 +68,11 @@ const DocLayout: FC = () => {
   return (
     <div css={styles.layoutWrap}>
       <Helmet encodeSpecialCharacters={false}>
-        <html lang={locale.id} />
+        <html
+          lang={locale.id}
+          data-direction={direction}
+          className={classNames({ rtl: direction === 'rtl' })}
+        />
         <title>{`${title || 'dumi'}${description ? `-${description}` : ''}`}</title>
         <link
           sizes="144x144"

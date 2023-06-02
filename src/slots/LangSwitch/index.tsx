@@ -4,7 +4,7 @@ import { history, useIntl, useLocale, useLocation, useSearchParams, useSiteData 
 import { useCallback, type FC } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import { getTargetLocalePath } from '../../utils';
-import SwitchBtn from './SwitchBtn';
+import SwitchBtn from '../Header/SwitchBtn';
 
 const { Option } = Select;
 
@@ -42,7 +42,7 @@ const LangSwitch: FC = () => {
     handleLangChange(locales.filter((item) => item.id !== locale)[0].id);
   }, [locale, handleLangChange, locales]);
 
-  let LangSwitchJSX = null;
+  let LangSwitchJSX;
   // do not render in single language
   if (locales.length > 2 || (!localesEnhance && locales.length > 2)) {
     const langOptions = locales.map((lang) => (

@@ -2,6 +2,7 @@ import { ConfigProvider, theme as antdTheme } from 'antd';
 import { createSearchParams, Outlet, usePrefersColor, useSearchParams } from 'dumi';
 import type { FC } from 'react';
 import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
+import type { DirectionType } from 'antd/es/config-provider';
 import type { ThemeName } from '../common/ThemeSwitch';
 import ThemeSwitch from '../common/ThemeSwitch';
 import type { SiteContextProps } from '../slots/SiteContext';
@@ -25,8 +26,9 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
 const GlobalLayout: FC = () => {
   const [, , setPrefersColor] = usePrefersColor();
 
-  const [{ theme, isMobile }, setSiteState] = useState<SiteState>({
+  const [{ theme, isMobile, direction }, setSiteState] = useState<SiteState>({
     isMobile: false,
+    direction: 'ltr',
     theme: ['light']
   });
   const [searchParams, setSearchParams] = useSearchParams();
@@ -42,6 +44,14 @@ const GlobalLayout: FC = () => {
 
       let nextSearchParams: URLSearchParams = searchParams;
       (Object.entries(props) as Entries<SiteContextProps>).forEach(([key, value]) => {
+        if (key === 'direction') {
+          if (value === 'rtl') {
+            nextSearchParams.set('direction', 'rtl');
+          } else {
+            nextSearchParams.delete('direction');
+          }
+        }
+
         if (key === 'theme') {
           // @ts-ignore
           nextSearchParams = createSearchParams({
@@ -68,9 +78,12 @@ const GlobalLayout: FC = () => {
 
   useEffect(() => {
     const _theme = searchParams.getAll('theme') as ThemeName[];
+    const _direction = searchParams.get('direction') as DirectionType;
+
     startTransition(() => {
       setSiteState({
-        theme: _theme
+        theme: _theme,
+        direction: _direction === 'rtl' ? 'rtl' : 'ltr'
       });
       // Handle isMobile
       updateMobileMode();
@@ -83,11 +96,12 @@ const GlobalLayout: FC = () => {
 
   const siteContextValue = useMemo(
     () => ({
+      direction,
       isMobile: isMobile!,
       theme: theme!,
       updateSiteConfig
     }),
-    [isMobile, theme, updateSiteConfig]
+    [isMobile, theme, direction, updateSiteConfig]
   );
 
   return (
