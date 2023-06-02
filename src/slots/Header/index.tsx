@@ -124,7 +124,7 @@ const useStyle = () => {
         margin: 0 12px 0 0;
 
         &:last-child {
-          margin-right: 40px;
+          margin-inline-end: 40px;
         }
       }
 

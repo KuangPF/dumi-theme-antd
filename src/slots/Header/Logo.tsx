@@ -12,7 +12,7 @@ const useStyle = () => {
   return {
     logo: css`
       height: ${headerHeight}px;
-      padding-left: 40px;
+      padding-inline-start: 40px;
       overflow: hidden;
       color: ${colorTextHeading};
       font-weight: bold;
@@ -37,7 +37,7 @@ const useStyle = () => {
 
       img {
         height: 32px;
-        margin-right: 12px;
+        margin-inline-end: 12px;
         vertical-align: middle;
 
         ${antCls}-row-rtl & {

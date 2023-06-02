@@ -5,10 +5,11 @@ import classNames from 'classnames';
 import DayJS from 'dayjs';
 import { useRouteMeta } from 'dumi';
 import type { FC, ReactNode } from 'react';
-import { useMemo } from 'react';
+import { useMemo, useContext } from 'react';
 import PrevAndNext from '../../common/PrevAndNext';
 import useSiteToken from '../../hooks/useSiteToken';
 import Footer from '../Footer';
+import SiteContext from '../SiteContext';
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -104,6 +105,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
   const meta = useRouteMeta();
   const styles = useStyle();
   const { token } = useSiteToken();
+  const { direction } = useContext(SiteContext);
 
   const debugDemos = useMemo(
     () => meta.toc?.filter((item) => item._debug_demo).map((item) => item.id) || [],
@@ -142,10 +144,12 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
     [meta.toc]
   );
 
+  const isRTL = direction === 'rtl';
+
   return (
     <Col xxl={20} xl={19} lg={18} md={18} sm={24} xs={24} css={styles.colContent}>
       <Affix>
-        <section css={styles.tocWrapper}>
+        <section css={styles.tocWrapper} className={classNames({ rtl: isRTL })}>
           <Anchor
             css={styles.toc}
             affix={false}
@@ -170,7 +174,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
           />
         </section>
       </Affix>
-      <article css={styles.articleWrapper}>
+      <article css={styles.articleWrapper} className={classNames({ rtl: isRTL })}>
         {isShowTitle ? (
           <Typography.Title
             style={{
