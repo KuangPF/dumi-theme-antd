@@ -16,10 +16,10 @@ title: 介绍
 
 ## 安装
 
-使用 npm 或 yarn 安装
+使用 pnpm 或 yarn 安装
 
 ```bash
-npm install dumi-theme-antd
+pnpm install dumi-theme-antd
 # or
 yarn add dumi-theme-antd
 ```

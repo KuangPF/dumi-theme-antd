@@ -11,10 +11,10 @@ title: Development
 
 ```bash
 # install deps
-npm install
+pnpm install
 
 # start dumi server
-npm run docs
+pnpm run docs
 ```
 
 Welcome to PRS.

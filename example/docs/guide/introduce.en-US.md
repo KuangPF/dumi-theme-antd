@@ -16,12 +16,12 @@ title: Introduce
 
 ## Install
 
-Install using npm or yarn
+Install using pnpm or yarn
 
 ```bash
-npm install dumi-theme-antd
+pnpm install dumi-theme-antd -D
 # or
-yarn add dumi-theme-antd
+yarn add dumi-theme-antd -D
 ```
 
 ## Usage
