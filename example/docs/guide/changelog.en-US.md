@@ -7,6 +7,14 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.6
+
+`2023-06-05`
+
+- 🆕 支持 `LTR` 以及 `RTL` 文字方向切换。
+- 🆕 支持 antd 定制主题配置，详见 [theme](/config/base#theme)。
+- 🐞 修复传入 `bannerConfig` 配置，头部图片被压缩。[#7](https://github.com/KuangPF/dumi-theme-antd/issues/7)
+
 ## 0.2.5
 
 `2023-05-31`
