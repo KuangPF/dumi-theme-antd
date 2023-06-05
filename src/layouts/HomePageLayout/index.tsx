@@ -122,7 +122,7 @@ const Homepage: FC = () => {
       ) : (
         <div
           style={{
-            height: 320,
+            height: bannerConfig ? 'auto' : 320,
             background: '#77C6FF',
             display: `${showBanner ? 'flex' : 'none'} `,
             flexWrap: 'nowrap',
