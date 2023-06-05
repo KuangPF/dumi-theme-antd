@@ -2,7 +2,7 @@
 
 <div align="center">
 
-AntD site theme package for the [dumi](https://d.umijs.org) framework.
+[dumi](https://d.umijs.org) theme similar to antd v5 website
 
 [![NPM version](https://img.shields.io/npm/v/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd) [![NPM downloads](http://img.shields.io/npm/dm/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd) [![Github Actions](https://github.com/KuangPF/dumi-theme-antd/workflows/Deploy/badge.svg)](https://github.com/KuangPF/dumi-theme-antd/actions)
 
@@ -19,7 +19,16 @@ AntD site theme package for the [dumi](https://d.umijs.org) framework.
 Install this theme into `devDependencies`:
 
 ```bash
-$ npm i dumi-theme-antd -D
+$ pnpm i dumi-theme-antd -D
+```
+
+## Contributing
+
+```bash
+# install deps
+pnpm install
+# start dumi server
+pnpm run docs
 ```
 
 ## LICENSE
