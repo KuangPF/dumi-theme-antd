@@ -70,7 +70,8 @@
     "father": "^4.2.2",
     "father-plugin-dumi-theme": "1.0.0-rc.1",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.2"
+    "lint-staged": "^13.2.2",
+    "rc-util": "^5.33.0"
   },
   "peerDependencies": {
     "antd": "^5.5.2",
