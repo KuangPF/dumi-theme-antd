@@ -31,6 +31,9 @@ dependencies:
   rc-drawer:
     specifier: ^6.2.0
     version: 6.2.0(react-dom@18.0.0)(react@18.0.0)
+  rc-util:
+    specifier: ^5.33.0
+    version: 5.33.0(react-dom@18.0.0)(react@18.0.0)
   react:
     specifier: ^18.0.0
     version: 18.0.0
@@ -72,9 +75,6 @@ devDependencies:
   lint-staged:
     specifier: ^13.2.2
     version: 13.2.2
-  rc-util:
-    specifier: ^5.33.0
-    version: 5.33.0(react-dom@18.0.0)(react@18.0.0)
 
 packages:
 
@@ -10774,6 +10774,7 @@ packages:
       react: 18.0.0
       react-dom: 18.0.0(react@18.0.0)
       react-is: 16.13.1
+    dev: false
 
   /rc-virtual-list@3.5.2(react-dom@18.0.0)(react@18.0.0):
     resolution: {integrity: sha512-sE2G9hTPjVmatQni8OP2Kx33+Oth6DMKm67OblBBmgMBJDJQOOFpSGH7KZ6Pm85rrI2IGxDRXZCr0QhYOH2pfQ==}
