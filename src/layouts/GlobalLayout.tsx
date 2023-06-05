@@ -3,6 +3,7 @@ import { createSearchParams, Outlet, usePrefersColor, useSearchParams } from 'du
 import type { FC } from 'react';
 import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
 import type { DirectionType } from 'antd/es/config-provider';
+import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
 import type { ThemeName } from '../common/ThemeSwitch';
 import ThemeSwitch from '../common/ThemeSwitch';
 import type { SiteContextProps } from '../slots/SiteContext';
@@ -32,6 +33,7 @@ const GlobalLayout: FC = () => {
     theme: ['light']
   });
   const [searchParams, setSearchParams] = useSearchParams();
+  const { theme: configTheme } = useAdditionalThemeConfig();
 
   const updateSiteConfig = useCallback(
     (props: SiteState) => {
@@ -108,6 +110,7 @@ const GlobalLayout: FC = () => {
     <SiteContext.Provider value={siteContextValue}>
       <ConfigProvider
         theme={{
+          ...configTheme,
           algorithm: getAlgorithm(theme)
         }}
       >

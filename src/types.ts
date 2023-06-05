@@ -1,5 +1,6 @@
 import type { SerializedStyles } from '@emotion/react';
 import { type IThemeConfig } from 'dumi/dist/client/theme-api/types';
+import { type ThemeConfig } from 'antd';
 
 export type ISidebarGroupModePathItem = string | RegExp;
 
@@ -100,6 +101,8 @@ interface IAdditionalThemeConfig {
   bannerConfig?: IBannerConfig;
   /** 增强模式的 sidebar */
   sidebarEnhance?: Record<string, SidebarEnhanceItems>;
+  /** antd 主题定制，同 `ConfigProvider` 中 `theme` */
+  theme?: Omit<ThemeConfig, 'algorithm'>;
 }
 
 export interface IAllThemeConfig extends Omit<IThemeConfig, 'socialLinks'>, IAdditionalThemeConfig {
