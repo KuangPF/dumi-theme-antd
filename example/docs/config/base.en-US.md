@@ -7,7 +7,7 @@ title: Base
 
 `dumi-theme-antd` In order to better adapt to the theme style of the antd v5 official website, some unique fields have been added and placed in the `themeConfig` field of the `dumi` theme configuration item. The specific configuration fields are as follows:
 
-## Basic configuration
+## Basic Configuration
 
 ### github
 
@@ -70,6 +70,21 @@ title: {
 ```
 
 Configure the title of the first screen area on the home page.
+
+### theme <Badge>0.2.6+</Badge>
+
+- type：`Omit<ThemeConfig, 'algorithm'>`
+- default：`undefined`
+
+```ts
+theme={{
+  token: {
+    colorPrimary: '#00b96b',
+  },
+}}
+```
+
+It is used to customize antd theme style, same as `theme` in `ConfigProvider`, delete its preset algorithm `algorithm` attribute, and the preset algorithm can be modified through the page theme style button.
 
 ### description
 
@@ -200,8 +215,6 @@ Whether the left navigation bar needs to be treated as a group, please refer to 
 - type：`Record<string, SidebarEnhanceItems>`
 - default：`undefined`
 
-Since dumi only supports two-level sidebar [issues](https://github.com/umijs/dumi/issues/748), if the customization needs need to support three-level sidebar or want to fully customize the sidebar display , you can use this parameter. For configuration parameters, refer to the [items attribute] of the ant-design menu component (https://ant.design/components/menu-cn#itemtype).
-
 ```ts
 export default {
   themeConfig: {
@@ -238,5 +251,7 @@ export default {
   }
 };
 ```
+
+Since dumi only supports two-level sidebar [issues](https://github.com/umijs/dumi/issues/748), if the customization needs need to support three-level sidebar or want to fully customize the sidebar display , you can use this parameter. For configuration parameters, refer to the [items attribute](https://ant.design/components/menu-cn#itemtype) of the ant-design menu component.
 
 [antd-menuitemgrouptype-url]: https://ant.design/components/menu-cn#menuitemgrouptype
