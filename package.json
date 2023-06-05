@@ -1,7 +1,7 @@
 {
   "name": "dumi-theme-antd",
   "version": "0.2.6",
-  "description": "",
+  "description": "Ant Design 5.0 官网风格类似的 dumi2 主题插件",
   "keywords": [
     "dumi",
     "dumi-theme",
@@ -54,7 +54,6 @@
     "@babel/runtime": "^7.22.3",
     "@ctrl/tinycolor": "^3.6.0",
     "@emotion/react": "^11.11.0",
-    "antd": "^5.5.2",
     "antd-token-previewer": "2.0.0-alpha.6",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
@@ -74,6 +73,7 @@
     "lint-staged": "^13.2.2"
   },
   "peerDependencies": {
+    "antd": "^5.5.2",
     "dumi": "^2.2.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
