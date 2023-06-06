@@ -31,6 +31,12 @@ pnpm install
 pnpm run docs
 ```
 
+Thank you to all the people who already contributed to `dumi-theme-antd`!
+
+<a href="https://github.com/KuangPF/dumi-theme-antd/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=KuangPF/dumi-theme-antd" />
+</a>
+
 ## LICENSE
 
 MIT
