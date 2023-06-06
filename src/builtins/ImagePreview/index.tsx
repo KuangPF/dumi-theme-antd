@@ -5,6 +5,8 @@ import toArray from 'rc-util/lib/Children/toArray';
 
 interface ImagePreviewProps {
   children: React.ReactNode[];
+  float?: string;
+  pure?: string;
 }
 
 function isGood(className: string): boolean {
@@ -27,8 +29,8 @@ function isCompareImg(imgMeta: any): boolean {
   return isGoodBadImg(imgMeta) || imgMeta.inline;
 }
 
-const ImagePreview: React.FC<ImagePreviewProps> = (props) => {
-  const { children } = props;
+const ImagePreview: React.FC = (props: ImagePreviewProps) => {
+  const { children, float, pure } = props;
   const imgs = toArray(children).filter((ele) => ele.type === 'img');
 
   const imgsMeta = imgs.map((img) => {
@@ -68,8 +70,10 @@ const ImagePreview: React.FC<ImagePreviewProps> = (props) => {
 
   const hasCarousel = imgs.length > 1 && !comparable;
   const previewClassName = classNames({
-    'preview-image-boxes': true,
     clearfix: true,
+    'preview-image-boxes': true,
+    'preview-image-boxes-float': float !== undefined,
+    'preview-image-boxes-pure': pure !== undefined,
     'preview-image-boxes-compare': comparable,
     'preview-image-boxes-with-carousel': hasCarousel
   });
@@ -81,7 +85,8 @@ const ImagePreview: React.FC<ImagePreviewProps> = (props) => {
           return null;
         }
         const coverMeta = imgsMeta[index];
-        const imageWrapperClassName = classNames('preview-image-wrapper', {
+        const imageWrapperClassName = classNames({
+          'preview-image-wrapper': pure === undefined,
           good: coverMeta.isGood,
           bad: coverMeta.isBad
         });
