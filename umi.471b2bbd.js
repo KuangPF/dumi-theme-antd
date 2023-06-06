@@ -253,11 +253,11 @@ title: {
   'zh-CN': 'Dumi Ant Design \u4E3B\u9898',
   'en-US': 'Dumi Theme Ant Design'
 }
-`,paraId:10,tocIndex:4},{value:"Configure the title of the first screen area on the home page.",paraId:11,tocIndex:4},{value:"0.2.6+",paraId:12,tocIndex:4},{value:"type\uFF1A",paraId:13,tocIndex:5},{value:"Omit<ThemeConfig, 'algorithm'>",paraId:13,tocIndex:5},{value:"default\uFF1A",paraId:13,tocIndex:5},{value:"undefined",paraId:13,tocIndex:5},{value:`theme={{
+`,paraId:10,tocIndex:4},{value:"Configure the title of the first screen area on the home page.",paraId:11,tocIndex:4},{value:"0.2.6+",paraId:12,tocIndex:4},{value:"type\uFF1A",paraId:13,tocIndex:5},{value:"Omit<ThemeConfig, 'algorithm'>",paraId:13,tocIndex:5},{value:"default\uFF1A",paraId:13,tocIndex:5},{value:"undefined",paraId:13,tocIndex:5},{value:`theme: {
   token: {
     colorPrimary: '#00b96b',
   },
-}}
+}
 `,paraId:14,tocIndex:5},{value:"It is used to customize antd theme style, same as ",paraId:15,tocIndex:5},{value:"theme",paraId:15,tocIndex:5},{value:" in ",paraId:15,tocIndex:5},{value:"ConfigProvider",paraId:15,tocIndex:5},{value:", delete its preset algorithm ",paraId:15,tocIndex:5},{value:"algorithm",paraId:15,tocIndex:5},{value:" attribute, and the preset algorithm can be modified through the page theme style button.",paraId:15,tocIndex:5},{value:"type\uFF1A",paraId:16,tocIndex:6},{value:"string | Record<string, string>",paraId:16,tocIndex:6},{value:"default\uFF1A",paraId:16,tocIndex:6},{value:"null",paraId:16,tocIndex:6},{value:"Configure the introduction text of the first screen area on the home page.",paraId:17,tocIndex:6},{value:"\u7C7B\u578B\uFF1A",paraId:18,tocIndex:7},{value:"IDocVersion",paraId:18,tocIndex:7},{value:"\u9ED8\u8BA4\u503C\uFF1A",paraId:18,tocIndex:7},{value:"null",paraId:18,tocIndex:7},{value:`interface IDocVersion {
   [propName: string]: string;
 }
