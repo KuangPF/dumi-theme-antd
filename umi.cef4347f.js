@@ -384,11 +384,11 @@ title: {
   'zh-CN': 'Dumi Ant Design \u4E3B\u9898',
   'en-US': 'Dumi Theme Ant Design'
 }
-`,paraId:10,tocIndex:4},{value:"\u914D\u7F6E\u9996\u9875\u9996\u5C4F\u533A\u57DF\u7684\u5927\u6807\u9898\u3002",paraId:11,tocIndex:4},{value:"0.2.6+",paraId:12,tocIndex:4},{value:"\u7C7B\u578B\uFF1A",paraId:13,tocIndex:5},{value:"Omit<ThemeConfig, 'algorithm'>",paraId:13,tocIndex:5},{value:"\u9ED8\u8BA4\u503C\uFF1A",paraId:13,tocIndex:5},{value:"undefined",paraId:13,tocIndex:5},{value:`theme={{
+`,paraId:10,tocIndex:4},{value:"\u914D\u7F6E\u9996\u9875\u9996\u5C4F\u533A\u57DF\u7684\u5927\u6807\u9898\u3002",paraId:11,tocIndex:4},{value:"0.2.6+",paraId:12,tocIndex:4},{value:"\u7C7B\u578B\uFF1A",paraId:13,tocIndex:5},{value:"Omit<ThemeConfig, 'algorithm'>",paraId:13,tocIndex:5},{value:"\u9ED8\u8BA4\u503C\uFF1A",paraId:13,tocIndex:5},{value:"undefined",paraId:13,tocIndex:5},{value:`theme: {
   token: {
     colorPrimary: '#00b96b',
   },
-}}
+}
 `,paraId:14,tocIndex:5},{value:"\u7528\u4E8E\u5B9A\u5236 antd \u4E3B\u9898\u6837\u5F0F\uFF0C\u540C ",paraId:15,tocIndex:5},{value:"ConfigProvider",paraId:15,tocIndex:5},{value:" \u4E2D ",paraId:15,tocIndex:5},{value:"theme",paraId:15,tocIndex:5},{value:"\uFF0C\u5220\u9664\u5176\u9884\u8BBE\u7B97\u6CD5",paraId:15,tocIndex:5},{value:"algorithm",paraId:15,tocIndex:5},{value:"\u5C5E\u6027\uFF0C\u9884\u8BBE\u7B97\u6CD5\u901A\u8FC7\u9875\u9762\u4E3B\u9898\u6837\u5F0F\u6309\u94AE\u4FEE\u6539\u3002",paraId:15,tocIndex:5},{value:"\u7C7B\u578B\uFF1A",paraId:16,tocIndex:6},{value:"string | Record<string, string>",paraId:16,tocIndex:6},{value:"\u9ED8\u8BA4\u503C\uFF1A",paraId:16,tocIndex:6},{value:"null",paraId:16,tocIndex:6},{value:"\u914D\u7F6E\u9996\u9875\u9996\u5C4F\u533A\u57DF\u7684\u7B80\u4ECB\u6587\u5B57\u3002",paraId:17,tocIndex:6},{value:"\u7C7B\u578B\uFF1A",paraId:18,tocIndex:7},{value:"IDocVersion",paraId:18,tocIndex:7},{value:"\u9ED8\u8BA4\u503C\uFF1A",paraId:18,tocIndex:7},{value:"null",paraId:18,tocIndex:7},{value:`interface IDocVersion {
   [propName: string]: string;
 }
