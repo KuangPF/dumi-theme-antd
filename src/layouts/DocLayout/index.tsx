@@ -71,7 +71,7 @@ const DocLayout: FC = () => {
         <html
           lang={locale.id}
           data-direction={direction}
-          className={classNames({ rtl: direction === 'rtl' })}
+          className={classNames(['dumi-theme-antd-root', { rtl: direction === 'rtl' }])}
         />
         <title>{`${title || 'dumi'}${description ? `-${description}` : ''}`}</title>
         <link

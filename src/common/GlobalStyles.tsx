@@ -7,7 +7,8 @@ import {
   Markdown,
   Reset,
   Responsive,
-  SearchBar
+  SearchBar,
+  PreviewImage
 } from './styles';
 
 const GlobalStyles = () => (
@@ -19,6 +20,7 @@ const GlobalStyles = () => (
     <Responsive />
     <HeadingAnchor />
     <SearchBar />
+    <PreviewImage />
     <DumiDefaultStyleOverride />
   </React.Fragment>
 );
