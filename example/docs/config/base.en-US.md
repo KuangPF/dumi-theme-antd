@@ -77,11 +77,11 @@ Configure the title of the first screen area on the home page.
 - default：`undefined`
 
 ```ts
-theme={{
+theme: {
   token: {
     colorPrimary: '#00b96b',
   },
-}}
+}
 ```
 
 It is used to customize antd theme style, same as `theme` in `ConfigProvider`, delete its preset algorithm `algorithm` attribute, and the preset algorithm can be modified through the page theme style button.
