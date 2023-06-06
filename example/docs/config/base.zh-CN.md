@@ -77,11 +77,11 @@ title: {
 - 默认值：`undefined`
 
 ```ts
-theme={{
+theme: {
   token: {
     colorPrimary: '#00b96b',
   },
-}}
+}
 ```
 
 用于定制 antd 主题样式，同 `ConfigProvider` 中 `theme`，删除其预设算法`algorithm`属性，预设算法通过页面主题样式按钮修改。
