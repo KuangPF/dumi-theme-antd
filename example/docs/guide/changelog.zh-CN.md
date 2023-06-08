@@ -7,6 +7,12 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.7
+
+`2023-06-08`
+
+- 🆕 增加图片预览 `<ImagePreview />` 内置组件。
+
 ## 0.2.6
 
 `2023-06-05`
