@@ -22,6 +22,10 @@ Install this theme into `devDependencies`:
 $ pnpm i dumi-theme-antd -D
 ```
 
+## F&Q
+
+<img width=300 src="https://github.com/KuangPF/dumi-theme-antd/assets/20694238/3aa88f29-0995-4452-8b07-5a46cc522b77">
+
 ## Contributing
 
 ```bash
