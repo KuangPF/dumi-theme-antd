@@ -7,13 +7,20 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
-## 0.2.7
+## 0.2.9
+
+`2023-07-11`
+
+- 🐞 当 actions `url` 为绝对路径时，Button 按钮 key 值适配 [#15](https://github.com/KuangPF/dumi-theme-antd/pull/15)。
+
+## 0.2.8
 
 `2023-07-11`
 
 - 🐞 修复非多语言模式下，`useLocaleValue` 无法获取 actions 值 [#13](https://github.com/KuangPF/dumi-theme-antd/pull/13)。
-- 🐞 当 actions `url` 为绝对路径时，Button 按钮 key 值适配 [#15](https://github.com/KuangPF/dumi-theme-antd/pull/15)。
 - 🆕 rtl 导航支持配置，详见 [rtl](/config/base-en#rtl)。
+
+## 0.2.7
 
 `2023-06-08`
 
