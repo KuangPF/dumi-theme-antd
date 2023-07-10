@@ -7,5 +7,5 @@ export default function useLocaleValue(key: string) {
 
   const additionalThemeConfig: IAllThemeConfig = themeConfig;
   const value = additionalThemeConfig[key];
-  return typeof value === 'string' ? value : value?.[locale.id];
+  return typeof value === 'string' || Array.isArray(value) ? value : value?.[locale.id];
 }
