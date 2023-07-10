@@ -138,6 +138,13 @@ moreLinks: [
 
 Configure more ecosystem links in the navigation bar.
 
+### rtl
+
+- type：`boolean`
+- default：`true`
+
+Whether to display the rtl navigation button, it is displayed by default.
+
 ### actions
 
 - type：`IAction[] | Record<string, IAction[]>`

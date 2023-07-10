@@ -138,6 +138,13 @@ moreLinks: [
 
 在导航栏中配置更多生态系统链接。
 
+### rtl
+
+- 类型：`boolean`
+- 默认值：`true`
+
+是否展示 rtl 导航按钮，默认展示。
+
 ### actions
 
 - 类型：`IAction[] | Record<string, IAction[]>`
