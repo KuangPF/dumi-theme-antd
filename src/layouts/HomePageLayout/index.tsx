@@ -173,7 +173,7 @@ const Homepage: FC = () => {
           >
             {actions?.map(({ link, text, type }) => {
               return /^(\w+:)\/\/|^(mailto|tel):/.test(link) ? (
-                <Button size="large" type={type} href={link} target="_blank">
+                <Button size="large" type={type} href={link} target="_blank" key={link}>
                   {text}
                 </Button>
               ) : (
