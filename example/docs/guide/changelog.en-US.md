@@ -9,6 +9,12 @@ timeline: true
 
 ## 0.2.7
 
+`2023-07-11`
+
+- 🐞 修复非多语言模式下，`useLocaleValue` 无法获取 actions 值 [#13](https://github.com/KuangPF/dumi-theme-antd/pull/13)。
+- 🐞 当 actions `url` 为绝对路径时，Button 按钮 key 值适配 [#15](https://github.com/KuangPF/dumi-theme-antd/pull/15)。
+- 🆕 rtl 导航支持配置，详见 [rtl](/config/base-en#rtl)。
+
 `2023-06-08`
 
 - 🆕 增加图片预览 `<ImagePreview />` 内置组件。
@@ -18,7 +24,7 @@ timeline: true
 `2023-06-05`
 
 - 🆕 支持 `LTR` 以及 `RTL` 文字方向切换。
-- 🆕 支持 antd 定制主题配置，详见 [theme](/config/base#theme)。
+- 🆕 支持 antd 定制主题配置，详见 [theme](/config/base-en#theme)。
 - 🐞 修复传入 `bannerConfig` 配置，头部图片被压缩。[#7](https://github.com/KuangPF/dumi-theme-antd/issues/7)
 
 ## 0.2.5
