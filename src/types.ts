@@ -99,6 +99,8 @@ interface IAdditionalThemeConfig {
   moreLinks?: IMoreLink[];
   /** banner 配置 */
   bannerConfig?: IBannerConfig;
+  /** 是否展示 rtl */
+  rtl?: boolean;
   /** 增强模式的 sidebar */
   sidebarEnhance?: Record<string, SidebarEnhanceItems>;
   /** antd 主题定制，同 `ConfigProvider` 中 `theme` */

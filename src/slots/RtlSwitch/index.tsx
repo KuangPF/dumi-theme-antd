@@ -18,7 +18,7 @@ const useStyle = () => {
 const RtlSwitch: FC = () => {
   const { direction, updateSiteConfig } = useContext<SiteContextProps>(SiteContext);
   const { dataDirectionIcon } = useStyle();
-  const { rtl } = useAdditionalThemeConfig();
+  const { rtl = true } = useAdditionalThemeConfig();
 
   if (!rtl) return null;
 
