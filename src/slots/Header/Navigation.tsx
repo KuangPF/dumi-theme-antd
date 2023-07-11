@@ -95,10 +95,15 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
 
   // @ts-ignore
   const menuItems: MenuProps['items'] = (navList ?? []).map((navItem) => {
-    const linkKeyValue = navItem.link.split('/').slice(0, 2).join('/');
     return {
-      label: <Link to={`${navItem.link}${search}`}>{navItem.title}</Link>,
-      key: linkKeyValue
+      label: navItem.link && /^(\w+:)\/\/|^(mailto|tel):/.test(navItem.link) ? (
+            <a href={`${navItem.link}${search}`} target="_blank" rel="noreferrer">
+              {navItem.title}
+            </a>
+          ) : (
+            <Link to={`${navItem.link}${search}`}>{navItem.title}</Link>
+          ),
+      key: navItem.link
     };
   });
 
