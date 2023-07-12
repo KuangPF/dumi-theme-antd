@@ -5,16 +5,18 @@ title: 开发
 
 ## 开发状态
 
-`dumi-theme-antd` 目前处于开发中， 对 Antd Design 5.0 官网的一些特性还未完全适配，如果相关问题可通过 [issues](https://github.com/KuangPF/dumi-theme-antd/issues)形式反馈。
+`dumi-theme-antd` 目前初版已开发完成， 但对 Antd Design 5.0 官网的一些特性还未完全适配，这是一个持续性的过程，如果相关问题可通过 [issues](https://github.com/KuangPF/dumi-theme-antd/issues)形式反馈。
 
 ## 贡献
 
-```bash
-# install deps
-pnpm install
+### 开发流程
 
-# start dumi server
-pnpm run docs
-```
+推荐使用 `npm` 或 `yarn` 作为包管理工具
 
-欢迎 PRS.
+在你 clone 了 dumi-theme-antd 的代码并且使用 <InstallDependencies npm='$ npm install' yarn='$ yarn'></InstallDependencies>
+
+安装完依赖后，运行以下命令即可启动开发模式 <InstallDependencies npm='$ npm run docs' yarn='$ yarn docs'></InstallDependencies>
+
+修改 `/src` 对于目录中文件，进行调试。
+
+### 欢迎 PRS

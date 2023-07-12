@@ -18,11 +18,7 @@ title: Introduce
 
 Install using pnpm or yarn
 
-```bash
-pnpm install dumi-theme-antd -D
-# or
-yarn add dumi-theme-antd -D
-```
+<InstallDependencies npm='$ npm install dumi-theme-antd --save' yarn='$ yarn add dumi-theme-antd' pnpm='$ pnpm install dumi-theme-antd --save'></InstallDependencies>
 
 ## Usage
 
