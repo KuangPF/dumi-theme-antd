@@ -184,6 +184,40 @@ export default () => {
           }
         }
 
+        .pic-plus {
+          & > * {
+            display: inline-block !important;
+            vertical-align: middle;
+          }
+          span {
+            margin: 0 20px;
+            color: #aaa;
+            font-size: 30px;
+          }
+        }
+        .antd-site-snippet {
+          .ant-tabs-tab {
+            .snippet-label {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              svg {
+                margin-inline-end: 8px;
+              }
+            }
+          }
+          .dumi-default-source-code {
+            margin: 0 auto;
+            background-color: ${token.siteMarkdownCodeBg};
+            border-radius: ${token.borderRadius}px;
+            > pre.prism-code {
+              padding: 12px 20px;
+              font-size: 13px;
+              line-height: 2;
+            }
+          }
+        }
+
         .markdown table td > a:not(:last-child) {
           margin-right: 0 !important;
 
