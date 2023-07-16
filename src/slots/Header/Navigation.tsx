@@ -6,7 +6,7 @@ import { Link, useLocale, useLocation, useNavData, useSiteData } from 'dumi';
 import { useCallback } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useSiteToken from '../../hooks/useSiteToken';
-import { getTargetLocalePath } from '../../utils';
+import { getTargetLocalePath, isExternalLinks } from '../../utils';
 import { type IResponsive } from './index';
 import { getMoreLinksGroup } from './More';
 
@@ -95,15 +95,16 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
 
   // @ts-ignore
   const menuItems: MenuProps['items'] = (navList ?? []).map((navItem) => {
+    const linkKeyValue = (navItem.link ?? '').split('/').slice(0, 2).join('/');
     return {
-      label: navItem.link && /^(\w+:)\/\/|^(mailto|tel):/.test(navItem.link) ? (
-            <a href={`${navItem.link}${search}`} target="_blank" rel="noreferrer">
-              {navItem.title}
-            </a>
-          ) : (
-            <Link to={`${navItem.link}${search}`}>{navItem.title}</Link>
-          ),
-      key: navItem.link
+      label: isExternalLinks(navItem.link) ? (
+        <a href={`${navItem.link}${search}`} target="_blank" rel="noreferrer">
+          {navItem.title}
+        </a>
+      ) : (
+        <Link to={`${navItem.link}${search}`}>{navItem.title}</Link>
+      ),
+      key: isExternalLinks(navItem.link) ? navItem.link : linkKeyValue
     };
   });
 

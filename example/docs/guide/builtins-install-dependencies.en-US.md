@@ -11,11 +11,12 @@ The dependent installation component is used to display script installation info
 - pnpm: show `pnpm` package manager installation information
 
 ```md
-<InstallDependencies 
-  npm='$ npm install dumi-theme-antd --save' 
-  yarn='$ yarn add dumi-theme-antd' 
-  pnpm='$ pnpm install dumi-theme-antd --save' 
-/>
+<InstallDependencies
+npm='$ npm install dumi-theme-antd --save'
+yarn='$ yarn add dumi-theme-antd'
+pnpm='$ pnpm install dumi-theme-antd --save'
+
+> </InstallDependencies>
 ```
 
 <InstallDependencies 
@@ -23,6 +24,7 @@ The dependent installation component is used to display script installation info
   yarn='$ yarn add dumi-theme-antd' 
   pnpm='$ pnpm install dumi-theme-antd --save' 
 />
+</InstallDependencies>
 
 Only some package managers are shown:
 
@@ -31,9 +33,11 @@ Only some package managers are shown:
   npm='$ npm install' 
   yarn='$ yarn'
 />
+</InstallDependencies>
 ```
 
 <InstallDependencies 
   npm='$ npm install' 
   yarn='$ yarn'
 />
+</InstallDependencies>

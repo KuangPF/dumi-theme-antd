@@ -16,6 +16,7 @@ order: 3
   yarn='$ yarn add dumi-theme-antd' 
   pnpm='$ pnpm install dumi-theme-antd --save' 
 />
+</InstallDependencies>
 ```
 
 <InstallDependencies 
@@ -23,6 +24,7 @@ order: 3
   yarn='$ yarn add dumi-theme-antd' 
   pnpm='$ pnpm install dumi-theme-antd --save' 
 />
+</InstallDependencies>
 
 只展示部分包管理器：
 
@@ -31,9 +33,11 @@ order: 3
   npm='$ npm install' 
   yarn='$ yarn'
 />
+</InstallDependencies>
 ```
 
 <InstallDependencies 
   npm='$ npm install' 
   yarn='$ yarn'
 />
+</InstallDependencies>

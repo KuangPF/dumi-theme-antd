@@ -10,4 +10,4 @@ title: 概览
 
 - [Alert](./builtins-alert.zh-CN.md) <Badge>0.2.5+</Badge>
 - [ImagePreview](./builtins-image-preview.zh-CN.md) <Badge>0.2.7+</Badge>
-- [Alert](./builtins-alert.zh-CN.md)
+- [InstallDependencies](./builtins-install-dependencies.zh-CN.md) <Badge>0.2.10+</Badge>

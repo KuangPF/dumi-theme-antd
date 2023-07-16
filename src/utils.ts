@@ -25,3 +25,7 @@ export function getTargetLocalePath({
 export const removeTitleCode = (title = '') => {
   return title.replace(/<\w+>.*<\/\w+>/g, '');
 };
+
+export const isExternalLinks = (link?: string): boolean => {
+  return /^(\w+:)\/\/|^(mailto|tel):/.test(link ?? '');
+};
