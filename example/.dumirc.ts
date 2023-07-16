@@ -97,6 +97,9 @@ export default defineConfig({
         }
       ]
     },
+    loading: {
+      skeleton: ['/guide', '/config']
+    },
     docVersions: {
       [pkgJSON.version]: ''
     },

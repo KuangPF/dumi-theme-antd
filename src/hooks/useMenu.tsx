@@ -111,9 +111,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               sidebarGroupModePath === true
                 ? true
                 : (sidebarGroupModePath ?? []).filter((rule: ISidebarGroupModePathItem) => {
-                    return typeof rule === 'string'
-                      ? pathname.startsWith(rule)
-                      : rule.test(pathname);
+                    return pathname.startsWith(rule);
                   }).length > 0;
 
             if (isSideBarGroupMode) {

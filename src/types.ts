@@ -2,7 +2,7 @@ import type { SerializedStyles } from '@emotion/react';
 import { type IThemeConfig } from 'dumi/dist/client/theme-api/types';
 import { type ThemeConfig } from 'antd';
 
-export type ISidebarGroupModePathItem = string | RegExp;
+export type ISidebarGroupModePathItem = string;
 
 interface ILocaleEnhance {
   /** 同 themeConfig 中 locales 项中的 id */
@@ -36,6 +36,9 @@ interface IFeature {
   itemCss?: SerializedStyles;
 }
 
+interface ILoading {
+  skeleton?: Array<string>;
+}
 // 分组类型，将 children 换位字符串数组
 
 export type SidebarEnhanceItemType = {
@@ -105,6 +108,8 @@ interface IAdditionalThemeConfig {
   sidebarEnhance?: Record<string, SidebarEnhanceItems>;
   /** antd 主题定制，同 `ConfigProvider` 中 `theme` */
   theme?: Omit<ThemeConfig, 'algorithm'>;
+  /** 是否展示页面加载状态 */
+  loading?: ILoading;
 }
 
 export interface IAllThemeConfig extends Omit<IThemeConfig, 'socialLinks'>, IAdditionalThemeConfig {
