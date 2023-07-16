@@ -196,7 +196,7 @@ After configuration, the page will be presented as the homepage, used to display
 
 ### sidebarGroupModePath
 
-- type：`Array<string | RegExp> | true`
+- type：`Array<string> | true`
 - default：`[]`
 
 ```ts
@@ -206,9 +206,7 @@ export default {
       // sidebarGroupModePath: true, // when true, all routes will be treated as a group
       sidebarGroupModePath: [
         // Matches routes starting with `/config`
-        '/config',
-        // Support regular matching
-        /\/guide\//
+        '/config'
       ]
     }
   }
@@ -260,5 +258,45 @@ export default {
 ```
 
 Since dumi only supports two-level sidebar [issues](https://github.com/umijs/dumi/issues/748), if the customization needs need to support three-level sidebar or want to fully customize the sidebar display , you can use this parameter. For configuration parameters, refer to the [items attribute](https://ant.design/components/menu-cn#itemtype) of the ant-design menu component.
+
+## Extended configuration
+
+### loading
+
+- type: `ILoading`.
+- default: `undefined`
+
+```ts
+interface ILoading {
+  skeleton?: Array<string>;
+}
+```
+
+In the loading status of the current page, routing is enabled on demand by default, so there will be a loading process when switching routes. `Dumi-theme-antd` provides two common forms of loading: **Skeleton** and **spin**, and the corresponding loading forms can be set for different routes, with the default Spin form.
+
+<Alert type="warning">
+Because dumi does not provide the form of slot to support loading components, it is necessary to manually import the loading components in <code>dumi-theme-antd</code > into <code>.dumi/loading.(js|jsx|ts|tsx)</code > first.
+</Alert>
+
+```ts
+/* .dumi/loading.tsx */
+export { default } from 'dumi-theme-antd/loading';
+```
+
+Configure the loading value
+
+```ts
+/* .dumirc.ts */
+export default {
+  themeConfig: {
+    loading: {
+      Skeleton: [
+        '/guide',
+        ' /config'
+      ] /* the route loading component at the beginning of /config or /guide are in skeleton form. */
+    }
+  }
+};
+```
 
 [antd-menuitemgrouptype-url]: https://ant.design/components/menu-cn#menuitemgrouptype

@@ -7,7 +7,7 @@ title: 基础
 
 `dumi-theme-antd` 为了更好地适配 antd v5 官网主题风格，增加了一些特有字段，并将其置于 `dumi` 主题配置项 `themeConfig` 字段中，具体配置字段如下：
 
-## 基础配置
+## 基础配置项
 
 ### github
 
@@ -196,7 +196,7 @@ features: {
 
 ### sidebarGroupModePath
 
-- 类型：`Array<string | RegExp> | true`
+- 类型：`Array<string> | true`
 - 默认值：`[]`
 
 ```ts
@@ -206,9 +206,7 @@ export default {
       // sidebarGroupModePath: true, // 当为 true 时，全部都以分组形式展示
       sidebarGroupModePath: [
         // 匹配以 /config 开头的路由
-        '/config',
-        // 支持正则匹配
-        /\/guide\//
+        '/config'
       ]
     }
   }
@@ -260,5 +258,42 @@ export default {
 ```
 
 由于 dumi 暂只支持两级侧边栏 [issues](https://github.com/umijs/dumi/issues/748)，如果定制需求需要支持三级侧边栏或者想完全定制侧边栏展示的，可以使用该参数，配置参数参考 ant-design menu 组件的 [items 属性](https://ant.design/components/menu-cn#itemtype)。
+
+## 扩展配置项
+
+### loading
+
+- 类型：`ILoading`
+- 默认值：`undefined`
+
+```ts
+interface ILoading {
+  skeleton?: Array<string>;
+}
+```
+
+当前页面的加载状态，由于默认启用路由按需加载，所以切换路由时会有 loading 的过程，`dumi-theme-antd` 提供了常见的两种 loading 形式：**Skeleton** 以及 **Spin**，可对不同的路由设置对应的加载形式，默认 spin 形式。
+
+<Alert type="warning">
+  由于 dumi 没有提供 slot 的形式来支持加载组件，因此首先需要手动将 <code>dumi-theme-antd</code> 中加载组件引入到 <code>.dumi/loading.(js|jsx|ts|tsx)</code> 中
+</Alert>
+
+```ts
+/* .dumi/loading.tsx */
+export { default } from 'dumi-theme-antd/loading';
+```
+
+配置 loading 值
+
+```ts
+/* .dumirc.ts */
+export default {
+  themeConfig: {
+    loading: {
+      skeleton: ['/guide', '/config'] /* /guide 以及 /config 开头的路由加载组件为 skeleton 形式 */
+    }
+  }
+};
+```
 
 [antd-menuitemgrouptype-url]: https://ant.design/components/menu-cn#menuitemgrouptype
