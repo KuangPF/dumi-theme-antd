@@ -146,7 +146,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               nextChildrenResult[type].push(child);
               return nextChildrenResult;
             }, {});
-            const childItems = [];
+            const childItems: any[] = [];
             childItems.push(
               ...childrenGroup.default.map((item) => ({
                 label: (
