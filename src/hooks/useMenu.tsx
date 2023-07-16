@@ -103,52 +103,102 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
     const sidebarItems = [...(sidebarData ?? [])];
 
     return (
-      sidebarItems?.reduce<Exclude<MenuProps['items'], undefined>>((result, group) => {
-        if (group?.title) {
-          // sideBar menu group 模式, 默认以非 group 模式渲染
-          const isSideBarGroupMode =
-            sidebarGroupModePath === true
-              ? true
-              : (sidebarGroupModePath ?? []).filter((rule: ISidebarGroupModePathItem) => {
-                  return typeof rule === 'string' ? pathname.startsWith(rule) : rule.test(pathname);
-                }).length > 0;
+      sidebarItems?.reduce<Exclude<MenuProps['items'] | { order?: number }[], undefined>>(
+        (result, group) => {
+          if (group?.title) {
+            // sideBar menu group 模式, 默认以非 group 模式渲染
+            const isSideBarGroupMode =
+              sidebarGroupModePath === true
+                ? true
+                : (sidebarGroupModePath ?? []).filter((rule: ISidebarGroupModePathItem) => {
+                    return typeof rule === 'string'
+                      ? pathname.startsWith(rule)
+                      : rule.test(pathname);
+                  }).length > 0;
 
-          if (isSideBarGroupMode) {
-            result.push({
-              type: 'group',
-              label: group?.title,
-              key: group?.title,
-              children: group.children?.map((item) => ({
-                label: (
-                  <Link to={`${item.link}${search}`}>
-                    {before}
-                    <span key="english">{removeTitleCode(item?.title)}</span>
-                    {item.frontmatter && (
-                      <span className="chinese" key="chinese">
-                        {removeTitleCode(item.frontmatter.subtitle)}
-                      </span>
-                    )}
-                    {after}
-                  </Link>
-                ),
-                key: item.link.replace(/(-cn$)/g, '')
-              }))
-            });
+            if (isSideBarGroupMode) {
+              result.push({
+                type: 'group',
+                label: group?.title,
+                order: group?.order,
+                key: group?.title,
+                children: group.children?.map((item) => ({
+                  label: (
+                    <Link to={`${item.link}${search}`}>
+                      {before}
+                      <span key="english">{removeTitleCode(item?.title)}</span>
+                      {item.frontmatter && (
+                        <span className="chinese" key="chinese">
+                          {removeTitleCode(item.frontmatter.subtitle)}
+                        </span>
+                      )}
+                      {after}
+                    </Link>
+                  ),
+                  key: item.link.replace(/(-cn$)/g, '')
+                }))
+              });
+            } else {
+              const childrenGroup = group.children.reduce<
+                Record<string, ReturnType<typeof useSidebarData>[number]['children']>
+              >((childrenResult, child) => {
+                const nextChildrenResult = childrenResult;
+                const type = child?.frontmatter?.type ?? 'default';
+                if (!nextChildrenResult[type]) {
+                  nextChildrenResult[type] = [];
+                }
+                nextChildrenResult[type].push(child);
+                return nextChildrenResult;
+              }, {});
+              const childItems: any[] = [];
+              childItems.push(
+                ...childrenGroup.default.map((item) => ({
+                  label: (
+                    <Link to={`${item.link}${search}`}>
+                      {before}
+                      {removeTitleCode(item?.title)}
+                      {after}
+                    </Link>
+                  ),
+                  key: item.link.replace(/(-cn$)/g, '')
+                }))
+              );
+              Object.entries(childrenGroup).forEach(([type, children]) => {
+                if (type !== 'default') {
+                  childItems.push({
+                    type: 'group',
+                    label: type,
+                    key: type,
+                    children: children?.map((item) => ({
+                      label: (
+                        <Link to={`${item.link}${search}`}>
+                          {before}
+                          {removeTitleCode(item?.title)}
+                          {after}
+                        </Link>
+                      ),
+                      key: item.link.replace(/(-cn$)/g, '')
+                    }))
+                  });
+                }
+              });
+              result.push({
+                label: group?.title,
+                key: group?.title,
+                order: group?.order,
+                children: childItems
+              });
+            }
           } else {
-            const childrenGroup = group.children.reduce<
-              Record<string, ReturnType<typeof useSidebarData>[number]['children']>
-            >((childrenResult, child) => {
-              const nextChildrenResult = childrenResult;
-              const type = child?.frontmatter?.type ?? 'default';
-              if (!nextChildrenResult[type]) {
-                nextChildrenResult[type] = [];
-              }
-              nextChildrenResult[type].push(child);
-              return nextChildrenResult;
-            }, {});
-            const childItems: any[] = [];
-            childItems.push(
-              ...childrenGroup.default.map((item) => ({
+            const list = group.children || [];
+            // 如果有 date 字段，我们就对其进行排序
+            if (list.every((info) => info?.frontmatter?.date)) {
+              list.sort((a, b) => (a?.frontmatter?.date > b?.frontmatter?.date ? -1 : 1));
+            }
+
+            result.push(
+              ...list.map((item) => ({
+                order: item?.order,
                 label: (
                   <Link to={`${item.link}${search}`}>
                     {before}
@@ -159,53 +209,14 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                 key: item.link.replace(/(-cn$)/g, '')
               }))
             );
-            Object.entries(childrenGroup).forEach(([type, children]) => {
-              if (type !== 'default') {
-                childItems.push({
-                  type: 'group',
-                  label: type,
-                  key: type,
-                  children: children?.map((item) => ({
-                    label: (
-                      <Link to={`${item.link}${search}`}>
-                        {before}
-                        {removeTitleCode(item?.title)}
-                        {after}
-                      </Link>
-                    ),
-                    key: item.link.replace(/(-cn$)/g, '')
-                  }))
-                });
-              }
-            });
-            result.push({
-              label: group?.title,
-              key: group?.title,
-              children: childItems
-            });
-          }
-        } else {
-          const list = group.children || [];
-          // 如果有 date 字段，我们就对其进行排序
-          if (list.every((info) => info?.frontmatter?.date)) {
-            list.sort((a, b) => (a?.frontmatter?.date > b?.frontmatter?.date ? -1 : 1));
           }
 
-          result.push(
-            ...list.map((item) => ({
-              label: (
-                <Link to={`${item.link}${search}`}>
-                  {before}
-                  {removeTitleCode(item?.title)}
-                  {after}
-                </Link>
-              ),
-              key: item.link.replace(/(-cn$)/g, '')
-            }))
-          );
-        }
-        return result;
-      }, []) ?? []
+          // group 模式与 single 模式混合排序
+          result.sort((a, b) => (a?.order < b?.order ? -1 : 1));
+          return result;
+        },
+        []
+      ) ?? []
     );
   }, [sidebarData, sidebarGroupModePath, pathname, search, before, after]);
 
