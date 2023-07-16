@@ -20,3 +20,11 @@ After installing the dependencies, run the following command to start the develo
 Modify `/src` to debug the files in the directory.
 
 ### Welcome to PRS
+
+Thanks to the students who have contributed~
+
+<p>
+  <a href="https://github.com/KuangPF/dumi-theme-antd/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=KuangPF/dumi-theme-antd" />
+  </a>
+</p>

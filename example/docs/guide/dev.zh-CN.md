@@ -20,3 +20,11 @@ title: 开发
 修改 `/src` 对于目录中文件，进行调试。
 
 ### 欢迎 PRS
+
+感谢已参与贡献的同学们～
+
+<p>
+  <a href="https://github.com/KuangPF/dumi-theme-antd/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=KuangPF/dumi-theme-antd" />
+  </a>
+</p>
