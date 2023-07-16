@@ -75,7 +75,7 @@
   },
   "peerDependencies": {
     "antd": "^5.5.2",
-    "dumi": "^2.2.0",
+    "dumi": "^2.2.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
