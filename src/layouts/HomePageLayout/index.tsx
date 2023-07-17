@@ -7,6 +7,7 @@ import useLocaleValue from '../../hooks/useLocaleValue';
 import useSiteToken from '../../hooks/useSiteToken';
 import SiteContext from '../../slots/SiteContext';
 import { IAction, IBannerConfig } from '../../types';
+import { isExternalLinks } from '../../utils';
 import Features from './components/Features';
 import { GroupMask } from './components/Group';
 
@@ -172,7 +173,7 @@ const Homepage: FC = () => {
             }}
           >
             {actions?.map(({ link, text, type }) => {
-              return /^(\w+:)\/\/|^(mailto|tel):/.test(link) ? (
+              return isExternalLinks(link) ? (
                 <Button size="large" type={type} href={link} target="_blank" key={link}>
                   {text}
                 </Button>
