@@ -6,6 +6,7 @@ import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useLocaleValue from '../../hooks/useLocaleValue';
 import useSiteToken from '../../hooks/useSiteToken';
 import SiteContext from '../../slots/SiteContext';
+import type { SiteContextProps } from '../../slots/SiteContext';
 import { IAction, IBannerConfig } from '../../types';
 import { isExternalLinks } from '../../utils';
 import Features from './components/Features';
@@ -61,7 +62,7 @@ const useStyle = () => {
 const Homepage: FC = () => {
   const style = useStyle();
   const { token } = useSiteToken();
-  const { isMobile } = useContext(SiteContext);
+  const { isMobile, theme } = useContext<SiteContextProps>(SiteContext);
   const { bannerConfig, name } = useAdditionalThemeConfig();
   const actions: IAction[] = useLocaleValue('actions');
   const title = useLocaleValue('title');
@@ -117,7 +118,11 @@ const Homepage: FC = () => {
       {isMobile ? (
         <img
           src={bannerMobileImgUrl}
-          style={{ width: '100%', display: `${showBanner ? 'inline-block' : 'none'} ` }}
+          style={{
+            width: '100%',
+            display: `${showBanner ? 'inline-block' : 'none'} `,
+            opacity: `${theme.indexOf('dark') > -1 ? '0.8' : 1}`
+          }}
           alt=""
         />
       ) : (
@@ -127,7 +132,8 @@ const Homepage: FC = () => {
             background: '#77C6FF',
             display: `${showBanner ? 'flex' : 'none'} `,
             flexWrap: 'nowrap',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            opacity: `${theme.indexOf('dark') > -1 ? '0.8' : 1}`
           }}
         >
           {bannerContent}
