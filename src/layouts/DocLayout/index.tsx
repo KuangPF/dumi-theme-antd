@@ -73,7 +73,7 @@ const DocLayout: FC = () => {
           data-direction={direction}
           className={classNames(['dumi-theme-antd-root', { rtl: direction === 'rtl' }])}
         />
-        <title>{`${title || 'dumi'}${description ? `-${description}` : ''}`}</title>
+        <title>{`${title || 'dumi-theme-antd'}${description ? `-${description}` : ''}`}</title>
         <link
           sizes="144x144"
           href="https://gw.alipayobjects.com/zos/antfincdn/UmVnt3t4T0/antd.png"

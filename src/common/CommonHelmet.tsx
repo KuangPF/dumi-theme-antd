@@ -1,11 +1,11 @@
 import { Helmet, useRouteMeta } from 'dumi';
 import { useMemo } from 'react';
-import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
+import useLocaleValue from '../hooks/useLocaleValue';
 import { removeTitleCode } from '../utils';
 
 const CommonHelmet = () => {
   const meta = useRouteMeta();
-  const { title: configTitle } = useAdditionalThemeConfig();
+  const configTitle = useLocaleValue('title');
 
   const [title, description] = useMemo(() => {
     const helmetTitle = `${removeTitleCode(meta.frontmatter.subtitle) || ''} ${removeTitleCode(
