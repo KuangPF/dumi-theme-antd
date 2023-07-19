@@ -1,8 +1,7 @@
 import { css } from '@emotion/react';
 import { Carousel, Typography } from 'antd';
-import { useLocale } from 'dumi';
 import { useContext, type FC } from 'react';
-import useAdditionalThemeConfig from '../../../../hooks/useAdditionalThemeConfig';
+import useLocaleValue from '../../../../hooks/useLocaleValue';
 import useSiteToken from '../../../../hooks/useSiteToken';
 import SiteContext from '../../../../slots/SiteContext';
 import { type IFeature } from '../../../../types';
@@ -34,17 +33,17 @@ const useStyle = () => {
     `,
     container: css`
       display: flex;
+      flex-wrap: wrap;
       max-width: 1208px;
       margin-inline: auto;
       box-sizing: border-box;
-      padding-inline: ${token.marginXXL}px;
-      column-gap: ${token.paddingMD * 2}px;
+      padding-inline: 2.5%;
+      column-gap: 2.5%;
       align-items: stretch;
       text-align: start;
     `,
     itemBase: css`
       display: flex;
-      flex: 1 1 0;
       flex-direction: column;
       align-items: stretch;
       text-decoration: none;
@@ -52,11 +51,13 @@ const useStyle = () => {
       border: ${token.lineWidth}px solid ${token.colorBorderSecondary};
       border-radius: ${token.borderRadiusLG}px;
       transition: all ${token.motionDurationSlow};
-      padding-block: ${token.paddingMD}px;
-      padding-inline: ${token.paddingLG}px;
+      padding-block: ${token.padding}px;
+      padding-inline: ${token.padding}px;
+      margin-block-end: ${token.margin}px;
+      box-sizing: border-box;
     `,
     cardItem: css`
-      width: 33%;
+      width: 30%;
       &:hover {
         box-shadow: ${token.boxShadowCard};
       }
@@ -89,23 +90,23 @@ const RecommendItem = ({ title, details, itemCss }: IFeature) => {
 const Features: FC = () => {
   const styles = useStyle();
   const { isMobile } = useContext(SiteContext);
-  const { features = [] } = useAdditionalThemeConfig();
-  const locale = useLocale();
+  const features = useLocaleValue('features');
 
-  const _features = Array.isArray(features) ? features : features[locale.id];
   return (
     <div>
       {isMobile ? (
         <Carousel css={styles.carousel}>
-          {_features?.map((item, index) => (
-            <RecommendItem key={index} {...item} itemCss={styles.sliderItem} />
-          ))}
+          {Array.isArray(features) &&
+            features?.map((item, index) => (
+              <RecommendItem key={index} {...item} itemCss={styles.sliderItem} />
+            ))}
         </Carousel>
       ) : (
         <div css={styles.container}>
-          {_features?.map((item, index) => (
-            <RecommendItem key={index} {...item} itemCss={styles.cardItem} />
-          ))}
+          {Array.isArray(features) &&
+            features?.map((item, index) => (
+              <RecommendItem key={index} {...item} itemCss={styles.cardItem} />
+            ))}
         </div>
       )}
     </div>
