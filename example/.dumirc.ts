@@ -26,7 +26,8 @@ export default defineConfig({
         { title: 'config', link: '/config/base-en' }
       ]
     },
-    footer: 'KuangPF | Copyright © 2022-present',
+    footer:
+      'Made with<span style="color: rgb(255, 255, 255);">❤</span>by <span>KuangPF | Copyright © 2022-present</span>',
     github: 'https://github.com/KuangPF/dumi-theme-antd',
     localesEnhance: [
       { id: 'zh-CN', switchPrefix: '中' },
@@ -76,7 +77,7 @@ export default defineConfig({
         },
         {
           title: '开箱即用',
-          details: '接入简单，安装即使用，全面融入 Ant Design 风格。'
+          details: '接入简单，安装即使用，全面融入 Ant Design 风格，内置主题切换，紧凑模式等功能。'
         }
       ],
       'en-US': [
@@ -93,7 +94,7 @@ export default defineConfig({
         {
           title: 'Simple Use',
           details:
-            'Simple access, installation and use, fully integrated into Ant Design 5.0 style.'
+            'Easy access, installation and use, fully integrated into Ant Design style, built-in theme switching, compact mode and other functions.'
         }
       ]
     },
