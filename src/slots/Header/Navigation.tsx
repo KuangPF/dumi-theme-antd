@@ -5,6 +5,7 @@ import { Menu } from 'antd';
 import { Link, useLocale, useLocation, useNavData, useSiteData } from 'dumi';
 import { useCallback } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
+import useLocaleValue from '../../hooks/useLocaleValue';
 import useSiteToken from '../../hooks/useSiteToken';
 import { getTargetLocalePath, isExternalLinks } from '../../utils';
 import { type IResponsive } from './index';
@@ -84,13 +85,14 @@ const useStyle = () => {
 };
 
 export default function Navigation({ isMobile, responsive }: NavigationProps) {
-  // 统一使用 themeConfig.nav，使用 useNavData，当存在自定义 pages 时，会导致 nav 混乱
-  const navList = useNavData();
-
   const { pathname, search } = useLocation();
   const { locales } = useSiteData();
+  const { github } = useAdditionalThemeConfig();
+
+  // 统一使用 themeConfig.nav，使用 useNavData，当存在自定义 pages 时，会导致 nav 混乱
+  const navList = useNavData();
   const locale = useLocale();
-  const { github, moreLinks = [] } = useAdditionalThemeConfig();
+  const moreLinks = useLocaleValue('moreLinks');
   const activeMenuItem = pathname.split('/').slice(0, 2).join('/');
 
   // @ts-ignore

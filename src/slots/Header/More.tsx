@@ -3,12 +3,10 @@ import type { MenuProps } from 'antd';
 import { Button, Dropdown } from 'antd';
 import { FormattedMessage } from 'dumi';
 import React from 'react';
-import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
-import { IAdditionalThemeConfig } from '../../types';
+import useLocaleValue from '../../hooks/useLocaleValue';
+import { IMoreLink } from '../../types';
 
-export const getMoreLinksGroup = (
-  moreLinks: IAdditionalThemeConfig['moreLinks']
-): MenuProps['items'] => {
+export const getMoreLinksGroup = (moreLinks: IMoreLink[]): MenuProps['items'] => {
   return (moreLinks ?? []).map((item, index) => ({
     label: (
       <a href={item.link} target="_blank" rel="noopener noreferrer">
@@ -20,7 +18,7 @@ export const getMoreLinksGroup = (
 };
 
 const More: React.FC = () => {
-  const { moreLinks = [] } = useAdditionalThemeConfig();
+  const moreLinks = useLocaleValue('moreLinks');
   return moreLinks.length > 0 ? (
     <Dropdown menu={{ items: getMoreLinksGroup(moreLinks) }} placement="bottomRight">
       <Button size="small">

@@ -20,7 +20,7 @@ interface IAction {
   type?: 'primary' | 'default';
 }
 
-interface IMoreLink {
+export interface IMoreLink {
   /** 链接文字描述 */
   text: string;
   /** 链接 */
@@ -99,7 +99,7 @@ interface IAdditionalThemeConfig {
   /** 文档版本 */
   docVersions?: IDocVersion;
   /** 更多链接 */
-  moreLinks?: IMoreLink[];
+  moreLinks?: IMoreLink[] | Record<string, IMoreLink[]>;
   /** banner 配置 */
   bannerConfig?: IBannerConfig;
   /** 是否展示 rtl */

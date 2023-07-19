@@ -56,7 +56,7 @@ const Footer: FC = () => {
           >
             ❤
           </span>
-          by{' '}
+          by
           {footer ? (
             <span
               dangerouslySetInnerHTML={{
