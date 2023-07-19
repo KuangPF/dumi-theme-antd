@@ -113,7 +113,7 @@ docVersions: {
 
 ### moreLinks
 
-- 类型：`IMoreLink[]`
+- 类型：`IMoreLink[] | Record<string, IMoreLink[]>`
 - 默认值：`null`
 
 ```ts
@@ -123,7 +123,7 @@ interface IMoreLink {
   /** 链接 */
   link: string;
 }
-// .dumi.ts
+// 单语言时配置数组即可
 moreLinks: [
   {
     text: 'Dumi',
@@ -134,6 +134,11 @@ moreLinks: [
     link: 'https://ant.design/'
   }
 ];
+// 多语言时配置对象，key 为语言名
+moreLinks: {
+  'zh-CN': [],
+  'en-US': [],
+},
 ```
 
 在导航栏中配置更多生态系统链接。

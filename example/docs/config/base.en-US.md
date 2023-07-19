@@ -113,7 +113,7 @@ Display the current document version or multi-document drop-down selection box i
 
 ### moreLinks
 
-- 类型：`IMoreLink[]`
+- 类型：`IMoreLink[] | Record<string, IMoreLink[]>`
 - 默认值：`null`
 
 ```ts
@@ -123,7 +123,7 @@ interface IMoreLink {
   /** link */
   link: string;
 }
-// .dumi.ts
+// Just configure the array for single language
 moreLinks: [
   {
     text: 'Dumi',
@@ -134,6 +134,11 @@ moreLinks: [
     link: 'https://ant.design/'
   }
 ];
+// Multi-language configuration object, the key is the language name
+moreLinks: {
+  'zh-CN': [],
+  'en-US': [],
+},
 ```
 
 Configure more ecosystem links in the navigation bar.
