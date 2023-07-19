@@ -40,6 +40,8 @@ const Footer: FC = () => {
   const {
     themeConfig: { footer }
   } = useSiteData();
+
+  if (!footer) return null;
   return (
     <div css={style.footer}>
       <div css={style.footerContainer}>
@@ -48,22 +50,11 @@ const Footer: FC = () => {
             opacity: '0.4'
           }}
         >
-          Made with
           <span
-            style={{
-              color: '#fff'
+            dangerouslySetInnerHTML={{
+              __html: footer
             }}
-          >
-            ❤
-          </span>
-          by
-          {footer ? (
-            <span
-              dangerouslySetInnerHTML={{
-                __html: footer
-              }}
-            />
-          ) : null}
+          />
         </div>
       </div>
     </div>
