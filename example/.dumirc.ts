@@ -19,11 +19,13 @@ export default defineConfig({
     nav: {
       'zh-CN': [
         { title: '指南', link: '/guide/introduce' },
-        { title: '配置', link: '/config/base' }
+        { title: '配置', link: '/config/base' },
+        { title: '示例', link: '/demo/secondary-sidebar-colors' }
       ],
       'en-US': [
         { title: 'guide', link: '/guide/introduce-en' },
-        { title: 'config', link: '/config/base-en' }
+        { title: 'config', link: '/config/base-en' },
+        { title: 'demo', link: '/demo/secondary-sidebar-colors-en' }
       ]
     },
     footer:
