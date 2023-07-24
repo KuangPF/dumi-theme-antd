@@ -1,8 +1,8 @@
 ---
 nav:
   title: Config
-  order: 2
 title: Markdown Config
+order: 2
 ---
 
 All Markdown configurations are configured in the form of FrontMatter at the top of the Markdown file, for example

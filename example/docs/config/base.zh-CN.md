@@ -1,8 +1,8 @@
 ---
 nav:
   title: 配置
-  order: 2
 title: 基础
+order: 1
 ---
 
 `dumi-theme-antd` 为了更好地适配 antd v5 官网主题风格，增加了一些特有字段，并将其置于 `dumi` 主题配置项 `themeConfig` 字段中，具体配置字段如下：

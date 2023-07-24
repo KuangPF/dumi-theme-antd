@@ -1,8 +1,8 @@
 ---
 nav:
   title: config
-  order: 2
 title: Base
+order: 1
 ---
 
 `dumi-theme-antd` In order to better adapt to the theme style of the antd v5 official website, some unique fields have been added and placed in the `themeConfig` field of the `dumi` theme configuration item. The specific configuration fields are as follows:

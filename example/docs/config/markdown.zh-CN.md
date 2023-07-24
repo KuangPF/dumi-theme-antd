@@ -1,8 +1,8 @@
 ---
 nav:
   title: 配置
-  order: 2
 title: Markdown 配置
+order: 2
 ---
 
 所有 Markdown 配置均以 FrontMatter 的形式配置在 Markdown 文件顶端，例如
