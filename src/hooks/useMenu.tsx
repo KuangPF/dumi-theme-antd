@@ -133,7 +133,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                       {after}
                     </Link>
                   ),
-                  key: item.link.replace(/(-cn$)/g, '')
+                  key: item.link.replace(/(-en$)/g, '')
                 }))
               });
             } else {
@@ -158,7 +158,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                       {after}
                     </Link>
                   ),
-                  key: item.link.replace(/(-cn$)/g, '')
+                  key: item.link.replace(/(-en$)/g, '')
                 }))
               );
               Object.entries(childrenGroup).forEach(([type, children]) => {
@@ -175,7 +175,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                           {after}
                         </Link>
                       ),
-                      key: item.link.replace(/(-cn$)/g, '')
+                      key: item.link.replace(/(-en$)/g, '')
                     }))
                   });
                 }
@@ -204,7 +204,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                     {after}
                   </Link>
                 ),
-                key: item.link.replace(/(-cn$)/g, '')
+                key: item.link.replace(/(-en$)/g, '')
               }))
             );
           }
