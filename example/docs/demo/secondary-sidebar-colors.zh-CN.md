@@ -1,6 +1,5 @@
 ---
-nav:
-  title: 示例
+nav: 示例
 group:
   title: 二级侧边栏
   order: 1

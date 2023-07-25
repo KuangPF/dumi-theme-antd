@@ -1,9 +1,6 @@
 ---
-nav:
-  title: 示例
-group:
-  title: 二级侧边栏
-  order: 1
+nav: 示例
+group: 二级侧边栏
 title: 布局
 order: 3
 ---

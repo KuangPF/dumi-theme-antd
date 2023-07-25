@@ -1,9 +1,6 @@
 ---
-nav:
-  title: 示例
-group:
-  title: 三级侧边栏
-  order: 1
+nav: 示例
+group: 三级侧边栏
 type:
   title: 原则
   order: 1

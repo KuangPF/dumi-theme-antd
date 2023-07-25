@@ -1,6 +1,5 @@
 ---
-nav:
-  title: Demo
+nav: Demo
 group:
   title: Secondary Sidebar
   order: 1

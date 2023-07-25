@@ -1,9 +1,8 @@
 ---
-nav:
-  title: Demo
+nav: Demo
 group:
   title: Level 3 Sidebar
-  order: 1
+  order: 2
 title: Overview
 order: 3
 ---

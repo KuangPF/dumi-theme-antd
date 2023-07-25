@@ -1,9 +1,6 @@
 ---
-nav:
-  title: Demo
-group:
-  title: Level 3 Sidebar
-  order: 1
+nav: Demo
+group: Level 3 Sidebar
 type:
   title: Global Rules
   order: 2

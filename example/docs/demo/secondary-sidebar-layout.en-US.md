@@ -1,9 +1,6 @@
 ---
-nav:
-  title: Demo
-group:
-  title: Secondary Sidebar
-  order: 1
+nav: Demo
+group: Secondary Sidebar
 title: Layout
 order: 3
 ---

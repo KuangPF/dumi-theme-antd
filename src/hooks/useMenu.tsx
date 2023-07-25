@@ -152,7 +152,10 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                 }
                 if (!childrenResultTypeOrder[type]) {
                   childrenResultTypeOrder[type] = { title: type, order: childType?.order ?? -1 };
+                } else if (childType?.order) {
+                  childrenResultTypeOrder[type].order = childType.order;
                 }
+
                 nextChildrenResult[type].push(child);
                 return nextChildrenResult;
               }, {});
