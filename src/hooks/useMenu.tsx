@@ -150,7 +150,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               }, {});
               const childItems: any[] = [];
               childItems.push(
-                ...childrenGroup.default.map((item) => ({
+                ...(childrenGroup.default?.map((item) => ({
                   label: (
                     <Link to={`${item.link}${search}`}>
                       {before}
@@ -159,7 +159,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                     </Link>
                   ),
                   key: item.link.replace(/(-en$)/g, '')
-                }))
+                })) ?? [])
               );
               Object.entries(childrenGroup).forEach(([type, children]) => {
                 if (type !== 'default') {
