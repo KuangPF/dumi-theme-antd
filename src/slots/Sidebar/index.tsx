@@ -25,6 +25,7 @@ const useStyle = () => {
       font-family: Avenir, ${fontFamily}, sans-serif;
 
       &${antCls}-menu-inline {
+        user-select: none;
         ${antCls}-menu-submenu-title h4,
         > ${antCls}-menu-item,
         ${antCls}-menu-item a {
