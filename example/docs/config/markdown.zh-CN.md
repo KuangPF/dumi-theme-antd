@@ -97,3 +97,5 @@ title: '概览'
 ```
 
 ![side-menu-3](https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/242193454-eb63d438-1cd8-41d1-8563-c628245bda09.png)
+
+同理，`type` 字段类型也支持对象格式，用于调整 `type` 显示顺序。
