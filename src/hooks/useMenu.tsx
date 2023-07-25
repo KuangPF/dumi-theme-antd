@@ -137,20 +137,40 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                 }))
               });
             } else {
+              const childrenResultTypeOrder = {};
               const childrenGroup = group.children.reduce<
                 Record<string, ReturnType<typeof useSidebarData>[number]['children']>
               >((childrenResult, child) => {
                 const nextChildrenResult = childrenResult;
-                const type = child?.frontmatter?.type ?? 'default';
+                const childType = child?.frontmatter?.type;
+                // 兼容 type 为字符串 && object，object 支持排序
+                const type =
+                  typeof childType === 'string' ? childType : childType?.title ?? 'default';
+
                 if (!nextChildrenResult[type]) {
                   nextChildrenResult[type] = [];
+                }
+                if (!childrenResultTypeOrder[type]) {
+                  childrenResultTypeOrder[type] = { title: type, order: childType?.order ?? -1 };
                 }
                 nextChildrenResult[type].push(child);
                 return nextChildrenResult;
               }, {});
+
+              const childrenGroupOrdered = Object.keys(childrenGroup)
+                .sort((a, b) => childrenResultTypeOrder[a].order - childrenResultTypeOrder[b].order)
+                .reduce<Record<string, ReturnType<typeof useSidebarData>[number]['children']>>(
+                  (obj, key) => {
+                    const _obj = obj;
+                    _obj[key] = childrenGroup[key];
+                    return _obj;
+                  },
+                  {}
+                );
+
               const childItems: any[] = [];
               childItems.push(
-                ...(childrenGroup.default?.map((item) => ({
+                ...(childrenGroupOrdered.default?.map((item) => ({
                   label: (
                     <Link to={`${item.link}${search}`}>
                       {before}
@@ -161,7 +181,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                   key: item.link.replace(/(-en$)/g, '')
                 })) ?? [])
               );
-              Object.entries(childrenGroup).forEach(([type, children]) => {
+              Object.entries(childrenGroupOrdered).forEach(([type, children]) => {
                 if (type !== 'default') {
                   childItems.push({
                     type: 'group',
