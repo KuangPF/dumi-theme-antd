@@ -101,7 +101,7 @@ export default defineConfig({
       ]
     },
     loading: {
-      skeleton: ['/guide', '/config']
+      skeleton: ['/guide', '/config', '/demo']
     },
     docVersions: {
       [pkgJSON.version]: ''
