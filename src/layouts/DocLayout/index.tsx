@@ -9,6 +9,7 @@ import Header from '../../slots/Header';
 import Homepage from '../HomePageLayout';
 import SidebarLayout from '../SidebarLayout';
 import SiteContext from '../../slots/SiteContext';
+import '../../static/style';
 
 const useStyles = () => {
   return {
