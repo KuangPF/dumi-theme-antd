@@ -147,7 +147,7 @@ footerLinks: {
 },
 ```
 
-footer 底部友情链接模块，例如更多产品、社区链接等。
+footer 上方友情链接模块，例如更多产品、社区链接等。
 
 ### moreLinks
 

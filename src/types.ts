@@ -111,7 +111,7 @@ interface IAdditionalThemeConfig {
   theme?: Omit<ThemeConfig, 'algorithm'>;
   /** 是否展示页面加载状态 */
   loading?: ILoading;
-  /** footer 底部友情链接 */
+  /** footer 上方展示友情链接 */
   footerLinks?: FooterColumn[] | Record<string, FooterColumn[]>;
 }
 

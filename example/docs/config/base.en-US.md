@@ -147,7 +147,7 @@ footerLinks: {
 },
 ```
 
-The friendly link module at the bottom of footer, such as more products, community links, etc.
+The friendly link module at the top of footer, such as more products, community links, etc.
 
 ### moreLinks
 
