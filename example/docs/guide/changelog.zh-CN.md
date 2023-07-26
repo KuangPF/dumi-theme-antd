@@ -7,6 +7,16 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.12
+
+`2023-07-27`
+
+- 🐞 修复 `useMenu` hook 在某些情况下出现报错白屏问题。
+- 💄 优化 `footer` 配置， 支持多语言配置。
+- 🆕 侧边栏三级分组 `type` 字段支持排序。
+- 🆕 增加 `footerLinks` 配置，用于在 `footer` 上方展示更多友情链接，详见 [footerLinks](/config/base#footerLinks)。
+- 📃 文档更新：增加示例页面。
+
 ## 0.2.11
 
 `2023-07-19`
