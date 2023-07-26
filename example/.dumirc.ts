@@ -106,6 +106,109 @@ export default defineConfig({
     docVersions: {
       [pkgJSON.version]: ''
     },
+    footerLinks: [
+      {
+        title: '相关资源',
+        items: [
+          {
+            title: 'dumi',
+            description: '组件/文档研发工具',
+            url: 'https://d.umijs.org',
+            openExternal: true
+          },
+          {
+            title: 'Ant Design',
+            url: 'https://ant.design',
+            openExternal: true
+          },
+          {
+            title: 'Umi',
+            description: 'React 应用开发框架',
+            url: 'https://umijs.org',
+            openExternal: true
+          },
+          {
+            title: 'Ant Motion',
+            description: '设计动效',
+            url: 'https://motion.ant.design',
+            openExternal: true
+          }
+        ]
+      },
+      {
+        title: '帮助',
+        items: [
+          {
+            icon: 'https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/256181695-b05fa72a-4ab5-479d-bb74-3d723755de47.png',
+            title: 'GitHub',
+            url: 'https://github.com/KuangPF/dumi-theme-antd',
+            openExternal: true
+          },
+          {
+            icon: 'https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/256181710-8e63ee99-ed71-4ee6-8507-d5ffac02ca51.png',
+            title: '更新日志',
+            url: '/dumi-theme-antd/guide/changelog'
+          },
+          {
+            icon: 'https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/256181704-d443821a-38a2-490a-9aba-4955ceb8d89b.png',
+            title: '常见问题',
+            url: '/dumi-theme-antd/config/faq'
+          },
+          {
+            icon: 'https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/256181680-3b031d0f-1c51-48d2-a676-b2f82aa23e09.png',
+            title: '报告 Bug',
+            url: 'https://github.com/KuangPF/dumi-theme-antd/issues/new',
+            openExternal: true
+          },
+          {
+            icon: 'https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/256181701-b51d6a6f-3190-4525-80d0-43ac194437c9.png',
+            title: '议题',
+            url: 'https://github.com/KuangPF/dumi-theme-antd/issues',
+            openExternal: true
+          }
+        ]
+      },
+      {
+        title: '更多产品',
+        icon: 'https://gw.alipayobjects.com/zos/rmsportal/nBVXkrFdWHxbZlmMbsaH.svg',
+        items: [
+          {
+            icon: 'https://gw.alipayobjects.com/zos/rmsportal/XuVpGqBFxXplzvLjJBZB.svg',
+            title: '语雀',
+            url: 'https://yuque.com',
+            description: '构建你的数字花园',
+            openExternal: true
+          },
+          {
+            icon: 'https://gw.alipayobjects.com/zos/antfincdn/nc7Fc0XBg5/8a6844f5-a6ed-4630-9177-4fa5d0b7dd47.png',
+            title: 'AntV',
+            url: 'https://antv.vision',
+            description: '数据可视化解决方案',
+            openExternal: true
+          },
+          {
+            icon: 'https://www.eggjs.org/logo.svg',
+            title: 'Egg',
+            url: 'https://eggjs.org',
+            description: '企业级 Node.js 框架',
+            openExternal: true
+          },
+          {
+            icon: 'https://gw.alipayobjects.com/zos/rmsportal/DMDOlAUhmktLyEODCMBR.ico',
+            title: 'Kitchen',
+            description: 'Sketch 工具集',
+            url: 'https://kitchen.alipay.com',
+            openExternal: true
+          },
+          {
+            icon: 'https://gw.alipayobjects.com/zos/rmsportal/nBVXkrFdWHxbZlmMbsaH.svg',
+            title: '蚂蚁体验科技',
+            url: 'https://xtech.antfin.com/',
+            openExternal: true
+          }
+        ]
+      }
+    ],
     moreLinks: [
       {
         text: 'Dumi',

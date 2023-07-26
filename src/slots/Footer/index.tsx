@@ -1,9 +1,11 @@
 import { TinyColor } from '@ctrl/tinycolor';
 import { css } from '@emotion/react';
 import RcFooter from 'rc-footer';
+import cloneDeep from 'lodash.clonedeep';
 import getAlphaColor from 'antd/es/theme/util/getAlphaColor';
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { type FC } from 'react';
+import type { FooterColumn } from 'rc-footer/es/column';
 import useSiteToken from '../../hooks/useSiteToken';
 import useLocaleValue from '../../hooks/useLocaleValue';
 import SiteContext from '../SiteContext';
@@ -11,6 +13,7 @@ import type { SiteContextProps } from '../SiteContext';
 
 const useStyle = () => {
   const { token } = useSiteToken();
+  const footerLinks = useLocaleValue('footerLinks');
   const { isMobile } = useContext<SiteContextProps>(SiteContext);
   const background = new TinyColor(getAlphaColor('#f0f3fa', '#fff'))
     .onBackground(token.colorBgContainer)
@@ -47,6 +50,7 @@ const useStyle = () => {
       }
 
       .rc-footer-container {
+        display: ${Array.isArray(footerLinks) && footerLinks.length > 0 ? 'block' : 'none'};
         max-width: 1208px;
         margin-inline: auto;
         padding-inline: ${token.marginXXL}px;
@@ -65,10 +69,30 @@ const useStyle = () => {
 const Footer: FC = () => {
   const style = useStyle();
   const footer = useLocaleValue('footer');
+  const footerLinks = useLocaleValue('footerLinks');
+
+  const getFooterLinks = useCallback((links: FooterColumn[]) => {
+    if (Array.isArray(links)) {
+      links.forEach((item) => {
+        const iconUrl = item.icon;
+        if (item.icon) {
+          // eslint-disable-next-line no-param-reassign
+          delete item.icon;
+          // eslint-disable-next-line no-param-reassign
+          item.icon = <img src={String(iconUrl)} alt="" />;
+        }
+        if (Array.isArray(item.items)) {
+          getFooterLinks(item.items);
+        }
+      });
+    }
+    return links;
+  }, []);
 
   if (!footer) return null;
   return (
     <RcFooter
+      columns={getFooterLinks(cloneDeep(footerLinks))}
       css={style.footer}
       bottom={
         <div
