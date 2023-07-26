@@ -1,6 +1,7 @@
 import type { SerializedStyles } from '@emotion/react';
-import { type IThemeConfig } from 'dumi/dist/client/theme-api/types';
-import { type ThemeConfig } from 'antd';
+import type { IThemeConfig } from 'dumi/dist/client/theme-api/types';
+import type { ThemeConfig } from 'antd';
+import type { FooterColumn } from 'rc-footer/es/column';
 
 export type ISidebarGroupModePathItem = string;
 
@@ -110,6 +111,8 @@ interface IAdditionalThemeConfig {
   theme?: Omit<ThemeConfig, 'algorithm'>;
   /** 是否展示页面加载状态 */
   loading?: ILoading;
+  /** footer 底部友情链接 */
+  footerLinks?: FooterColumn[] | Record<string, FooterColumn[]>;
 }
 
 export interface IAllThemeConfig extends Omit<IThemeConfig, 'socialLinks'>, IAdditionalThemeConfig {
