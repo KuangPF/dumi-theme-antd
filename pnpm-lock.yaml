@@ -31,6 +31,9 @@ dependencies:
   rc-drawer:
     specifier: ^6.2.0
     version: 6.2.0(react-dom@18.0.0)(react@18.0.0)
+  rc-footer:
+    specifier: ^0.6.8
+    version: 0.6.8(react-dom@18.0.0)(react@18.0.0)
   rc-util:
     specifier: ^5.33.0
     version: 5.33.0(react-dom@18.0.0)(react@18.0.0)
@@ -10324,6 +10327,18 @@ packages:
       '@babel/runtime': 7.22.3
       async-validator: 4.2.5
       rc-util: 5.33.0(react-dom@18.0.0)(react@18.0.0)
+      react: 18.0.0
+      react-dom: 18.0.0(react@18.0.0)
+    dev: false
+
+  /rc-footer@0.6.8(react-dom@18.0.0)(react@18.0.0):
+    resolution: {integrity: sha512-JBZ+xcb6kkex8XnBd4VHw1ZxjV6kmcwUumSHaIFdka2qzMCo7Klcy4sI6G0XtUpG/vtpislQCc+S9Bc+NLHYMg==}
+    peerDependencies:
+      react: '>=16.0.0'
+      react-dom: '>=16.0.0'
+    dependencies:
+      '@babel/runtime': 7.22.3
+      classnames: 2.3.2
       react: 18.0.0
       react-dom: 18.0.0(react@18.0.0)
     dev: false

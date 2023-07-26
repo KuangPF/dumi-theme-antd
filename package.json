@@ -61,6 +61,7 @@
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
     "rc-drawer": "^6.2.0",
+    "rc-footer": "^0.6.8",
     "rc-util": "^5.33.0"
   },
   "devDependencies": {
