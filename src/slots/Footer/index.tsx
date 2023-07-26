@@ -2,10 +2,10 @@ import { TinyColor } from '@ctrl/tinycolor';
 import { css } from '@emotion/react';
 import RcFooter from 'rc-footer';
 import getAlphaColor from 'antd/es/theme/util/getAlphaColor';
-import { useSiteData } from 'dumi';
 import { useContext } from 'react';
 import { type FC } from 'react';
 import useSiteToken from '../../hooks/useSiteToken';
+import useLocaleValue from '../../hooks/useLocaleValue';
 import SiteContext from '../SiteContext';
 import type { SiteContextProps } from '../SiteContext';
 
@@ -64,9 +64,7 @@ const useStyle = () => {
 
 const Footer: FC = () => {
   const style = useStyle();
-  const {
-    themeConfig: { footer }
-  } = useSiteData();
+  const footer = useLocaleValue('footer');
 
   if (!footer) return null;
   return (
