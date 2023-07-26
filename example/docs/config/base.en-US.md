@@ -111,6 +111,44 @@ docVersions: {
 
 Display the current document version or multi-document drop-down selection box in the navigation bar, and the default first attribute is the current document version.
 
+### footerLinks <Badge>0.2.12+</Badge>
+
+- Type: `FooterColumn[] | Record<string, FooterColumn[]>`
+- Default: `null`
+
+`FooterColumn` is the `rc-footer` component `columns` attribute type value, [click to view details](https://react-component.github.io/footer/#column).
+
+<Alert type="info">
+   Note: The <code>icon</code> field in <code>FooterColumn</code> is <code>ReactNode</code>, because the <code>themeConfig</code> field sequence in dumirc.ts needs to be used in actual use However, the <code>ReactNode</code> type does not support serialization very well, so if you need to set this value, you can directly set it to the online image address.
+</Alert>
+
+```ts
+// Just configure the array for single language
+footerLinks: [
+   {
+     title: 'More Products',
+     icon: 'https://gw.alipayobjects.com/zos/rmsportal/nBVXkrFdWHxbZlmMbsaH.svg',
+     items: [
+       {
+         icon: 'https://gw.alipayobjects.com/zos/rmsportal/XuVpGqBFxXplzvLjJBZB.svg',
+         title: 'Yuque',
+         url: 'https://yuque.com',
+         description: 'Build your digital garden',
+         openExternal: true
+       }
+     ]
+   }
+]
+
+// Multi-language configuration object, the key is the language name
+footerLinks: {
+   'zh-CN': [],
+   'en-US': [],
+},
+```
+
+The friendly link module at the bottom of footer, such as more products, community links, etc.
+
 ### moreLinks
 
 - 类型：`IMoreLink[] | Record<string, IMoreLink[]>`

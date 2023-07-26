@@ -111,6 +111,44 @@ docVersions: {
 
 在导航栏中显示当前文档版本或者多文档本下拉选择框，默认第一个属性为当前文档版本。
 
+### footerLinks <Badge>0.2.12+</Badge>
+
+- 类型：`FooterColumn[] | Record<string, FooterColumn[]>`
+- 默认值：`null`
+
+`FooterColumn` 为 `rc-footer` 组件 `columns`属性 type 值，[点击查看详情](https://react-component.github.io/footer/#column)。
+
+<Alert type="info">
+  注： <code>FooterColumn</code> 中 <code>icon</code> 字段为 <code>ReactNode</code>，由于实际使用时需将 dumirc.ts 中<code>themeConfig</code> 字段序列化，但 <code>ReactNode</code> 类型不能很好支持序列化，因此如需设置该值，直接设置为线上图片地址即可。
+</Alert>
+
+```ts
+// 单语言时配置数组即可
+footerLinks: [
+  {
+    title: '更多产品',
+    icon: 'https://gw.alipayobjects.com/zos/rmsportal/nBVXkrFdWHxbZlmMbsaH.svg',
+    items: [
+      {
+        icon: 'https://gw.alipayobjects.com/zos/rmsportal/XuVpGqBFxXplzvLjJBZB.svg',
+        title: '语雀',
+        url: 'https://yuque.com',
+        description: '构建你的数字花园',
+        openExternal: true
+      }
+    ]
+  }
+]
+
+// 多语言时配置对象，key 为语言名
+footerLinks: {
+  'zh-CN': [],
+  'en-US': [],
+},
+```
+
+footer 底部友情链接模块，例如更多产品、社区链接等。
+
 ### moreLinks
 
 - 类型：`IMoreLink[] | Record<string, IMoreLink[]>`
