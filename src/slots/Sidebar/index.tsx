@@ -174,7 +174,7 @@ const Sidebar: FC = () => {
       theme={{
         components: {
           Menu: {
-            colorItemBg: colorBgContainer
+            itemBg: colorBgContainer
           }
         }
       }}
