@@ -95,17 +95,11 @@ const Footer: FC = () => {
       columns={getFooterLinks(cloneDeep(footerLinks))}
       css={style.footer}
       bottom={
-        <div
-          style={{
-            opacity: '0.4'
+        <span
+          dangerouslySetInnerHTML={{
+            __html: footer
           }}
-        >
-          <span
-            dangerouslySetInnerHTML={{
-              __html: footer
-            }}
-          />
-        </div>
+        />
       }
     />
   );
