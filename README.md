@@ -24,7 +24,7 @@ $ pnpm i dumi-theme-antd -D
 
 ## F&Q
 
-<img width=300 src="https://github.com/KuangPF/dumi-theme-antd/assets/20694238/3aa88f29-0995-4452-8b07-5a46cc522b77">
+<img width=300 src="https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/257865795-572736d1-0e31-4455-b2c9-0801be069f28.png">
 
 ## Contributing
 
