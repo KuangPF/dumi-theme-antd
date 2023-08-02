@@ -7,6 +7,12 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.2.13
+
+`2023-08-02`
+
+- 🐞 修复内置 `dumi` 以及 `antd` 版本依赖问题，避免控制打印 API 废弃日志[#19](https://github.com/KuangPF/dumi-theme-antd/issues/19)。
+
 ## 0.2.12
 
 `2023-07-27`
