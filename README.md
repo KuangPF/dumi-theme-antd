@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://kuangpf.com/dumi-theme-antd">
-    <img  src="https://user-images.githubusercontent.com/20694238/221604020-d797a64e-30b5-4e4c-897d-112c8ee37512.png">
+    <img  src="https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/257865795-572736d1-0e31-4455-b2c9-0801be069f28.png">
   </a>
 </p>
 
@@ -24,7 +24,7 @@ $ pnpm i dumi-theme-antd -D
 
 ## F&Q
 
-<img width=300 src="https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/257865795-572736d1-0e31-4455-b2c9-0801be069f28.png">
+<img width=300 src="https://github.com/KuangPF/dumi-theme-antd/assets/20694238/3aa88f29-0995-4452-8b07-5a46cc522b77">
 
 ## Contributing
 
