@@ -21,6 +21,7 @@ const LangSwitch: FC = () => {
       let path = getTargetLocalePath({
         pathname,
         current,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         target: locales.find(({ id }) => id === lang)!
       });
 

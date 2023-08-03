@@ -95,6 +95,7 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   const moreLinks = useLocaleValue('moreLinks');
   const activeMenuItem = pathname.split('/').slice(0, 2).join('/');
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const menuItems: MenuProps['items'] = (navList ?? []).map((navItem) => {
     const linkKeyValue = (navItem.link ?? '').split('/').slice(0, 2).join('/');
