@@ -99,3 +99,16 @@ title: '概览'
 ![side-menu-3](https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/242193454-eb63d438-1cd8-41d1-8563-c628245bda09.png)
 
 同理，`type` 字段类型也支持对象格式，用于调整 `type` 显示顺序。
+
+## 隐藏侧边栏
+
+隐藏侧边栏只需要在 FrontMatter 中设置 `sidebar` 值为 `false` 即可:
+
+```md
+---
+sidebar: false
+nav: 示例
+title: 隐藏侧边栏
+order: 3
+---
+```

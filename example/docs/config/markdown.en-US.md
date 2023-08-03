@@ -99,3 +99,16 @@ title: '概览'
 ![side-menu-3](https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/242193454-eb63d438-1cd8-41d1-8563-c628245bda09.png)
 
 Similarly, `type` field type also supports object format, which is used to adjust the display order of `type`.
+
+## Hide the sidebar
+
+To hide the sidebar just set the `sidebar` value to `false` in FrontMatter:
+
+```md
+---
+sidebar: false
+nav: example
+title: hide sidebar
+order: 3
+---
+```
