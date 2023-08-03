@@ -18,7 +18,8 @@
     "dist"
   ],
   "exports": {
-    "./loading": "./dist/common/Loading/index.js"
+    "./loading": "./dist/common/Loading/index.js",
+    "./homeBaseLayout": "./dist/builtins/HomeBaseLayout/index.js"
   },
   "scripts": {
     "build": "father build",
