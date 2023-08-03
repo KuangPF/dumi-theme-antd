@@ -7,6 +7,12 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.0
+
+`2023-08-04`
+
+- 🆕 首页模块导出为内置组件，支持在自定义首页中引入进行扩展,详细说明见[如何完全自定义首页](/config/faq#如何完全自定义首页)。
+
 ## 0.2.13
 
 `2023-08-02`
