@@ -61,11 +61,11 @@ devDependencies:
     specifier: ^4.14.195
     version: 4.14.195
   '@utopia/eslint-config-react':
-    specifier: ^0.0.12
-    version: 0.0.12(@babel/eslint-parser@7.22.9)(@typescript-eslint/eslint-plugin@5.59.8)(@typescript-eslint/parser@5.59.8)(eslint-plugin-import@2.27.5)(eslint-plugin-jsx-a11y@6.7.1)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.32.2)(eslint@8.42.0)
+    specifier: ^0.0.13
+    version: 0.0.13(@babel/eslint-parser@7.22.9)(@typescript-eslint/eslint-plugin@5.59.8)(@typescript-eslint/parser@5.59.8)(eslint-plugin-import@2.27.5)(eslint-plugin-jsx-a11y@6.7.1)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.32.2)(eslint@8.42.0)
   '@utopia/prettier-config-base':
-    specifier: ^0.0.12
-    version: 0.0.12(prettier@2.8.8)
+    specifier: ^0.0.13
+    version: 0.0.13(prettier@2.8.8)
   cross-env:
     specifier: ^7.0.3
     version: 7.0.3
@@ -218,7 +218,7 @@ packages:
       debug: 4.3.4(supports-color@5.5.0)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
-      semver: 6.3.0
+      semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -241,7 +241,7 @@ packages:
       debug: 4.3.4(supports-color@5.5.0)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
-      semver: 6.3.0
+      semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
 
@@ -256,7 +256,7 @@ packages:
       '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
       eslint: 8.42.0
       eslint-visitor-keys: 2.1.0
-      semver: 6.3.0
+      semver: 6.3.1
     dev: false
 
   /@babel/eslint-parser@7.22.9(@babel/core@7.22.1)(eslint@8.42.0):
@@ -299,7 +299,7 @@ packages:
       '@babel/helper-validator-option': 7.21.0
       browserslist: 4.21.7
       lru-cache: 5.1.1
-      semver: 6.3.0
+      semver: 6.3.1
     dev: false
 
   /@babel/helper-compilation-targets@7.22.1(@babel/core@7.22.1):
@@ -313,7 +313,7 @@ packages:
       '@babel/helper-validator-option': 7.21.0
       browserslist: 4.21.7
       lru-cache: 5.1.1
-      semver: 6.3.0
+      semver: 6.3.1
 
   /@babel/helper-environment-visitor@7.22.1:
     resolution: {integrity: sha512-Z2tgopurB/kTbidvzeBrc2To3PUP/9i5MUe+fU6QJCQDyPwSH2oRapkLw3KGECDYSjhQZCNxEvNvZlLw8JjGwA==}
@@ -3262,8 +3262,8 @@ packages:
     resolution: {integrity: sha512-W7Uvyb9Rx3OjUuxrgTaUdkffHNH8yEVG2TW0AgEirNL0os/mC6Wp60r5lRCftgVe+sh9d6L0x2eqp05065fTzg==}
     dev: false
 
-  /@utopia/eslint-config-base@0.0.12(@babel/eslint-parser@7.22.9)(@typescript-eslint/eslint-plugin@5.59.8)(@typescript-eslint/parser@5.59.8)(eslint-plugin-import@2.27.5)(eslint@8.42.0):
-    resolution: {integrity: sha512-9M8LCRNblE3UQAcKioIuN8MPRjtSDJmUI/hqILewcA7crst2Txd8np4N2Xuky2Af2W2drN2SLNLV+X8fvpLdGg==}
+  /@utopia/eslint-config-base@0.0.13(@babel/eslint-parser@7.22.9)(@typescript-eslint/eslint-plugin@5.59.8)(@typescript-eslint/parser@5.59.8)(eslint-plugin-import@2.27.5)(eslint@8.42.0):
+    resolution: {integrity: sha512-DHWWzBV3JiFrGmA+LfCzvQlHxmyfQx9yQvPlJRO7UvXG41tbbKq4VnKfD44W5wmg0IaghpYmlssKEAfRrE78tA==}
     peerDependencies:
       '@babel/eslint-parser': ^7.22.5
       '@typescript-eslint/eslint-plugin': ^5.46.0
@@ -3279,8 +3279,8 @@ packages:
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.8)(eslint@8.42.0)
     dev: true
 
-  /@utopia/eslint-config-react@0.0.12(@babel/eslint-parser@7.22.9)(@typescript-eslint/eslint-plugin@5.59.8)(@typescript-eslint/parser@5.59.8)(eslint-plugin-import@2.27.5)(eslint-plugin-jsx-a11y@6.7.1)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.32.2)(eslint@8.42.0):
-    resolution: {integrity: sha512-Yak5BiRklNBmg1KAf4EhrE7/KZ5uQBK9Y4nJPldeXv+p5p82z2adZI76fDGAEDhOnwA+DPo7YcS6GGpQWf1aHw==}
+  /@utopia/eslint-config-react@0.0.13(@babel/eslint-parser@7.22.9)(@typescript-eslint/eslint-plugin@5.59.8)(@typescript-eslint/parser@5.59.8)(eslint-plugin-import@2.27.5)(eslint-plugin-jsx-a11y@6.7.1)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.32.2)(eslint@8.42.0):
+    resolution: {integrity: sha512-pt/mHl3zPz1sxP5Xz2oy6N2Y8YTeIJ58SmDhLlMgWPOE7KAOUWNrDJODbJ6aPPfFePmiVdZGsT5B4qw7lt75sw==}
     peerDependencies:
       eslint: ^7.32.0 || ^8.2.0
       eslint-plugin-import: ^2.26.0
@@ -3288,7 +3288,7 @@ packages:
       eslint-plugin-react: ^7.31.8
       eslint-plugin-react-hooks: ^4.6.0
     dependencies:
-      '@utopia/eslint-config-base': 0.0.12(@babel/eslint-parser@7.22.9)(@typescript-eslint/eslint-plugin@5.59.8)(@typescript-eslint/parser@5.59.8)(eslint-plugin-import@2.27.5)(eslint@8.42.0)
+      '@utopia/eslint-config-base': 0.0.13(@babel/eslint-parser@7.22.9)(@typescript-eslint/eslint-plugin@5.59.8)(@typescript-eslint/parser@5.59.8)(eslint-plugin-import@2.27.5)(eslint@8.42.0)
       eslint: 8.42.0
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.8)(eslint@8.42.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.42.0)
@@ -3301,8 +3301,8 @@ packages:
       - '@typescript-eslint/parser'
     dev: true
 
-  /@utopia/prettier-config-base@0.0.12(prettier@2.8.8):
-    resolution: {integrity: sha512-XHP1Spt78HFyih/0KDcRrYTHwp5u83B0i0IV+OAJY2nMmjorOPVDlApDoyzsEgEKXXCQjLnOFpiN+2hySo/bcw==}
+  /@utopia/prettier-config-base@0.0.13(prettier@2.8.8):
+    resolution: {integrity: sha512-eSUoblNYZdG9B8ANBBzPuY4GFaiJvhIOBLs5i5RfgvW0rtV0PPdffMER4ip3O6JBSC3bHfX0nBJ6ThUbSwXY9A==}
     peerDependencies:
       prettier: ^2.8.0
     dependencies:
@@ -5448,7 +5448,7 @@ packages:
     engines: {node: '>=0.8'}
     dependencies:
       errlop: 2.2.0
-      semver: 6.3.0
+      semver: 6.3.1
     dev: false
 
   /electron-to-chromium@1.4.419:
@@ -5687,7 +5687,7 @@ packages:
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.8)(eslint@8.42.0)
       object.assign: 4.1.4
       object.entries: 1.1.6
-      semver: 6.3.0
+      semver: 6.3.1
     dev: true
 
   /eslint-import-resolver-node@0.3.7:
@@ -5754,7 +5754,7 @@ packages:
       minimatch: 3.1.2
       object.values: 1.1.6
       resolve: 1.22.2
-      semver: 6.3.0
+      semver: 6.3.1
       tsconfig-paths: 3.14.2
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
@@ -5805,7 +5805,7 @@ packages:
       minimatch: 3.1.2
       object.entries: 1.1.6
       object.fromentries: 2.0.6
-      semver: 6.3.0
+      semver: 6.3.1
     dev: true
 
   /eslint-plugin-react-hooks@4.6.0(eslint@8.42.0):
@@ -5836,7 +5836,7 @@ packages:
       object.values: 1.1.6
       prop-types: 15.8.1
       resolve: 2.0.0-next.4
-      semver: 6.3.0
+      semver: 6.3.1
       string.prototype.matchall: 4.0.8
 
   /eslint-scope@5.1.1:
@@ -7629,7 +7629,7 @@ packages:
       '@babel/parser': 7.22.4
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.0
-      semver: 6.3.0
+      semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -11526,14 +11526,9 @@ packages:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
     hasBin: true
 
-  /semver@6.3.0:
-    resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
-    hasBin: true
-
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
-    dev: true
 
   /semver@7.3.8:
     resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
