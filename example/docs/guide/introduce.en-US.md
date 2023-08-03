@@ -5,6 +5,12 @@ title: Introduce
 
 ## What is dumi-theme-antd
 
+<div align="left">
+
+[![NPM version](https://img.shields.io/npm/v/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd) [![NPM downloads](http://img.shields.io/npm/dm/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd) [![Github Actions](https://github.com/KuangPF/dumi-theme-antd/workflows/Deploy/badge.svg)](https://github.com/KuangPF/dumi-theme-antd/actions)
+
+</div>
+
 `dumi-theme-antd` is a [dumi][dumi-url] theme package, the theme style refers to Antd Design 5.0 official website. Based on `dumi` theme development function, deeply customized and developed:
 
 - HomePage

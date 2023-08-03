@@ -5,6 +5,12 @@ title: 介绍
 
 ## 什么是 dumi-theme-antd
 
+<div align="left">
+
+[![NPM version](https://img.shields.io/npm/v/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd) [![NPM downloads](http://img.shields.io/npm/dm/dumi-theme-antd.svg?style=flat)](https://npmjs.org/package/dumi-theme-antd) [![Github Actions](https://github.com/KuangPF/dumi-theme-antd/workflows/Deploy/badge.svg)](https://github.com/KuangPF/dumi-theme-antd/actions)
+
+</div>
+
 `dumi-theme-antd` 是一款 [dumi][dumi-url] 主题包，主题风格参考 Antd Design 5.0 官网。基于 `dumi` 主题开发功能，深度定制开发了：
 
 - 首页
