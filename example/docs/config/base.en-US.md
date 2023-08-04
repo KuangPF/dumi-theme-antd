@@ -339,6 +339,13 @@ Because dumi does not provide the form of slot to support loading components, it
 export { default } from 'dumi-theme-antd/loading';
 ```
 
+The import method after `0.3.1` version:
+
+```ts
+/* .dumi/loading.tsx */
+export { Loading as default } from 'dumi-theme-antd';
+```
+
 Configure the loading value
 
 ```ts

@@ -339,6 +339,13 @@ interface ILoading {
 export { default } from 'dumi-theme-antd/loading';
 ```
 
+`0.3.1`版本后引入方式：
+
+```ts
+/* .dumi/loading.tsx */
+export { Loading as default } from 'dumi-theme-antd';
+```
+
 配置 loading 值
 
 ```ts

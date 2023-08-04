@@ -25,7 +25,7 @@ Or import it as a React component:
 
 ```tsx | pure
 /*.dumi/pages/index.tsx */
-import HomeBaseLayout from 'dumi-theme-antd/homeBaseLayout';
+import { HomeBaseLayout } from 'dumi-theme-antd';
 
 const CustomHomePage = () => {
   return (
