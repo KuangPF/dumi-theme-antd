@@ -3,6 +3,8 @@
     "strictNullChecks": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "declaration": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "jsx": "react-jsx",
