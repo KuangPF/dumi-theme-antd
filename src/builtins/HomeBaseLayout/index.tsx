@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { Button, Space, Typography } from 'antd';
-import { Link } from 'dumi';
+import { Link, useSearchParams } from 'dumi';
 import React, { useContext, type FC } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useLocaleValue from '../../hooks/useLocaleValue';
@@ -67,6 +67,7 @@ const HomeBaseLayout: FC = () => {
   const actions: IAction[] = useLocaleValue('actions');
   const title = useLocaleValue('title');
   const description = useLocaleValue('description');
+  const [searchParams] = useSearchParams();
 
   // 如果配置了 bannerImgUrl 字段，展示配置图片，否则展示 ant-design 默认 banner 视频
   const { showBanner, bannerImgUrl, bannerMobileImgUrl } = Object.assign(
@@ -184,7 +185,10 @@ const HomeBaseLayout: FC = () => {
                   {text}
                 </Button>
               ) : (
-                <Link to={link} key={link}>
+                <Link
+                  to={`${link}${link.search(/\?/) === -1 ? '?' : '&'}${searchParams.toString()}`}
+                  key={link}
+                >
                   <Button size="large" type={type}>
                     {text}
                   </Button>
