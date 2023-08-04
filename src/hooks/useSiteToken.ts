@@ -1,9 +1,28 @@
 import { TinyColor } from '@ctrl/tinycolor';
 import { theme } from 'antd';
+import type { GlobalToken } from 'antd';
 import { ConfigContext } from 'antd/es/config-provider';
 import { useContext } from 'react';
 import SiteContext from '../slots/SiteContext';
+import type { SiteContextProps } from '../slots/SiteContext';
 
+interface IUseSiteToken {
+  token: GlobalToken & {
+    headerHeight: number;
+    menuItemBorder: number;
+    mobileMaxWidth: number;
+    siteMarkdownCodeBg: string;
+    antCls: string;
+    iconCls: string;
+    marginFarXS: number;
+    marginFarSM: number;
+    marginFar: number;
+    codeFamily: string;
+    boxShadowCard: string;
+    siteTheme: SiteContextProps['theme'];
+  };
+  siteCls: string;
+}
 const { useToken } = theme;
 
 const boxShadowCard = `
@@ -12,7 +31,7 @@ const boxShadowCard = `
 0 5px 12px 4px ${new TinyColor('rgba(0, 0, 0, 0.09)').toRgbString()}
 `;
 
-const useSiteToken = () => {
+const useSiteToken = (): IUseSiteToken => {
   const result = useToken();
   const { getPrefixCls, iconPrefixCls } = useContext(ConfigContext);
   const { theme: siteTheme } = useContext(SiteContext);
