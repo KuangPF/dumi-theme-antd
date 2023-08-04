@@ -1,7 +1,7 @@
 import { TinyColor } from '@ctrl/tinycolor';
 import { theme } from 'antd';
 import type { GlobalToken } from 'antd';
-import { ConfigContext } from 'antd/es/config-provider';
+import { ConfigContext } from 'antd/lib/config-provider';
 import { useContext } from 'react';
 import SiteContext from '../slots/SiteContext';
 import type { SiteContextProps } from '../slots/SiteContext';

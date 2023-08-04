@@ -1,4 +1,6 @@
 import { IAllThemeConfig } from './types';
+import Loading from './common/Loading';
+import HomeBaseLayout from './builtins/HomeBaseLayout';
 
 /**
  * @description provider declaration of config files
@@ -8,3 +10,5 @@ import { IAllThemeConfig } from './types';
 export function defineThemeConfig(config: IAllThemeConfig): IAllThemeConfig {
   return config;
 }
+
+export { Loading, HomeBaseLayout };

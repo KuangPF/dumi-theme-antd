@@ -13,14 +13,11 @@
     "url": "https://github.com/KuangPF/dumi-theme-antd"
   },
   "license": "MIT",
+  "main": "dist/index.js",
   "types": "dist/types.d.ts",
   "files": [
     "dist"
   ],
-  "exports": {
-    "./loading": "./dist/common/Loading/index.js",
-    "./homeBaseLayout": "./dist/builtins/HomeBaseLayout/index.js"
-  },
   "scripts": {
     "build": "father build",
     "build:docs": "cross-env APP_ROOT=example dumi build",
