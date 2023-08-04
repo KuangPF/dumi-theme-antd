@@ -90,12 +90,14 @@ const GlobalLayout: FC = () => {
       });
       // Handle isMobile
       updateMobileMode();
+      // set data-prefers-color
+      setPrefersColor(_theme.indexOf('dark') > -1 ? 'dark' : 'light');
     });
     window.addEventListener('resize', updateMobileMode);
     return () => {
       window.removeEventListener('resize', updateMobileMode);
     };
-  }, [searchParams, updateMobileMode]);
+  }, [searchParams, updateMobileMode, setPrefersColor]);
 
   const siteContextValue = useMemo(
     () => ({
