@@ -7,6 +7,15 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.1
+
+`2023-08-04`
+
+- 💄 优化内置模块`<Loading /> 以及 <HomeBaseLayout />`导出形式。
+- 💄 优化内置 `types` 导出，提升配置体验。
+- 🐞 修改 `useSiteToken` hook 中 `config-provider/ConfigContext` 引入路径为 `lib` 形式。
+- 📃 文档更新：示例页面增加无侧边栏案例。
+
 ## 0.3.0
 
 `2023-08-04`
