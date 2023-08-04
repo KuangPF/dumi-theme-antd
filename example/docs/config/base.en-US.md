@@ -7,6 +7,19 @@ order: 1
 
 `dumi-theme-antd` In order to better adapt to the theme style of the antd v5 official website, some unique fields have been added and placed in the `themeConfig` field of the `dumi` theme configuration item. The specific configuration fields are as follows:
 
+<Alert showIcon> You can get better prompts through the `defineThemeConfig` method inside the theme package:</Alert>
+
+```ts
+import { defineConfig } from 'dumi';
+import { defineThemeConfig } from 'dumi-theme-antd';
+
+export default defineConfig({
+  themeConfig: defineThemeConfig({
+    title: 'Dumi Theme Ant Design'
+  })
+});
+```
+
 ## Basic Configuration
 
 ### github

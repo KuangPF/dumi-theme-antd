@@ -7,6 +7,19 @@ order: 1
 
 `dumi-theme-antd` 为了更好地适配 antd v5 官网主题风格，增加了一些特有字段，并将其置于 `dumi` 主题配置项 `themeConfig` 字段中，具体配置字段如下：
 
+<Alert showIcon>可通过主题包内部 `defineThemeConfig` 方法获取更好的提示：</Alert>
+
+```ts
+import { defineConfig } from 'dumi';
+import { defineThemeConfig } from 'dumi-theme-antd';
+
+export default defineConfig({
+  themeConfig: defineThemeConfig({
+    title: 'Dumi Theme Ant Design'
+  })
+});
+```
+
 ## 基础配置项
 
 ### github

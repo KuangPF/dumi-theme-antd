@@ -100,7 +100,7 @@ title: '概览'
 
 Similarly, `type` field type also supports object format, which is used to adjust the display order of `type`.
 
-## Hide the sidebar <Badge>0.3.0+</Badge>
+## Hide the sidebar
 
 To hide the sidebar just set the `sidebar` value to `false` in FrontMatter:
 

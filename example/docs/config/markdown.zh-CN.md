@@ -100,7 +100,7 @@ title: '概览'
 
 同理，`type` 字段类型也支持对象格式，用于调整 `type` 显示顺序。
 
-## 隐藏侧边栏 <Badge>0.3.0+</Badge>
+## 隐藏侧边栏
 
 隐藏侧边栏只需要在 FrontMatter 中设置 `sidebar` 值为 `false` 即可:
 
