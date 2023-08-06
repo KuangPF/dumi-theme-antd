@@ -2,7 +2,7 @@ import { ConfigProvider, theme as antdTheme } from 'antd';
 import { createSearchParams, Outlet, usePrefersColor, useSearchParams } from 'dumi';
 import type { FC } from 'react';
 import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
-import type { DirectionType } from 'antd/es/config-provider';
+import type { DirectionType } from 'antd/lib/config-provider';
 import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
 import type { ThemeName } from '../common/ThemeSwitch';
 import ThemeSwitch from '../common/ThemeSwitch';

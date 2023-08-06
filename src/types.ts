@@ -1,7 +1,7 @@
 import type { SerializedStyles } from '@emotion/react';
 import type { IThemeConfig } from 'dumi/dist/client/theme-api/types';
 import type { ThemeConfig } from 'antd';
-import type { FooterColumn } from 'rc-footer/es/column';
+import type { FooterColumn } from 'rc-footer/lib/column';
 
 export type ISidebarGroupModePathItem = string;
 

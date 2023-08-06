@@ -1,5 +1,5 @@
 import { FloatButton } from 'antd';
-import { CompactTheme, DarkTheme } from 'antd-token-previewer/es/icons';
+import { CompactTheme, DarkTheme } from 'antd-token-previewer/lib/icons';
 import { FormattedMessage } from 'dumi';
 import React from 'react';
 import ThemeIcon from './ThemeIcon';

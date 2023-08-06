@@ -1,5 +1,5 @@
 import type { MenuProps } from 'antd';
-import { ItemType } from 'antd/es/menu/hooks/useItems';
+import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import { Link, useFullSidebarData, useLocation, useSidebarData } from 'dumi';
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
