@@ -7,6 +7,16 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.2
+
+`2023-08-06`
+
+- 💄 增加内置模块`<Footer />`导出，便于在自定义页面使用。
+- 💄 Footer 更多链接模块图片样式优化，避免样式冲突。
+- 💄 删除自定义页面默认 `padding` 样式。
+- 💄 首页初次加载完成后设置 html `data-prefers-color` 值。
+- 🆕 首页 action 跳转链接适配主题切换。
+
 ## 0.3.1
 
 `2023-08-04`
