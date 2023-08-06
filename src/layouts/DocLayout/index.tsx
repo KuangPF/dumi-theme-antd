@@ -50,9 +50,7 @@ const DocLayout: FC = () => {
       );
     }
     return routeMeta.frontmatter?.sidebar === false ? (
-      <div style={{ padding: 50 }}>
-        <Outlet />
-      </div>
+      <Outlet />
     ) : (
       <SidebarLayout>
         <Outlet />
