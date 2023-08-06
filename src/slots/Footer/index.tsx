@@ -79,7 +79,7 @@ const Footer: FC = () => {
           // eslint-disable-next-line no-param-reassign
           delete item.icon;
           // eslint-disable-next-line no-param-reassign
-          item.icon = <img src={String(iconUrl)} alt="" />;
+          item.icon = <img src={String(iconUrl)} alt="" style={{ maxWidth: '100%' }} />;
         }
         if (Array.isArray(item.items)) {
           getFooterLinks(item.items);
