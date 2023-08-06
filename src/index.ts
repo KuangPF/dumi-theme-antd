@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-unresolved
+import Footer from 'dumi/theme/slots/Footer';
 import { IAllThemeConfig } from './types';
 import Loading from './common/Loading';
 import HomeBaseLayout from './builtins/HomeBaseLayout';
@@ -11,4 +13,4 @@ export function defineThemeConfig(config: IAllThemeConfig): IAllThemeConfig {
   return config;
 }
 
-export { Loading, HomeBaseLayout };
+export { Loading, Footer, HomeBaseLayout };
