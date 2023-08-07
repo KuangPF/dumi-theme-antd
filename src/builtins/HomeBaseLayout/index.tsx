@@ -76,7 +76,7 @@ const HomeBaseLayout: FC = () => {
   );
 
   const bannerContent = bannerImgUrl ? (
-    <img src={bannerImgUrl} style={{ width: '100%' }} alt="" />
+    <img src={bannerImgUrl} style={{ width: '100%', maxWidth: '100%' }} alt="" />
   ) : (
     <React.Fragment>
       <div
@@ -121,6 +121,7 @@ const HomeBaseLayout: FC = () => {
           src={bannerMobileImgUrl}
           style={{
             width: '100%',
+            maxWidth: '100%',
             display: `${showBanner ? 'inline-block' : 'none'} `,
             opacity: `${theme.indexOf('dark') > -1 ? '0.8' : 1}`
           }}
