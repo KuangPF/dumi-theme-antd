@@ -38,3 +38,7 @@ const CustomHomePage = () => {
 
 export default CustomHomePage;
 ```
+
+## 约定式二级导航 <Badge>0.3.3+</Badge>
+
+主题包已适配 dumi 提供的约定式二级导航功能，该功能便于组织文档，具体目录结构以及 FrontMatter 配置可参考官网[约定式二级导航](https://d.umijs.org/guide/conventional-routing#%E7%BA%A6%E5%AE%9A%E5%BC%8F%E4%BA%8C%E7%BA%A7%E5%AF%BC%E8%88%AA)。

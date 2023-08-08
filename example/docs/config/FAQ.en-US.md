@@ -38,3 +38,7 @@ const CustomHomePage = () => {
 
 export default CustomHomePage;
 ```
+
+## Conventional secondary navigation <Badge>0.3.3+</Badge>
+
+The theme package has been adapted to the conventional secondary navigation function provided by dumi, which is convenient for organizing documents. For the specific directory structure and FrontMatter configuration, please refer to the official website [Conventional secondary navigation](https://d.umijs.org/guide/conventional-routing#%E7%BA%A6%E5%AE%9A%E5%BC%8F%E4%BA%8C%E7%BA%A7%E5%AF%BC%E8%88%AA)。
