@@ -23,9 +23,9 @@ export default defineConfig({
         { title: '示例', link: '/demo/secondary-sidebar-colors' }
       ],
       'en-US': [
-        { title: 'guide', link: '/guide/introduce-en' },
-        { title: 'config', link: '/config/base-en' },
-        { title: 'demo', link: '/demo/secondary-sidebar-colors-en' }
+        { title: 'Guide', link: '/guide/introduce-en' },
+        { title: 'Config', link: '/config/base-en' },
+        { title: 'Demo', link: '/demo/secondary-sidebar-colors-en' }
       ]
     },
     footer:
