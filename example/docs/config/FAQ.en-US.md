@@ -42,3 +42,21 @@ export default CustomHomePage;
 ## Conventional secondary navigation <Badge>0.3.3+</Badge>
 
 The theme package has been adapted to the conventional secondary navigation function provided by dumi, which is convenient for organizing documents. For the specific directory structure and FrontMatter configuration, please refer to the official website [Conventional secondary navigation](https://d.umijs.org/guide/conventional-routing#%E7%BA%A6%E5%AE%9A%E5%BC%8F%E4%BA%8C%E7%BA%A7%E5%AF%BC%E8%88%AA)。
+
+## 组件库文档如何适配暗黑模式
+
+The theme switching logic inside the theme package is compatible with dumi’s built-in `usePrefersColor` API, so you can use the `@dark-selector` global variable in the Less file to add a dark mode style to the components of the theme package:
+
+```less
+.some-container {
+  // Bright color mode is white
+  color: #fff;
+
+  // dark mode is black
+  @{dark-selector} & {
+    color: #000;
+  }
+}
+```
+
+If it is a pure css file, you can use [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) to achieve.

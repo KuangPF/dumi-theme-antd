@@ -42,3 +42,21 @@ export default CustomHomePage;
 ## 约定式二级导航 <Badge>0.3.3+</Badge>
 
 主题包已适配 dumi 提供的约定式二级导航功能，该功能便于组织文档，具体目录结构以及 FrontMatter 配置可参考官网[约定式二级导航](https://d.umijs.org/guide/conventional-routing#%E7%BA%A6%E5%AE%9A%E5%BC%8F%E4%BA%8C%E7%BA%A7%E5%AF%BC%E8%88%AA)。
+
+## 组件库文档如何适配暗黑模式
+
+主题包内部主题切换逻辑兼容 dumi 内置`usePrefersColor` API，因此可以在 Less 文件中使用 `@dark-selector` 的全局变量来为主题包的组件增加暗色模式的样式：
+
+```less
+.some-container {
+  // 亮色模式为白色
+  color: #fff;
+
+  // 暗色模式变黑色
+  @{dark-selector} & {
+    color: #000;
+  }
+}
+```
+
+如果是纯 css 文件，可使用[prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)实现。
