@@ -43,7 +43,7 @@ export default CustomHomePage;
 
 The theme package has been adapted to the conventional secondary navigation function provided by dumi, which is convenient for organizing documents. For the specific directory structure and FrontMatter configuration, please refer to the official website [Conventional secondary navigation](https://d.umijs.org/guide/conventional-routing#%E7%BA%A6%E5%AE%9A%E5%BC%8F%E4%BA%8C%E7%BA%A7%E5%AF%BC%E8%88%AA)。
 
-## 组件库文档如何适配暗黑模式
+## How the component library documentation adapts to the dark mode
 
 The theme switching logic inside the theme package is compatible with dumi’s built-in `usePrefersColor` API, so you can use the `@dark-selector` global variable in the Less file to add a dark mode style to the components of the theme package:
 
