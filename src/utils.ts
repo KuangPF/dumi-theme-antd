@@ -40,7 +40,14 @@ export const handleFullSidebarData = (
     if (key.split('/').length === 3) {
       // 二级目录
       const levelOneNavKey = `/${key.split('/')[1]}`;
-      const _levelTwoNav = value[0]?.children?.find((item) => item.frontmatter?.nav);
+      let _levelTwoNav = value[0]?.children?.find((item) => {
+        const _frontmatterInfo = item.frontmatter?.nav;
+        return typeof _frontmatterInfo === 'object' && typeof _frontmatterInfo?.second === 'object';
+      });
+      // 如果是 second 配置不为对象，直接获取其值即可
+      if (!_levelTwoNav) {
+        _levelTwoNav = value[0]?.children[0];
+      }
       // 找找二级菜单名称以及顺序
       const _levelTwoNavInfo = _levelTwoNav?.frontmatter?.nav;
       const frontmatterNavSecond: { order: number; title?: string } = {
@@ -50,10 +57,10 @@ export const handleFullSidebarData = (
       if (typeof _levelTwoNavInfo !== 'string') {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        frontmatterNavSecond.order = _levelTwoNavInfo?.second.order ?? 0;
+        frontmatterNavSecond.order = _levelTwoNavInfo?.second?.order ?? 0;
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        frontmatterNavSecond.title = _levelTwoNavInfo?.second.title ?? _levelTwoNavInfo.second;
+        frontmatterNavSecond.title = _levelTwoNavInfo?.second?.title ?? _levelTwoNavInfo?.second;
       }
 
       if (existedLevelOneNavList.includes(levelOneNavKey)) {

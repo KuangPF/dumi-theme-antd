@@ -11,7 +11,7 @@ import type {
   SidebarEnhanceSubType,
   SidebarEnhanceType
 } from '../types';
-import { removeTitleCode } from '../utils';
+import { removeTitleCode, handleFullSidebarData } from '../utils';
 import useAdditionalThemeConfig from './useAdditionalThemeConfig';
 
 export type UseMenuOptions = {
@@ -21,11 +21,15 @@ export type UseMenuOptions = {
 
 const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => {
   const { pathname, search } = useLocation();
-  const sidebarData = useSidebarData();
   const { sidebarGroupModePath, sidebarEnhance = {} } = useAdditionalThemeConfig();
   const { before, after } = options;
 
   const fullSidebarData = useFullSidebarData();
+  const navSecondSidebarData = handleFullSidebarData(fullSidebarData);
+
+  // 提取一级导航下侧边栏数据
+  const currentNavKey = `/${pathname.split('/')?.[1]}`;
+  const sidebarData = navSecondSidebarData[currentNavKey];
   const linkTitleMap = useMemo(() => {
     return Object.values(fullSidebarData).reduce<Record<string, string>>((res, sidebar) => {
       const sidebarItems = sidebar.map((item) => item.children).flat();
