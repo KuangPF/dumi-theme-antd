@@ -7,6 +7,14 @@ timeline: true
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.3
+
+`2023-08-09`
+
+- 💄 修复首页背景大图 max-width 样式属性在自定义首页中通 Markdown.css 样式冲突。
+- 🆕 支持约定式二级目录导航。
+- 📃 文档更新：示例页面增加二级目录导航以及 FAQ 增加相关介绍说明。
+
 ## 0.3.2
 
 `2023-08-06`
