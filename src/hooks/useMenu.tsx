@@ -1,4 +1,5 @@
 import type { MenuProps } from 'antd';
+import { Tag } from 'antd';
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import { Link, useFullSidebarData, useLocation, useSidebarData } from 'dumi';
 import type { ReactNode } from 'react';
@@ -13,6 +14,7 @@ import type {
 } from '../types';
 import { removeTitleCode, handleFullSidebarData } from '../utils';
 import useAdditionalThemeConfig from './useAdditionalThemeConfig';
+import { version } from '../../package.json';
 
 export type UseMenuOptions = {
   before?: ReactNode;
@@ -106,6 +108,18 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
   const menuItems = useMemo<MenuProps['items']>(() => {
     const sidebarItems = [...(sidebarData ?? [])];
 
+    const getItemTag = (tag: string | { color: string; title: string }, show = true) =>
+      tag &&
+      show && (
+        <Tag
+          color={typeof tag === 'string' ? 'processing' : tag.color}
+          bordered={false}
+          style={{ marginInlineStart: 'auto', marginInlineEnd: 0, marginTop: -2 }}
+        >
+          {(typeof tag === 'string' ? tag : tag.title).replace('VERSION', version)}
+        </Tag>
+      );
+
     return (
       sidebarItems?.reduce<Exclude<MenuProps['items'] | { order?: number }[], undefined>>(
         (result, group) => {
@@ -126,14 +140,16 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                 key: group?.title,
                 children: group.children?.map((item) => ({
                   label: (
-                    <Link to={`${item.link}${search}`}>
+                    <Link
+                      to={`${item.link}${search}`}
+                      style={{ display: 'flex', alignItems: 'center' }}
+                    >
                       {before}
                       <span key="english">{removeTitleCode(item?.title)}</span>
-                      {item.frontmatter && (
-                        <span className="chinese" key="chinese">
-                          {removeTitleCode(item.frontmatter.subtitle)}
-                        </span>
-                      )}
+                      <span className="chinese" key="chinese">
+                        {removeTitleCode(item.frontmatter?.subtitle)}
+                      </span>
+                      {getItemTag(item.frontmatter?.tag, !before && !after)}
                       {after}
                     </Link>
                   ),
@@ -179,9 +195,13 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               childItems.push(
                 ...(childrenGroupOrdered.default?.map((item) => ({
                   label: (
-                    <Link to={`${item.link}${search}`}>
+                    <Link
+                      to={`${item.link}${search}`}
+                      style={{ display: 'flex', alignItems: 'center' }}
+                    >
                       {before}
                       {removeTitleCode(item?.title)}
+                      {getItemTag(item.frontmatter?.tag, !before && !after)}
                       {after}
                     </Link>
                   ),
@@ -196,9 +216,13 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                     key: type,
                     children: children?.map((item) => ({
                       label: (
-                        <Link to={`${item.link}${search}`}>
+                        <Link
+                          to={`${item.link}${search}`}
+                          style={{ display: 'flex', alignItems: 'center' }}
+                        >
                           {before}
                           {removeTitleCode(item?.title)}
+                          {getItemTag(item.frontmatter?.tag, !before && !after)}
                           {after}
                         </Link>
                       ),
@@ -225,9 +249,13 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
               ...list.map((item) => ({
                 order: item?.order,
                 label: (
-                  <Link to={`${item.link}${search}`}>
+                  <Link
+                    to={`${item.link}${search}`}
+                    style={{ display: 'flex', alignItems: 'center' }}
+                  >
                     {before}
                     {removeTitleCode(item?.title)}
+                    {getItemTag(item.frontmatter?.tag, !before && !after)}
                     {after}
                   </Link>
                 ),
