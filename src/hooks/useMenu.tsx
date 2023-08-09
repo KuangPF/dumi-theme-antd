@@ -116,7 +116,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
           bordered={false}
           style={{ marginInlineStart: 'auto', marginInlineEnd: 0, marginTop: -2 }}
         >
-          {(typeof tag === 'string' ? tag : tag.title).replace('VERSION', version)}
+          {(typeof tag === 'string' ? tag : tag.title).replace('VERSION', `v${version}`)}
         </Tag>
       );
 
