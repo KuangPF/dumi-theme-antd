@@ -112,3 +112,26 @@ title: 隐藏侧边栏
 order: 3
 ---
 ```
+
+## 菜单栏 Tag 配置 <Badge>+0.3.4</Badge>
+
+为了展示菜单栏更新或者标识状态，菜单支持 tag 配置:
+
+```md
+---
+tag:
+  title: New
+  color: success <!-- 同 antd Tag 组件 color 属性，eg. success,processing,warning etc.-->
+---
+```
+
+菜单则渲染为：
+<img description="tag" width=300 src="https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/259418494-f44e99d2-7ce2-4816-8eb1-45b66c473ea6.png" />
+
+也可以直接使用简单模式，直接配置成字符串，此时默认颜色为 `processing`。
+
+```md
+---
+tag: New
+---
+```

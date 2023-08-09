@@ -112,3 +112,26 @@ title: hide sidebar
 order: 3
 ---
 ```
+
+## Menu bar Tag configuration <Badge>+0.3.4</Badge>
+
+In order to display the menu bar update or identify the status, the menu supports tag configuration:
+
+```md
+---
+tag:
+  title: new
+  color: success <!-- Same as color attribute of antd Tag component,eg. success,processing,warning etc.-->
+---
+```
+
+The menu is then rendered as:
+<img description="tag" width=300 src="https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/259418494-f44e99d2-7ce2-4816-8eb1-45b66c473ea6.png" / >
+
+You can also directly use the simple mode and configure it directly as a string. In this case, the default color is `processing`.
+
+```md
+---
+tag: new
+---
+```
