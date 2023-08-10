@@ -83,8 +83,8 @@ const useStyle = () => {
       @media only screen and (max-width: ${token.screenLG}px) {
         &,
         &.rtl {
-          padding-right: 48px;
-          padding-left: 48px;
+          padding-right: 24px;
+          padding-left: 24px;
         }
       }
     `,
