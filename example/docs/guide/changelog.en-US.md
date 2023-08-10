@@ -8,6 +8,13 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.4
+
+`2023-08-10`
+
+- 💄 优化内置 `PrevAndNext` 展示逻辑。
+- 🆕 菜单项支持 `Tag` 配置，详细说明见[菜单栏-tag-配置](/config/markdown#菜单栏-tag-配置)。
+
 ## 0.3.3
 
 `2023-08-09`
