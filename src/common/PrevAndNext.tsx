@@ -3,9 +3,11 @@ import { ClassNames, css } from '@emotion/react';
 import type { MenuProps } from 'antd';
 import type { MenuItemType } from 'antd/lib/menu/hooks/useItems';
 import type { ReactElement } from 'react';
-import React, { useMemo } from 'react';
+import React, { useMemo, useContext } from 'react';
 import useMenu from '../hooks/useMenu';
 import useSiteToken from '../hooks/useSiteToken';
+import SiteContext from '../slots/SiteContext';
+import type { SiteContextProps } from '../slots/SiteContext';
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -29,6 +31,7 @@ const useStyle = () => {
       text-decoration: none;
 
       ${iconCls} {
+        color: #999;
         font-size: ${fontSizeIcon}px;
         transition: all 0.3s;
       }
@@ -39,6 +42,9 @@ const useStyle = () => {
     `,
     prevNav: `
       text-align: start;
+      display: flex;
+      justify-content: flex-start;
+      align-item: center;
 
       .footer-nav-icon-after {
         display: none;
@@ -46,19 +52,22 @@ const useStyle = () => {
 
       .footer-nav-icon-before {
         position: relative;
-        margin-inline-end: 1em;
-        vertical-align: middle;
         line-height: 0;
-        right: 0;
-        transition: right 0.3s;
+        vertical-align: middle;
+        transition: inset-inline-end 0.3s;
+        margin-inline-end: 1em;
+        inset-inline-end: 0;
       }
 
       &:hover .footer-nav-icon-before {
-        right: 0.2em;
+        inset-inline-end: 0.2em;
       }
     `,
     nextNav: `
       text-align: end;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
 
       .footer-nav-icon-before {
         display: none;
@@ -75,7 +84,7 @@ const useStyle = () => {
       }
 
       &:hover .footer-nav-icon-after {
-        left: 0.2em;
+        inset-inline-start: 0.2em;
       }
     `
   };
@@ -96,13 +105,18 @@ const flattenMenu = (menuItems: MenuProps['items']): MenuProps['items'] | null =
   return null;
 };
 
-const PrevAndNext: React.FC = () => {
+const PrevAndNext: React.FC = ({ rtl }) => {
   const styles = useStyle();
 
-  const [menuItems, selectedKey] = useMenu({
-    before: <LeftOutlined className="footer-nav-icon-before" />,
-    after: <RightOutlined className="footer-nav-icon-after" />
-  });
+  const beforeProps = { className: 'footer-nav-icon-before' };
+  const afterProps = { className: 'footer-nav-icon-after' };
+
+  const before = rtl ? <RightOutlined {...beforeProps} /> : <LeftOutlined {...beforeProps} />;
+  const after = rtl ? <LeftOutlined {...afterProps} /> : <RightOutlined {...afterProps} />;
+
+  const [menuItems, selectedKey] = useMenu({ before, after });
+
+  const { isMobile } = useContext<SiteContextProps>(SiteContext);
 
   const [prev, next] = useMemo(() => {
     const flatMenu = flattenMenu(menuItems);
@@ -120,6 +134,10 @@ const PrevAndNext: React.FC = () => {
       flatMenu[activeMenuItemIndex + 1] as MenuItemType
     ];
   }, [menuItems, selectedKey]);
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <section css={styles.prevNextNav}>

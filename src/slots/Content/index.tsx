@@ -224,7 +224,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
 
         {children}
       </article>
-      <PrevAndNext />
+      <PrevAndNext rtl={isRTL} />
       <Footer />
     </Col>
   );
