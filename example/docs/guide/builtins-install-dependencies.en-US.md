@@ -12,17 +12,17 @@ The dependent installation component is used to display script installation info
 
 ```md
 <InstallDependencies
-npm='$ npm install dumi-theme-antd --save'
+npm='$ npm install dumi-theme-antd '
 yarn='$ yarn add dumi-theme-antd'
-pnpm='$ pnpm install dumi-theme-antd --save'
+pnpm='$ pnpm install dumi-theme-antd '
 
 > </InstallDependencies>
 ```
 
 <InstallDependencies 
-  npm='$ npm install dumi-theme-antd --save' 
+  npm='$ npm install dumi-theme-antd ' 
   yarn='$ yarn add dumi-theme-antd' 
-  pnpm='$ pnpm install dumi-theme-antd --save' 
+  pnpm='$ pnpm install dumi-theme-antd ' 
 />
 </InstallDependencies>
 
