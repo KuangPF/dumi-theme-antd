@@ -8,6 +8,12 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.5
+
+`2023-08-18`
+
+- 🆕 支持官方 `lastUpdated` 配置项。
+
 ## 0.3.4
 
 `2023-08-10`
