@@ -9,14 +9,14 @@ import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
 const useStyle = () => {
   const { token } = useSiteToken();
 
-  const { colorText, marginXXS, marginSM, screenLG } = token;
+  const { colorTextTertiary, marginXXS, marginSM, screenLG } = token;
 
   return {
     lastUpdatedWrap: css`
       margin-inline-end: 170px;
       margin-inline-start: 64px;
       margin-block-end: ${marginSM}px;
-      color: ${colorText};
+      color: ${colorTextTertiary};
       display: flex;
       @media only screen and (max-width: ${screenLG}px) {
         margin-inline-end: 24px;
