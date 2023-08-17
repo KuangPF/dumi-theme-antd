@@ -3,5 +3,6 @@
   "app.not-found.subTitle": "Sorry, the page you visited does not exist.",
   "app.theme.switch.dark": "Dark theme",
   "app.theme.switch.compact": "Compact theme",
-  "app.header.menu.more": "More"
+  "app.header.menu.more": "More",
+  "app.footer.last.updated": "Last updated: "
 }

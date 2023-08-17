@@ -16,6 +16,7 @@ export default defineConfig({
   // pass theme config
   themeConfig: defineThemeConfig({
     name: 'dumi-theme-antd',
+    lastUpdated: true,
     nav: {
       'zh-CN': [
         { title: '指南', link: '/guide/introduce' },

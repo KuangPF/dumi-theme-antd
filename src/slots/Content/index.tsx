@@ -7,6 +7,7 @@ import { useRouteMeta } from 'dumi';
 import type { FC, ReactNode } from 'react';
 import { useMemo, useContext } from 'react';
 import PrevAndNext from '../../common/PrevAndNext';
+import LastUpdated from '../../common/LastUpdated';
 import useSiteToken from '../../hooks/useSiteToken';
 import Footer from '../Footer';
 import SiteContext from '../SiteContext';
@@ -224,6 +225,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
 
         {children}
       </article>
+      <LastUpdated time={meta.frontmatter?.lastUpdated} />
       <PrevAndNext rtl={isRTL} />
       <Footer />
     </Col>
