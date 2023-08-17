@@ -1,5 +1,5 @@
 // 最后更新时间
-import React from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { FormattedMessage } from 'dumi';
 import { ClockCircleOutlined } from '@ant-design/icons';
@@ -33,11 +33,22 @@ const useStyle = () => {
 const LastUpdated: React.FC<{ time?: number }> = ({ time }) => {
   const styles = useStyle();
   const { lastUpdated } = useAdditionalThemeConfig();
-  const isoLastUpdated = new Date(time!).toISOString();
-  const lastUpdatedTime = new Intl.DateTimeFormat(undefined, {
-    dateStyle: 'short',
-    timeStyle: 'short'
-  }).format(time);
+  const [isoLastUpdated, setIsoLastUpdated] = useState('');
+  const [lastUpdatedTime, setLastUpdatedTime] = useState('');
+  const showLastUpdated = lastUpdated && time;
+
+  useLayoutEffect(() => {
+    if (showLastUpdated) {
+      setIsoLastUpdated(new Date(time!).toISOString());
+      setLastUpdatedTime(
+        new Intl.DateTimeFormat(undefined, {
+          dateStyle: 'short',
+          timeStyle: 'short'
+        }).format(time)
+      );
+    }
+  }, [showLastUpdated, time]);
+
   return lastUpdated && time ? (
     <div css={styles.lastUpdatedWrap}>
       <ClockCircleOutlined />
