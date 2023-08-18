@@ -1,5 +1,5 @@
 // 最后更新时间
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { FormattedMessage } from 'dumi';
 import { ClockCircleOutlined } from '@ant-design/icons';
@@ -37,7 +37,7 @@ const LastUpdated: React.FC<{ time?: number }> = ({ time }) => {
   const [lastUpdatedTime, setLastUpdatedTime] = useState('');
   const showLastUpdated = lastUpdated && time;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (showLastUpdated) {
       setIsoLastUpdated(new Date(time!).toISOString());
       setLastUpdatedTime(
