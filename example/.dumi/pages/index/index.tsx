@@ -6,7 +6,6 @@ const CustomHomePage = () => {
   return (
     <div>
       <HomeBaseLayout />
-      <div>other content</div>
     </div>
   );
 };
