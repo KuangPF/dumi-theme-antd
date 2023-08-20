@@ -2,7 +2,8 @@
 /dist
 /example/node_modules
 /example/dist
+/example/server/*
 /**/.dumi/tmp/*
 /**/.dumi/theme/*
-.dumi/tmp-production
+/**/.dumi/tmp-production
 .DS_Store
