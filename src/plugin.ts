@@ -10,7 +10,7 @@ const dumiThemeUmiPlugin = (api: IApi) => {
   api.modifyConfig((memo) => {
     if (memo.ssr) {
       memo.styles ??= [];
-      memo.styles.push(`${memo.publicPath}${ssrCssFileName}`);
+      memo.styles.push(`${memo.publicPath ?? '/'}${ssrCssFileName}`);
     }
 
     // 将 .dumrc 中 ssr 配置注入 themeConfig 中，便于页面获取
