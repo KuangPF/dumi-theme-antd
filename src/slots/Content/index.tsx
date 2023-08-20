@@ -150,8 +150,8 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <Col xxl={20} xl={19} lg={18} md={18} sm={24} xs={24} css={styles.colContent}>
-      <Affix>
-        {!!meta.frontmatter.toc && (
+      {!!meta.frontmatter.toc && (
+        <Affix>
           <section css={styles.tocWrapper} className={classNames({ rtl: isRTL })}>
             <Anchor
               css={styles.toc}
@@ -176,8 +176,9 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
               }))}
             />
           </section>
-        )}
-      </Affix>
+        </Affix>
+      )}
+
       <article css={styles.articleWrapper} className={classNames({ rtl: isRTL })}>
         {isShowTitle ? (
           <Typography.Title

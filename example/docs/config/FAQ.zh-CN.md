@@ -73,3 +73,7 @@ export default defineConfig({
   ssr: process.env.NODE_ENV === 'development' ? false : {}
 });
 ```
+
+:::info{title=自定义标题}
+这是一条普通信息
+:::
