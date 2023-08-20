@@ -63,3 +63,13 @@ export default CustomHomePage;
 ```
 
 如果是纯 css 文件，可使用[prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)实现。
+
+## SSR <Badge>0.3.6+</Badge>
+
+主题包支持 SSR，`0.3.6` 版本之前 `cssinjs` 样式未做完全兼容，之后版本已修复该问题， ssr 推荐配置：
+
+```ts
+export default defineConfig({
+  ssr: process.env.NODE_ENV === 'development' ? false : {}
+});
+```
