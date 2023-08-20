@@ -50,7 +50,9 @@ const DocLayout: FC = () => {
       );
     }
     return routeMeta.frontmatter?.sidebar === false ? (
-      <Outlet />
+      <div>
+        <Outlet />
+      </div>
     ) : (
       <SidebarLayout>
         <Outlet />
