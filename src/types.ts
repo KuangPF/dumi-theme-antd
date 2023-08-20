@@ -113,6 +113,8 @@ interface IAdditionalThemeConfig {
   loading?: ILoading;
   /** footer 上方展示友情链接 */
   footerLinks?: FooterColumn[] | Record<string, FooterColumn[]>;
+  /** SSR, plugin 自动注入，无需设置 */
+  ssr?: boolean | Record<string, unknown>;
 }
 
 export interface IAllThemeConfig extends Omit<IThemeConfig, 'socialLinks'>, IAdditionalThemeConfig {

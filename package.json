@@ -21,6 +21,7 @@
   "scripts": {
     "build": "father build",
     "build:docs": "cross-env APP_ROOT=example dumi build",
+    "site": "node app.js",
     "dev": "father dev",
     "docs": "cross-env APP_ROOT=example dumi dev",
     "lint": "pnpm run lint:es && pnpm run lint:css",
@@ -51,6 +52,7 @@
     ]
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.16.2",
     "@ant-design/icons": "^5.1.4",
     "@babel/runtime": "^7.22.3",
     "@ctrl/tinycolor": "^3.6.0",
@@ -71,6 +73,7 @@
     "@utopia/eslint-config-react": "^0.0.13",
     "@utopia/prettier-config-base": "^0.0.13",
     "cross-env": "^7.0.3",
+    "express": "^4.18.2",
     "father": "^4.2.2",
     "father-plugin-dumi-theme": "1.0.0-rc.1",
     "husky": "^8.0.3",

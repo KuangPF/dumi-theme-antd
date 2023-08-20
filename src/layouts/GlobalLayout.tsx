@@ -1,7 +1,14 @@
+import {
+  createCache,
+  legacyNotSelectorLinter,
+  logicalPropertiesLinter,
+  parentSelectorLinter,
+  StyleProvider
+} from '@ant-design/cssinjs';
 import { ConfigProvider, theme as antdTheme } from 'antd';
 import { createSearchParams, Outlet, usePrefersColor, useSearchParams } from 'dumi';
 import type { FC } from 'react';
-import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
 import type { DirectionType } from 'antd/lib/config-provider';
 import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
 import type { ThemeName } from '../common/ThemeSwitch';
@@ -33,7 +40,7 @@ const GlobalLayout: FC = () => {
     theme: ['light']
   });
   const [searchParams, setSearchParams] = useSearchParams();
-  const { theme: configTheme } = useAdditionalThemeConfig();
+  const { theme: configTheme, ssr } = useAdditionalThemeConfig();
 
   const updateSiteConfig = useCallback(
     (props: SiteState) => {
@@ -109,6 +116,32 @@ const GlobalLayout: FC = () => {
     [isMobile, theme, direction, updateSiteConfig]
   );
 
+  const [styleCache] = React.useState(() => (ssr ? createCache() : [null]));
+
+  if (ssr) {
+    (global as any).styleCache = styleCache;
+    return (
+      <StyleProvider
+        cache={styleCache}
+        linters={[logicalPropertiesLinter, legacyNotSelectorLinter, parentSelectorLinter]}
+      >
+        <SiteContext.Provider value={siteContextValue}>
+          <ConfigProvider
+            theme={{
+              ...configTheme,
+              algorithm: getAlgorithm(theme)
+            }}
+          >
+            <Outlet />
+            <ThemeSwitch
+              value={theme}
+              onChange={(nextTheme) => updateSiteConfig({ theme: nextTheme })}
+            />
+          </ConfigProvider>
+        </SiteContext.Provider>
+      </StyleProvider>
+    );
+  }
   return (
     <SiteContext.Provider value={siteContextValue}>
       <ConfigProvider
