@@ -2,11 +2,16 @@
 order: 4
 title: 更新日志
 toc: false
-timeline: true
 tag: VERSION
 ---
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
+
+## 0.3.7
+
+`2023-08-20`
+
+- 🐞 修复 SSR 样式设置 `publicPath` 时引入路径不对。
 
 ## 0.3.6
 
