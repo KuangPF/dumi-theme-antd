@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { Affix, Anchor, Col, Space, Typography } from 'antd';
 import classNames from 'classnames';
 import DayJS from 'dayjs';
-import { useRouteMeta } from 'dumi';
+import { useRouteMeta, useTabMeta } from 'dumi';
 import type { FC, ReactNode } from 'react';
 import { useMemo, useContext } from 'react';
 import PrevAndNext from '../../common/PrevAndNext';
@@ -104,6 +104,7 @@ type AnchorItem = {
 
 const Content: FC<{ children: ReactNode }> = ({ children }) => {
   const meta = useRouteMeta();
+  const tab = useTabMeta();
   const styles = useStyle();
   const { token } = useSiteToken();
   const { direction } = useContext(SiteContext);
@@ -126,7 +127,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
 
   const anchorItems = useMemo(
     () =>
-      meta.toc.reduce<AnchorItem[]>((result, item) => {
+      (tab?.toc || meta.toc).reduce<AnchorItem[]>((result, item) => {
         if (item.depth === 2) {
           result.push({
             ...item
@@ -142,7 +143,7 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
         }
         return result;
       }, []),
-    [meta.toc]
+    [meta.toc, tab]
   );
 
   const isRTL = direction === 'rtl';
@@ -150,30 +151,32 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <Col xxl={20} xl={19} lg={18} md={18} sm={24} xs={24} css={styles.colContent}>
       <Affix>
-        <section css={styles.tocWrapper} className={classNames({ rtl: isRTL })}>
-          <Anchor
-            css={styles.toc}
-            affix={false}
-            targetOffset={token.marginXXL}
-            showInkInFixed
-            items={anchorItems.map((item) => ({
-              href: `#${item.id}`,
-              title: item.title,
-              key: item.id,
-              children: item.children
-                ?.filter((child) => !debugDemos.includes(child.id))
-                .map((child) => ({
-                  href: `#${child.id}`,
-                  title: (
-                    <span className={classNames(debugDemos.includes(child.id) && 'toc-debug')}>
-                      {child?.title}
-                    </span>
-                  ),
-                  key: child.id
-                }))
-            }))}
-          />
-        </section>
+        {!!meta.frontmatter.toc && (
+          <section css={styles.tocWrapper} className={classNames({ rtl: isRTL })}>
+            <Anchor
+              css={styles.toc}
+              affix={false}
+              targetOffset={token.marginXXL}
+              showInkInFixed
+              items={anchorItems.map((item) => ({
+                href: `#${item.id}`,
+                title: item.title,
+                key: item.id,
+                children: item.children
+                  ?.filter((child) => !debugDemos.includes(child.id))
+                  .map((child) => ({
+                    href: `#${child.id}`,
+                    title: (
+                      <span className={classNames(debugDemos.includes(child.id) && 'toc-debug')}>
+                        {child?.title}
+                      </span>
+                    ),
+                    key: child.id
+                  }))
+              }))}
+            />
+          </section>
+        )}
       </Affix>
       <article css={styles.articleWrapper} className={classNames({ rtl: isRTL })}>
         {isShowTitle ? (
