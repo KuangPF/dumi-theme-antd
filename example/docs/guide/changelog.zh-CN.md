@@ -8,6 +8,13 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.8
+
+`2023-08-20`
+
+- 🐞 修复 SSR 样式设置 `publicPath` 不设置时返回为 `undefined` 的问题。
+- 🆕 内容区 toc 支持 FrontMatter `toc` 控制显隐。
+
 ## 0.3.7
 
 `2023-08-20`
