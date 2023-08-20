@@ -36,6 +36,24 @@ export default () => {
               background: ${token.colorErrorBg};
             }
           }
+          .${prefix}-container.markdown {
+            &[data-type='info'] {
+              color: ${token.colorPrimary};
+              background: ${token.colorPrimaryBg};
+            }
+            &[data-type='warning'] {
+              color: ${token.colorWarning};
+              background: ${token.colorWarningBg};
+            }
+            &[data-type='success'] {
+              color: ${token.colorSuccess};
+              background: ${token.colorSuccessBg};
+            }
+            &[data-type='error'] {
+              color: ${token.colorError};
+              background: ${token.colorErrorBg};
+            }
+          }
         }
       `}
     />
