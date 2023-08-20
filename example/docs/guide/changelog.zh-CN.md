@@ -8,6 +8,12 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.6
+
+`2023-08-20`
+
+- 🐞 修复 SSR 样式没有单独提取导致首次加载样式闪屏[#20](https://github.com/KuangPF/dumi-theme-antd/issues/20)。
+
 ## 0.3.5
 
 `2023-08-18`
