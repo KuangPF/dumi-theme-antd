@@ -10,8 +10,6 @@ tag:
 
 以下整理了一些 dumi-theme-antd 常见的问题和官方答复，可供参考。
 
-> WIP
-
 ## 如何完全自定义首页 <Badge>0.3.0+</Badge>
 
 `dumi-theme-antd` 首页默认是根据配置生成，在实际使用过程中难免会存在一些定制模块，`dumi-theme-antd`内部将首页模块单独抽离成了 `HomeBaseLayout` 内置组件，如果想在完全自定义首页的同时又想保留内置首页的布局，可在页面中引入使用。例如，新建页面：
@@ -74,6 +72,6 @@ export default defineConfig({
 });
 ```
 
-:::info{title=自定义标题}
-这是一条普通信息
+:::warning
+在配置为 SSR 时，首页如果使用的是主题包内置的首页模块，在首次加载时会短暂出现 404 路由页面，原因在于内置首页在文档构建时没有导出 `index.html`，因此当路由指向首页时并不会立即加载到对应的资源。解决方式可新建自定义首页，然后引入主题包内置的 `<HomeBaseLayout />` 模块即可，然后打包就导出`index.html`，可参考 [dumi-theme-antd 官网首页](https://github.com/KuangPF/dumi-theme-antd/blob/main/example/.dumi/pages/index/index.tsx)。
 :::

@@ -10,8 +10,6 @@ tag:
 
 Here are some dumi-theme-antd common questions and official answers for your reference.
 
-> WIP
-
 ## How to fully customize the homepage <Badge>0.3.0+</Badge>
 
 The home page of `dumi-theme-antd` is generated according to the configuration by default, and there will inevitably be some custom modules in the actual use process. `dumi-theme-antd` internally separates the home page module into a built-in component of `HomeBaseLayout`, if you want While fully customizing the homepage and wanting to retain the layout of the built-in homepage, it can be introduced and used in the page. For example, to create a new page:
@@ -73,3 +71,7 @@ export default defineConfig({
   ssr: process.env.NODE_ENV === 'development' ? false : {}
 });
 ```
+
+:::warning
+When configured as SSR, if the homepage uses the built-in homepage module of the theme package, a 404 routing page will appear briefly when it is loaded for the first time. The reason is that the built-in homepage did not export `index.html`. is not immediately loaded into the corresponding resource. The solution is to create a custom homepage, then import the built-in `<HomeBaseLayout />` module of the theme package, and then package and export`index.html`, you can refer to [dumi-theme-antd official website homepage](https:// github.com/KuangPF/dumi-theme-antd/blob/main/example/.dumi/pages/index/index.tsx).
+:::
