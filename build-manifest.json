@@ -1,7 +1,7 @@
 {
   "assets": {
     "umi.css": "/dumi-theme-antd/umi.853b854a.css",
-    "umi.js": "/dumi-theme-antd/umi.90bae5c3.js",
+    "umi.js": "/dumi-theme-antd/umi.ad66d76e.js",
     "dumi__pages__404.js": "/dumi-theme-antd/dumi__pages__404.cf503668.async.js",
     "dumi__theme__layouts__GlobalLayout.js": "/dumi-theme-antd/dumi__theme__layouts__GlobalLayout.bec481a5.async.js",
     "dumi__theme__ContextWrapper.js": "/dumi-theme-antd/dumi__theme__ContextWrapper.14ccff1e.async.js",
@@ -35,8 +35,8 @@
     "docs__demo__hide-sidebar.zh-CN.md.js": "/dumi-theme-antd/docs__demo__hide-sidebar.zh-CN.md.7a52bf91.async.js",
     "docs__config__markdown.en-US.md.js": "/dumi-theme-antd/docs__config__markdown.en-US.md.9e2be6eb.async.js",
     "docs__config__markdown.zh-CN.md.js": "/dumi-theme-antd/docs__config__markdown.zh-CN.md.c6623400.async.js",
-    "docs__guide__changelog.en-US.md.js": "/dumi-theme-antd/docs__guide__changelog.en-US.md.ecbdd523.async.js",
-    "docs__guide__changelog.zh-CN.md.js": "/dumi-theme-antd/docs__guide__changelog.zh-CN.md.9e2915de.async.js",
+    "docs__guide__changelog.en-US.md.js": "/dumi-theme-antd/docs__guide__changelog.en-US.md.fda2e00d.async.js",
+    "docs__guide__changelog.zh-CN.md.js": "/dumi-theme-antd/docs__guide__changelog.zh-CN.md.747f0084.async.js",
     "docs__guide__introduce.en-US.md.js": "/dumi-theme-antd/docs__guide__introduce.en-US.md.a375f5c9.async.js",
     "docs__guide__introduce.zh-CN.md.js": "/dumi-theme-antd/docs__guide__introduce.zh-CN.md.5e43d306.async.js",
     "docs__config__base.en-US.md.js": "/dumi-theme-antd/docs__config__base.en-US.md.f23b5867.async.js",
