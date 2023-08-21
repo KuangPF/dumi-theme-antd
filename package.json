@@ -21,6 +21,7 @@
   "scripts": {
     "build": "father build",
     "build:docs": "cross-env APP_ROOT=example dumi build",
+    "build:site": "cross-env APP_ROOT=example DEPLOY_SITE=local dumi build",
     "site": "node app.js",
     "dev": "father dev",
     "docs": "cross-env APP_ROOT=example dumi dev",

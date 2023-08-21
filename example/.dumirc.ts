@@ -6,8 +6,8 @@ export default defineConfig({
   // disable mfsu for HMR
   mfsu: false,
   ssr: process.env.NODE_ENV === 'development' ? false : {},
-  publicPath: '/dumi-theme-antd/',
-  base: '/dumi-theme-antd',
+  publicPath: process.env.DEPLOY_SITE === 'local' ? '/' : '/dumi-theme-antd/',
+  base: process.env.DEPLOY_SITE === 'local' ? '/' : '/dumi-theme-antd',
   favicons: ['https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png'],
   locales: [
     { id: 'zh-CN', name: '中文', suffix: '' },
