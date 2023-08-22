@@ -15,7 +15,7 @@ import {
   useServerInsertedHTML
 } from 'dumi';
 import type { FC } from 'react';
-import React, { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import type { DirectionType } from 'antd/lib/config-provider';
 import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
 import type { ThemeName } from '../common/ThemeSwitch';
@@ -97,16 +97,14 @@ const GlobalLayout: FC = () => {
     const _theme = searchParams.getAll('theme') as ThemeName[];
     const _direction = searchParams.get('direction') as DirectionType;
 
-    startTransition(() => {
-      setSiteState({
-        theme: _theme,
-        direction: _direction === 'rtl' ? 'rtl' : 'ltr'
-      });
-      // Handle isMobile
-      updateMobileMode();
-      // set data-prefers-color
-      setPrefersColor(_theme.indexOf('dark') > -1 ? 'dark' : 'light');
+    setSiteState({
+      theme: _theme,
+      direction: _direction === 'rtl' ? 'rtl' : 'ltr'
     });
+    // Handle isMobile
+    updateMobileMode();
+    // set data-prefers-color
+    setPrefersColor(_theme.indexOf('dark') > -1 ? 'dark' : 'light');
     window.addEventListener('resize', updateMobileMode);
     return () => {
       window.removeEventListener('resize', updateMobileMode);

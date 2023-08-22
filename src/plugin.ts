@@ -118,3 +118,5 @@ const dumiThemeUmiPlugin = (api: IApi) => {
     return files;
   });
 };
+
+export default dumiThemeUmiPlugin;
