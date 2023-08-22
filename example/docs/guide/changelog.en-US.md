@@ -8,7 +8,7 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
-`2023-08-20`
+`2023-08-22`
 
 - 🛠 重构提取 @emotion cssinjs 样式导出方法，避免样式加载闪烁。
 - 💄 适配 dumi 内置 markdown 增强 tip 颜色，与 antd 色系保持一致。
