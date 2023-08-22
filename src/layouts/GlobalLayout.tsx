@@ -3,10 +3,17 @@ import {
   legacyNotSelectorLinter,
   logicalPropertiesLinter,
   parentSelectorLinter,
-  StyleProvider
+  StyleProvider,
+  extractStyle
 } from '@ant-design/cssinjs';
 import { ConfigProvider, theme as antdTheme } from 'antd';
-import { createSearchParams, Outlet, usePrefersColor, useSearchParams } from 'dumi';
+import {
+  createSearchParams,
+  Outlet,
+  usePrefersColor,
+  useSearchParams,
+  useServerInsertedHTML
+} from 'dumi';
 import type { FC } from 'react';
 import React, { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
 import type { DirectionType } from 'antd/lib/config-provider';
@@ -117,6 +124,11 @@ const GlobalLayout: FC = () => {
   );
 
   const [styleCache] = React.useState(() => (ssr ? createCache() : [null]));
+
+  useServerInsertedHTML(() => {
+    const styleText = extractStyle(styleCache, true);
+    return <style data-type="antd-cssinjs" dangerouslySetInnerHTML={{ __html: styleText }} />;
+  });
 
   if (ssr) {
     (global as any).styleCache = styleCache;
