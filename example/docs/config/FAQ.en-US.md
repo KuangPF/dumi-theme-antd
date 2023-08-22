@@ -62,9 +62,9 @@ The theme switching logic inside the theme package is compatible with dumi’s b
 
 If it is a pure css file, you can use [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) to achieve.
 
-## SSR <Badge>0.3.8+</Badge>
+## SSR <Badge>0.3.9+</Badge>
 
-The theme package supports ssr, and the cssinjs' style was not completely compatible before the ` 0.3.8' version, but the problem has been fixed in later versions. SSR recommends the following configuration:
+The theme package supports ssr, and the cssinjs' style was not completely compatible before the ` 0.3.9' version, but the problem has been fixed in later versions. SSR recommends the following configuration:
 
 ```ts
 export default defineConfig({
