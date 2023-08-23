@@ -14,7 +14,7 @@ import type {
 } from '../types';
 import { removeTitleCode, handleFullSidebarData } from '../utils';
 import useAdditionalThemeConfig from './useAdditionalThemeConfig';
-import { version } from '../../package.json';
+import pkgJSON from '../../package.json';
 
 export type UseMenuOptions = {
   before?: ReactNode;
@@ -116,7 +116,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
           bordered={false}
           style={{ marginInlineStart: 'auto', marginInlineEnd: 0, marginTop: -2 }}
         >
-          {(typeof tag === 'string' ? tag : tag.title).replace('VERSION', `v${version}`)}
+          {(typeof tag === 'string' ? tag : tag.title).replace('VERSION', `v${pkgJSON.version}`)}
         </Tag>
       );
 
