@@ -3,7 +3,7 @@ import pkgJSON from '../package.json';
 import { defineThemeConfig } from './.dumi/theme';
 
 export default defineConfig({
-  mfsu: {},
+  mfsu: false,
   ssr: process.env.NODE_ENV === 'development' ? false : {},
   publicPath: process.env.DEPLOY_SITE === 'local' ? '/' : '/dumi-theme-antd/',
   base: process.env.DEPLOY_SITE === 'local' ? '/' : '/dumi-theme-antd',
