@@ -18,6 +18,12 @@ The OS platform script component is used to display the script content correspon
 />
 ```
 
+<BashOSPlatform 
+  windows='winget install Docker.DockerDesktop' 
+  macos='$ brew install --cask docker' 
+  linux='$ sudo apt-get install docker-ce docker-ce-cli containerd.io' 
+/>
+
 ```md
 <BashOSPlatform
   macos='$ brew install --cask docker'

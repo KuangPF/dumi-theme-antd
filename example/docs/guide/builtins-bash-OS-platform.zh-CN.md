@@ -18,6 +18,12 @@ OS 平台脚本组件用于展示在不同操作系统平台所对应的脚本�
 />
 ```
 
+<BashOSPlatform 
+  windows='winget install Docker.DockerDesktop' 
+  macos='$ brew install --cask docker' 
+  linux='$ sudo apt-get install docker-ce docker-ce-cli containerd.io' 
+/>
+
 ```md
 <BashOSPlatform 
   macos='$ brew install --cask docker' 
