@@ -8,6 +8,12 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.10
+
+`2023-08-29`
+
+- 🆕 新增内置组件 `<BashOSPlatform />`,[详情](/guide/builtins-bash--o-s-platform)。
+
 `2023-08-22`
 
 - 🛠 重构提取 @emotion cssinjs 样式导出方法，避免样式加载闪烁。
