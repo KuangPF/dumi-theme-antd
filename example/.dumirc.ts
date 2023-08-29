@@ -3,8 +3,7 @@ import pkgJSON from '../package.json';
 import { defineThemeConfig } from './.dumi/theme';
 
 export default defineConfig({
-  // disable mfsu for HMR
-  mfsu: false,
+  mfsu: {},
   ssr: process.env.NODE_ENV === 'development' ? false : {},
   publicPath: process.env.DEPLOY_SITE === 'local' ? '/' : '/dumi-theme-antd/',
   base: process.env.DEPLOY_SITE === 'local' ? '/' : '/dumi-theme-antd',
