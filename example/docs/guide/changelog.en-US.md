@@ -13,7 +13,7 @@ tag: VERSION
 `2023-08-31`
 
 - 🛠 重构主题切换内部逻辑，适配官方 `prefersColor` 配置项。
-  — 🛠 兼容官方 `socialLinks.github` 配置.
+- 🛠 兼容官方 `socialLinks.github` 配置.
 - 💄 优化暗黑模式下滚动条样式。
 
 ## 0.3.10
