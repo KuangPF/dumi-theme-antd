@@ -36,13 +36,16 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
     return antdTheme.defaultAlgorithm;
   });
 
+const isThemeDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
 const getSiteState = () => {
   const localSiteState = JSON.parse(localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}');
-  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches; // 系统默认主题
+  const isDark = isThemeDark(); // 系统默认主题
   const theme = localSiteState?.theme || [];
   const isAutoTheme = theme.filter((item) => item === 'auto').length > 0;
   if (isAutoTheme) {
-    localSiteState?.theme.push(isDark ? 'dark' : 'light');
+    const nextTheme = theme.filter((item) => item !== 'auto');
+    nextTheme.push(isDark ? 'dark' : 'light');
+    localSiteState.theme = nextTheme;
   }
   return Object.assign(defaultSiteState, localSiteState);
 };
@@ -77,9 +80,14 @@ const GlobalLayout: FC = () => {
   useEffect(() => {
     const localSiteState = JSON.parse(localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}');
     // 首次设置主题样式
+
     if (!localSiteState?.theme) {
+      let _theme = prefersColor.default;
+      if (_theme === 'auto') {
+        _theme = isThemeDark() ? 'dark' : 'light';
+      }
       updateSiteConfig({
-        theme: [prefersColor.default]
+        theme: [_theme]
       });
     }
   }, [prefersColor, updateSiteConfig]);
