@@ -7,26 +7,24 @@ import {
   extractStyle
 } from '@ant-design/cssinjs';
 import { ConfigProvider, theme as antdTheme } from 'antd';
-import {
-  createSearchParams,
-  Outlet,
-  usePrefersColor,
-  useSearchParams,
-  useServerInsertedHTML
-} from 'dumi';
+import { Outlet, usePrefersColor, useServerInsertedHTML } from 'dumi';
 import type { FC } from 'react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import type { DirectionType } from 'antd/lib/config-provider';
 import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
 import type { ThemeName } from '../common/ThemeSwitch';
 import ThemeSwitch from '../common/ThemeSwitch';
 import type { SiteContextProps } from '../slots/SiteContext';
 import SiteContext from '../slots/SiteContext';
 
-type Entries<T> = { [K in keyof T]: [K, T[K]] }[keyof T][];
 type SiteState = Partial<Omit<SiteContextProps, 'updateSiteContext'>>;
 const RESPONSIVE_MOBILE = 768;
+const SITE_STATE_LOCALSTORAGE_KEY = 'dumi-theme-antd-site-state';
 
+const defaultSiteState: SiteState = {
+  theme: ['light'],
+  isMobile: false,
+  direction: 'ltr'
+};
 const getAlgorithm = (themes: ThemeName[] = []) =>
   themes.map((theme) => {
     if (theme === 'dark') {
@@ -38,54 +36,37 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
     return antdTheme.defaultAlgorithm;
   });
 
+const getSiteState = () => {
+  const localSiteState = JSON.parse(localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}');
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches; // 系统默认主题
+  const theme = localSiteState?.theme || [];
+  const isAutoTheme = theme.filter((item) => item === 'auto').length > 0;
+  if (isAutoTheme) {
+    localSiteState?.theme.push(isDark ? 'dark' : 'light');
+  }
+  return Object.assign(defaultSiteState, localSiteState);
+};
+
 const GlobalLayout: FC = () => {
   const [, , setPrefersColor] = usePrefersColor();
+  const { theme: configTheme, ssr, prefersColor } = useAdditionalThemeConfig();
+  const [{ theme, isMobile, direction }, setSiteState] = useState<SiteState>(getSiteState());
 
-  const [{ theme, isMobile, direction }, setSiteState] = useState<SiteState>({
-    isMobile: false,
-    direction: 'ltr',
-    theme: ['light']
-  });
-  const [searchParams, setSearchParams] = useSearchParams();
-  const { theme: configTheme, ssr } = useAdditionalThemeConfig();
-
-  const updateSiteConfig = useCallback(
-    (props: SiteState) => {
+  // 基于 localStorage 实现
+  const updateSiteConfig = useCallback((props: SiteState) => {
+    try {
+      const localSiteState = JSON.parse(localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}');
+      const nextLocalSiteState = Object.assign(localSiteState, props);
+      localStorage.setItem(SITE_STATE_LOCALSTORAGE_KEY, JSON.stringify(nextLocalSiteState));
       setSiteState((prev) => ({
         ...prev,
         ...props
       }));
-      // updating `searchParams` will clear the hash
-      const oldSearchStr = searchParams.toString();
-
-      let nextSearchParams: URLSearchParams = searchParams;
-      (Object.entries(props) as Entries<SiteContextProps>).forEach(([key, value]) => {
-        if (key === 'direction') {
-          if (value === 'rtl') {
-            nextSearchParams.set('direction', 'rtl');
-          } else {
-            nextSearchParams.delete('direction');
-          }
-        }
-
-        if (key === 'theme') {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          nextSearchParams = createSearchParams({
-            ...nextSearchParams,
-            theme: value.filter((t) => t !== 'light')
-          });
-
-          setPrefersColor(value.indexOf('dark') > -1 ? 'dark' : 'light');
-        }
-      });
-
-      if (nextSearchParams.toString() !== oldSearchStr) {
-        setSearchParams(nextSearchParams);
-      }
-    },
-    [searchParams, setSearchParams, setPrefersColor]
-  );
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
+  }, []);
 
   const updateMobileMode = useCallback(() => {
     updateSiteConfig({
@@ -94,22 +75,24 @@ const GlobalLayout: FC = () => {
   }, [updateSiteConfig]);
 
   useEffect(() => {
-    const _theme = searchParams.getAll('theme') as ThemeName[];
-    const _direction = searchParams.get('direction') as DirectionType;
+    const localSiteState = JSON.parse(localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}');
+    // 首次设置主题样式
+    if (!localSiteState?.theme) {
+      updateSiteConfig({
+        theme: [prefersColor.default]
+      });
+    }
+  }, [prefersColor, updateSiteConfig]);
 
-    setSiteState({
-      theme: _theme,
-      direction: _direction === 'rtl' ? 'rtl' : 'ltr'
-    });
-    // Handle isMobile
+  useEffect(() => {
     updateMobileMode();
     // set data-prefers-color
-    setPrefersColor(_theme.indexOf('dark') > -1 ? 'dark' : 'light');
+    setPrefersColor(theme.indexOf('dark') > -1 ? 'dark' : 'light');
     window.addEventListener('resize', updateMobileMode);
     return () => {
       window.removeEventListener('resize', updateMobileMode);
     };
-  }, [searchParams, updateMobileMode, setPrefersColor]);
+  }, [theme, updateMobileMode, setPrefersColor]);
 
   const siteContextValue = useMemo(
     () => ({
@@ -128,31 +111,7 @@ const GlobalLayout: FC = () => {
     return <style data-type="antd-cssinjs" dangerouslySetInnerHTML={{ __html: styleText }} />;
   });
 
-  if (ssr) {
-    (global as any).styleCache = styleCache;
-    return (
-      <StyleProvider
-        cache={styleCache}
-        linters={[logicalPropertiesLinter, legacyNotSelectorLinter, parentSelectorLinter]}
-      >
-        <SiteContext.Provider value={siteContextValue}>
-          <ConfigProvider
-            theme={{
-              ...configTheme,
-              algorithm: getAlgorithm(theme)
-            }}
-          >
-            <Outlet />
-            <ThemeSwitch
-              value={theme}
-              onChange={(nextTheme) => updateSiteConfig({ theme: nextTheme })}
-            />
-          </ConfigProvider>
-        </SiteContext.Provider>
-      </StyleProvider>
-    );
-  }
-  return (
+  const BaseGlobalLayoutJSX = (
     <SiteContext.Provider value={siteContextValue}>
       <ConfigProvider
         theme={{
@@ -161,13 +120,29 @@ const GlobalLayout: FC = () => {
         }}
       >
         <Outlet />
-        <ThemeSwitch
-          value={theme}
-          onChange={(nextTheme) => updateSiteConfig({ theme: nextTheme })}
-        />
+        {prefersColor.switch && (
+          <ThemeSwitch
+            value={theme}
+            onChange={(nextTheme) => updateSiteConfig({ theme: nextTheme })}
+          />
+        )}
       </ConfigProvider>
     </SiteContext.Provider>
   );
+
+  const SSRGlobalLayoutJSX = (
+    <StyleProvider
+      cache={styleCache}
+      linters={[logicalPropertiesLinter, legacyNotSelectorLinter, parentSelectorLinter]}
+    >
+      {BaseGlobalLayoutJSX}
+    </StyleProvider>
+  );
+  if (ssr) {
+    (global as any).styleCache = styleCache;
+    return SSRGlobalLayoutJSX;
+  }
+  return BaseGlobalLayoutJSX;
 };
 
 export default GlobalLayout;

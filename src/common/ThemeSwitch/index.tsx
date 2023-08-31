@@ -19,11 +19,8 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = (props: ThemeSwitchProps) => {
         icon={<DarkTheme />}
         type={value.includes('dark') ? 'primary' : 'default'}
         onClick={() => {
-          if (value.includes('dark')) {
-            onChange(value.filter((theme) => theme !== 'dark'));
-          } else {
-            onChange([...value, 'dark']);
-          }
+          const themeValue = value.includes('dark') ? 'light' : 'dark';
+          onChange([themeValue, ...value.filter((item) => ['dark', 'light'].indexOf(item) < 0)]); // compact 值必须放在靠后位置
         }}
         tooltip={<FormattedMessage id="app.theme.switch.dark" />}
       />
@@ -32,7 +29,7 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = (props: ThemeSwitchProps) => {
         type={value.includes('compact') ? 'primary' : 'default'}
         onClick={() => {
           if (value.includes('compact')) {
-            onChange(value.filter((theme) => theme !== 'compact'));
+            onChange(value.filter((item) => item !== 'compact'));
           } else {
             onChange([...value, 'compact']);
           }
