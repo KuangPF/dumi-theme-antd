@@ -87,7 +87,7 @@ const useStyle = () => {
 export default function Navigation({ isMobile, responsive }: NavigationProps) {
   const { pathname, search } = useLocation();
   const { locales } = useSiteData();
-  const { github } = useAdditionalThemeConfig();
+  const { github, socialLinks } = useAdditionalThemeConfig();
 
   // 统一使用 themeConfig.nav，使用 useNavData，当存在自定义 pages 时，会导致 nav 混乱
   const navList = useNavData();
@@ -155,10 +155,10 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
 
   let additional: MenuProps['items'];
   const additionalItems: MenuProps['items'] = [
-    github
+    github || socialLinks?.github
       ? {
           label: (
-            <a rel="noopener noreferrer" href={github} target="_blank">
+            <a rel="noopener noreferrer" href={github || socialLinks?.github} target="_blank">
               GitHub
             </a>
           ),
