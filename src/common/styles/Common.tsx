@@ -52,6 +52,10 @@ export default () => {
           background: ${token.colorBgContainer};
           transition: background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
+
+        [data-prefers-color='dark'] {
+          color-scheme: dark;
+        }
       `}
     />
   );
