@@ -37,8 +37,8 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
   });
 
 const isThemeDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
-const getSiteState = () => {
-  const localSiteState = JSON.parse(localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}');
+const getSiteState = (siteState) => {
+  const localSiteState = siteState;
   const isDark = isThemeDark(); // 系统默认主题
   const theme = localSiteState?.theme || [];
   const isAutoTheme = theme.filter((item) => item === 'auto').length > 0;
@@ -53,14 +53,16 @@ const getSiteState = () => {
 const GlobalLayout: FC = () => {
   const [, , setPrefersColor] = usePrefersColor();
   const { theme: configTheme, ssr, prefersColor } = useAdditionalThemeConfig();
-  const [{ theme, isMobile, direction }, setSiteState] = useState<SiteState>(getSiteState());
+  const [{ theme, isMobile, direction }, setSiteState] = useState<SiteState>(defaultSiteState);
 
   // 基于 localStorage 实现
   const updateSiteConfig = useCallback((props: SiteState) => {
     try {
-      const localSiteState = JSON.parse(localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}');
+      const localSiteState = JSON.parse(
+        window.localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}'
+      );
       const nextLocalSiteState = Object.assign(localSiteState, props);
-      localStorage.setItem(SITE_STATE_LOCALSTORAGE_KEY, JSON.stringify(nextLocalSiteState));
+      window.localStorage.setItem(SITE_STATE_LOCALSTORAGE_KEY, JSON.stringify(nextLocalSiteState));
       setSiteState((prev) => ({
         ...prev,
         ...props
@@ -78,17 +80,19 @@ const GlobalLayout: FC = () => {
   }, [updateSiteConfig]);
 
   useEffect(() => {
-    const localSiteState = JSON.parse(localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}');
-    // 首次设置主题样式
-
-    if (!localSiteState?.theme) {
-      let _theme = prefersColor.default;
-      if (_theme === 'auto') {
-        _theme = isThemeDark() ? 'dark' : 'light';
+    try {
+      const localSiteState = JSON.parse(
+        window.localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}'
+      );
+      // 首次设置主题样式
+      if (!localSiteState?.theme) {
+        localSiteState.theme = [prefersColor.default];
       }
-      updateSiteConfig({
-        theme: [_theme]
-      });
+      const siteConfig = getSiteState(localSiteState);
+      updateSiteConfig(siteConfig);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
     }
   }, [prefersColor, updateSiteConfig]);
 
