@@ -11,3 +11,4 @@ In order to use some components in Markdown more conveniently and enhance the di
 - [Alert](./builtins-alert.en-US.md) <Badge>0.2.5+</Badge>
 - [ImagePreview](./builtins-image-preview.en-US.md) <Badge>0.2.7+</Badge>
 - [InstallDependencies](./builtins-install-dependencies.en-US.md) <Badge>0.2.10+</Badge>
+- [BashOSPlatform](./builtins-bash-OS-platform.en-US.md) <Badge>0.3.10+</Badge>
