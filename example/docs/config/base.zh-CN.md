@@ -27,7 +27,7 @@ export default defineConfig({
 - 类型：`string`
 - 默认值：`null`
 
-导航栏 Github 图标链接，如不配置该字段，则不展示。
+导航栏 Github 图标链接，如不配置该字段，则不展示，同时兼容官方`socialLinks.github`配置。
 
 ### bannerConfig
 

@@ -27,7 +27,7 @@ export default defineConfig({
 - type：`string`
 - default：`null`
 
-The Github icon link in the navigation bar. If this field is not configured, it will not be displayed.
+The Github icon link in the navigation bar. If this field is not configured, it will not be displayed, and it is compatible with the official `socialLinks.github` configuration.
 
 ### bannerConfig
 
