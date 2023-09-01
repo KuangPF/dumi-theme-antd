@@ -48,13 +48,13 @@ const useStyle = () => {
 };
 
 const HeaderExtra: FC = () => {
-  const { github } = useAdditionalThemeConfig();
+  const { github, socialLinks } = useAdditionalThemeConfig();
   const style = useStyle();
   return (
     <div>
-      {github ? (
+      {github || socialLinks?.github ? (
         <Tooltip title="Github">
-          <a key="github" href={github} target="_blank" rel="noreferrer">
+          <a key="github" href={github || socialLinks?.github} target="_blank" rel="noreferrer">
             <button css={[style.btn]} type="button">
               <GithubOutlined />
             </button>
