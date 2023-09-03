@@ -1,6 +1,9 @@
 ---
+group:
+  title: Basic Usage
+  order: 2
 order: 1
-title: Introduce
+title: Getting Started
 ---
 
 ## What is dumi-theme-antd

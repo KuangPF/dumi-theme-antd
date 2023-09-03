@@ -1,6 +1,9 @@
 ---
+group:
+  title: 如何使用
+  order: 2
 order: 1
-title: 介绍
+title: 快速上手
 ---
 
 ## 什么是 dumi-theme-antd

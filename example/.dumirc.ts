@@ -36,7 +36,7 @@ export default defineConfig({
       { id: 'zh-CN', switchPrefix: '中' },
       { id: 'en-US', switchPrefix: 'en' }
     ],
-    sidebarGroupModePath: ['/config'],
+    sidebarGroupModePath: ['/config', '/guide'],
     title: 'Dumi Theme Ant Design',
     description: {
       'zh-CN': 'Ant Design 5.0 官网风格类似的 dumi2 主题插件',

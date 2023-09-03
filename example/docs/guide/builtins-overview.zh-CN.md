@@ -1,7 +1,7 @@
 ---
 group:
   title: 内置组件
-  order: 3
+  order: 4
 order: 0
 title: 概览
 ---
