@@ -1,11 +1,11 @@
 {
   "assets": {
     "umi.css": "/dumi-theme-antd/umi.853b854a.css",
-    "umi.js": "/dumi-theme-antd/umi.d93fddb0.js",
+    "umi.js": "/dumi-theme-antd/umi.97b55335.js",
     "dumi__pages__404.js": "/dumi-theme-antd/dumi__pages__404.cf503668.async.js",
     "dumi__theme__layouts__GlobalLayout.js": "/dumi-theme-antd/dumi__theme__layouts__GlobalLayout.098625bd.async.js",
-    "dumi__theme__ContextWrapper.js": "/dumi-theme-antd/dumi__theme__ContextWrapper.b86e6a23.async.js",
-    "dumi__theme__layouts__DocLayout.js": "/dumi-theme-antd/dumi__theme__layouts__DocLayout.0d55da7c.async.js",
+    "dumi__theme__ContextWrapper.js": "/dumi-theme-antd/dumi__theme__ContextWrapper.d5dc48ac.async.js",
+    "dumi__theme__layouts__DocLayout.js": "/dumi-theme-antd/dumi__theme__layouts__DocLayout.532f24da.async.js",
     "dumi__pages__index-cn__index.js": "/dumi-theme-antd/dumi__pages__index-cn__index.d4a08c00.async.js",
     "dumi__pages__index__index.js": "/dumi-theme-antd/dumi__pages__index__index.8babda65.async.js",
     "docs__guide__builtins-install-dependencies.en-US.md.js": "/dumi-theme-antd/docs__guide__builtins-install-dependencies.en-US.md.f0b22dcc.async.js",
@@ -30,7 +30,6 @@
     "docs__guide__builtins-image-preview.zh-CN.md.js": "/dumi-theme-antd/docs__guide__builtins-image-preview.zh-CN.md.7d082812.async.js",
     "docs__demo__secondary-sidebar-font.en-US.md.js": "/dumi-theme-antd/docs__demo__secondary-sidebar-font.en-US.md.37af1803.async.js",
     "docs__demo__secondary-sidebar-font.zh-CN.md.js": "/dumi-theme-antd/docs__demo__secondary-sidebar-font.zh-CN.md.ea1efd1c.async.js",
-    "docs__guide__builtins-component.en-US.md.js": "/dumi-theme-antd/docs__guide__builtins-component.en-US.md.32fb22a8.async.js",
     "docs__guide__builtins-overview.en-US.md.js": "/dumi-theme-antd/docs__guide__builtins-overview.en-US.md.0bef0abd.async.js",
     "docs__guide__builtins-overview.zh-CN.md.js": "/dumi-theme-antd/docs__guide__builtins-overview.zh-CN.md.faf9def8.async.js",
     "docs__guide__builtins-alert.en-US.md.js": "/dumi-theme-antd/docs__guide__builtins-alert.en-US.md.8df661be.async.js",
