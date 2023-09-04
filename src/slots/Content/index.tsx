@@ -93,6 +93,7 @@ const useStyle = () => {
     bottomEditContent: css`
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding-bottom: 12px;
     `,
     colContent: css`

@@ -1,7 +1,8 @@
 {
   "repository": {
     "type": "git",
-    "url": "https://github.com/KuangPF/dumi-theme-antd"
+    "url": "https://github.com/KuangPF/dumi-theme-antd",
+    "directory": "example"
   },
   "scripts": {
     "start": "dumi dev",
