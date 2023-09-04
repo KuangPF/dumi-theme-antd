@@ -8,6 +8,7 @@ import type { FC, ReactNode } from 'react';
 import { useMemo, useContext } from 'react';
 import PrevAndNext from '../../common/PrevAndNext';
 import LastUpdated from '../../common/LastUpdated';
+import EditLink from '../../common/EditLink';
 import useSiteToken from '../../hooks/useSiteToken';
 import Footer from '../Footer';
 import SiteContext from '../SiteContext';
@@ -88,6 +89,11 @@ const useStyle = () => {
           padding-left: 24px;
         }
       }
+    `,
+    bottomEditContent: css`
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 12px;
     `,
     colContent: css`
       display: flex;
@@ -229,7 +235,15 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
 
         {children}
       </article>
-      <LastUpdated time={meta.frontmatter?.lastUpdated} />
+      <div
+        css={css`
+          ${styles.articleWrapper}
+          ${styles.bottomEditContent}
+        `}
+      >
+        <LastUpdated time={meta.frontmatter?.lastUpdated} />
+        <EditLink />
+      </div>
       <PrevAndNext rtl={isRTL} />
       <Footer />
     </Col>

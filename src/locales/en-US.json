@@ -4,5 +4,6 @@
   "app.theme.switch.dark": "Dark theme",
   "app.theme.switch.compact": "Compact theme",
   "app.header.menu.more": "More",
-  "app.footer.last.updated": "Last updated: "
+  "app.footer.last.updated": "Last updated: ",
+  "app.footer.actions.edit": "Improve this documentation"
 }

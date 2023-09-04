@@ -9,19 +9,12 @@ import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
 const useStyle = () => {
   const { token } = useSiteToken();
 
-  const { colorTextTertiary, marginXXS, marginSM, screenLG } = token;
+  const { colorTextTertiary, marginXXS } = token;
 
   return {
     lastUpdatedWrap: css`
-      margin-inline-end: 170px;
-      margin-inline-start: 64px;
-      margin-block-end: ${marginSM}px;
       color: ${colorTextTertiary};
       display: flex;
-      @media only screen and (max-width: ${screenLG}px) {
-        margin-inline-end: 24px;
-        margin-inline-start: 24px;
-      }
     `,
     lastUpdatedLabel: css`
       margin-inline-start: ${marginXXS}px;

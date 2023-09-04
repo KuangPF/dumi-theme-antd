@@ -4,5 +4,6 @@
   "app.theme.switch.dark": "暗黑主题",
   "app.theme.switch.compact": "紧凑主题",
   "app.header.menu.more": "更多",
-  "app.footer.last.updated": "最后更新时间："
+  "app.footer.last.updated": "最后更新时间：",
+  "app.footer.actions.edit": "帮助改进此文档"
 }
