@@ -75,3 +75,11 @@ export default defineConfig({
 :::warning
 When configured as SSR, if the homepage uses the built-in homepage module of the theme package, a 404 routing page will appear briefly when it is loaded for the first time. The reason is that the built-in homepage did not export `index.html`. is not immediately loaded into the corresponding resource. The solution is to create a custom homepage, then import the built-in `<HomeBaseLayout />` module of the theme package, and then package and export`index.html`, you can refer to [dumi-theme-antd official website homepage](https:// github.com/KuangPF/dumi-theme-antd/blob/main/example/.dumi/pages/index/index.tsx).
 :::
+
+## Why is there no `index.html` after build
+
+After using `dumi-theme-antd` theme package, the homepage is generated through configuration, and `index.md` is not written, so `index.html` will not be generated. If you want to generate `index.html`, you can add `index.md` or completely customize the home page, and then import the built-in `HomeBaseLayout` component.
+
+:::info
+When deploying GitHub Pages, it will search for the `index.html` file step by step by default. If you use nginx deployment, you can configure `try_files` related parameters. When `index.html` cannot be found in the root directory, it will go to other directories to find` index.html`.
+:::

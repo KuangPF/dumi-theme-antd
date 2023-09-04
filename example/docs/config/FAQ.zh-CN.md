@@ -75,3 +75,11 @@ export default defineConfig({
 :::warning
 在配置为 SSR 时，首页如果使用的是主题包内置的首页模块，在首次加载时会短暂出现 404 路由页面，原因在于内置首页在文档构建时没有导出 `index.html`，因此当路由指向首页时并不会立即加载到对应的资源。解决方式可新建自定义首页，然后引入主题包内置的 `<HomeBaseLayout />` 模块即可，然后打包就导出`index.html`，可参考 [dumi-theme-antd 官网首页](https://github.com/KuangPF/dumi-theme-antd/blob/main/example/.dumi/pages/index/index.tsx)。
 :::
+
+## 构建后为什么没有 `index.html`
+
+使用 `dumi-theme-antd` 主题包后，首页是通过配置产生，没有编写 `index.md`，因此不会生成 `index.html`。如果想要生成 `index.html` 可以添加 `index.md` 或者完全自定义首页，然后引入内置 `HomeBaseLayout` 组件即可。
+
+:::info
+GitHub Pages 部署时，默认会逐级寻找 `index.html` 文件，如果采用 nginx 部署，可以配置 `try_files` 相关参数，当在根目录找不到 `index.html` 时，便去其他目录寻找 `index.html`。
+:::
