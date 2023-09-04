@@ -1,11 +1,11 @@
 {
   "assets": {
     "umi.css": "/dumi-theme-antd/umi.853b854a.css",
-    "umi.js": "/dumi-theme-antd/umi.97b55335.js",
+    "umi.js": "/dumi-theme-antd/umi.4d56d9b7.js",
     "dumi__pages__404.js": "/dumi-theme-antd/dumi__pages__404.cf503668.async.js",
     "dumi__theme__layouts__GlobalLayout.js": "/dumi-theme-antd/dumi__theme__layouts__GlobalLayout.098625bd.async.js",
-    "dumi__theme__ContextWrapper.js": "/dumi-theme-antd/dumi__theme__ContextWrapper.d5dc48ac.async.js",
-    "dumi__theme__layouts__DocLayout.js": "/dumi-theme-antd/dumi__theme__layouts__DocLayout.532f24da.async.js",
+    "dumi__theme__ContextWrapper.js": "/dumi-theme-antd/dumi__theme__ContextWrapper.efa648a3.async.js",
+    "dumi__theme__layouts__DocLayout.js": "/dumi-theme-antd/dumi__theme__layouts__DocLayout.9b930cd0.async.js",
     "dumi__pages__index-cn__index.js": "/dumi-theme-antd/dumi__pages__index-cn__index.d4a08c00.async.js",
     "dumi__pages__index__index.js": "/dumi-theme-antd/dumi__pages__index__index.8babda65.async.js",
     "docs__guide__builtins-install-dependencies.en-US.md.js": "/dumi-theme-antd/docs__guide__builtins-install-dependencies.en-US.md.f0b22dcc.async.js",
@@ -44,8 +44,8 @@
     "docs__guide__introduce.zh-CN.md.js": "/dumi-theme-antd/docs__guide__introduce.zh-CN.md.04314cc9.async.js",
     "docs__config__base.en-US.md.js": "/dumi-theme-antd/docs__config__base.en-US.md.dbf29793.async.js",
     "docs__config__base.zh-CN.md.js": "/dumi-theme-antd/docs__config__base.zh-CN.md.820b49db.async.js",
-    "docs__config__FAQ.en-US.md.js": "/dumi-theme-antd/docs__config__FAQ.en-US.md.fe8857c6.async.js",
-    "docs__config__FAQ.zh-CN.md.js": "/dumi-theme-antd/docs__config__FAQ.zh-CN.md.88ee2365.async.js",
+    "docs__config__FAQ.en-US.md.js": "/dumi-theme-antd/docs__config__FAQ.en-US.md.6b05616e.async.js",
+    "docs__config__FAQ.zh-CN.md.js": "/dumi-theme-antd/docs__config__FAQ.zh-CN.md.4c91d2f4.async.js",
     "docs__guide__dev.en-US.md.js": "/dumi-theme-antd/docs__guide__dev.en-US.md.c000c687.async.js",
     "docs__guide__dev.zh-CN.md.js": "/dumi-theme-antd/docs__guide__dev.zh-CN.md.05c31716.async.js",
     "dumi__pages__Demo.js": "/dumi-theme-antd/dumi__pages__Demo.b1e0444e.async.js"
