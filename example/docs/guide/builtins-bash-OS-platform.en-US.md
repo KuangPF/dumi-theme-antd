@@ -2,6 +2,9 @@
 group: Builtins Components
 title: BashOSPlatform
 order: 4
+tag:
+  title: New
+  color: success
 ---
 
 The OS platform script component is used to display the script content corresponding to different operating system platforms. There are three built-in operating system platforms `Windows`, `macOS` and `Linux`. The script content is passed through different prop parameters:
