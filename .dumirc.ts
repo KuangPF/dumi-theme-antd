@@ -1,6 +1,6 @@
 import { defineConfig } from 'dumi';
-import pkgJSON from '../package.json';
-import { defineThemeConfig } from './.dumi/theme';
+import pkgJSON from './package.json';
+import { defineThemeConfig } from './example/.dumi/theme';
 
 export default defineConfig({
   mfsu: false,
