@@ -1,10 +1,10 @@
 {
   "assets": {
     "umi.css": "/dumi-theme-antd/umi.853b854a.css",
-    "umi.js": "/dumi-theme-antd/umi.5c28f1b6.js",
+    "umi.js": "/dumi-theme-antd/umi.48677409.js",
     "dumi__pages__404.js": "/dumi-theme-antd/dumi__pages__404.cf503668.async.js",
     "dumi__theme__layouts__GlobalLayout.js": "/dumi-theme-antd/dumi__theme__layouts__GlobalLayout.098625bd.async.js",
-    "dumi__theme__ContextWrapper.js": "/dumi-theme-antd/dumi__theme__ContextWrapper.efa648a3.async.js",
+    "dumi__theme__ContextWrapper.js": "/dumi-theme-antd/dumi__theme__ContextWrapper.455a31ef.async.js",
     "dumi__theme__layouts__DocLayout.js": "/dumi-theme-antd/dumi__theme__layouts__DocLayout.9b930cd0.async.js",
     "dumi__pages__index-cn__index.js": "/dumi-theme-antd/dumi__pages__index-cn__index.d4a08c00.async.js",
     "dumi__pages__index__index.js": "/dumi-theme-antd/dumi__pages__index__index.8babda65.async.js",
