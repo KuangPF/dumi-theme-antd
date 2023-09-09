@@ -79,6 +79,20 @@ export default defineConfig({
             '通过结合使用 Umi 4 MFSU、esbuild、SWC、持久缓存等方案，带来比 dumi 1.x 更快的编译速度。'
         },
         {
+          title: 'SSR',
+          details: '全面支持 SSR，让文档具有更好的首屏加载速度、更好的SEO效果、更快的内容到达率。'
+        },
+        {
+          title: '样式风格统一',
+          details:
+            '基于 antd 5.0 CSS-in-JS 样式加持，全面统一 dumi 内置样式，同时支持自定义主题加载。'
+        },
+        {
+          title: '功能增强',
+          details:
+            '在 dumi 内置 markdown 增强基础上新增特有 FrontMatter 配置，并且内置多种组件，使文档展示效果得以提升。'
+        },
+        {
           title: '开箱即用',
           details: '接入简单，安装即使用，全面融入 Ant Design 风格，内置主题切换，紧凑模式等功能。'
         }
@@ -93,6 +107,21 @@ export default defineConfig({
           title: 'Better Compilation Performance',
           details:
             'By combining Umi 4 MFSU, esbuild, SWC, persistent cache and other schemes, it brings faster compilation speed than dumi1.x.'
+        },
+        {
+          title: 'SSR',
+          details:
+            'Fully supports SSR, allowing documents to have better first-screen loading speed, better SEO effect, and faster content arrival rate.'
+        },
+        {
+          title: 'Uniform style',
+          details:
+            "Based on antd 5.0 CSS-in-JS style support, it fully unifies dumi's built-in styles and supports custom theme loading."
+        },
+        {
+          title: 'Function enhancement',
+          details:
+            "Based on dumi's built-in markdown enhancement, a unique FrontMatter configuration is added, and a variety of built-in components improve the document display effect."
         },
         {
           title: 'Simple Use',
