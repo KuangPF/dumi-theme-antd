@@ -72,7 +72,7 @@ const Logo = () => {
   );
 
   const suffix = 'suffix' in locale ? locale.suffix : '';
-  const homePath = `/${suffix ? `index${suffix}` : '/'}`;
+  const homePath = `/${suffix ? `index${suffix}` : ''}`;
 
   return (
     <h1>

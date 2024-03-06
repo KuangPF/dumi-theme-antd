@@ -61,7 +61,7 @@ const useStyle = () => {
     header: css`
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 99;
       max-width: 100%;
       background: ${token.colorBgContainer};
       box-shadow: ${token.boxShadowTertiary};
