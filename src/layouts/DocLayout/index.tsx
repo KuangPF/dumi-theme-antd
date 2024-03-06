@@ -32,10 +32,6 @@ const DocLayout: FC = () => {
   const { loading } = useSiteData();
   const { direction } = useContext(SiteContext);
 
-  const is404Home = useMemo(
-    () => pathname.startsWith('/index') && routeMeta.texts.length === 0,
-    [pathname, routeMeta]
-  );
   const content = useMemo(() => {
     if (
       ['', '/'].some((path) => path === pathname) ||
@@ -43,7 +39,7 @@ const DocLayout: FC = () => {
     ) {
       return (
         <React.Fragment>
-          {outlet && !is404Home ? outlet : <Homepage />}
+          {outlet && routeMeta.texts.length === 0 ? outlet : <Homepage />}
           <Footer />
         </React.Fragment>
       );
@@ -57,7 +53,7 @@ const DocLayout: FC = () => {
         <Outlet />
       </SidebarLayout>
     );
-  }, [routeMeta.frontmatter?.sidebar, outlet, pathname, is404Home]);
+  }, [outlet, pathname, routeMeta]);
 
   // handle hash change or visit page hash from Link component, and jump after async chunk loaded
   useEffect(() => {
