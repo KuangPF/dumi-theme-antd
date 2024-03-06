@@ -275,7 +275,8 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
     );
   }, [sidebarData, sidebarGroupModePath, pathname, search, before, after, locale]);
 
-  return [sidebarEnhanceMenuItems || menuItems, pathname.replace(suffixRegExp, '')];
+  const selectedKey = pathname.replace(new RegExp(`${(locale as any)?.suffix ?? ''}$`, 'g'), '');
+  return [sidebarEnhanceMenuItems || menuItems, selectedKey];
 };
 
 export default useMenu;
