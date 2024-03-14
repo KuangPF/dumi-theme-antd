@@ -1,7 +1,7 @@
 import type { MenuProps } from 'antd';
 import { Tag } from 'antd';
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
-import { Link, useFullSidebarData, useLocation, useSidebarData } from 'dumi';
+import { Link, useFullSidebarData, useLocation, useSidebarData, useLocale } from 'dumi';
 import type { ReactNode } from 'react';
 import { useMemo } from 'react';
 import type {
@@ -28,6 +28,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
 
   const fullSidebarData = useFullSidebarData();
   const navSecondSidebarData = handleFullSidebarData(fullSidebarData);
+  const locale = useLocale();
 
   // 提取一级导航下侧边栏数据
   const currentNavKey = `/${pathname.split('/')?.[1]}`;
@@ -106,6 +107,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
   }, [after, before, currentSidebarEnhanceData, linkTitleMap, search]);
 
   const menuItems = useMemo<MenuProps['items']>(() => {
+    const suffixRegExp = new RegExp(`${(locale as any)?.suffix ?? ''}$`, 'g');
     const sidebarItems = [...(sidebarData ?? [])];
 
     const getItemTag = (tag: string | { color: string; title: string }, show = true) =>
@@ -153,7 +155,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                       {after}
                     </Link>
                   ),
-                  key: item.link.replace(/(-cn$)/g, '')
+                  key: item.link.replace(suffixRegExp, '')
                 }))
               });
             } else {
@@ -205,7 +207,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                       {after}
                     </Link>
                   ),
-                  key: item.link.replace(/(-cn$)/g, '')
+                  key: item.link.replace(suffixRegExp, '')
                 })) ?? [])
               );
               Object.entries(childrenGroupOrdered).forEach(([type, children]) => {
@@ -226,7 +228,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                           {after}
                         </Link>
                       ),
-                      key: item.link.replace(/(-cn$)/g, '')
+                      key: item.link.replace(suffixRegExp, '')
                     }))
                   });
                 }
@@ -259,7 +261,7 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
                     {after}
                   </Link>
                 ),
-                key: item.link.replace(/(-c n$)/g, '')
+                key: item.link.replace(suffixRegExp, '')
               }))
             );
           }
@@ -271,9 +273,10 @@ const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => 
         []
       ) ?? []
     );
-  }, [sidebarData, sidebarGroupModePath, pathname, search, before, after]);
+  }, [sidebarData, sidebarGroupModePath, pathname, search, before, after, locale]);
 
-  return [sidebarEnhanceMenuItems || menuItems, pathname];
+  const selectedKey = pathname.replace(new RegExp(`${(locale as any)?.suffix ?? ''}$`, 'g'), '');
+  return [sidebarEnhanceMenuItems || menuItems, selectedKey];
 };
 
 export default useMenu;

@@ -71,6 +71,9 @@ const Logo = () => {
     [logImgUrl, themeConfig.name]
   );
 
+  const suffix = 'suffix' in locale ? locale.suffix : '';
+  const homePath = `/${suffix ? `index${suffix}` : ''}`;
+
   return (
     <h1>
       {themeConfig.homeLink && themeConfig.homeLink.startsWith('http') ? (
@@ -78,10 +81,7 @@ const Logo = () => {
           {content}
         </a>
       ) : (
-        <Link
-          to={themeConfig.homeLink || ('base' in locale ? `${locale.base}${search}` : `/${search}`)}
-          css={logo}
-        >
+        <Link to={themeConfig.homeLink || `${homePath}${search}`} css={logo}>
           {content}
         </Link>
       )}
