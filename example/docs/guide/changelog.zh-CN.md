@@ -8,6 +8,14 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.13
+
+`2024-03-14`
+
+- 🆕 升级 `dumi` 依赖版本。
+- 🐞 多语言配置导致 sidebar 选中状态无效[#27](https://github.com/KuangPF/dumi-theme-antd/issues/27)。
+- 💄 优化页面加载效果。
+
 ## 0.3.12
 
 `2023-09-05`
