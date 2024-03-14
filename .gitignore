@@ -7,3 +7,4 @@
 /**/.dumi/theme/*
 /**/.dumi/tmp-production
 .DS_Store
+.idea
