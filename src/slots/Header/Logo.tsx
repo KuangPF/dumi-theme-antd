@@ -65,7 +65,7 @@ const Logo = () => {
     () => (
       <Fragment>
         <img alt="logo" src={logImgUrl} />
-        <span style={{ lineHeight: 32 }}>{themeConfig.name}</span>
+        <span style={{ lineHeight: '32px' }}>{themeConfig.name}</span>
       </Fragment>
     ),
     [logImgUrl, themeConfig.name]
