@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://kuangpf.com/dumi-theme-antd">
-    <img  src="https://github-production-user-asset-6210df.s3.amazonaws.com/20694238/257865795-572736d1-0e31-4455-b2c9-0801be069f28.png">
+    <img  src="https://github.com/KuangPF/dumi-theme-antd/assets/20694238/3c0d3907-a524-4ab1-b140-5fc31524f670">
   </a>
 </p>
 
