@@ -10,6 +10,7 @@ import useSiteToken from '../../hooks/useSiteToken';
 import { getTargetLocalePath, isExternalLinks } from '../../utils';
 import { type IResponsive } from './index';
 import { getMoreLinksGroup } from './More';
+import { INavItem } from "dumi/dist/client/theme-api/types";
 
 export interface NavigationProps {
   isMobile: boolean;
@@ -93,23 +94,25 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   const navList = useNavData();
   const locale = useLocale();
   const moreLinks = useLocaleValue('moreLinks');
-  const activeMenuItem = pathname.split('/').slice(0, 2).join('/');
+  const activeMenuItem = pathname.split('/').slice(0, 5).join('/');
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const menuItems: MenuProps['items'] = (navList ?? []).map((navItem) => {
-    const linkKeyValue = (navItem.link ?? '').split('/').slice(0, 2).join('/');
-    return {
-      label: isExternalLinks(navItem.link) ? (
-        <a href={`${navItem.link}${search}`} target="_blank" rel="noreferrer">
-          {navItem.title}
-        </a>
-      ) : (
-        <Link to={`${navItem.link}${search}`}>{navItem.title}</Link>
-      ),
-      key: isExternalLinks(navItem.link) ? navItem.link : linkKeyValue
-    };
-  });
+  const createMenuItems = (navs: INavItem[]) => {
+    return navs.map((navItem: INavItem) => {
+      const linkKeyValue = (navItem.link ?? '').split('/').slice(0, 5).join('/');
+      return {
+        label: navItem.children ? navItem.title : (isExternalLinks(navItem.link) ? (
+          <a href={`${navItem.link}${search}`} target="_blank" rel="noreferrer">
+            {navItem.title}
+          </a>
+        ) : (
+          <Link to={`${navItem.link}${search}`}>{navItem.title}</Link>
+        )),
+        key: isExternalLinks(navItem.link) ? navItem.link : linkKeyValue,
+        children: navItem.children ? createMenuItems(navItem.children) : null
+      };
+    });
+  }
+  const menuItems: MenuProps['items'] = createMenuItems(navList);
 
   // 获取小屏幕下多语言导航栏节点
   const getLangNode = useCallback(() => {
