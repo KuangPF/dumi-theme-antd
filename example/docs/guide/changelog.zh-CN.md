@@ -8,6 +8,12 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.14
+
+`2024-04-07`
+
+- 🐞 `themeConfig` 的 nav 配置 children 无效[#30](https://github.com/KuangPF/dumi-theme-antd/issues/30)。
+
 ## 0.3.13
 
 `2024-03-14`
