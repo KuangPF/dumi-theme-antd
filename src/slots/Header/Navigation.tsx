@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import { Link, useLocale, useLocation, useNavData, useSiteData } from 'dumi';
+import { INavItem } from 'dumi/dist/client/theme-api/types';
 import { useCallback } from 'react';
 import useAdditionalThemeConfig from '../../hooks/useAdditionalThemeConfig';
 import useLocaleValue from '../../hooks/useLocaleValue';
@@ -10,7 +11,6 @@ import useSiteToken from '../../hooks/useSiteToken';
 import { getTargetLocalePath, isExternalLinks } from '../../utils';
 import { type IResponsive } from './index';
 import { getMoreLinksGroup } from './More';
-import { INavItem } from "dumi/dist/client/theme-api/types";
 
 export interface NavigationProps {
   isMobile: boolean;
@@ -100,18 +100,21 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
     return navs.map((navItem: INavItem) => {
       const linkKeyValue = (navItem.link ?? '').split('/').slice(0, 5).join('/');
       return {
-        label: navItem.children ? navItem.title : (isExternalLinks(navItem.link) ? (
+        // eslint-disable-next-line no-nested-ternary
+        label: navItem.children ? (
+          navItem.title
+        ) : isExternalLinks(navItem.link) ? (
           <a href={`${navItem.link}${search}`} target="_blank" rel="noreferrer">
             {navItem.title}
           </a>
         ) : (
           <Link to={`${navItem.link}${search}`}>{navItem.title}</Link>
-        )),
+        ),
         key: isExternalLinks(navItem.link) ? navItem.link : linkKeyValue,
         children: navItem.children ? createMenuItems(navItem.children) : null
       };
     });
-  }
+  };
   const menuItems: MenuProps['items'] = createMenuItems(navList);
 
   // 获取小屏幕下多语言导航栏节点
