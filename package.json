@@ -74,6 +74,7 @@
     "@commitlint/config-conventional": "^17.6.5",
     "@emotion/babel-preset-css-prop": "11.10.0",
     "@types/lodash": "^4.14.195",
+    "@types/react": "~18.0.0",
     "@utopia/eslint-config-react": "^0.0.13",
     "@utopia/prettier-config-base": "^0.0.13",
     "cross-env": "^7.0.3",
