@@ -10,6 +10,7 @@ interface InstallProps {
   npm?: string;
   yarn?: string;
   pnpm?: string;
+  defaultActiveKey?: string;
 }
 
 const npmLabel = (
@@ -34,7 +35,7 @@ const yarnLabel = (
 );
 
 const InstallDependencies: React.FC<InstallProps> = (props) => {
-  const { npm, yarn, pnpm } = props;
+  const { npm, yarn, pnpm, defaultActiveKey = 'npm' } = props;
   const items = React.useMemo<TabsProps['items']>(
     () =>
       [
@@ -56,7 +57,7 @@ const InstallDependencies: React.FC<InstallProps> = (props) => {
       ].filter((item) => item.children),
     [npm, yarn, pnpm]
   );
-  return <Tabs className="antd-site-snippet" defaultActiveKey="npm" items={items} />;
+  return <Tabs className="antd-site-snippet" defaultActiveKey={defaultActiveKey} items={items} />;
 };
 
 export default InstallDependencies;
