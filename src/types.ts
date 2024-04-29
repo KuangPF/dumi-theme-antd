@@ -117,8 +117,6 @@ interface IAdditionalThemeConfig {
   ssr?: boolean | Record<string, unknown>;
 }
 
-export interface IAllThemeConfig extends Omit<IThemeConfig, 'socialLinks'>, IAdditionalThemeConfig {
-  socialLinks?: IThemeConfig['socialLinks']; // https://github.com/umijs/dumi/pull/1694
-}
+export interface IAllThemeConfig extends IThemeConfig, IAdditionalThemeConfig {}
 
 export { IAdditionalThemeConfig, ILocaleEnhance, IFeature, IAction };
