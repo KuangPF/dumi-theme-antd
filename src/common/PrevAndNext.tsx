@@ -105,7 +105,7 @@ const flattenMenu = (menuItems: MenuProps['items']): MenuProps['items'] | null =
   return null;
 };
 
-const PrevAndNext: React.FC = ({ rtl }) => {
+const PrevAndNext: React.FC<{ rtl: boolean }> = ({ rtl }) => {
   const styles = useStyle();
 
   const beforeProps = { className: 'footer-nav-icon-before' };

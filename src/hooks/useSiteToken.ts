@@ -18,12 +18,16 @@ interface IUseSiteToken {
     marginFarSM: number;
     marginFar: number;
     codeFamily: string;
+    contentMarginTop: number;
+    anchorTop: number;
     boxShadowCard: string;
     siteTheme: SiteContextProps['theme'];
   };
   siteCls: string;
 }
 const { useToken } = theme;
+
+const headerHeight = 64;
 
 const boxShadowCard = `
 0 1px 2px -2px ${new TinyColor('rgba(0, 0, 0, 0.16)').toRgbString()},
@@ -43,7 +47,7 @@ const useSiteToken = (): IUseSiteToken => {
     ...result,
     token: {
       ...token,
-      headerHeight: 64,
+      headerHeight,
       menuItemBorder: 2,
       mobileMaxWidth: 767.99,
       siteMarkdownCodeBg,
@@ -56,6 +60,8 @@ const useSiteToken = (): IUseSiteToken => {
       /** 96 */
       marginFar: token.marginXXL * 2,
       codeFamily: "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
+      contentMarginTop: 40,
+      anchorTop: headerHeight + token.margin,
       boxShadowCard,
       siteTheme
     },
