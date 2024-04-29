@@ -3,9 +3,13 @@ import { useSiteData } from 'dumi';
 
 import type { IAllThemeConfig } from '../types';
 
-const useAdditionalThemeConfig = () => {
+interface IuseAdditionalThemeConfig {
+  (): IAllThemeConfig;
+}
+
+const useAdditionalThemeConfig: IuseAdditionalThemeConfig = () => {
   const { themeConfig } = useSiteData();
-  const additionalThemeConfig: IAllThemeConfig = themeConfig;
+  const additionalThemeConfig = themeConfig;
 
   return additionalThemeConfig;
 };

@@ -14,7 +14,7 @@ const useStyle = () => {
   };
 };
 
-const SidebarLayout: FC<PropsWithChildren> = ({ children }) => {
+const SidebarLayout: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const style = useStyle();
   return (
     <main css={style.mainWrap}>
