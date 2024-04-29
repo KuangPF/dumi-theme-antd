@@ -64,11 +64,11 @@ const Logo = () => {
   const content = useMemo(
     () => (
       <Fragment>
-        <img alt="logo" src={logImgUrl} />
+        {themeConfig.logo !== false && <img alt="logo" src={logImgUrl} />}
         <span style={{ lineHeight: '32px' }}>{themeConfig.name}</span>
       </Fragment>
     ),
-    [logImgUrl, themeConfig.name]
+    [logImgUrl, themeConfig.name, themeConfig.logo]
   );
 
   const suffix = 'suffix' in locale ? locale.suffix : '';

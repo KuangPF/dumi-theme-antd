@@ -1,6 +1,6 @@
 import { UnorderedListOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
-import { Affix, Col, ConfigProvider, Menu } from 'antd';
+import { Col, ConfigProvider, Menu } from 'antd';
 import { useSidebarData } from 'dumi';
 import MobileMenu from 'rc-drawer';
 import 'rc-drawer/assets/index.css';
@@ -115,10 +115,13 @@ const useStyle = () => {
 
       .main-menu-inner {
         position: sticky;
-        top: 0;
+        top: ${token.headerHeight + token.contentMarginTop}px;
+        width: 100%;
         height: 100%;
-        max-height: 100vh;
+        max-height: calc(100vh - ${token.headerHeight + token.contentMarginTop}px);
         overflow: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: unset;
       }
 
       &:hover .main-menu-inner {
@@ -211,9 +214,7 @@ const Sidebar: FC = () => {
     </React.Fragment>
   ) : (
     <Col xxl={4} xl={5} lg={6} md={6} sm={24} xs={24} css={styles.mainMenu}>
-      <Affix>
-        <section className="main-menu-inner">{menuChild}</section>
-      </Affix>
+      <section className="main-menu-inner">{menuChild}</section>
     </Col>
   );
 };

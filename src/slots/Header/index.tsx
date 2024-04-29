@@ -65,7 +65,6 @@ const useStyle = () => {
       max-width: 100%;
       background: ${token.colorBgContainer};
       box-shadow: ${token.boxShadowTertiary};
-      border-bottom: ${token.lineWidth}px solid ${token.colorBorderSecondary};
 
       @media only screen and (max-width: ${token.mobileMaxWidth}px) {
         text-align: center;
@@ -253,7 +252,7 @@ const Header: FC = () => {
               arrow
               onOpenChange={onMenuVisibleChange}
             >
-              <MenuOutlined className="nav-phone-icon" rev={undefined} />
+              <MenuOutlined className="nav-phone-icon" />
             </Popover>
           )}
         </ClassNames>
