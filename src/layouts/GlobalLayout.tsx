@@ -99,7 +99,7 @@ const GlobalLayout: FC = () => {
   useEffect(() => {
     updateMobileMode();
     // set data-prefers-color
-    setPrefersColor(theme.indexOf('dark') > -1 ? 'dark' : 'light');
+    setPrefersColor((theme ?? []).indexOf('dark') > -1 ? 'dark' : 'light');
     window.addEventListener('resize', updateMobileMode);
     return () => {
       window.removeEventListener('resize', updateMobileMode);
@@ -116,11 +116,14 @@ const GlobalLayout: FC = () => {
     [isMobile, theme, direction, updateSiteConfig]
   );
 
-  const [styleCache] = React.useState(() => (ssr ? createCache() : [null]));
+  const [styleCache] = React.useState(() => (ssr ? createCache() : undefined));
 
   useServerInsertedHTML(() => {
-    const styleText = extractStyle(styleCache, true);
-    return <style data-type="antd-cssinjs" dangerouslySetInnerHTML={{ __html: styleText }} />;
+    if (styleCache) {
+      const styleText = extractStyle(styleCache, true);
+      return <style data-type="antd-cssinjs" dangerouslySetInnerHTML={{ __html: styleText }} />;
+    }
+    return false;
   });
 
   const BaseGlobalLayoutJSX = (

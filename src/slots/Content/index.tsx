@@ -1,9 +1,9 @@
 import { CalendarOutlined } from '@ant-design/icons';
 import { css } from '@emotion/react';
-import { Affix, Anchor, Col, Space, Typography } from 'antd';
+import { Col, Space, Typography } from 'antd';
 import classNames from 'classnames';
 import DayJS from 'dayjs';
-import { useRouteMeta, useTabMeta } from 'dumi';
+import { useRouteMeta } from 'dumi';
 import type { FC, ReactNode } from 'react';
 import { useMemo, useContext } from 'react';
 import PrevAndNext from '../../common/PrevAndNext';
@@ -12,6 +12,8 @@ import EditLink from '../../common/EditLink';
 import useSiteToken from '../../hooks/useSiteToken';
 import Footer from '../Footer';
 import SiteContext from '../SiteContext';
+import InViewSuspense from './InViewSuspense';
+import DocAnchor from './DocAnchor';
 
 const useStyle = () => {
   const { token } = useSiteToken();
@@ -103,17 +105,9 @@ const useStyle = () => {
   };
 };
 
-type AnchorItem = {
-  id: string;
-  title: string;
-  children?: AnchorItem[];
-};
-
 const Content: FC<{ children: ReactNode }> = ({ children }) => {
   const meta = useRouteMeta();
-  const tab = useTabMeta();
   const styles = useStyle();
-  const { token } = useSiteToken();
   const { direction } = useContext(SiteContext);
 
   const debugDemos = useMemo(
@@ -132,58 +126,14 @@ const Content: FC<{ children: ReactNode }> = ({ children }) => {
     return true;
   }, [meta.frontmatter?.title, meta.frontmatter.subtitle, meta.toc]);
 
-  const anchorItems = useMemo(
-    () =>
-      (tab?.toc || meta.toc).reduce<AnchorItem[]>((result, item) => {
-        if (item.depth === 2) {
-          result.push({
-            ...item
-          });
-        } else if (item.depth === 3) {
-          const parent = result[result.length - 1];
-          if (parent) {
-            parent.children = parent.children || [];
-            parent.children.push({
-              ...item
-            });
-          }
-        }
-        return result;
-      }, []),
-    [meta.toc, tab]
-  );
-
   const isRTL = direction === 'rtl';
 
   return (
     <Col xxl={20} xl={19} lg={18} md={18} sm={24} xs={24} css={styles.colContent}>
       {!!meta.frontmatter.toc && (
-        <Affix>
-          <section css={styles.tocWrapper} className={classNames({ rtl: isRTL })}>
-            <Anchor
-              css={styles.toc}
-              affix={false}
-              targetOffset={token.marginXXL}
-              showInkInFixed
-              items={anchorItems.map((item) => ({
-                href: `#${item.id}`,
-                title: item.title,
-                key: item.id,
-                children: item.children
-                  ?.filter((child) => !debugDemos.includes(child.id))
-                  .map((child) => ({
-                    href: `#${child.id}`,
-                    title: (
-                      <span className={classNames(debugDemos.includes(child.id) && 'toc-debug')}>
-                        {child?.title}
-                      </span>
-                    ),
-                    key: child.id
-                  }))
-              }))}
-            />
-          </section>
-        </Affix>
+        <InViewSuspense fallback={null}>
+          <DocAnchor debugDemos={debugDemos} />
+        </InViewSuspense>
       )}
 
       <article css={styles.articleWrapper} className={classNames({ rtl: isRTL })}>

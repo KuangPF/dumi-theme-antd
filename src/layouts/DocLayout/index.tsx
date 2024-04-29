@@ -39,7 +39,7 @@ const DocLayout: FC = () => {
     ) {
       return (
         <React.Fragment>
-          {outlet && routeMeta.texts.length === 0 ? outlet : <Homepage />}
+          {outlet && routeMeta.texts.length > 0 ? outlet : <Homepage />}
           <Footer />
         </React.Fragment>
       );
@@ -58,7 +58,10 @@ const DocLayout: FC = () => {
   // handle hash change or visit page hash from Link component, and jump after async chunk loaded
   useEffect(() => {
     const id = hash.replace('#', '');
-    if (id) document.getElementById(decodeURIComponent(id))?.scrollIntoView();
+    console.log(id);
+    if (id) {
+      document.getElementById(decodeURIComponent(id))?.scrollIntoView();
+    }
   }, [loading, hash]);
 
   return (
