@@ -21,6 +21,8 @@ The OS platform script component is used to display the script content correspon
 />
 ```
 
+You can set the `defaultActiveKey` value to specify the key to initialize the selected panel.
+
 <BashOSPlatform 
   windows='winget install Docker.DockerDesktop' 
   macos='$ brew install --cask docker' 

@@ -21,6 +21,8 @@ OS 平台脚本组件用于展示在不同操作系统平台所对应的脚本�
 />
 ```
 
+可以设置 `defaultActiveKey` 值指定初始化选中面板的 key。
+
 <BashOSPlatform 
   windows='winget install Docker.DockerDesktop' 
   macos='$ brew install --cask docker' 

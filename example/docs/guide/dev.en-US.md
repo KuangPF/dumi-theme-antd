@@ -12,11 +12,12 @@ The first version of `dumi-theme-antd` has been developed, but it is not yet ful
 
 ### Development Process
 
-It is recommended to use `npm` or `yarn` as a package management tool.
+It is recommended to use `pnpm` as a package management tool.
 
-After you clone the dumi-theme-antd code and use: <InstallDependencies npm='$ npm install' yarn='$ yarn'></InstallDependencies>
+After you clone the dumi-theme-antd code and use:
+<InstallDependencies defaultActiveKey='pnpm' pnpm='$ pnpm install' npm='$ npm install' yarn='$ yarn'></InstallDependencies>
 
-After installing the dependencies, run the following command to start the development mode. <InstallDependencies npm='$ npm run docs' yarn='$ yarn docs'></InstallDependencies>
+After installing the dependencies, run the following command to start the development mode. <InstallDependencies defaultActiveKey='pnpm' pnpm='$ pnpm run docs' npm='$ npm run docs' yarn='$ yarn docs'></InstallDependencies>
 
 Modify `/src` to debug the files in the directory.
 

@@ -19,6 +19,8 @@ pnpm='$ pnpm install dumi-theme-antd '
 > </InstallDependencies>
 ```
 
+You can set the `defaultActiveKey` value to specify the key to initialize the selected panel.
+
 <InstallDependencies 
   npm='$ npm install dumi-theme-antd ' 
   yarn='$ yarn add dumi-theme-antd' 

@@ -12,15 +12,15 @@ title: 开发
 
 ### 开发流程
 
-推荐使用 `npm` 或 `yarn` 作为包管理工具
+推荐使用 `pnpm` 作为包管理工具
 
 在你 clone 了 dumi-theme-antd 的代码并且使用
 
-<InstallDependencies npm='$ npm install' yarn='$ yarn'></InstallDependencies>
+<InstallDependencies defaultActiveKey='pnpm' pnpm='$ pnpm install' npm='$ npm install' yarn='$ yarn'></InstallDependencies>
 
 安装完依赖后，运行以下命令即可启动开发模式
 
-<InstallDependencies npm='$ npm run docs' yarn='$ yarn docs'></InstallDependencies>
+<InstallDependencies defaultActiveKey='pnpm' pnpm='$ pnpm run docs' npm='$ npm run docs' yarn='$ yarn docs'></InstallDependencies>
 
 修改 `/src` 对于目录中文件，进行调试。
 

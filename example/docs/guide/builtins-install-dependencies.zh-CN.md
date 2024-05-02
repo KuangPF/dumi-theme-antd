@@ -19,6 +19,8 @@ order: 3
 </InstallDependencies>
 ```
 
+可以设置 `defaultActiveKey` 值指定初始化选中面板的 key。
+
 <InstallDependencies 
   npm='$ npm install dumi-theme-antd ' 
   yarn='$ yarn add dumi-theme-antd' 
