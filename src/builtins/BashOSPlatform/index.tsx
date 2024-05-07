@@ -1,65 +1,46 @@
-import type { TabsProps } from 'antd';
-import { Tabs } from 'antd';
-import SourceCode from 'dumi/theme-default/builtins/SourceCode';
-import React, { useContext } from 'react';
-import SiteContext from '../../slots/SiteContext';
-import type { SiteContextProps } from '../../slots/SiteContext';
+import React from 'react';
+import type { TabItemsType } from '../BashTabs';
 import WindowsLogo from './windows';
 import MacOSLogo from './macos';
 import LinuxLogo from './linux';
+import BashTabs from '../BashTabs';
 
 interface BashOSPlatformProps {
   windows?: string;
   linux?: string;
   macos?: string;
+  defaultActiveKey?: string;
 }
 
-const windowsLabel = (
-  <span className="snippet-label">
-    <WindowsLogo />
-    windows
-  </span>
-);
-
-const MacOSLabel = (props) => (
-  <span className="snippet-label">
-    <MacOSLogo {...props} />
-    macos
-  </span>
-);
-
-const linuxLabel = (
-  <span className="snippet-label">
-    <LinuxLogo />
-    linux
-  </span>
-);
-
 const BashOSPlatform: React.FC<BashOSPlatformProps> = (props) => {
-  const { windows, linux, macos } = props;
-  const { theme } = useContext<SiteContextProps>(SiteContext);
-  const items = React.useMemo<TabsProps['items']>(
+  const { windows, linux, macos, defaultActiveKey = 'windows' } = props;
+
+  const tabItems = React.useMemo<TabItemsType[]>(
     () =>
       [
         {
           key: 'windows',
-          children: windows ? <SourceCode lang="bash">{windows}</SourceCode> : null,
-          label: windowsLabel
+          children: windows,
+          iconRender: WindowsLogo as any,
+          label: 'windows'
         },
         {
           key: 'linux',
-          children: linux ? <SourceCode lang="bash">{linux}</SourceCode> : null,
-          label: linuxLabel
+          children: linux,
+          iconRender: LinuxLogo as any,
+          label: 'linux'
         },
         {
           key: 'macos',
-          children: macos ? <SourceCode lang="bash">{macos}</SourceCode> : null,
-          label: <MacOSLabel theme={theme} />
+          children: macos,
+          iconRender: MacOSLogo as any,
+          label: 'macos'
         }
       ].filter((item) => item.children),
-    [windows, linux, macos, theme]
+    [windows, linux, macos]
   );
-  return <Tabs className="antd-site-snippet" defaultActiveKey="windows" items={items} />;
+
+  return <BashTabs tabItems={tabItems} defaultActiveKey={defaultActiveKey} />;
 };
 
 export default BashOSPlatform;

@@ -10,10 +10,10 @@ import SiteContext from '../../slots/SiteContext';
 import type { SiteContextProps } from '../../slots/SiteContext';
 import type { ThemeName } from '../../common/ThemeSwitch';
 
-interface TabItemsType {
-  key: string;
-  children: string;
-  label: string;
+export interface TabItemsType {
+  key?: string;
+  children?: string | undefined;
+  label?: string;
   iconSrc?: string;
   iconRender?: FC<{ theme: ThemeName[] }>;
   lang?: Language;
@@ -25,6 +25,7 @@ interface BashTabsProps {
   /** 默认 tab key */
   defaultActiveKey?: string;
 }
+
 const BashTabs: FC<BashTabsProps> = (props) => {
   const { tabItems, defaultActiveKey } = props;
   const { theme } = useContext<SiteContextProps>(SiteContext);
@@ -44,14 +45,22 @@ const BashTabs: FC<BashTabsProps> = (props) => {
   );
 
   const items: TabsProps['items'] = useMemo(() => {
-    return tabItems?.map((item) => {
-      const { key = String(Date.now()), children, lang = 'bash' } = item;
-      return {
-        key,
-        children: children ? <SourceCode lang={lang}>{children}</SourceCode> : null,
-        label: renderLabel(item)
-      };
-    });
+    return tabItems
+      ?.map((item) => {
+        const { key = String(Date.now()), children, lang = 'bash' } = item;
+        if (children) {
+          return {
+            key,
+            children: <SourceCode lang={lang}>{children}</SourceCode>,
+            label: renderLabel(item)
+          };
+        }
+        return {
+          key: '',
+          label: ''
+        };
+      })
+      .filter((i) => i.key);
   }, [tabItems, renderLabel]);
 
   return <Tabs className="antd-site-snippet" defaultActiveKey={defaultActiveKey} items={items} />;

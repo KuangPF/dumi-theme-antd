@@ -1,10 +1,9 @@
-import type { TabsProps } from 'antd';
-import { Tabs } from 'antd';
-import SourceCode from 'dumi/theme-default/builtins/SourceCode';
 import React from 'react';
+import type { TabItemsType } from '../BashTabs';
 import NpmLogo from './npm';
 import PnpmLogo from './pnpm';
 import YarnLogo from './yarn';
+import BashTabs from '../BashTabs';
 
 interface InstallProps {
   npm?: string;
@@ -13,51 +12,34 @@ interface InstallProps {
   defaultActiveKey?: string;
 }
 
-const npmLabel = (
-  <span className="snippet-label">
-    <NpmLogo />
-    npm
-  </span>
-);
-
-const pnpmLabel = (
-  <span className="snippet-label">
-    <PnpmLogo />
-    pnpm
-  </span>
-);
-
-const yarnLabel = (
-  <span className="snippet-label">
-    <YarnLogo />
-    yarn
-  </span>
-);
-
 const InstallDependencies: React.FC<InstallProps> = (props) => {
   const { npm, yarn, pnpm, defaultActiveKey = 'npm' } = props;
-  const items = React.useMemo<TabsProps['items']>(
+  const tabItems = React.useMemo<TabItemsType[]>(
     () =>
       [
         {
           key: 'npm',
-          children: npm ? <SourceCode lang="bash">{npm}</SourceCode> : null,
-          label: npmLabel
+          children: npm,
+          iconRender: NpmLogo as any,
+          label: 'npm'
         },
         {
           key: 'yarn',
-          children: yarn ? <SourceCode lang="bash">{yarn}</SourceCode> : null,
-          label: yarnLabel
+          children: yarn,
+          iconRender: YarnLogo as any,
+          label: 'yarn'
         },
         {
           key: 'pnpm',
-          children: pnpm ? <SourceCode lang="bash">{pnpm}</SourceCode> : null,
-          label: pnpmLabel
+          children: pnpm,
+          iconRender: PnpmLogo as any,
+          label: 'pnpm'
         }
       ].filter((item) => item.children),
     [npm, yarn, pnpm]
   );
-  return <Tabs className="antd-site-snippet" defaultActiveKey={defaultActiveKey} items={items} />;
+
+  return <BashTabs tabItems={tabItems} defaultActiveKey={defaultActiveKey} />;
 };
 
 export default InstallDependencies;

@@ -1,13 +1,15 @@
 import React from 'react';
+import type { ThemeName } from '../../common/ThemeSwitch';
 
 interface IconProps {
   className?: string;
   style?: React.CSSProperties;
+  theme?: ThemeName[];
 }
 
 const MacOSIcon: React.FC<IconProps> = (props) => {
   const { className, style, theme } = props;
-  const isDarkMode = theme.indexOf('dark') > -1;
+  const isDarkMode = (theme ?? []).indexOf('dark') > -1;
   return (
     <svg
       className={className}
