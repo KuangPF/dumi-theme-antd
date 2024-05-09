@@ -97,6 +97,7 @@ const useStyle = () => {
       justify-content: space-between;
       align-items: center;
       padding-bottom: 12px;
+      flex: 0;
     `,
     colContent: css`
       display: flex;

@@ -11,6 +11,7 @@ export default () => {
       styles={css`
         html {
           direction: initial;
+          height: 100%;
 
           &.rtl {
             direction: rtl;
@@ -18,6 +19,7 @@ export default () => {
         }
 
         body {
+          height: 100%;
           overflow-x: hidden;
           color: ${colorText};
           font-size: ${fontSize}px;
@@ -26,7 +28,9 @@ export default () => {
           background: ${colorBgContainer};
           transition: background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
-
+        #root {
+          height: 100%;
+        }
         [id] {
           scroll-margin-top: ${anchorTop}px;
         }
