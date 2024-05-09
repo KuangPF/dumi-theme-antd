@@ -55,6 +55,7 @@
   "dependencies": {
     "@ant-design/cssinjs": "1.16.2",
     "@ant-design/icons": "5.3.6",
+    "@babel/runtime": "7.22.3",
     "@ctrl/tinycolor": "3.6.0",
     "@emotion/css": "11.11.2",
     "@emotion/react": "11.11.0",
