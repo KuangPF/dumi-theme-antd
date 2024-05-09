@@ -8,6 +8,15 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.15
+
+`2024-05-08`
+
+- 💄 点击文档锚点页面滚动位置优化。
+- 💄 `themeConfig` 中 logo 支持 `boolean` 类型控制显隐。
+- 💄 内容区样式优化，当内容区内容较少时，高度默认撑满[#33](https://github.com/KuangPF/dumi-theme-antd/issues/33)。
+- 🆕 内置组件 `<BashOSPlatform />` 新增支持 ios 和 android。
+
 ## 0.3.14
 
 `2024-04-07`
