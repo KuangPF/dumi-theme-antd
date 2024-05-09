@@ -8,9 +8,15 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.16
+
+`2024-05-09`
+
+- 💄 内容区样式优化，当内容区内容较少时，高度默认撑满。
+
 ## 0.3.15
 
-`2024-05-08`
+`2024-05-09`
 
 - 💄 点击文档锚点页面滚动位置优化。
 - 💄 `themeConfig` 中 logo 支持 `boolean` 类型控制显隐。
