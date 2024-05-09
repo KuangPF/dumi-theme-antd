@@ -12,12 +12,16 @@ The OS platform script component is used to display the script content correspon
 - windows: show `Windows` platform script information
 - macos: show `macOS` platform script information
 - linux: show `Linux` platform script information
+- ios: show `ios` platform script information
+- android: show `android` platform script information
 
 ```md
-<BashOSPlatform
-  windows='winget install Docker.DockerDesktop'
-  macos='$ brew install --cask docker'
+<BashOSPlatform 
+  windows='winget install Docker.DockerDesktop' 
+  macos='$ brew install --cask docker' 
   linux='$ sudo apt-get install docker-ce docker-ce-cli containerd.io'
+  ios='$ swift package init --name MyCLI --type executable' 
+  android='$ apksigner verify --print-certs path/to/your/app.apk'
 />
 ```
 
@@ -27,7 +31,11 @@ You can set the `defaultActiveKey` value to specify the key to initialize the se
   windows='winget install Docker.DockerDesktop' 
   macos='$ brew install --cask docker' 
   linux='$ sudo apt-get install docker-ce docker-ce-cli containerd.io' 
+  ios='$ swift package init --name MyCLI --type executable' 
+  android='$ apksigner verify --print-certs path/to/your/app.apk' 
 />
+
+Only part of the platform script information is displayed:
 
 ```md
 <BashOSPlatform
@@ -35,7 +43,6 @@ You can set the `defaultActiveKey` value to specify the key to initialize the se
 />
 ```
 
-Only part of the platform script information is displayed:
 <BashOSPlatform
   macos='$ brew install --cask docker'
 />

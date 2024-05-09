@@ -12,12 +12,16 @@ OS 平台脚本组件用于展示在不同操作系统平台所对应的脚本�
 - windows: 展示 `Windows` 平台脚本信息
 - macos: 展示 `macOS` 平台脚本信息
 - linux: 展示 `Linux` 平台脚本信息
+- ios: 展示 `ios` 平台脚本信息
+- android: 展示 `android` 平台脚本信息
 
 ```md
 <BashOSPlatform 
   windows='winget install Docker.DockerDesktop' 
   macos='$ brew install --cask docker' 
-  linux='$ sudo apt-get install docker-ce docker-ce-cli containerd.io' 
+  linux='$ sudo apt-get install docker-ce docker-ce-cli containerd.io'
+  ios='$ swift package init --name MyCLI --type executable' 
+  android='$ apksigner verify --print-certs path/to/your/app.apk'
 />
 ```
 
@@ -27,7 +31,11 @@ OS 平台脚本组件用于展示在不同操作系统平台所对应的脚本�
   windows='winget install Docker.DockerDesktop' 
   macos='$ brew install --cask docker' 
   linux='$ sudo apt-get install docker-ce docker-ce-cli containerd.io' 
+  ios='$ swift package init --name MyCLI --type executable' 
+  android='$ apksigner verify --print-certs path/to/your/app.apk' 
 />
+
+只展示部分平台脚本信息：
 
 ```md
 <BashOSPlatform 
@@ -35,7 +43,6 @@ OS 平台脚本组件用于展示在不同操作系统平台所对应的脚本�
 />
 ```
 
-只展示部分平台脚本信息：
 <BashOSPlatform 
   macos='$ brew install --cask docker' 
 />
