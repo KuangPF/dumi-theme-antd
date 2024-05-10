@@ -40,7 +40,7 @@ const DocLayout: FC = () => {
     ) {
       return (
         <React.Fragment>
-          {outlet && routeMeta.texts.length > 0 ? outlet : <Homepage />}
+          {outlet || <Homepage />}
           <Footer />
         </React.Fragment>
       );
