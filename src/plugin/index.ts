@@ -5,5 +5,12 @@ export default (api: IApi) => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     key: `dumi-theme:${require('../../package.json').name}`
   });
-  // TODO: add your plugin code here
+  api.modifyDefaultConfig((memo) =>
+    Object.assign(memo, {
+      cjs: {
+        output: 'dist',
+        input: 'src/defineThemeConfig'
+      }
+    })
+  );
 };
