@@ -5,6 +5,6 @@ import type { IAllThemeConfig } from '../types';
  * @param {ThemeConfig} config theme config
  * @returns {ThemeConfig}
  */
-export function defineThemeConfig(config: IAllThemeConfig): IAllThemeConfig {
+export function defineThemeConfig(config: Partial<IAllThemeConfig>): Partial<IAllThemeConfig> {
   return config;
 }
