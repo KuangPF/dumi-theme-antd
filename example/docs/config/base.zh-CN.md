@@ -11,7 +11,7 @@ order: 1
 
 ```ts
 import { defineConfig } from 'dumi';
-import { defineThemeConfig } from 'dumi-theme-antd';
+import { defineThemeConfig } from 'dumi-theme-antd/dist/defineThemeConfig';
 
 export default defineConfig({
   themeConfig: defineThemeConfig({
