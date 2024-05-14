@@ -348,6 +348,7 @@ export default () => {
 
           .dumi-default-table-content {
             table {
+              width: 100%;
               margin: 0;
               overflow-x: auto;
               overflow-y: hidden;
@@ -356,49 +357,11 @@ export default () => {
               line-height: ${token.lineHeight};
               border: 1px solid ${token.colorSplit};
               border-width: 0 1px;
-
               th {
                 border-width: 1px 0 2px;
               }
-
               td {
                 border-width: 1px 0;
-                &:first-of-type {
-                  width: 18%;
-                  min-width: 58px;
-                  color: #595959;
-                  font-weight: 600;
-                  white-space: nowrap;
-                }
-
-                &:nth-of-type(2) {
-                  width: 55%;
-                  min-width: 160px;
-                }
-
-                &:nth-of-type(3) {
-                  width: 22%;
-                  color: ${token['magenta-7']};
-                  font-size: ${Math.max(token.fontSize - 1, 12)}px;
-                }
-
-                &:nth-of-type(4) {
-                  width: 15%;
-                  font-size: ${Math.max(token.fontSize - 1, 12)}px;
-                }
-
-                &:nth-of-type(5) {
-                  width: 8%;
-                  font-size: ${Math.max(token.fontSize - 1, 12)}px;
-                }
-
-                &:nth-last-of-type(3):first-of-type {
-                  width: 38%;
-                }
-
-                &:nth-last-of-type(3):first-of-type ~ td:nth-last-of-type(2) {
-                  width: 70%;
-                }
               }
             }
           }
