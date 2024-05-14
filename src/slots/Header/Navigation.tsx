@@ -94,11 +94,11 @@ export default function Navigation({ isMobile, responsive }: NavigationProps) {
   const navList = useNavData();
   const locale = useLocale();
   const moreLinks = useLocaleValue('moreLinks');
-  const activeMenuItem = pathname.split('/').slice(0, 5).join('/');
+  const activeMenuItem = pathname.split('/').slice(0, 2).join('/');
 
   const createMenuItems = (navs: INavItem[]) => {
     return navs.map((navItem: INavItem) => {
-      const linkKeyValue = (navItem.link ?? '').split('/').slice(0, 5).join('/');
+      const linkKeyValue = (navItem.link ?? '').split('/').slice(0, 2).join('/');
       return {
         // eslint-disable-next-line no-nested-ternary
         label: navItem.children ? (
