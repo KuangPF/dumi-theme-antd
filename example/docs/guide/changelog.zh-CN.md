@@ -8,6 +8,14 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.3.18
+
+`2024-05-14`
+
+- 🐞 修复 `defineThemeConfig` 引入报错[#34](https://github.com/KuangPF/dumi-theme-antd/issues/34)。
+- 🐞 修复导航栏选中样式逻辑。
+- 💄 删除 `Table` 预置宽度，默认不干预样式。
+
 ## 0.3.17
 
 `2024-05-10`
