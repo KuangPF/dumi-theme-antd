@@ -3,6 +3,7 @@ import { type FC } from 'react';
 const userList = [
   {
     name: 'Ant Design',
+    site: 'https://ant.design',
     logoUrl: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
   }
 ];
@@ -11,7 +12,7 @@ const WhoAreUsing: FC = () => {
     <ul className="dumi-site-who-are-using">
       {userList.map((item, index) => (
         <li>
-          <a href="https://ant.design" target="_blank" rel="noreferrer" key={index}>
+          <a href={item.site} target="_blank" rel="noreferrer" key={index}>
             <img src={item.logoUrl} alt="Ant Design" />
             {item.name}
           </a>
