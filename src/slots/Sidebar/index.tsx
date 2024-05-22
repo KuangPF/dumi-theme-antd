@@ -174,13 +174,7 @@ const Sidebar: FC = () => {
 
   const menuChild = (
     <ConfigProvider
-      theme={{
-        components: {
-          Menu: {
-            itemBg: colorBgContainer
-          }
-        }
-      }}
+      theme={{ components: { Menu: { itemBg: colorBgContainer, darkItemBg: colorBgContainer } } }}
     >
       <Menu
         items={menuItems}
