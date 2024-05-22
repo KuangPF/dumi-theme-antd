@@ -2,7 +2,7 @@ import { useCallback, type FC } from 'react';
 import { Flex, Typography, Row, Col } from 'antd';
 import { useLocale } from 'dumi';
 import { css } from '@emotion/react';
-import { defaultImage, addImage } from './images';
+import { defaultImage, addImage } from '../../constants/images';
 import useSiteToken from '../../../../src/hooks/useSiteToken';
 
 const userList = [
