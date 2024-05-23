@@ -8,6 +8,13 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.4.1
+
+`2024-05-23`
+
+- 🛠 优化 SSR 样式提取逻辑。
+- 💄 调整 `RTL` icon。
+
 ## 0.4.0
 
 `2024-05-22`
