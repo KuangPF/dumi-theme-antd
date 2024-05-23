@@ -53,7 +53,7 @@
     ]
   },
   "dependencies": {
-    "@ant-design/cssinjs": "1.16.2",
+    "@ant-design/cssinjs": "1.20.0",
     "@ant-design/icons": "5.3.6",
     "@babel/runtime": "7.22.3",
     "@ctrl/tinycolor": "3.6.0",
@@ -62,13 +62,12 @@
     "@emotion/server": "11.11.0",
     "antd-token-previewer": "2.0.0-alpha.6",
     "classnames": "2.3.2",
-    "crypto": "1.0.1",
     "dayjs": "1.11.7",
     "lodash.clonedeep": "4.5.0",
     "prism-react-renderer": "^2.3.1",
     "rc-drawer": "6.2.0",
     "rc-footer": "0.6.8",
-    "rc-util": "5.33.0",
+    "rc-util": "5.41.0",
     "react-intersection-observer": "^9.8.2"
   },
   "devDependencies": {

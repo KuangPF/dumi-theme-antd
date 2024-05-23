@@ -9,7 +9,7 @@ import type { IApi } from 'dumi';
 
 function extractEmotionStyle(html: string) {
   if (html === undefined) {
-    throw new Error('did you forget to return html from renderToString?');
+    throw new Error('Did you forget to return html from renderToString?');
   }
 
   const { extractCritical } = createEmotionServer(cache);
@@ -109,6 +109,15 @@ const dumiThemeUmiPlugin = (api: IApi) => {
 
           const cssFile = writeCSSFile('antd', antdStyle, antdStyle);
           file.content = addLinkStyle(file.content, cssFile, true);
+
+          // Insert antd cssVar to head
+          const cssVarMatchRegex = /<style data-type="antd-css-var"[\S\s]+?<\/style>/;
+          const cssVarMatchList = file.content.match(cssVarMatchRegex) || [];
+
+          cssVarMatchList.forEach((text) => {
+            file.content = file.content.replace(text, '');
+            file.content = file.content.replace('<head>', `<head>${text}`);
+          });
 
           return file;
         });
