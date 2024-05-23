@@ -10,7 +10,7 @@ import RTLIcon from '../../icons/RTLIcon';
 const useStyle = () => {
   return {
     dataDirectionIcon: css`
-      width: 16px;
+      width: 20px;
     `
   };
 };
