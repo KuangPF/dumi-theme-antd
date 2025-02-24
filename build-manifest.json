@@ -1,13 +1,13 @@
 {
   "assets": {
     "umi.css": "/dumi-theme-antd/umi.fcb06a80.css",
-    "umi.js": "/dumi-theme-antd/umi.7e4d3699.js",
+    "umi.js": "/dumi-theme-antd/umi.33283842.js",
     "meta__docs__en-US.js": "/dumi-theme-antd/meta__docs__en-US.7bfcc22e.async.js",
     "meta__docs__zh-CN.js": "/dumi-theme-antd/meta__docs__zh-CN.95bdecfe.async.js",
     "nm__dumi__dist__client__pages__404.js": "/dumi-theme-antd/nm__dumi__dist__client__pages__404.42ddbc0c.async.js",
-    "dumi__theme__layouts__GlobalLayout.js": "/dumi-theme-antd/dumi__theme__layouts__GlobalLayout.d1023467.async.js",
-    "dumi__tmp-production__dumi__theme__ContextWrapper.js": "/dumi-theme-antd/dumi__tmp-production__dumi__theme__ContextWrapper.a009f642.async.js",
-    "dumi__theme__layouts__DocLayout__index.js": "/dumi-theme-antd/dumi__theme__layouts__DocLayout__index.50aea884.async.js",
+    "dumi__theme__layouts__GlobalLayout.js": "/dumi-theme-antd/dumi__theme__layouts__GlobalLayout.8c8ae5b2.async.js",
+    "dumi__tmp-production__dumi__theme__ContextWrapper.js": "/dumi-theme-antd/dumi__tmp-production__dumi__theme__ContextWrapper.19c11ba1.async.js",
+    "dumi__theme__layouts__DocLayout__index.js": "/dumi-theme-antd/dumi__theme__layouts__DocLayout__index.726f419e.async.js",
     "dumi__pages__index__WhoAreUsing.js": "/dumi-theme-antd/dumi__pages__index__WhoAreUsing.dba452ce.async.js",
     "dumi__pages__index-en__index.js": "/dumi-theme-antd/dumi__pages__index-en__index.6033b171.async.js",
     "dumi__pages__index__index.js": "/dumi-theme-antd/dumi__pages__index__index.a5fbe1a5.async.js",
