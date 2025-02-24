@@ -36,7 +36,13 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
     return antdTheme.defaultAlgorithm;
   });
 
-const isThemeDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+const isThemeDark = () => {
+  if (typeof window !== 'undefined') {
+    return window.matchMedia('(prefers-color-scheme: dark)')?.matches;
+  }
+  return false;
+};
+
 const getSiteState = (siteState) => {
   const localSiteState = siteState;
   const isDark = isThemeDark(); // 系统默认主题
@@ -82,7 +88,7 @@ const GlobalLayout: FC = () => {
   useEffect(() => {
     try {
       const localSiteState = JSON.parse(
-        window.localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}'
+        window.localStorage?.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}'
       );
       // 首次设置主题样式
       if (!localSiteState?.theme) {
