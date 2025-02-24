@@ -7,6 +7,12 @@ tag: VERSION
 
 `dumi-theme-antd` 严格遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
 
+## 0.4.3
+
+`2025-02-24`
+
+- 🛠 优化依赖版本。[#36](https://github.com/KuangPF/dumi-theme-antd/issues/40)。
+
 ## 0.4.2
 
 `2024-08-15`
