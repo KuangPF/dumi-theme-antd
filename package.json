@@ -86,8 +86,8 @@
     "lint-staged": "^13.2.2"
   },
   "peerDependencies": {
-    "antd": "~5.17.0",
-    "dumi": "~2.3.4",
+    "antd": "^5.17.0",
+    "dumi": "^2.4.18",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
