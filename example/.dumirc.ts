@@ -4,7 +4,8 @@ import { defineThemeConfig } from './.dumi/theme/defineThemeConfig';
 
 export default defineConfig({
   mfsu: false,
-  ssr: process.env.NODE_ENV === 'development' ? false : {},
+  // ssr: process.env.NODE_ENV === 'development' ? false : {},
+  ssr: false,
   publicPath: process.env.DEPLOY_SITE === 'local' ? '/' : '/dumi-theme-antd/',
   base: process.env.DEPLOY_SITE === 'local' ? '/' : '/dumi-theme-antd',
   favicons: ['https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png'],

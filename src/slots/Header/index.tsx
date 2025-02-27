@@ -157,6 +157,9 @@ const Header: FC = () => {
   const { docVersions } = useAdditionalThemeConfig();
 
   const onWindowResize = useCallback(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
     setHeaderState((prev) => ({
       ...prev,
       windowWidth: window.innerWidth
@@ -176,6 +179,9 @@ const Header: FC = () => {
   }, []);
 
   const handleVersionChange = useCallback((url: string) => {
+    if (typeof window === 'undefined') {
+      return;
+    }
     window.location.href = url;
   }, []);
 
@@ -184,6 +190,9 @@ const Header: FC = () => {
   }, [location, handleHideMenu]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return () => {};
+    }
     onWindowResize();
     window.addEventListener('resize', onWindowResize);
     return () => {

@@ -7,7 +7,7 @@ import {
   extractStyle
 } from '@ant-design/cssinjs';
 import { ConfigProvider, theme as antdTheme } from 'antd';
-import { Outlet, usePrefersColor, useServerInsertedHTML } from 'dumi';
+import { Outlet, useServerInsertedHTML, usePrefersColor } from 'dumi';
 import type { FC } from 'react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import useAdditionalThemeConfig from '../hooks/useAdditionalThemeConfig';
@@ -63,6 +63,9 @@ const GlobalLayout: FC = () => {
 
   // 基于 localStorage 实现
   const updateSiteConfig = useCallback((props: SiteState) => {
+    if (typeof window === 'undefined') {
+      return;
+    }
     try {
       const localSiteState = JSON.parse(
         window.localStorage.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}'
@@ -80,12 +83,18 @@ const GlobalLayout: FC = () => {
   }, []);
 
   const updateMobileMode = useCallback(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
     updateSiteConfig({
       isMobile: window.innerWidth < RESPONSIVE_MOBILE
     });
   }, [updateSiteConfig]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
     try {
       const localSiteState = JSON.parse(
         window.localStorage?.getItem(SITE_STATE_LOCALSTORAGE_KEY) || '{}'
@@ -103,6 +112,9 @@ const GlobalLayout: FC = () => {
   }, [prefersColor, updateSiteConfig]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return () => {};
+    }
     updateMobileMode();
     // set data-prefers-color
     setPrefersColor((theme ?? []).indexOf('dark') > -1 ? 'dark' : 'light');
